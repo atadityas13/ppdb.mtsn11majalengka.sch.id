@@ -182,7 +182,7 @@ crossorigin="anonymous"></script>
           <aside id="sidebar-wrapper">
 		  
             <div class="sidebar-brand" style="background: white; padding: 15px; text-align: center;">
-              <img src="../<? = $setting['logo_ppdb'] ?>" width="180" alt="LOGO" style="max-width: 100%; height: auto;">
+              <img src="../<?= $setting['logo_ppdb'] ?>" width="180" alt="LOGO" style="max-width: 100%; height: auto;">
             </div>
 			<div class="menu-header" style="margin-top: 10px;">
 			
