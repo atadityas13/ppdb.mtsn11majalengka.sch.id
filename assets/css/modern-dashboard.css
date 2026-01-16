@@ -1,12 +1,29 @@
 /**
  * Modern Dashboard Enhancement - Minimal & Clean
- * Version: 2.2
+ * Version: 2.3
  */
 
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --shadow-soft: 0 2px 8px rgba(0,0,0,0.08);
     --transition-smooth: all 0.3s ease;
+}
+
+/* ========== SIDEBAR LAYOUT FIX ========== */
+.sidebar-brand {
+    background: white !important;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.sidebar-brand img {
+    max-width: 180px;
+    height: auto;
+}
+
+.menu-header {
+    margin-top: 10px;
 }
 
 /* ========== SMOOTH TRANSITIONS ========== */
