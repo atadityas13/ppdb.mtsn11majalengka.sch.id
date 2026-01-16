@@ -47,7 +47,7 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/components.css">
     
-    <!-- Modern Dashboard CSS -->
+    <!-- Modern Dashboard Enhancements (Subtle) -->
     <link rel="stylesheet" href="../assets/css/modern-dashboard.css">
     
     <!-- Start GA -->
