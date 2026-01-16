@@ -42,8 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
     
-    $user = mysqli_fetch_array($result);
-    
     // Verifikasi password
     if (password_verify($password, $user['password'])) {
         // Login berhasil
