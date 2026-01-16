@@ -181,8 +181,8 @@ crossorigin="anonymous"></script>
         </nav>
         <div class="main-sidebar sidebar-style-2">
           <aside id="sidebar-wrapper">
-             <div class="sidebar-brand bg-info">
-              <img src="../<?= $setting['logo_ppdb'] ?>" width="200" alt="PPDB">&nbsp;
+             <div class="sidebar-brand" style="background: white; padding: 15px; margin-bottom: 15px; text-align: center;">
+              <img src="../<?= $setting['logo_ppdb'] ?>" width="180" alt="LOGO" style="max-width: 100%; height: auto;">
             </div>
 			<div class="menu-header">
 			
