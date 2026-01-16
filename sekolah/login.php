@@ -102,7 +102,7 @@ require "../config/functions.crud.php";
 
             <div class="info-box text-center">
               <i class="fas fa-info-circle fa-2x mb-2"></i>
-              <p class="mb-0"><small>Khusus untuk Admin/Operator Sekolah Dasar (SD)<br>untuk memantau data siswa pendaftar</small></p>
+              <p class="mb-0"><small>Khusus untuk Admin/Operator Sekolah Dasar (SD)<br>untuk pendaftaran siswa secara kolektif.</small></p>
             </div>
 
             <div class="card">

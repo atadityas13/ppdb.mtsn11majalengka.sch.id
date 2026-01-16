@@ -9,7 +9,7 @@
     <meta name="keywords" content="simasapp v.1.1,simas madrasah, simas sekolah, web simas,"/>  
   
     <!-- Vendor -->  
-    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />  
     <link href="https://unbk.kemdikbud.go.id/vendor/chart/Chart.min.css" rel="stylesheet" />  
     <link rel="stylesheet" href="assets/modules/izitoast/css/iziToast.min.css">  
     <link href="https://unbk.kemdikbud.go.id/assets/css/front.min.css" rel="stylesheet" />  
@@ -26,42 +26,327 @@
     <link rel="stylesheet" type="text/css" href="assets/front/css/main.css">  
     <!-- DataTables CSS -->  
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">  
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
     <!--===============================================================================================-->  
-    <style>  
-        .carousel-frame {  
-            border: 4px solid #1e90ff; /* Warna bingkai */  
-            border-radius: 10px; /* Sudut bingkai */  
-            overflow: hidden; /* Memastikan gambar tidak keluar dari bingkai */  
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan untuk efek 3D */  
-        }  
-  
-        .carousel-frame .carousel-inner .carousel-item img {  
-            border-radius: 10px; /* Mengatur sudut gambar agar sesuai dengan bingkai */  
-        }  
-  
-        .carousel-frame .carousel-caption {  
-            background-color: rgba(0, 0, 0, 0.5); /* Latar belakang caption dengan transparansi */  
-            color: #fff; /* Warna teks caption */  
-            padding: 10px; /* Padding caption */  
-            border-radius: 0 0 10px 10px; /* Sudut caption */  
-        }  
-  
-        /* Optional: Tambahkan gaya CSS untuk tombol play/pause */  
-        #play-pause-btn {  
-            position: fixed;  
-            bottom: 20px;  
-            right: 20px;  
-            z-index: 1000;  
-            background-color: rgba(0, 0, 0, 0.7);  
-            color: #fff;  
-            border: none;  
-            font-size: 24px;  
-            padding: 10px;  
-            border-radius: 50%;  
-            cursor: pointer;  
-            outline: none;  
-        }  
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: #f8f9fa;
+        }
+
+        /* Navbar Modern */
+        .home-header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar {
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: translateY(-2px);
+        }
+
+        .navbar-brand img {
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover img {
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            transform: rotate(5deg);
+        }
+
+        .home-header-text h5 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin-bottom: 2px;
+            font-size: 0.9rem;
+        }
+
+        .home-header-text h6 {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0;
+            font-size: 0.85rem;
+        }
+
+        .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            padding: 0.7rem 1.2rem !important;
+            margin: 0 0.2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-gradient);
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .nav-link i {
+            margin-right: 5px;
+        }
+
+        /* Hero Section Modern */
+        .home-banner {
+            position: relative;
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .home-banner-bg-color {
+            background: var(--primary-gradient);
+            opacity: 0.05;
+        }
+
+        .home-banner-bg-img {
+            opacity: 0.03;
+        }
+
+        /* Card Modern dengan Glassmorphism */
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            background: white;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .card-header {
+            background: var(--primary-gradient) !important;
+            color: white !important;
+            padding: 1.2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none !important;
+        }
+
+        /* Carousel Modern */
+        .carousel-frame {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+        }
+
+        .carousel-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .carousel-frame:hover::before {
+            opacity: 0.1;
+        }
+
+        .carousel-inner {
+            border-radius: 20px;
+        }
+
+        .carousel-item img {
+            border-radius: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-caption {
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px 20px 20px !important;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .carousel-caption h5 {
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-frame:hover .carousel-control-prev,
+        .carousel-frame:hover .carousel-control-next {
+            opacity: 1;
+        }
+
+        .carousel-control-prev {
+            left: 20px;
+        }
+
+        .carousel-control-next {
+            right: 20px;
+        }
+
+        .carousel-indicators li {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicators li.active {
+            opacity: 1;
+            transform: scale(1.3);
+        }
+
+        /* Video Frame */
+        .embed-responsive {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .home-header-text {
+                display: none !important;
+            }
+            
+            .navbar-brand img {
+                height: 50px !important;
+            }
+
+            .nav-link {
+                padding: 0.5rem 1rem !important;
+                margin: 0.2rem 0;
+            }
+
+            .card {
+                margin-top: 20px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5568d3;
+        }
     </style>  
     <!-- Start GA -->  
     <script>  
@@ -128,7 +413,7 @@
                 <div class="home-banner-bg home-banner-bg-img"></div>  
                 <div class="container mt-5">  
                     <div class="row">  
-                        <div class="col-sm-7">  
+                        <div class="col-sm-7" data-aos="fade-right">  
                             <div class="carousel-frame">  
                                 <div id="carousel1" class="carousel slide" data-ride="carousel">  
                                     <ol class="carousel-indicators">  
@@ -136,27 +421,27 @@
                                         <li data-target="#carousel1" data-slide-to="1"></li>  
                                         <li data-target="#carousel1" data-slide-to="2"></li>  
                                     </ol>  
-                                    <div class="card-header bg-white"><center><b>Foto-foto Kegiatan MTsN 11 Majalengka</b></center></div>  
+                                    <div class="card-header"><center><b><i class="fas fa-images"></i> Foto-foto Kegiatan MTsN 11 Majalengka</b></center></div>  
                                     <div class="carousel-inner">  
                                         <div class="carousel-item active">  
                                             <img src="assets/images/foto1.jpg" class="d-block w-100" alt="Foto 1">  
                                             <div class="carousel-caption d-none d-md-block">  
                                                 <h5>Kegiatan Upacara Bendera</h5>  
-                                                <p></p>  
+                                                <p>Membangun karakter disiplin dan nasionalisme</p>  
                                             </div>  
                                         </div>  
                                         <div class="carousel-item">  
                                             <img src="assets/images/foto2.jpg" class="d-block w-100" alt="Foto 2">  
                                             <div class="carousel-caption d-none d-md-block">  
                                                 <h5>Kegiatan Belajar di Kelas</h5>  
-                                                <p></p>  
+                                                <p>Pembelajaran interaktif dan menyenangkan</p>  
                                             </div>  
                                         </div>  
                                         <div class="carousel-item">  
                                             <img src="assets/images/foto3.jpg" class="d-block w-100" alt="Foto 3">  
                                             <div class="carousel-caption d-none d-md-block">  
-                                                <h5>Kegiatan Pembelajaran Praktikum di Laboratorium Bahasa</h5>  
-                                                <p></p>  
+                                                <h5>Pembelajaran Praktikum di Laboratorium Bahasa</h5>  
+                                                <p>Fasilitas modern untuk pembelajaran optimal</p>  
                                             </div>  
                                         </div>  
                                     </div>  
@@ -171,9 +456,9 @@
                                 </div>  
                             </div>  
                         </div>  
-                        <div class="col-sm-5">  
+                        <div class="col-sm-5" data-aos="fade-left">  
                             <div class="card mt-4">  
-                                <div class="card-header bg-white"><center><b>Video Profil MTsN 11 Majalengka</b></center></div>  
+                                <div class="card-header"><center><b><i class="fas fa-play-circle"></i> Video Profil MTsN 11 Majalengka</b></center></div>  
                                 <div class="card-body">  
                                     <div class="embed-responsive embed-responsive-16by9">  
                                         <iframe class="embed-responsive-item" src="https://youtube.com/embed/Cm2Ew1E-A2k" allowfullscreen></iframe>  
@@ -533,7 +818,7 @@
                                                     Aplikasi Penerimaan Peserta didik baru Tahun Pelajaran 2026/2027 <?= $setting['nama_sekolah'] ?>.  
                                                 </p>  
                                                 <p data-animation="animated slideInRight" data-delay="2s">  
-                                                    Pendaftaran Siswa dan Siswi Baru Tahun 2024 Belum Dibuka.  
+                                                    Pendaftaran Siswa dan Siswi Baru Tahun 2026 Belum Dibuka.  
                                                 </p>  
                                                 <p data-animation="animated flipInX" data-delay="3s">  
                                                     <a href="" class="btn btn-success nav-link">  
@@ -1107,6 +1392,52 @@
     <script src="assets/front/vendor/countdowntime/moment-timezone.min.js"></script>  
     <script src="assets/front/vendor/countdowntime/moment-timezone-with-data.min.js"></script>  
     <script src="assets/front/vendor/countdowntime/countdowntime.js"></script>  
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Smooth scroll untuk nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            const navbar = document.querySelector('.home-header');
+            
+            if (currentScroll > 100) {
+                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Carousel auto-height
+        $('.carousel').on('slide.bs.carousel', function (e) {
+            var nextH = $(e.relatedTarget).height();
+            $(this).find('.active.carousel-item').parent().animate({ height: nextH }, 500);
+        });
+    </script>
   
     <script>  
         $('.cd100').countdown100({  

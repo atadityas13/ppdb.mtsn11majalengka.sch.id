@@ -167,7 +167,7 @@ require "../config/functions.crud.php";
                       <input id="nama_user" type="text" class="form-control" name="nama_user" required placeholder="Nama lengkap operator">
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="nuptk"><i class="fas fa-id-card"></i> NUPTK (Opsional)</label>
+                      <label for="nuptk"><i class="fas fa-id-card"></i> NIP (Opsional)</label>
                       <input id="nuptk" type="text" class="form-control" name="nuptk" placeholder="Nomor NUPTK">
                     </div>
                   </div>
@@ -265,7 +265,7 @@ require "../config/functions.crud.php";
           <h6 class="font-weight-bold text-primary"><i class="fas fa-check-circle"></i> 1. Kewenangan Akses</h6>
           <ul>
             <li>Operator sekolah hanya dapat melihat data siswa yang berasal dari sekolahnya</li>
-            <li>Akun ini digunakan untuk memantau dan memvalidasi data pendaftar</li>
+            <li>Akun ini digunakan untuk memantau dan mendaftarkan siswa secara kolektif</li>
             <li>Tidak diperkenankan mengubah data tanpa koordinasi dengan admin utama</li>
           </ul>
 
