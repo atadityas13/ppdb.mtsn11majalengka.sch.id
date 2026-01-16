@@ -84,13 +84,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Hash password
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
     
-    // Insert data operator baru
+    // Insert data operator baru (status 0 = pending approval dari admin)
     $insert = insert($koneksi, 'user', [
         'nama_user' => $nama_user,
         'level' => 'operator_sd',
         'username' => $username,
         'password' => $password_hash,
-        'status' => 1,
+        'status' => 0,
         'foto' => 0,
         'mapel' => '',
         'nuptk' => $nuptk,
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($insert == 'OK') {
         echo json_encode([
             'status' => 'success',
-            'message' => 'Pendaftaran berhasil! Silakan login dengan username dan password Anda'
+            'message' => 'Pendaftaran berhasil! Akun Anda akan diaktifkan setelah disetujui oleh Admin. Silakan tunggu konfirmasi'
         ]);
     } else {
         echo json_encode([

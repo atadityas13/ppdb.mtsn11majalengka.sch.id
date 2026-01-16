@@ -110,6 +110,10 @@
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
             transition: all 0.3s ease;
             border: 2px solid rgba(102, 126, 234, 0.1);
+            background: white;
+            padding: 8px;
+            display: block;
+            object-fit: contain;
         }
 
         .navbar-brand:hover img {
@@ -767,7 +771,7 @@
         }
 
         .chating img {
-            width: 70px !important;
+            width: 100px !important;
             height: auto !important;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             transition: all 0.3s ease;
@@ -799,7 +803,7 @@
             }
 
             .chating img {
-                width: 60px !important;
+                width: 80px !important;
             }
         }
     </style>  
@@ -841,7 +845,7 @@
                                 <a class="nav-link" href="#home" id="link-home">Home</a>  
                             </li>  
                             <li class="nav-item">  
-                                <a class="nav-link" href="#home" onclick="scrollToCarousel()">Info Pendaftaran</a>  
+                                <a class="nav-link" href="#tentang" onclick="scrollToCarousel()">Info Pendaftaran</a>  
                             </li>  
                             <li class="nav-item">  
                                 <a class="nav-link" href="#tentang" id="link-tentang">Daftar</a>  

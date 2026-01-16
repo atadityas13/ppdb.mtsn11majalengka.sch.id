@@ -20,13 +20,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     // Cek user dengan username dan level operator_sd
-    $query = "SELECT * FROM user WHERE username='$username' AND level='operator_sd' AND status='1' LIMIT 1";
+    $query = "SELECT * FROM user WHERE username='$username' AND level='operator_sd' LIMIT 1";
     $result = mysqli_query($koneksi, $query);
     
     if (mysqli_num_rows($result) == 0) {
         echo json_encode([
             'status' => 'error',
             'message' => 'Username tidak ditemukan atau bukan operator sekolah'
+        ]);
+        exit;
+    }
+    
+    $user = mysqli_fetch_array($result);
+    
+    // Cek apakah akun sudah disetujui admin
+    if ($user['status'] != '1') {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Akun Anda belum disetujui oleh Admin. Silakan hubungi Administrator untuk aktivasi akun'
         ]);
         exit;
     }
