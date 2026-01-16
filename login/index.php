@@ -46,6 +46,10 @@ if (isset($_SESSION['id_user'])) {
     <!-- Template CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/components.css">
+    
+    <!-- Modern Dashboard CSS -->
+    <link rel="stylesheet" href="../assets/css/modern-dashboard.css">
+    
     <!-- Start GA -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script> -->
 
