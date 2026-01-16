@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user['status'] != '1') {
         echo json_encode([
             'status' => 'error',
-            'message' => 'Akun Anda belum disetujui oleh Admin. Silakan hubungi Administrator untuk aktivasi akun'
+            'message' => 'Akun Anda belum disetujui oleh Admin MTsN 11 Majalengka. Silakan hubungi Administrator untuk aktivasi akun'
         ]);
         exit;
     }

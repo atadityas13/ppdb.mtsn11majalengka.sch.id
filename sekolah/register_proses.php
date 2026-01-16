@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($insert == 'OK') {
         echo json_encode([
             'status' => 'success',
-            'message' => 'Pendaftaran berhasil! Akun Anda akan diaktifkan setelah disetujui oleh Admin. Silakan tunggu konfirmasi'
+            'message' => 'Pendaftaran berhasil! Akun Anda akan diaktifkan setelah disetujui oleh Admin MTsN 11 Majalengka. Silakan tunggu konfirmasi'
         ]);
     } else {
         echo json_encode([
