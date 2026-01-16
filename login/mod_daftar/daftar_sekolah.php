@@ -359,13 +359,22 @@
     </div>  
 </div>  
   
+<style>
+/* Fix sidebar clickability issue specific to this page */
+.main-sidebar {
+    position: fixed !important;
+    z-index: 999 !important;
+}
+
+.main-sidebar .menu-header,
+.main-sidebar .sidebar-menu,
+.main-sidebar .menu-header a,
+.main-sidebar .sidebar-menu a {
+    pointer-events: auto !important;
+}
+</style>
+
 <script>  
-    // Fix sidebar menu-header links not working  
-    $(document).ready(function() {  
-        $('.menu-header a').off('click');  
-        $('.btn-logout').off('click');  
-    });  
-  
     // IMPORT FILE PENDUKUNG       
     $('#form-import').on('submit', function(e) {  
         e.preventDefault();  
