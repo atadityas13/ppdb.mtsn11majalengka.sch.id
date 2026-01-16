@@ -95,7 +95,7 @@ require "../config/functions.crud.php";
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-5 offset-xl-4">
             
             <div class="login-brand text-center">
-              <img src="../<?= $setting['logo'] ?>" alt="logo" width="120" class="shadow-light rounded-circle mb-3" style="background: white; padding: 10px;">
+              <img src="../<?= $setting['logo'] ?>" alt="logo" width="140" class="mb-3" style="filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.3)); border-radius: 10px;">
               <h3 class="mt-3">OPERATOR SEKOLAH</h3>
               <h5>PPDB Online <?= $setting['nama_sekolah'] ?></h5>
             </div>

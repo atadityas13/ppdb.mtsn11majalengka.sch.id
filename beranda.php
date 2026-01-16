@@ -69,6 +69,27 @@
             transition: all 0.3s ease;
         }
 
+        /* Kembalikan background untuk text visibility */
+        .home-banner-bg-color {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .home-banner-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -2;
+            background-image: url('assets/img/bg-pattern.png');
+            background-size: cover;
+        }
+
         .navbar {
             padding: 1rem 0;
         }
@@ -85,14 +106,15 @@
         }
 
         .navbar-brand img {
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
             transition: all 0.3s ease;
+            border: 2px solid rgba(102, 126, 234, 0.1);
         }
 
         .navbar-brand:hover img {
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
-            transform: rotate(5deg);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            transform: scale(1.05);
         }
 
         .home-header-text h5 {
