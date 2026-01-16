@@ -159,15 +159,34 @@
             position: relative;
             padding: 80px 0;
             overflow: hidden;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+        }
+
+        .home-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .home-banner > * {
+            position: relative;
+            z-index: 1;
         }
 
         .home-banner-bg-color {
-            background: var(--primary-gradient);
-            opacity: 0.05;
+            display: none;
         }
 
         .home-banner-bg-img {
-            opacity: 0.03;
+            display: none;
         }
 
         /* Card Modern dengan Glassmorphism */
@@ -345,6 +364,286 @@
             .card {
                 margin-top: 20px;
             }
+
+            /* Fix untuk banner dan form di mobile */
+            .home-banner {
+                padding: 40px 0;
+            }
+
+            .home-banner .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .home-banner .row {
+                margin-bottom: 0;
+            }
+
+            .home-banner .col-sm-8,
+            .home-banner .col-sm-7 {
+                margin-bottom: 30px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .home-banner .col-sm-4,
+            .home-banner .col-sm-5 {
+                margin-bottom: 20px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            /* Carousel di mobile */
+            #carousel2 {
+                margin-bottom: 30px;
+            }
+
+            #carousel2 .carousel-inner {
+                padding: 20px;
+            }
+
+            #carousel2 h5 {
+                font-size: 1.1rem !important;
+            }
+
+            #carousel2 p {
+                font-size: 0.9rem;
+            }
+
+            #carousel2 ul {
+                padding-left: 20px;
+                font-size: 0.9rem;
+            }
+
+            #carousel2 ul li {
+                margin-bottom: 10px;
+            }
+
+            /* Card login di mobile */
+            .card-login {
+                margin-top: 0 !important;
+            }
+
+            .card-login .card-body {
+                padding: 1.5rem;
+            }
+
+            /* Carousel frame di mobile */
+            .carousel-frame {
+                margin-bottom: 20px;
+            }
+
+            .carousel-caption {
+                padding: 15px 10px 10px !important;
+            }
+
+            .carousel-caption h5 {
+                font-size: 1rem !important;
+            }
+
+            .carousel-caption p {
+                font-size: 0.85rem !important;
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            /* Extra small devices */
+            .home-banner {
+                padding: 30px 0;
+            }
+
+            .home-banner .container {
+                margin-top: 20px !important;
+            }
+
+            #carousel2 .carousel-inner {
+                padding: 15px;
+            }
+
+            #carousel2 h5 {
+                font-size: 1rem !important;
+            }
+
+            #carousel2 ul {
+                font-size: 0.85rem;
+            }
+
+            .card-header {
+                font-size: 0.9rem !important;
+                padding: 0.8rem !important;
+            }
+
+            /* Form controls di mobile */
+            .form-control {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+            }
+
+            /* Section spacing */
+            section {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+        }
+
+        /* Style untuk card-login */
+        .card-login {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-login .card-body {
+            padding: 2rem;
+        }
+
+        .card-login img {
+            display: block;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Ensure proper spacing for sections */
+        .home-content {
+            background: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        #tentang {
+            padding: 60px 0;
+        }
+
+        @media (max-width: 768px) {
+            #tentang {
+                padding: 40px 0;
+            }
+
+            #tentang .col-sm-6 {
+                margin-bottom: 30px;
+            }
+
+            #tentang .card {
+                margin-bottom: 20px;
+            }
+
+            /* Form pendaftaran di mobile */
+            .form-row {
+                margin-bottom: 0;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            label {
+                font-size: 0.9rem;
+                margin-bottom: 0.3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #tentang {
+                padding: 30px 0;
+            }
+
+            #tentang .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+
+        /* Statistik Section */
+        .statistik {
+            padding: 60px 0;
+        }
+
+        .statistik h5 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .statistik h6 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .statistik {
+                padding: 40px 0;
+            }
+
+            .statistik h5 {
+                font-size: 1.4rem;
+            }
+
+            .statistik h6 {
+                font-size: 1rem;
+            }
+
+            .statistik .col-sm-6 {
+                margin-bottom: 15px;
+            }
+
+            .statistik .col-sm-12 {
+                margin-bottom: 20px;
+            }
+
+            /* Table responsive di mobile */
+            .table-responsive {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .table {
+                font-size: 0.85rem;
+            }
+
+            .table th,
+            .table td {
+                padding: 0.5rem;
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .statistik {
+                padding: 30px 0;
+            }
+
+            .statistik .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .statistik h5 {
+                font-size: 1.2rem;
+            }
+
+            .statistik h6 {
+                font-size: 0.9rem;
+            }
+
+            .card h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Ensure proper spacing between sections */
+        section {
+            position: relative;
+            z-index: 5;
+        }
+
+        section + section {
+            margin-top: 0;
         }
 
         /* Smooth Scroll */
@@ -368,6 +667,60 @@
 
         ::-webkit-scrollbar-thumb:hover {
             background: #5568d3;
+        }
+
+        /* Floating Music Button */
+        #play-pause-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #play-pause-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        #play-pause-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Animation for music button */
+        @keyframes pulse-music {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(102, 126, 234, 0.8);
+            }
+        }
+
+        #play-pause-btn.playing {
+            animation: pulse-music 2s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            #play-pause-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+                bottom: 20px;
+                left: 20px;
+            }
         }
     </style>  
     <!-- Start GA -->  
@@ -1128,10 +1481,12 @@
                 audio.play();  
                 playPauseBtn.classList.remove('fa-play');  
                 playPauseBtn.classList.add('fa-pause');  
+                playPauseBtn.classList.add('playing');  
             } else {  
                 audio.pause();  
                 playPauseBtn.classList.remove('fa-pause');  
                 playPauseBtn.classList.add('fa-play');  
+                playPauseBtn.classList.remove('playing');  
             }  
         }  
   
