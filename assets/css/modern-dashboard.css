@@ -1,12 +1,43 @@
 /**
  * Modern Dashboard Enhancement - Minimal & Clean
- * Version: 2.3
+ * Version: 2.5
  */
 
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --shadow-soft: 0 2px 8px rgba(0,0,0,0.08);
     --transition-smooth: all 0.3s ease;
+}
+
+/* ========== SIDEBAR Z-INDEX FIX ========== */
+.main-sidebar {
+    z-index: 990 !important;
+}
+
+.main-sidebar .sidebar-menu {
+    pointer-events: auto !important;
+}
+
+.main-sidebar .sidebar-menu li a {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Fix DataTable overlay covering sidebar */
+.dataTables_wrapper,
+.dataTables_scrollBody,
+.dataTables_scrollHead,
+.card,
+.card-body,
+.table-responsive {
+    z-index: 1 !important;
+    position: relative;
+}
+
+.main-content {
+    z-index: 1;
+    position: relative;
 }
 
 /* ========== SIDEBAR LAYOUT FIX ========== */
