@@ -108,11 +108,17 @@ if ($pg == 'simpan2') {
         $nama_jurusan = $_POST['jurusan']; 
         $npsn_sekolah = $_POST['asal'];
 
-        // Query untuk mendapatkan nama sekolah dan NPSN berdasarkan NPSN yang dipilih
-        $query_sekolah = mysqli_query($koneksi, "SELECT * FROM sekolah WHERE npsn = '$npsn_sekolah'");
-        $data_sekolah = mysqli_fetch_assoc($query_sekolah);
-        $nama_sekolah = $data_sekolah['nama_sekolah'];
-        $npsn_asal = $data_sekolah['npsn']; 
+        // Cek apakah memilih sekolah lainnya (input manual)
+        if ($npsn_sekolah === 'LAINNYA') {
+            $nama_sekolah = strtoupper(mysqli_escape_string($koneksi, trim($_POST['asal_manual'])));
+            $npsn_asal = 'LAINNYA';
+        } else {
+            // Query untuk mendapatkan nama sekolah dan NPSN berdasarkan NPSN yang dipilih
+            $query_sekolah = mysqli_query($koneksi, "SELECT * FROM sekolah WHERE npsn = '$npsn_sekolah'");
+            $data_sekolah = mysqli_fetch_assoc($query_sekolah);
+            $nama_sekolah = $data_sekolah['nama_sekolah'];
+            $npsn_asal = $data_sekolah['npsn'];
+        } 
 
         $nama = mysqli_escape_string($koneksi, ucwords(strtolower($_POST['nama'])));
         $data = [

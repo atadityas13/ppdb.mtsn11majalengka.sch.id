@@ -50,15 +50,68 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
     
-    // Cek apakah sekolah ada dan aktif
-    $sekolah = fetch($koneksi, 'sekolah', ['npsn' => $npsn, 'status' => 1]);
-    
-    if (!$sekolah) {
-        echo json_encode([
-            'status' => 'error',
-            'message' => 'NPSN tidak ditemukan atau tidak aktif dalam sistem'
+    // Cek apakah sekolah lainnya (input manual)
+    if ($npsn === 'LAINNYA') {
+        // Ambil data dari input manual
+        $nama_sekolah_manual = strtoupper(mysqli_real_escape_string($koneksi, trim($_POST['nama_sekolah_manual'])));
+        $npsn_manual = mysqli_real_escape_string($koneksi, trim($_POST['npsn_manual']));
+        
+        // Validasi
+        if (strlen($nama_sekolah_manual) < 5) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Nama sekolah minimal 5 karakter'
+            ]);
+            exit;
+        }
+        
+        if (strlen($npsn_manual) !== 8 || !ctype_digit($npsn_manual)) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'NPSN harus 8 digit angka'
+            ]);
+            exit;
+        }
+        
+        // Cek apakah NPSN manual sudah ada di database
+        $cek_npsn = mysqli_query($koneksi, "SELECT * FROM sekolah WHERE npsn='$npsn_manual'");
+        if (mysqli_num_rows($cek_npsn) > 0) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'NPSN sudah terdaftar di sistem. Silakan pilih dari daftar sekolah'
+            ]);
+            exit;
+        }
+        
+        // Insert sekolah baru ke database dengan status 0 (pending)
+        $insert_sekolah = insert($koneksi, 'sekolah', [
+            'npsn' => $npsn_manual,
+            'nama_sekolah' => $nama_sekolah_manual,
+            'status' => 0  // Pending approval
         ]);
-        exit;
+        
+        if ($insert_sekolah !== 'OK') {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Gagal menambahkan data sekolah'
+            ]);
+            exit;
+        }
+        
+        // Gunakan NPSN manual untuk operator
+        $npsn = $npsn_manual;
+        $sekolah = ['npsn' => $npsn_manual, 'nama_sekolah' => $nama_sekolah_manual];
+    } else {
+        // Cek apakah sekolah ada dan aktif
+        $sekolah = fetch($koneksi, 'sekolah', ['npsn' => $npsn, 'status' => 1]);
+        
+        if (!$sekolah) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'NPSN tidak ditemukan atau tidak aktif dalam sistem'
+            ]);
+            exit;
+        }
     }
     
     // Cek apakah username sudah digunakan
@@ -106,9 +159,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ]);
     
     if ($insert == 'OK') {
+        $message_tambahan = ($_POST['npsn'] === 'LAINNYA') 
+            ? ' Data sekolah dan akun operator akan diverifikasi terlebih dahulu.' 
+            : '';
+        
         echo json_encode([
             'status' => 'success',
-            'message' => 'Pendaftaran berhasil! Akun Anda akan diaktifkan setelah disetujui oleh Admin MTsN 11 Majalengka. Silakan tunggu konfirmasi'
+            'message' => 'Pendaftaran berhasil! Akun Anda akan diaktifkan setelah disetujui oleh Admin MTsN 11 Majalengka.' . $message_tambahan . ' Silakan tunggu konfirmasi'
         ]);
     } else {
         echo json_encode([

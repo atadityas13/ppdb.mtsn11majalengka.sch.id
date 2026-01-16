@@ -155,8 +155,21 @@ require "../config/functions.crud.php";
                         echo "<option value='{$skl['npsn']}'>[{$skl['npsn']}] {$skl['nama_sekolah']}</option>";
                       }
                       ?>
+                      <option value="LAINNYA" style="background-color: #fff3cd; font-weight: bold;">🔽 Sekolah Lainnya (Tidak Ada Dalam Daftar)</option>
                     </select>
                     <small class="form-text text-muted">Pilih sekolah tempat Anda bertugas</small>
+                  </div>
+
+                  <div class="form-group" id="input-sekolah-manual-operator" style="display: none;">
+                    <label for="nama_sekolah_manual"><i class="fas fa-school"></i> NAMA SEKOLAH <small class="text-danger">*</small></label>
+                    <input type="text" class="form-control" name="nama_sekolah_manual" id="nama_sekolah_manual" placeholder="Contoh: SD NEGERI 1 JAKARTA" style="text-transform: uppercase;">
+                    <small class="form-text text-muted">Tulis nama lengkap sekolah dengan benar</small>
+                  </div>
+
+                  <div class="form-group" id="input-npsn-manual-operator" style="display: none;">
+                    <label for="npsn_manual"><i class="fas fa-barcode"></i> NPSN SEKOLAH <small class="text-danger">*</small></label>
+                    <input type="text" class="form-control" name="npsn_manual" id="npsn_manual" placeholder="Contoh: 20200000" maxlength="8">
+                    <small class="form-text text-muted">Nomor Pokok Sekolah Nasional (8 digit angka)</small>
                   </div>
 
                   <hr class="my-4">
@@ -331,6 +344,21 @@ require "../config/functions.crud.php";
       allowClear: true
     });
 
+    // Toggle input manual untuk sekolah lainnya - Operator
+    $('#npsn').change(function() {
+      if ($(this).val() === 'LAINNYA') {
+        $('#input-sekolah-manual-operator').slideDown();
+        $('#input-npsn-manual-operator').slideDown();
+        $('#nama_sekolah_manual').prop('required', true);
+        $('#npsn_manual').prop('required', true);
+      } else {
+        $('#input-sekolah-manual-operator').slideUp();
+        $('#input-npsn-manual-operator').slideUp();
+        $('#nama_sekolah_manual').prop('required', false).val('');
+        $('#npsn_manual').prop('required', false).val('');
+      }
+    });
+
     // Form validation and submit
     $("#form-register").submit(function(e) {
       e.preventDefault();
@@ -347,6 +375,30 @@ require "../config/functions.crud.php";
           position: 'topRight'
         });
         return false;
+      }
+
+      // Validasi untuk sekolah lainnya
+      if (npsn === 'LAINNYA') {
+        var namaSekolahManual = $('#nama_sekolah_manual').val().trim();
+        var npsnManual = $('#npsn_manual').val().trim();
+        
+        if (namaSekolahManual.length < 5) {
+          iziToast.error({
+            title: 'Error!',
+            message: 'Nama sekolah minimal 5 karakter',
+            position: 'topRight'
+          });
+          return false;
+        }
+        
+        if (npsnManual.length !== 8 || !/^\d+$/.test(npsnManual)) {
+          iziToast.error({
+            title: 'Error!',
+            message: 'NPSN harus 8 digit angka',
+            position: 'topRight'
+          });
+          return false;
+        }
       }
       
       if (username.length < 4) {

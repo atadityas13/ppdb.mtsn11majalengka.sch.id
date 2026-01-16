@@ -117,14 +117,25 @@
                                 <div class="form-group row mb-2">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Asal Sekolah</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <select class='form-control' name='asal_sekolah' disabled>
-                                            <option value=''>Pilih Asal Sekolah</option>";
-                                            <?php foreach ($asal_sekolah as $val => $key) { ?>
-                                                <?php if ($siswa['asal_sekolah'] == $val) { ?>
-                                                    <option value='<?= $val ?>' selected><?= $key ?> </option>
-                                                <?php  } else { ?>
-                                                    <option value='<?= $val ?>'><?= $key ?> </option>
-                                                <?php } ?>
+                                        <?php 
+                                        // Ambil nama sekolah dari NPSN atau langsung dari field asal_sekolah jika NPSN = LAINNYA
+                                        $nama_sekolah_asal = '';
+                                        if (!empty($siswa['npsn_asal'])) {
+                                            if ($siswa['npsn_asal'] === 'LAINNYA') {
+                                                // Jika sekolah lainnya, ambil dari field asal_sekolah langsung
+                                                $nama_sekolah_asal = $siswa['asal_sekolah'];
+                                            } else {
+                                                // Jika sekolah terdaftar, ambil dari database
+                                                $sekolah_data = mysqli_fetch_array(mysqli_query($koneksi, "SELECT nama_sekolah FROM sekolah WHERE npsn = '{$siswa['npsn_asal']}'"));
+                                                $nama_sekolah_asal = $sekolah_data['nama_sekolah'] ?? '';
+                                            }
+                                        }
+                                        ?>
+                                        <select class='form-control' name='asal_sekolah' disabled style="background-color: #e9ecef;">
+                                            <?php if (!empty($nama_sekolah_asal)) { ?>
+                                                <option value='<?= $siswa['npsn_asal'] ?>' selected><?= $nama_sekolah_asal ?></option>
+                                            <?php } else { ?>
+                                                <option value=''>Asal Sekolah Belum Diisi</option>
                                             <?php } ?>
                                         </select>
                                     </div>

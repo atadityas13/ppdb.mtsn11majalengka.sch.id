@@ -108,9 +108,9 @@
                                     <td><?= $sekolah['alamat'] ?></td>
                                     <td>
                                         <?php if ($sekolah['status'] == 1) { ?>
-                                            <span class="badge badge-success">Aktif</span>
+                                            <span class="badge badge-success"><i class="fas fa-check-circle"></i> Aktif</span>
                                         <?php } else { ?>
-                                            <span class="badge badge-danger">Non Aktif</span>
+                                            <span class="badge badge-warning"><i class="fas fa-clock"></i> Pending Approval</span>
                                         <?php } ?>
                                     </td>
                                     <td>

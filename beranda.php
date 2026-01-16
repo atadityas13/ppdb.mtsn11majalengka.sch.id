@@ -1218,7 +1218,12 @@
                                                                 ?>  
                                                                     <option value="<?= $sekolah['npsn'] ?>"><?= $sekolah['nama_sekolah'] ?></option>  
                                                                 <?php } ?>  
+                                                                <option value="LAINNYA" style="background-color: #fff3cd; font-weight: bold;">🔽 SD/Sekolah Lainnya (Tidak Ada Dalam Daftar)</option>  
                                                             </select>  
+                                                        </div>  
+                                                        <div class="form-group col-md-6" id="input-sekolah-manual" style="display: none;">  
+                                                            <label for="asal_manual">NAMA SEKOLAH ASAL <small class="text-danger">(Tulis dengan lengkap dan benar)</small></label>  
+                                                            <input type="text" class="form-control" name="asal_manual" id="asal_manual" placeholder="Contoh: SD NEGERI 1 JAKARTA" style="text-transform: uppercase;">  
                                                         </div>  
                                                     </div>  
                                                     <div class="form-group">  
@@ -1790,6 +1795,19 @@
         }  
     </script>  
     <script>  
+        // Toggle input manual untuk sekolah lainnya
+        $('#asal').change(function() {
+            if ($(this).val() === 'LAINNYA') {
+                $('#input-sekolah-manual').show();
+                $('#asal_manual').prop('required', true);
+                $('#placeholder-col').hide();
+            } else {
+                $('#input-sekolah-manual').hide();
+                $('#asal_manual').prop('required', false).val('');
+                $('#placeholder-col').show();
+            }
+        });
+
         $('#form-daftar2').submit(function(e) {  
             e.preventDefault();  
             // Validasi NISN  
@@ -1812,7 +1830,20 @@
                     position: 'topCenter'  
                 });  
                 return false;  
-            }  
+            }
+            
+            // Validasi sekolah manual jika dipilih LAINNYA
+            if ($('#asal').val() === 'LAINNYA') {
+                var asalManual = $('#asal_manual').val().trim();
+                if (asalManual.length < 5) {
+                    iziToast.error({  
+                        title: 'PERIKSA NAMA SEKOLAH',  
+                        message: 'Nama sekolah harus diisi minimal 5 karakter!',  
+                        position: 'topCenter'  
+                    });  
+                    return false;
+                }
+            }
             $.ajax({  
                 type: 'POST',  
                 url: 'crud_web.php?pg=simpan2',  

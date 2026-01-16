@@ -538,4 +538,15 @@ $('#form-konfirmasi').submit(function(e) {
         })
 
     });
+
+    // Toggle input manual untuk sekolah lainnya - Form Admin
+    $('#asal-admin').change(function() {
+        if ($(this).val() === 'LAINNYA') {
+            $('#input-sekolah-manual-admin').slideDown();
+            $('#asal_manual_admin').prop('required', true);
+        } else {
+            $('#input-sekolah-manual-admin').slideUp();
+            $('#asal_manual_admin').prop('required', false).val('');
+        }
+    });
 </script>

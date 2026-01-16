@@ -34,15 +34,25 @@ if ($pg == 'tambah') {
     $newID = $char . sprintf("%03s", $noUrut);    
     
     $nama = str_replace("'", "`", $_POST['nama']);    
-    $sekolah = fetch($koneksi, 'sekolah', ['npsn' => $_POST['npsn_asal']]);    
+    
+    // Cek apakah sekolah lainnya (input manual)
+    if (isset($_POST['asal']) && $_POST['asal'] === 'LAINNYA') {
+        $npsn_asal = 'LAINNYA';
+        $nama_sekolah = strtoupper(mysqli_escape_string($koneksi, trim($_POST['asal_manual'])));
+    } else {
+        $npsn_asal = $_POST['npsn_asal'];
+        $sekolah = fetch($koneksi, 'sekolah', ['npsn' => $npsn_asal]);    
+        $nama_sekolah = $sekolah['nama_sekolah'];
+    }
+    
     $jurusan = fetch($koneksi, 'jurusan', ['id_jurusan' => $_POST['jurusan']]);    
     $data = [    
         'no_daftar' => $newID,    
         'jenis' => $_POST['jenis'],    
         'nisn' => $_POST['nisn'],    
         'nama' => ucwords(strtolower($nama)),    
-        'npsn_asal' => $_POST['npsn_asal'], // Menggunakan npsn_asal dari form    
-        'asal_sekolah' => $sekolah['nama_sekolah'],    
+        'npsn_asal' => $npsn_asal,    
+        'asal_sekolah' => $nama_sekolah,    
         'jurusan' => $jurusan['nama_jurusan'], // Menggunakan nama jurusan    
         'password' => $_POST['password'],    
         'no_hp' => str_replace(" ", "", $_POST['nohp']),    
