@@ -497,6 +497,25 @@
         });  
     });  
   
+    // Inisialisasi DataTable dengan proper config  
+    $(document).ready(function() {  
+        // Hancurkan DataTable jika sudah ada (dari modules-datatables.js)  
+        if ($.fn.DataTable.isDataTable('#table-1')) {  
+            $('#table-1').DataTable().destroy();  
+        }  
+  
+        // Inisialisasi ulang DataTable  
+        $('#table-1').DataTable({  
+            "paging": true,  
+            "lengthChange": true,  
+            "searching": true,  
+            "ordering": true,  
+            "info": true,  
+            "autoWidth": false,  
+            "responsive": true  
+        });  
+    });  
+  
     // Otomatis isi asal sekolah dan npsn_asal dengan sekolah operator  
     $(document).ready(function() {  
         var id_sekolah = '<?= $user['id_sekolah'] ?>';  
@@ -510,5 +529,18 @@
         // Tambahkan input npsn_asal dengan nilai id_sekolah  
         $('#form-tambah').append('<input type="hidden" name="npsn_asal" value="' + id_sekolah + '">');  
         $('#form-tambah').append('<input type="hidden" name="asal_sekolah" value="' + nama_sekolah + '">');  
+    });  
+  
+    // Fix untuk memastikan link sidebar bisa diklik  
+    $(document).ready(function() {  
+        // Hapus semua event handler dari menu-header dan sidebar-menu links yang bukan dropdown  
+        $('.menu-header a:not(.has-dropdown)').off('click');  
+        $('.sidebar-menu a:not(.has-dropdown)').off('click');  
+          
+        // Pastikan link bisa navigate  
+        $('.menu-header a:not(.has-dropdown), .sidebar-menu a:not(.has-dropdown)').on('click', function(e) {  
+            // Jangan prevent default, biarkan link navigate  
+            return true;  
+        });  
     });  
 </script>  
