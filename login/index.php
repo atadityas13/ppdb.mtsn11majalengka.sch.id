@@ -181,24 +181,24 @@ crossorigin="anonymous"></script>
         <div class="main-sidebar sidebar-style-2">
           <aside id="sidebar-wrapper">
 		  
-            <div class="sidebar-brand">
-              <img src="../<?= $setting['logo_ppdb'] ?>" alt="LOGO" style="max-width: 180px; height: auto; display: block; margin: 0 auto;">
+            <div class="sidebar-brand bg-info">
+              <img src="../<?= $setting['logo_ppdb'] ?>" width="200" alt="LOGO">&nbsp;
             </div>
 			<div class="menu-header">
 			
 				<ul>
 					<li>
-						<a href="." class="btn-logout">
-							<span class="fas fa-home"></span><br>Home
+						<a style="color:#f2ee07" href="." class="btn-logout">
+							<span class="fas fa-home "></span><br>Home
 						</a>
 					</li>
 					<li>
-						<a class="btn-logout" href="?pg=setting">
-							<span class="fas fa-user-cog"></span><br>Setting
+						<a style="color:#f2b707" class="btn-logout" href="?pg=setting">
+							<span class="fas fa-user-cog "></span><br>Setting
 						</a>
 					</li>
 					<li>
-						<a href="logout.php" class="btn-logout"><span class="fas fa-sign-out-alt"></span><br>Keluar</a>
+						<a style="color:#f27907" href="logout.php" class="btn-logout"> <span class="fas fa-sign-out-alt  "></span><br>Keluar</a>
 					</li>
 				</ul>
 			</div>
