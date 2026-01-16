@@ -1,10 +1,15 @@
 <?php defined('BASEPATH') or die("ip anda sudah tercatat oleh sistem kami") ?>  
 <section class='content'>  
 <div class='row'>  
-    <div class='col-md-8'>  
+    <div class='col-md-12'>  
         <div class='box box-solid'>  
             <div class='box-header'>  
                 <h3 class='box-title'><img src='../assets/manajemen_user.svg' width='20'> Manajemen User</h3>  
+                <div class='box-tools pull-right'>  
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">  
+                        <i class="fas fa-plus-circle"></i> Tambah User Baru  
+                    </button>  
+                </div>  
             </div><!-- /.box-header -->  
             <div class='box-body'>  
                 <div class='table-responsive'>  
@@ -176,18 +181,6 @@
                 </div>  
             </div><!-- /.box-body -->  
         </div><!-- /.box -->  
-    </div>  
-    <div class='col-md-4'>  
-        <div class='box box-solid'>  
-            <div class='box-header'>  
-                <h3 class='box-title'><i class='fas fa-user-plus'></i> Tambah User</h3>  
-            </div>  
-            <div class='box-body text-center'>  
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-tambah">  
-                    <i class="fas fa-plus-circle"></i> Tambah User Baru  
-                </button>  
-            </div>  
-        </div>  
     </div>  
 </div>  
   
