@@ -1,0 +1,11 @@
+[11-Jan-2025 02:09:58 Asia/Jakarta] PHP Notice:  Undefined index: asal_sekolah in /home/mtsnmaja/ppdb.mtsn11majalengka.sch.id/login/mod_daftar/crud_daftar.php on line 106
+[11-Jan-2025 02:09:58 Asia/Jakarta] PHP Notice:  Undefined index: jenkel in /home/mtsnmaja/ppdb.mtsn11majalengka.sch.id/login/mod_daftar/crud_daftar.php on line 110
+[11-Jan-2025 03:21:32 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function buat_tanggal() in /home/mtsnmaja/ppdb.mtsn11majalengka.sch.id/login/mod_daftar/export_excel.php:191
+Stack trace:
+#0 {main}
+  thrown in /home/mtsnmaja/ppdb.mtsn11majalengka.sch.id/login/mod_daftar/export_excel.php on line 191
+[11-Jan-2025 03:26:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function buat_tanggal() in /home/mtsnmaja/ppdb.mtsn11majalengka.sch.id/login/mod_daftar/export_excel.php:194
+Stack trace:
+#0 {main}
+  thrown in /home/mtsnmaja/ppdb.mtsn11majalengka.sch.id/login/mod_daftar/export_excel.php on line 194
+[11-Jan-2025 03:35:15 Asia/Jakarta] PHP Notice:  Undefined index: id_sekolah in /home/mtsnmaja/ppdb.mtsn11majalengka.sch.id/login/mod_daftar/crud_daftar.php on line 63
