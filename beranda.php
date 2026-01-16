@@ -756,7 +756,7 @@
             bottom: 30px !important;
             right: 30px !important;
             left: auto !important;
-            width: 60px !important;
+            width: auto !important;
             padding: 0 !important;
             z-index: 9998 !important;
             transition: all 0.3s ease;
@@ -767,9 +767,8 @@
         }
 
         .chating img {
-            width: 60px !important;
-            height: 60px !important;
-            border-radius: 50%;
+            width: 70px !important;
+            height: auto !important;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             transition: all 0.3s ease;
         }
@@ -797,12 +796,10 @@
             .chating {
                 bottom: 20px !important;
                 right: 20px !important;
-                width: 50px !important;
             }
 
             .chating img {
-                width: 50px !important;
-                height: 50px !important;
+                width: 60px !important;
             }
         }
     </style>  
@@ -840,25 +837,22 @@
                     </button>  
                     <div class="collapse navbar-collapse" id="menu">  
                         <ul class="navbar-nav ml-auto">  
-                            <li class="nav-item">  
-                                <a class="nav-link" href="sekolah/login.php">  
-                                    <i class="fas fa-school"></i> Operator Sekolah  
-                                </a>  
-                            </li>  
                             <li class="nav-item active">  
                                 <a class="nav-link" href="#home" id="link-home">Home</a>  
+                            </li>  
+                            <li class="nav-item">  
+                                <a class="nav-link" href="#home" onclick="scrollToCarousel()">Info Pendaftaran</a>  
                             </li>  
                             <li class="nav-item">  
                                 <a class="nav-link" href="#tentang" id="link-tentang">Daftar</a>  
                             </li>  
                             <li class="nav-item">  
+                                <a class="nav-link" href="sekolah/login.php">  
+                                    <i class="fas fa-user-graduate"></i> Daftar Kolektif (Akun SD/MI)  
+                                </a>  
+                            </li>  
+                            <li class="nav-item">  
                                 <a class="nav-link" href="#statistik" id="link-statistik">Statistik</a>  
-                            </li>  
-                            <li class="nav-item">  
-                                <a class="nav-link" href="#persyaratan" id="link-persyaratan">Info Pendaftaran</a>  
-                            </li>  
-                            <li class="nav-item">  
-                                <a class="nav-link" href="./login" id="link-jadwal">Admin</a>  
                             </li>  
                         </ul>  
                     </div>  
@@ -1598,6 +1592,21 @@
         playPauseBtn.addEventListener('click', function() {
             musicTooltip.classList.remove('show');
         });
+
+        // Fungsi untuk scroll ke carousel dan tampilkan slide alur pendaftaran (slide ke-3)
+        function scrollToCarousel() {
+            event.preventDefault();
+            // Scroll ke section home banner
+            const homeSection = document.getElementById('home');
+            if (homeSection) {
+                homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            
+            // Pindah ke slide ke-3 (index 2) yang berisi alur pendaftaran
+            setTimeout(function() {
+                $('#carousel2').carousel(2);
+            }, 800);
+        }
     </script>  
     <script type="text/javascript">  
         $(document).ready(function() {  
