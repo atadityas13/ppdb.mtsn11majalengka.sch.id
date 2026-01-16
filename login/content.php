@@ -86,6 +86,8 @@ if ($pg == '') {
 } elseif ($pg == 'usersiswa') {
     cek_login_admin();
     include "mod_user/usersiswa.php";
+} elseif ($pg == 'profile') {
+    include "mod_user/profile.php";
 } elseif ($pg == 'setting') {
     cek_login_admin();
     include "mod_setting/setting.php";

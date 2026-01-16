@@ -193,9 +193,15 @@ crossorigin="anonymous"></script>
 						</a>
 					</li>
 					<li>
-						<a style="color:#f2b707" class="btn-logout" href="?pg=setting">
-							<span class="fas fa-user-cog "></span><br>Setting
-						</a>
+						<?php if ($user['level'] == 'operator_sd') { ?>
+							<a style="color:#f2b707" class="btn-logout" href="?pg=profile">
+								<span class="fas fa-user-circle "></span><br>Profile
+							</a>
+						<?php } else { ?>
+							<a style="color:#f2b707" class="btn-logout" href="?pg=setting">
+								<span class="fas fa-user-cog "></span><br>Setting
+							</a>
+						<?php } ?>
 					</li>
 					<li>
 						<a style="color:#f27907" href="logout.php" class="btn-logout"> <span class="fas fa-sign-out-alt  "></span><br>Keluar</a>
