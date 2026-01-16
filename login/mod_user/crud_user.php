@@ -66,3 +66,13 @@ if ($pg == 'hapus') {
     $id_user = $_POST['id_user'];  
     delete($koneksi, 'user', ['id_user' => $id_user]);  
 }  
+  
+if ($pg == 'toggle_status') {  
+    $id_user = $_POST['id_user'];  
+    // Get current status  
+    $current = mysqli_fetch_array(mysqli_query($koneksi, "SELECT status FROM user WHERE id_user = '$id_user'"));  
+    // Toggle status  
+    $new_status = ($current['status'] == 1) ? 0 : 1;  
+    $exec = update($koneksi, 'user', ['status' => $new_status], ['id_user' => $id_user]);  
+    echo $exec;  
+}  

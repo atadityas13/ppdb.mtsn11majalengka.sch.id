@@ -14,6 +14,7 @@
                                 <th class="text-center">#</th>  
                                 <th>Nama User</th>  
                                 <th>Username</th>  
+                                <th>Level & Sekolah</th>  
                                 <th>Status</th>  
                                 <th>Action</th>  
                             </tr>  
@@ -30,6 +31,19 @@
                                     <td><?= $user['nama_user'] ?></td>  
                                     <td><?= $user['username'] ?></td>  
                                     <td>  
+                                        <?php  
+                                        if ($user['level'] == 'admin') {  
+                                            echo '<span class="badge badge-primary">Administrator</span>';  
+                                        } elseif ($user['level'] == 'operator_sd') {  
+                                            echo '<span class="badge badge-info">Operator SD</span><br>';  
+                                            if (!empty($user['id_sekolah'])) {  
+                                                $sekolah_info = mysqli_fetch_array(mysqli_query($koneksi, "SELECT nama_sekolah FROM sekolah WHERE npsn = '{$user['id_sekolah']}'"));  
+                                                echo '<small class="text-muted">' . ($sekolah_info['nama_sekolah'] ?? '-') . '</small>';  
+                                            }  
+                                        }  
+                                        ?>  
+                                    </td>  
+                                    <td>  
                                         <?php if ($user['status'] == 1) { ?>  
                                             <span class="badge badge-success">Aktif</span>  
                                         <?php } else { ?>  
@@ -37,6 +51,16 @@
                                         <?php } ?>  
                                     </td>  
                                     <td>  
+                                        <?php if ($user['status'] == 1) { ?>  
+                                            <button data-id="<?= $user['id_user'] ?>" class="toggle-status btn btn-warning btn-sm" title="Non-aktifkan">  
+                                                <i class="fas fa-toggle-on"></i> Non-aktifkan  
+                                            </button>  
+                                        <?php } else { ?>  
+                                            <button data-id="<?= $user['id_user'] ?>" class="toggle-status btn btn-success btn-sm" title="Aktifkan">  
+                                                <i class="fas fa-toggle-off"></i> Aktifkan  
+                                            </button>  
+                                        <?php } ?>  
+                                        <br><br>  
                                         <button data-id="<?= $user['id_user'] ?>" class="hapus btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</button>  
                                         <!-- Button trigger modal -->  
                                         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit<?= $no ?>">  
@@ -154,15 +178,31 @@
         </div><!-- /.box -->  
     </div>  
     <div class='col-md-4'>  
-        <form id="form-tambah">  
-            <div class='box box-solid'>  
-                <div class='box-header '>  
-                    <h3 class='box-title'>Tambah</h3>  
-                    <div class='box-tools pull-right btn-group'>  
-                        <button type='submit' class='btn btn-sm btn-flat btn-success'><i class='fa fa-check'></i> Simpan</button>  
-                    </div>  
-                </div><!-- /.box-header -->  
-                <div class='box-body'>  
+        <div class='box box-solid'>  
+            <div class='box-header'>  
+                <h3 class='box-title'><i class='fas fa-user-plus'></i> Tambah User</h3>  
+            </div>  
+            <div class='box-body text-center'>  
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-tambah">  
+                    <i class="fas fa-plus-circle"></i> Tambah User Baru  
+                </button>  
+            </div>  
+        </div>  
+    </div>  
+</div>  
+  
+<!-- Modal Tambah User -->  
+<div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog" aria-labelledby="modalTambahLabel" aria-hidden="true">  
+    <div class="modal-dialog" role="document">  
+        <div class="modal-content">  
+            <form id="form-tambah">  
+                <div class="modal-header">  
+                    <h5 class="modal-title" id="modalTambahLabel">Tambah User Baru</h5>  
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
+                        <span aria-hidden="true">&times;</span>  
+                    </button>  
+                </div>  
+                <div class="modal-body">  
                     <div class='form-group'>  
                         <label>Nama</label>  
                         <input type="text" name="nama" class="form-control" required="">  
@@ -192,17 +232,20 @@
                         </select>  
                     </div>  
                     <div class='form-group'>  
-                        <div class='row'>  
-                            <div class='col-md-12'>  
-                                <label>Password</label>  
-                                <input type="password" name="password" class="form-control" required="">  
-                            </div>  
-                        </div>  
+                        <label>Password</label>  
+                        <input type="password" name="password" class="form-control" required="">  
                     </div>  
-                </div><!-- /.box-body -->  
-            </div><!-- /.box -->  
-        </form>  
+                </div>  
+                <div class="modal-footer">  
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>  
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Simpan</button>  
+                </div>  
+            </form>  
+        </div>  
     </div>  
+</div>  
+  
+<div class='row'>  
 </div>  
 </section><!-- /.content -->  
 </div><!-- /.content-wrapper -->  
@@ -277,6 +320,34 @@
                             }, 2000);  
                         }  
                     });  
+                }  
+            });  
+        });  
+  
+        // Toggle Status  
+        $('#table-1').on('click', '.toggle-status', function() {  
+            var id = $(this).data('id');  
+            $.ajax({  
+                url: 'mod_user/crud_user.php?pg=toggle_status',  
+                method: "POST",  
+                data: 'id_user=' + id,  
+                success: function(data) {  
+                    if (data == 'OK') {  
+                        iziToast.success({  
+                            title: 'Berhasil!',  
+                            message: 'Status user berhasil diubah',  
+                            position: 'topRight'  
+                        });  
+                        setTimeout(function() {  
+                            window.location.reload();  
+                        }, 1000);  
+                    } else {  
+                        iziToast.error({  
+                            title: 'Gagal!',  
+                            message: 'Gagal mengubah status user',  
+                            position: 'topRight'  
+                        });  
+                    }  
                 }  
             });  
         });  
