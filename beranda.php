@@ -88,7 +88,7 @@
                         <div class="home-header-text d-none d-sm-block">  
                             <h5>PENERIMAAN PESERTA DIDIK BARU</h5>  
                             <h6><?= $setting['nama_sekolah'] ?></h6>  
-                            <h6>Tahun 2025</h6>  
+                            <h6>Tahun 2026</h6>  
                         </div>  
                         <span class="logo-mini-unbk d-block d-sm-none">PPDB MTsN 11 Majalengka</span>  
                     </a>  
@@ -97,6 +97,11 @@
                     </button>  
                     <div class="collapse navbar-collapse" id="menu">  
                         <ul class="navbar-nav ml-auto">  
+                            <li class="nav-item">  
+                                <a class="nav-link" href="sekolah/login.php">  
+                                    <i class="fas fa-school"></i> Operator Sekolah  
+                                </a>  
+                            </li>  
                             <li class="nav-item active">  
                                 <a class="nav-link" href="#home" id="link-home">Home</a>  
                             </li>  
@@ -200,10 +205,10 @@
                                             </h5>  
                                             <br />  
                                             <p data-animation="animated slideInRight" data-delay="1s">  
-                                                Aplikasi Penerimaan Peserta didik baru Tahun Pelajaran 2025/2026 <?= $setting['nama_sekolah'] ?>.  
+                                                Aplikasi Penerimaan Peserta didik baru Tahun Pelajaran 2026/2027 <?= $setting['nama_sekolah'] ?>.  
                                             </p>  
                                             <p data-animation="animated slideInRight" data-delay="2s">  
-                                                Pendaftaran Siswa dan Siswi Baru Tahun 2025 ini telah dibuka. Silahkan Segera Daftar dan lengkapi Formulir  
+                                                Pendaftaran Siswa dan Siswi Baru Tahun 2026 ini telah dibuka. Silahkan Segera Daftar dan lengkapi Formulir  
                                             </p>  
                                             <p data-animation="animated flipInX" data-delay="3s">  
                                                 <a href="/#tentang" class="btn btn-warning nav-link">  
@@ -219,7 +224,7 @@
                                                 Syarat Pendaftaran Peserta Didik Baru  
                                             </h5>  
                                             <h5 data-animation="animated fadeInDownBig">  
-                                                Tahun Pelajaran 2025/2026  
+                                                Tahun Pelajaran 2026/2027  
                                             </h5>  
                                             <ul>  
                                                 <li data-animation="animated fadeInDownBig" data-delay="1s">  
@@ -246,7 +251,7 @@
                                                 Alur Pendaftaran Peserta Didik Baru  
                                             </h5>  
                                             <h5 data-animation="animated fadeInDownBig">  
-                                                Tahun Pelajaran 2025/2026  
+                                                Tahun Pelajaran 2026/2027  
                                             </h5>  
                                             <ul>  
                                                 <li data-animation="animated fadeInDownBig" data-delay="1s">  
@@ -525,7 +530,7 @@
                                                 </h5>  
                                                 <br />  
                                                 <p data-animation="animated slideInRight" data-delay="1s">  
-                                                    Aplikasi Penerimaan Peserta didik baru Tahun Pelajaran 2025/2026 <?= $setting['nama_sekolah'] ?>.  
+                                                    Aplikasi Penerimaan Peserta didik baru Tahun Pelajaran 2026/2027 <?= $setting['nama_sekolah'] ?>.  
                                                 </p>  
                                                 <p data-animation="animated slideInRight" data-delay="2s">  
                                                     Pendaftaran Siswa dan Siswi Baru Tahun 2024 Belum Dibuka.  
@@ -690,7 +695,7 @@
             <section class="bg-light statistik" id="statistik">  
                 <div class="container">  
                     <h5 class="text-center">Data Pendaftar </h5>  
-                    <h6 class="text-center">Peserta Didik Baru <?= $setting['nama_sekolah'] ?> Tahun 2025</h6>  
+                    <h6 class="text-center">Peserta Didik Baru <?= $setting['nama_sekolah'] ?> Tahun 2026</h6>  
                     <div class="row mt-12">  
                         <div class="col-sm-6">  
                             <div class="card mt-2">  
