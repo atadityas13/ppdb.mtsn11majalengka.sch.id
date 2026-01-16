@@ -360,6 +360,12 @@
 </div>  
   
 <script>  
+    // Fix sidebar menu-header links not working  
+    $(document).ready(function() {  
+        $('.menu-header a').off('click');  
+        $('.btn-logout').off('click');  
+    });  
+  
     // IMPORT FILE PENDUKUNG       
     $('#form-import').on('submit', function(e) {  
         e.preventDefault();  
