@@ -669,7 +669,7 @@
             background: #5568d3;
         }
 
-        /* Floating Music Button */
+        /* Floating Music Button (Left) */
         #play-pause-btn {
             position: fixed;
             bottom: 30px;
@@ -713,6 +713,71 @@
             animation: pulse-music 2s ease-in-out infinite;
         }
 
+        /* Tooltip untuk tombol musik */
+        .music-tooltip {
+            position: fixed;
+            bottom: 90px;
+            left: 30px;
+            background: white;
+            color: var(--text-dark);
+            padding: 12px 18px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .music-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid white;
+        }
+
+        .music-tooltip.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* WhatsApp Button (Right) */
+        .chating {
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
+            left: auto !important;
+            width: 60px !important;
+            padding: 0 !important;
+            z-index: 9998 !important;
+            transition: all 0.3s ease;
+        }
+
+        .chating:hover {
+            transform: scale(1.05);
+        }
+
+        .chating img {
+            width: 60px !important;
+            height: 60px !important;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .chating:hover img {
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
         @media (max-width: 768px) {
             #play-pause-btn {
                 width: 45px;
@@ -720,6 +785,24 @@
                 font-size: 16px;
                 bottom: 20px;
                 left: 20px;
+            }
+
+            .music-tooltip {
+                bottom: 75px;
+                left: 20px;
+                font-size: 0.8rem;
+                padding: 10px 14px;
+            }
+
+            .chating {
+                bottom: 20px !important;
+                right: 20px !important;
+                width: 50px !important;
+            }
+
+            .chating img {
+                width: 50px !important;
+                height: 50px !important;
             }
         }
     </style>  
@@ -1470,10 +1553,16 @@
   
     <!-- Tombol Play dan Pause -->  
     <button id="play-pause-btn" class="fas fa-play"></button>  
+
+    <!-- Tooltip untuk tombol musik -->
+    <div class="music-tooltip" id="music-tooltip">
+        <i class="fas fa-music"></i> Play Hymne MTsN 11 Majalengka
+    </div>
   
     <script>  
         const audio = document.getElementById('background-music');  
         const playPauseBtn = document.getElementById('play-pause-btn');  
+        const musicTooltip = document.getElementById('music-tooltip');
   
         // Fungsi untuk memutar atau menjeda musik  
         function togglePlayPause() {  
@@ -1492,6 +1581,23 @@
   
         // Event listener untuk tombol play/pause  
         playPauseBtn.addEventListener('click', togglePlayPause);  
+
+        // Tampilkan tooltip setelah 2 detik, lalu sembunyikan setelah 5 detik
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                musicTooltip.classList.add('show');
+                
+                // Sembunyikan tooltip setelah 3 detik ditampilkan (total 5 detik dari load)
+                setTimeout(function() {
+                    musicTooltip.classList.remove('show');
+                }, 3000);
+            }, 2000);
+        });
+
+        // Sembunyikan tooltip saat tombol diklik
+        playPauseBtn.addEventListener('click', function() {
+            musicTooltip.classList.remove('show');
+        });
     </script>  
     <script type="text/javascript">  
         $(document).ready(function() {  
