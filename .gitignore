@@ -1,0 +1,44 @@
+# Ignore configuration files with sensitive data
+config/database.php
+.env
+
+# Ignore vendor folder
+/vendor/
+
+# Ignore uploaded files
+/assets/upload/
+/assets/img/avatar/
+/login/mod_daftar/temp/
+/user/mod_formulir/temp/
+/user/temp/
+/temp/
+
+# Ignore backup files
+/login/backup_restore/*.sql
+*.backup
+
+# Ignore error logs
+error_log
+*.log
+
+# Ignore OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore composer
+composer.lock
+composer.phar
+
+# Ignore node modules if any
+node_modules/
