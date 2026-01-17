@@ -842,21 +842,21 @@
                     <div class="collapse navbar-collapse" id="menu">  
                         <ul class="navbar-nav ml-auto">  
                             <li class="nav-item active">  
-                                <a class="nav-link" href="#home" id="link-home">Home</a>  
+                                <a class="nav-link" href="#home" id="link-home"><i class="fas fa-home"></i> Home</a>  
                             </li>  
                             <li class="nav-item">  
-                                <a class="nav-link" href="#tentang" onclick="scrollToCarousel()">Info Pendaftaran</a>  
+                                <a class="nav-link" href="#tentang" onclick="scrollToCarousel()"><i class="fas fa-info-circle"></i> Info Pendaftaran</a>  
                             </li>  
                             <li class="nav-item">  
-                                <a class="nav-link" href="#tentang" id="link-tentang">Daftar</a>  
+                                <a class="nav-link" href="#tentang" id="link-tentang"><i class="fas fa-file-alt"></i> Daftar</a>  
                             </li>  
                             <li class="nav-item">  
                                 <a class="nav-link" href="sekolah/login.php">  
-                                    <i class="fas fa-user-graduate"></i> Daftar Kolektif (Akun SD/MI)  
+                                    <i class="fas fa-users"></i> Pendaftaran Kolektif Sekolah  
                                 </a>  
                             </li>  
                             <li class="nav-item">  
-                                <a class="nav-link" href="#statistik" id="link-statistik">Statistik</a>  
+                                <a class="nav-link" href="#statistik" id="link-statistik"><i class="fas fa-chart-bar"></i> Statistik</a>  
                             </li>  
                         </ul>  
                     </div>  
