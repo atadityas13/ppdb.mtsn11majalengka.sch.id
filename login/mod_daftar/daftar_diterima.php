@@ -99,6 +99,16 @@
                         iziToast.warning({
                             title: 'O o w!',
                             message: 'Data Berhasil dibatalkan',
+                            position: 'topRight'
+                        });
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                });
+            }
+        })
+    });
 
     $('#table-1').on('click', '.konfirmasi', function() {
         var id = $(this).data('id');
@@ -126,16 +136,5 @@
                 });
             }
         })
-    });
-                            position: 'topRight'
-                        });
-                        setTimeout(function() {
-                            window.location.reload();
-                        }, 2000);
-                    }
-                });
-            }
-        })
-
     });
 </script>
