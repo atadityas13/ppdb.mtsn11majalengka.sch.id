@@ -39,7 +39,31 @@
       </li>
     </ul>
     <div class="tab-content" id="myTabContent5">
-      <div class="tab-pane fade show active" id="kepala5" role="tabpanel" aria-labelledby="kepala-tab5"><div class="tab-pane fade" id="contact5" role="tabpanel" aria-labelledby="contact-tab5">
+      <div class="tab-pane fade show active" id="kepala5" role="tabpanel" aria-labelledby="kepala-tab5">
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>INFO WAKTU PPDB</h4>
+            </div>
+            <form id="syarat">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Kapan PPDB Mulai Dibuka??</label>
+                        <input type="date" name="tgl_pengumuman" class="form-control" value="<?= $setting['tgl_pengumuman'] ?>" >
+                    </div>
+					
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+		 </div>
+		  
+      <div class="tab-pane fade" id="contact5" role="tabpanel" aria-labelledby="contact-tab5">
 
 
     <!-- Modal -->
@@ -178,31 +202,6 @@
     </div>
 </div>
 
-		
-		 </div>
-		  
-      <div class="tab-pane fade" id="kepala5" role="tabpanel" aria-labelledby="kepala-tab5">
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4>INFO WAKTU PPDB</h4>
-            </div>
-            <form id="syarat">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>Kapan PPDB Mulai Dibuka??</label>
-                        <input type="date" name="tgl_pengumuman" class="form-control" value="<?= $setting['tgl_pengumuman'] ?>" >
-                    </div>
-					
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 		 </div>
 		  
 
