@@ -202,48 +202,6 @@ QRcode::png($codeContents, $tempdir . $siswa['nisn'] . '.png', QR_ECLEVEL_M, 4);
 			
 			</tbody>
 		</table>
-		
-		<table width="100%" style="font-size: 13px" cellpadding="1" cellspacing="0" style="border-bottom:1px solid #a5a5a5;">
-			<tbody>
-			<tr>
-				<td colspan="1" align="left"><b>4.</b></td>
-				<td colspan="3" align="left"><b>Checklist Kelengkapan Berkas Persyaratan</b></td>
-			</tr>
-			<tr>
-				<td width="5%"></td>
-				<td colspan="3" align="left"><i>Centang (✓) pada kotak jika berkas sudah dilengkapi</i></td>
-			</tr>
-			<tr>
-				<td width="5%"></td>
-				<td width="5%" align="center" style="border: 1px solid #000; padding: 5px;">☐</td>
-				<td colspan="2" align="left">Fotocopy Ijazah SD/MI yang telah dilegalisir (1 lembar)</td>
-			</tr>
-			<tr>
-				<td width="5%"></td>
-				<td width="5%" align="center" style="border: 1px solid #000; padding: 5px;">☐</td>
-				<td colspan="2" align="left">Fotocopy Kartu Keluarga (1 lembar)</td>
-			</tr>
-			<tr>
-				<td width="5%"></td>
-				<td width="5%" align="center" style="border: 1px solid #000; padding: 5px;">☐</td>
-				<td colspan="2" align="left">Fotocopy Akta Kelahiran (1 lembar)</td>
-			</tr>
-			<tr>
-				<td width="5%"></td>
-				<td width="5%" align="center" style="border: 1px solid #000; padding: 5px;">☐</td>
-				<td colspan="2" align="left">Fotocopy Kartu Indonesia Pintar/KIP (jika ada)</td>
-			</tr>
-			<tr>
-				<td width="5%"></td>
-				<td width="5%" align="center" style="border: 1px solid #000; padding: 5px;">☐</td>
-				<td colspan="2" align="left">Pas Foto berwarna ukuran 3x4</td>
-			</tr>
-			<tr>
-				<td colspan="4" style="padding-top: 10px;"></td>
-			</tr>
-			</tbody>
-		</table>
-		<br>
 		<br>
 			<table width="100%">
             <tr>
@@ -279,6 +237,32 @@ QRcode::png($codeContents, $tempdir . $siswa['nisn'] . '.png', QR_ECLEVEL_M, 4);
                 </td></td></td></td></td></td></td></td>
             </tr>
         </table>
+		
+		<table width="100%" style="font-size: 9px; margin-top: 10px;" cellpadding="2" cellspacing="0">
+			<tbody>
+			<tr>
+				<td colspan="3" align="left" style="font-size: 10px;"><b>4. Checklist Kelengkapan Berkas</b></td>
+			</tr>
+			<tr style="font-size: 8px;">
+				<td width="3%" align="center" style="border: 1px solid #000;">&#9744;</td>
+				<td align="left">Ijazah SD/MI (Legalisir)</td>
+				<td width="3%" align="center" style="border: 1px solid #000;">&#9744;</td>
+				<td align="left">KIP (jika ada)</td>
+			</tr>
+			<tr style="font-size: 8px;">
+				<td align="center" style="border: 1px solid #000;">&#9744;</td>
+				<td align="left">Kartu Keluarga</td>
+				<td align="center" style="border: 1px solid #000;">&#9744;</td>
+				<td align="left">Pas Foto 3x4</td>
+			</tr>
+			<tr style="font-size: 8px;">
+				<td align="center" style="border: 1px solid #000;">&#9744;</td>
+				<td align="left">Akta Kelahiran</td>
+				<td></td>
+				<td></td>
+			</tr>
+			</tbody>
+		</table>
 		
 		
 
