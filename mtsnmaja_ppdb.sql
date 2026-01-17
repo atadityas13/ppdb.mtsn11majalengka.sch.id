@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 09, 2025 at 07:48 PM
--- Server version: 10.5.27-MariaDB-cll-lve
--- PHP Version: 8.1.32
+-- Generation Time: Jan 17, 2026 at 10:54 AM
+-- Server version: 10.11.15-MariaDB-cll-lve
+-- PHP Version: 8.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,37 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `mtsnmaja_ppdb`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bayar`
---
-
-CREATE TABLE `bayar` (
-  `id_bayar` varchar(20) NOT NULL,
-  `id_user` int(10) NOT NULL,
-  `id_daftar` int(10) NOT NULL,
-  `jumlah` int(10) NOT NULL,
-  `tgl_bayar` date NOT NULL,
-  `keterangan` int(10) DEFAULT NULL,
-  `bukti` varchar(50) DEFAULT NULL,
-  `verifikasi` int(1) NOT NULL DEFAULT 0,
-  `hapus` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `biaya`
---
-
-CREATE TABLE `biaya` (
-  `id_biaya` varchar(50) NOT NULL,
-  `nama_biaya` varchar(200) NOT NULL,
-  `jumlah` int(10) NOT NULL,
-  `status` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -155,53 +124,16 @@ CREATE TABLE `daftar` (
   `tgl_daftar` date DEFAULT NULL,
   `tgl_konfirmasi` date DEFAULT NULL,
   `konfirmasi` int(1) DEFAULT NULL,
-  `bayar` varchar(100) DEFAULT NULL,
   `online` int(1) DEFAULT 0,
-  `password` text DEFAULT NULL,
-  `bin1` varchar(10) DEFAULT NULL,
-  `mat1` varchar(10) DEFAULT NULL,
-  `ipa1` varchar(10) DEFAULT NULL,
-  `big1` varchar(10) DEFAULT NULL,
-  `bin2` varchar(10) DEFAULT NULL,
-  `mat2` varchar(10) DEFAULT NULL,
-  `ipa2` varchar(10) DEFAULT NULL,
-  `big2` varchar(10) DEFAULT NULL,
-  `bin3` varchar(10) DEFAULT NULL,
-  `mat3` varchar(10) DEFAULT NULL,
-  `ipa3` varchar(10) DEFAULT NULL,
-  `big3` varchar(10) DEFAULT NULL,
-  `bin4` varchar(10) DEFAULT NULL,
-  `mat4` varchar(10) DEFAULT NULL,
-  `ipa4` varchar(10) DEFAULT NULL,
-  `big4` varchar(10) DEFAULT NULL,
-  `bin5` varchar(10) DEFAULT NULL,
-  `mat5` varchar(10) DEFAULT NULL,
-  `ipa5` varchar(10) DEFAULT NULL,
-  `big5` varchar(10) DEFAULT NULL,
-  `jumlah` varchar(10) DEFAULT NULL
+  `password` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `daftar`
 --
 
-INSERT INTO `daftar` (`id_daftar`, `no_daftar`, `jenis`, `nis`, `nik`, `no_kk`, `nisn`, `nama`, `warga_siswa`, `foto`, `jenkel`, `tempat_lahir`, `tgl_lahir`, `asal_sekolah`, `npsn_asal`, `kelas`, `jurusan`, `jenjang`, `agama`, `status_tinggal`, `alamat`, `rt`, `rw`, `desa`, `kecamatan`, `kota`, `provinsi`, `kode_pos`, `koordinat`, `transportasi`, `no_hp`, `email`, `anak_ke`, `saudara`, `biaya_sekolah`, `paud`, `tk`, `hepatitis`, `polio`, `bcg`, `campak`, `dpt`, `covid`, `citacita`, `hobi`, `status_keluarga`, `tinggal`, `jarak`, `waktu`, `nik_ayah`, `nama_ayah`, `tempat_lahir_ayah`, `tahun_ayah`, `status_ayah`, `pendidikan_ayah`, `pekerjaan_ayah`, `penghasilan_ayah`, `no_hp_ayah`, `nik_ibu`, `nama_ibu`, `tempat_lahir_ibu`, `tahun_ibu`, `status_ibu`, `pendidikan_ibu`, `pekerjaan_ibu`, `penghasilan_ibu`, `no_hp_ibu`, `nik_wali`, `nama_wali`, `tempat_lahir_wali`, `tahun_wali`, `pendidikan_wali`, `pekerjaan_wali`, `penghasilan_wali`, `no_hp_wali`, `no_ijazah`, `no_shun`, `no_ujian`, `no_kip`, `kip`, `kk`, `kepala_keluarga`, `ijazah`, `akta`, `file_shun`, `tgl_keluar`, `alasan_keluar`, `surat_keluar`, `level`, `aktif`, `status`, `sekolah_tujuan`, `npsn_sekolah_tujuan`, `tgl_daftar`, `tgl_konfirmasi`, `konfirmasi`, `bayar`, `online`, `password`, `bin1`, `mat1`, `ipa1`, `big1`, `bin2`, `mat2`, `ipa2`, `big2`, `bin3`, `mat3`, `ipa3`, `big3`, `bin4`, `mat4`, `ipa4`, `big4`, `bin5`, `mat5`, `ipa5`, `big5`, `jumlah`) VALUES
-(339, '250001', 1, NULL, NULL, NULL, '3128703683', 'Bulan Putri Septiyanti ', NULL, 'default.png', 'P', 'Jakarta ', '2025-06-30', 'Sekolah Dasar Lainnya (tidak ada dalam daftar)', '99999999', NULL, 'Reguler', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '089664001160', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'djakarta2002', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `histori`
---
-
-CREATE TABLE `histori` (
-  `id` int(11) NOT NULL,
-  `id_permohonan` varchar(30) NOT NULL,
-  `nik` int(30) NOT NULL,
-  `status` int(1) NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `keterangan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+INSERT INTO `daftar` (`id_daftar`, `no_daftar`, `jenis`, `nis`, `nik`, `no_kk`, `nisn`, `nama`, `warga_siswa`, `foto`, `jenkel`, `tempat_lahir`, `tgl_lahir`, `asal_sekolah`, `npsn_asal`, `kelas`, `jurusan`, `jenjang`, `agama`, `status_tinggal`, `alamat`, `rt`, `rw`, `desa`, `kecamatan`, `kota`, `provinsi`, `kode_pos`, `koordinat`, `transportasi`, `no_hp`, `email`, `anak_ke`, `saudara`, `biaya_sekolah`, `paud`, `tk`, `hepatitis`, `polio`, `bcg`, `campak`, `dpt`, `covid`, `citacita`, `hobi`, `status_keluarga`, `tinggal`, `jarak`, `waktu`, `nik_ayah`, `nama_ayah`, `tempat_lahir_ayah`, `tahun_ayah`, `status_ayah`, `pendidikan_ayah`, `pekerjaan_ayah`, `penghasilan_ayah`, `no_hp_ayah`, `nik_ibu`, `nama_ibu`, `tempat_lahir_ibu`, `tahun_ibu`, `status_ibu`, `pendidikan_ibu`, `pekerjaan_ibu`, `penghasilan_ibu`, `no_hp_ibu`, `nik_wali`, `nama_wali`, `tempat_lahir_wali`, `tahun_wali`, `pendidikan_wali`, `pekerjaan_wali`, `penghasilan_wali`, `no_hp_wali`, `no_ijazah`, `no_shun`, `no_ujian`, `no_kip`, `kip`, `kk`, `kepala_keluarga`, `ijazah`, `akta`, `file_shun`, `tgl_keluar`, `alasan_keluar`, `surat_keluar`, `level`, `aktif`, `status`, `sekolah_tujuan`, `npsn_sekolah_tujuan`, `tgl_daftar`, `tgl_konfirmasi`, `konfirmasi`, `online`, `password`) VALUES
+(343, '250001', 1, NULL, NULL, NULL, '0096691555', 'Anzas Tio Aditya', NULL, 'default.png', 'L', 'Majalengka', '1998-02-13', 'SDN CINTAASIH I', '20214284', NULL, 'Reguler', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, 0, '123');
 
 -- --------------------------------------------------------
 
@@ -254,7 +186,7 @@ CREATE TABLE `jurusan` (
 --
 
 INSERT INTO `jurusan` (`id_jurusan`, `nama_jurusan`, `kuota`, `status`) VALUES
-('01', 'Reguler', 200, 1),
+('01', 'Reguler', 150, 1),
 ('02', 'Baitul Ilmi Boarding School', 50, 1);
 
 -- --------------------------------------------------------
@@ -297,8 +229,8 @@ CREATE TABLE `kontak` (
 --
 
 INSERT INTO `kontak` (`id_kontak`, `nama_kontak`, `no_kontak`, `status`) VALUES
-(1, 'Riyan Mardiyana, S.Pd.', '085321577177', 1),
-(2, 'Nanang Koswara, S.Pd.', '082120173731', 1);
+(1, 'H. Dede Apip Mustopa, S.Ag.', '0822-6284-8352', 1),
+(2, 'H. Asep S. Yasin, S.Ag., M.Pd.', '0812-2177-2419', 1);
 
 -- --------------------------------------------------------
 
@@ -320,7 +252,7 @@ CREATE TABLE `pengumuman` (
 --
 
 INSERT INTO `pengumuman` (`id_pengumuman`, `id_user`, `judul`, `pengumuman`, `tgl`, `jenis`) VALUES
-(1, 5, 'Informasi PPDB MTsN 11 Majalengka T.P. 2025/2026', '<p><b>Gelombang Pertama</b>&nbsp;Tanggal 13 Januari s.d. 30 Maret 2025</p><p><b>Gelombang Kedua </b>Tanggal 1 April s.d. Tanggal 30 Juni 2025</p>', '2025-01-11 02:42:05', 2);
+(1, 5, 'Informasi PPDB MTsN 11 Majalengka T.P. 2026/2027', '<p><b>Gelombang Pertama</b>Â Tanggal 13 Januari s.d. 30 Maret 2026</p><p><b>Gelombang Kedua </b>Tanggal 1 April s.d. Tanggal 30 Juni 2026</p>', '2026-01-17 07:46:35', 2);
 
 -- --------------------------------------------------------
 
@@ -366,8 +298,7 @@ INSERT INTO `sekolah` (`npsn`, `nama_sekolah`, `alamat`, `status`, `kontak`) VAL
 ('20214429', 'SD NEGERI CIKONDANG', 'Jl. Desa No. 27', 1, NULL),
 ('20214437', 'SD NEGERI CIDADAP II', 'Blok Ciroke RT. 09 RW. 05', 1, NULL),
 ('20214438', 'SD NEGERI CIDADAP I', 'Jl. Desa Cidadap No. 36', 1, NULL),
-('20246026', 'SD NEGERI CIMANGGU I', 'Blok Senen RT.01 RW.02', 1, NULL),
-('99999999', 'Sekolah Dasar Lainnya (tidak ada dalam daftar)', 'Luar Kecamatan Cingambul', 1, NULL);
+('20246026', 'SD NEGERI CIMANGGU I', 'Blok Senen RT.01 RW.02', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -392,7 +323,6 @@ CREATE TABLE `setting` (
   `klikchat` text DEFAULT NULL,
   `livechat` text DEFAULT NULL,
   `nolivechat` varchar(50) DEFAULT NULL,
-  `infobayar` text DEFAULT NULL,
   `syarat` text DEFAULT NULL,
   `kab` text NOT NULL,
   `kec` text NOT NULL,
@@ -410,8 +340,8 @@ CREATE TABLE `setting` (
 -- Dumping data for table `setting`
 --
 
-INSERT INTO `setting` (`id_setting`, `nama_sekolah`, `jenjang`, `nsm`, `npsn`, `status`, `alamat`, `kota`, `provinsi`, `logo`, `favicon`, `email`, `no_telp`, `klikchat`, `livechat`, `nolivechat`, `infobayar`, `syarat`, `kab`, `kec`, `web`, `kepala`, `nip`, `ppdb`, `kop`, `logo_ppdb`, `tgl_pengumuman`, `tgl_tutup`) VALUES
-(1, 'MTS NEGERI 11 MAJALENGKA', 2, '121132100013', '20278893', 'Negeri', 'Kp. Sindanghurip Desa Maniis', 'Majalengka', 'Jawa Barat', 'assets/img/logo/logo714.png', NULL, 'mtsn11majalengka@gmail.com', '(0233) 8319182', 'Assalamualaikum', 'Assalamualaikum', '82120173731', '<p>Untuk Info Pembayaran Bisa di Tulis disini melalui Fitur Setting PPDB</p>', '<p><br></p><ol><li>Surat Keterangan Lulus</li><li>Akta Kelahiran</li><li>Kartu Keluarga</li></ol>', 'Kabupaten Majalengka', 'Cingambul', 'https://mtsn11majalengka.sch.id', 'H. Jajang Gunawan, S.Ag., M.Pd.I.', '196708251992031003', '1', 'assets/img/kop/kop496.png', 'assets/img/logo/logo_ppdb774.png', '2025-01-20', '2021-05-20');
+INSERT INTO `setting` (`id_setting`, `nama_sekolah`, `jenjang`, `nsm`, `npsn`, `status`, `alamat`, `kota`, `provinsi`, `logo`, `favicon`, `email`, `no_telp`, `klikchat`, `livechat`, `nolivechat`, `syarat`, `kab`, `kec`, `web`, `kepala`, `nip`, `ppdb`, `kop`, `logo_ppdb`, `tgl_pengumuman`, `tgl_tutup`) VALUES
+(1, 'MTS NEGERI 11 MAJALENGKA', 2, '121132100013', '20278893', 'Negeri', 'Kp. Sindanghurip Desa Maniis', 'Majalengka', 'Jawa Barat', 'assets/img/logo/logo714.png', NULL, 'mtsn11majalengka@gmail.com', '(0233) 8319182', 'Assalamualaikum', 'Assalamualaikum', '81221772419', '<p><br></p><ol><li>Surat Keterangan Lulus</li><li>Akta Kelahiran</li><li>Kartu Keluarga</li></ol>', 'Kabupaten Majalengka', 'Cingambul', 'https://mtsn11majalengka.sch.id', 'H. Jajang Gunawan, S.Ag., M.Pd.I.', '196708251992031003', '1', 'assets/img/kop/kop888.png', 'assets/img/logo/logo_ppdb774.png', '2026-01-17', '2021-05-20');
 
 -- --------------------------------------------------------
 
@@ -446,35 +376,17 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `nama_user`, `level`, `username`, `password`, `status`, `foto`, `mapel`, `nuptk`, `jenkel`, `tempat_lahir`, `tgl_lahir`, `tmt`, `no_sk`, `jenis`, `no_hp`, `nik`, `id_sekolah`) VALUES
 (64, 'Anzas Tio Aditya', 'admin', 'ataditya', '$2y$10$NCZT7kDDZmmAjh0rtNLukeOaEhvK0RLAhBQZldviQzgZQu6Mtzy2i', 1, 0, '', '', '', '', '0000-00-00', '0000', '', '', '', 0, NULL),
-(65, 'Anzas Tio Aditya', 'operator_sd', 'sdncintaasih1', '$2y$10$J33rg1tCOy2zVK.jXGKJT.5mAenmuBkK7VHFOLQ2wKQ3BosCEvKrG', 1, 0, '', '', '', '', '0000-00-00', '0000', '', '', '', 0, '20214284');
+(65, 'Anzas Tio Aditya', 'operator_sd', 'sdncintaasih1', '$2y$10$eS8EP5iKtnGSlIamCS7lc.tWVnGCEFY.Iuuzgxx4DpcrNyhn1Nx0u', 1, 0, '', '', '', '', '0000-00-00', '0000', '', '', '', 0, '20214284');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `bayar`
---
-ALTER TABLE `bayar`
-  ADD PRIMARY KEY (`id_bayar`);
-
---
--- Indexes for table `biaya`
---
-ALTER TABLE `biaya`
-  ADD PRIMARY KEY (`id_biaya`);
-
---
 -- Indexes for table `daftar`
 --
 ALTER TABLE `daftar`
   ADD PRIMARY KEY (`id_daftar`);
-
---
--- Indexes for table `histori`
---
-ALTER TABLE `histori`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `jenis`
@@ -539,13 +451,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `daftar`
 --
 ALTER TABLE `daftar`
-  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=340;
-
---
--- AUTO_INCREMENT for table `histori`
---
-ALTER TABLE `histori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_daftar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=344;
 
 --
 -- AUTO_INCREMENT for table `kontak`
