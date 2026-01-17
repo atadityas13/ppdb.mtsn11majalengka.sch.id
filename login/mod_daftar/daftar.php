@@ -202,7 +202,18 @@
                                     </td>
                                    
                                     <td>
-                                        <select class="form-control form-control-sm status-dropdown" data-id="<?= $daftar['id_daftar'] ?>" data-nisn="<?= $daftar['nisn'] ?>" data-nama="<?= $daftar['nama'] ?>">
+                                        <?php if ($daftar['status'] == 1) { ?>
+                                            <span class="badge badge-success mb-1 d-block">Diterima</span>
+                                        <?php } elseif ($daftar['status'] == 2) { ?>
+                                            <span class="badge badge-danger mb-1 d-block">Dicadangkan</span>
+                                        <?php } else { ?>
+                                            <span class="badge badge-warning mb-1 d-block">Diverifikasi</span>
+                                        <?php } ?>
+                                        <select class="form-control form-control-sm status-dropdown" 
+                                                data-id="<?= $daftar['id_daftar'] ?>" 
+                                                data-nisn="<?= $daftar['nisn'] ?>" 
+                                                data-nama="<?= $daftar['nama'] ?>"
+                                                data-current="<?= $daftar['status'] ?>">
                                             <option value="0" <?= $daftar['status'] == 0 ? 'selected' : '' ?>>Diverifikasi</option>
                                             <option value="1" <?= $daftar['status'] == 1 ? 'selected' : '' ?>>Diterima</option>
                                             <option value="2" <?= $daftar['status'] == 2 ? 'selected' : '' ?>>Dicadangkan</option>
@@ -347,11 +358,11 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h4>Statistik Jenis Kelamin</h4>
+                <h6 class="mb-0">Statistik Jenis Kelamin</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body p-2">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-sm">
+                    <table class="table table-bordered table-sm mb-0" style="font-size: 12px;">
                         <thead>
                             <tr>
                                 <th>Laki-laki</th>
@@ -380,11 +391,11 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h4>Statistik Status</h4>
+                <h6 class="mb-0">Statistik Status</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body p-2">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-sm">
+                    <table class="table table-bordered table-sm mb-0" style="font-size: 12px;">
                         <thead>
                             <tr>
                                 <th>Diverifikasi</th>
@@ -448,57 +459,65 @@
         });
     });
     
-    // Handle perubahan status dropdown dengan konfirmasi
-    $('.status-dropdown').on('change', function() {
+    // Handle perubahan status dropdown dengan SweetAlert
+    $('#table-1').on('change', '.status-dropdown', function() {
         var dropdown = $(this);
         var id_daftar = dropdown.data('id');
         var nisn = dropdown.data('nisn');
         var nama = dropdown.data('nama');
+        var oldStatus = dropdown.data('current');
         var newStatus = dropdown.val();
         var statusText = dropdown.find('option:selected').text();
-        var oldStatus = dropdown.data('old-status') || dropdown.find('option:selected').data('original');
         
-        // Simpan status awal jika belum ada
-        if (typeof dropdown.data('old-status') === 'undefined') {
-            dropdown.data('old-status', dropdown.find('option:not(:selected)').first().val());
+        // Jika tidak ada perubahan, return
+        if (oldStatus == newStatus) {
+            return;
         }
         
-        // Konfirmasi perubahan status
-        if (confirm('Apakah Anda yakin ingin mengubah status siswa ' + nama + ' (' + nisn + ') menjadi ' + statusText + '?')) {
-            $.ajax({
-                type: 'POST',
-                url: 'mod_daftar/crud_daftar.php?pg=update_status',
-                data: {
-                    id_daftar: id_daftar,
-                    status: newStatus
-                },
-                success: function(response) {
-                    iziToast.success({
-                        title: 'Berhasil!',
-                        message: 'Status berhasil diubah menjadi ' + statusText,
-                        position: 'topRight'
-                    });
-                    dropdown.data('old-status', newStatus);
-                },
-                error: function() {
-                    iziToast.error({
-                        title: 'Error!',
-                        message: 'Gagal mengubah status',
-                        position: 'topRight'
-                    });
-                    // Kembalikan ke status sebelumnya jika gagal
-                    dropdown.val(dropdown.data('old-status'));
-                }
-            });
-        } else {
-            // Kembalikan ke status sebelumnya jika dibatalkan
-            dropdown.val(dropdown.data('old-status'));
-        }
-    });
-    
-    // Simpan status awal setiap dropdown saat halaman dimuat
-    $('.status-dropdown').each(function() {
-        $(this).data('old-status', $(this).val());
+        // Konfirmasi dengan SweetAlert
+        swal({
+            title: 'Ubah Status Siswa?',
+            text: 'Mengubah status ' + nama + ' (' + nisn + ') menjadi ' + statusText,
+            icon: 'warning',
+            buttons: {
+                cancel: 'Batal',
+                confirm: 'Ya, Ubah!'
+            },
+            dangerMode: false,
+        }).then((willChange) => {
+            if (willChange) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'mod_daftar/crud_daftar.php?pg=update_status',
+                    data: {
+                        id_daftar: id_daftar,
+                        status: newStatus
+                    },
+                    success: function(response) {
+                        iziToast.success({
+                            title: 'Berhasil!',
+                            message: 'Status berhasil diubah',
+                            position: 'topRight'
+                        });
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 1500);
+                    },
+                    error: function() {
+                        iziToast.error({
+                            title: 'Error!',
+                            message: 'Gagal mengubah status',
+                            position: 'topRight'
+                        });
+                        // Kembalikan ke status sebelumnya
+                        dropdown.val(oldStatus);
+                    }
+                });
+            } else {
+                // Kembalikan ke status sebelumnya jika dibatalkan
+                dropdown.val(oldStatus);
+            }
+        });
     });
     
     var cleaveI = new Cleave('.nisn', {

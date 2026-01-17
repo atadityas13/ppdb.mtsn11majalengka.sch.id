@@ -6,6 +6,8 @@ session_start();
 if (!isset($_SESSION['id_user'])) {    
     die('Anda tidak diijinkan mengakses langsung');    
 }    
+
+$pg = isset($_GET['pg']) ? $_GET['pg'] : '';
     
 if ($pg == 'update_status') {
     $data = [
