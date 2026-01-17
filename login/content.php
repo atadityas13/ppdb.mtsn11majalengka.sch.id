@@ -61,9 +61,7 @@ if ($pg == '') {
 } elseif ($pg == 'sekolah') {
     cek_login_admin();
     include "mod_sekolah/sekolah.php";
-} elseif ($pg == 'kelas') {
-    cek_login_admin();
-    include "mod_jenjang/jenjang.php";
+
 } elseif ($pg == 'jurusan') {
     cek_login_admin();
     include "mod_jurusan/jurusan.php";
@@ -78,9 +76,6 @@ if ($pg == '') {
 } elseif ($pg == 'user') {
     cek_login_admin();
     include "mod_user/user.php";
-} elseif ($pg == 'usersiswa') {
-    cek_login_admin();
-    include "mod_user/usersiswa.php";
 } elseif ($pg == 'profile') {
     include "mod_user/profile.php";
 } elseif ($pg == 'setting') {

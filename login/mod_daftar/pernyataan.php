@@ -8,18 +8,6 @@ if (!isset($_SESSION['id_user'])) {
     die('Anda tidak diijinkan mengakses langsung');
 }
 $siswa = fetch($koneksi, 'daftar', ['id_daftar' => dekripsi($_GET['id'])]);
-// $tempdir = "../../temp/"; //Nama folder tempat menyimpan file qrcode
-// if (!file_exists($tempdir)) //Buat folder bername temp
-//     mkdir($tempdir);
-
-// //isi qrcode jika di scan
-// $codeContents = $bayar['id_bayar'] . '-' . $siswa['nama'];
-
-// //simpan file kedalam temp
-// //nilai konfigurasi Frame di bawah 4 tidak direkomendasikan
-
-// QRcode::png($codeContents, $tempdir . $id_bayar . '.png', QR_ECLEVEL_L, 3, 6);
-
 ?>
 <!-- General CSS Files -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">

@@ -186,34 +186,3 @@ if ($pg == 'login') {
         }
     }
 }
-
-if ($pg == 'login2') {
-
-    $username = mysqli_escape_string($koneksi, $_POST['username']);
-    $password = mysqli_escape_string($koneksi, $_POST['password']);
-    $siswaQ = mysqli_query($koneksi, "SELECT * FROM siswa WHERE no_siswa='$username'");
-    if ($username <> "" and $password <> "") {
-        if (mysqli_num_rows($siswaQ) == 0) {
-            $data = [
-                'pesan' => 'Anda belum terdaftar silahkan Hubungi Operator Sekolah!'
-            ];
-            echo json_encode($data);
-        } else {
-            $siswa = mysqli_fetch_array($siswaQ);
-
-            if ($password <> $siswa['password']) {
-                $data = [
-                    'pesan' => 'Password Salah !'
-                ];
-                echo json_encode($data);
-            } else {
-                $_SESSION['id_siswa'] = $siswa['id_siswa'];
-                mysqli_query($koneksi, "UPDATE siswa set online='1' where id_siswa='$siswa[id_siswa]'");
-                $data = [
-                    'pesan' => 'ok'
-                ];
-                echo json_encode($data);
-            }
-        }
-    }
-}

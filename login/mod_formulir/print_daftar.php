@@ -4,18 +4,6 @@ require "../../config/function.php";
 require "../../config/functions.crud.php";
 include "../../assets/modules/phpqrcode/qrlib.php";
 $siswa = fetch($koneksi, 'daftar', ['id_daftar' => dekripsi($_GET['id'])]);
-// $tempdir = "../../temp/"; //Nama folder tempat menyimpan file qrcode
-// if (!file_exists($tempdir)) //Buat folder bername temp
-//     mkdir($tempdir);
-
-// //isi qrcode jika di scan
-// $codeContents = $bayar['id_bayar'] . '-' . $siswa['nama'];
-
-// //simpan file kedalam temp
-// //nilai konfigurasi Frame di bawah 4 tidak direkomendasikan
-
-// QRcode::png($codeContents, $tempdir . $id_bayar . '.png', QR_ECLEVEL_L, 3, 6);
-
 ?>
 <!DOCTYPE html>
 <html>

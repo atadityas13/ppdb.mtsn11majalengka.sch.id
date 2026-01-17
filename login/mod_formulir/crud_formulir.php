@@ -19,11 +19,8 @@ if ($pg == 'foto') {
                 $upload = move_uploaded_file($temp, '../../' . $dest);
                 if ($upload) {
                     $data2 = [
-                        'foto'              => $_POST['foto'],
-						'foto' => $dest
+                        'foto' => $dest
                     ];
-					 $id_siswa = $_POST['id_siswa'];
-					update($koneksi, 'siswa', $data2, ['id_siswa' => $id_siswa]);
                 } else {
                     echo "gagal";
                 }

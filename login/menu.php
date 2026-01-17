@@ -64,7 +64,6 @@ $is_ppdb_aktif = $akhir <= $awal;
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i> <span>Akun</span></a>  
             <ul class="dropdown-menu">  
                 <li><a class="nav-link" href="?pg=user">Akun Admin</a></li>  
-                <li><a class="nav-link" href="?pg=usersiswa">Akun Siswa</a></li>  
             </ul>  
         </li>  
     <?php } ?>  

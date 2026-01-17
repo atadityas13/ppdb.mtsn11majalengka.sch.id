@@ -15,7 +15,6 @@ if ($pg == 'login') {
             echo json_encode($data);
         } else {
             $siswa = mysqli_fetch_array($siswaQ);
-            //$ceklogin=mysqli_num_rows(mysqli_query($koneksi, "select * from login where id_siswa='$siswa[id_siswa]'"));
 
             if ($password <> $siswa['password']) {
                 $data = [
