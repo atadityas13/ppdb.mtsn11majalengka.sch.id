@@ -22,6 +22,7 @@
                                 <th>Asal Sekolah</th>
                                 <th>No Hp</th>
                                 <th>Status</th>
+                                <th>Daftar Ulang</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -49,7 +50,18 @@
                                         <?php } ?>
                                     </td>
                                     <td>
+                                        <?php if ($daftar['konfirmasi'] == 1) { ?>
+                                            <span class="badge badge-success">Sudah</span>
+                                        <?php } else { ?>
+                                            <span class="badge badge-warning">Belum</span>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
                                         <a data-toggle="tooltip" data-placement="top" title="" data-original-title="detail siswa" href="?pg=detail&id=<?= enkripsi($daftar['id_daftar']) ?>" class="btn btn-sm btn-success"><i class="fas fa-eye    "></i> Detail</a>
+
+                                        <?php if ($daftar['konfirmasi'] != 1) { ?>
+                                            <button data-id="<?= $daftar['id_daftar'] ?>" class="konfirmasi btn-sm btn btn-info"><i class="fas fa-check    "></i> Daftar Ulang</button>
+                                        <?php } ?>
 
                                         <button data-id="<?= $daftar['id_daftar'] ?>" class="hapus btn-sm btn btn-danger"><i class="fas fa-times    "></i> Batal</button>
 
@@ -87,6 +99,34 @@
                         iziToast.warning({
                             title: 'O o w!',
                             message: 'Data Berhasil dibatalkan',
+
+    $('#table-1').on('click', '.konfirmasi', function() {
+        var id = $(this).data('id');
+        swal({
+            title: 'Konfirmasi Daftar Ulang',
+            text: 'Yakin akan mengkonfirmasi daftar ulang siswa ini?',
+            icon: 'info',
+            buttons: true,
+        }).then((result) => {
+            if (result) {
+                $.ajax({
+                    url: 'mod_daftar/crud_daftar.php?pg=konfirmasi_admin',
+                    method: "POST",
+                    data: 'id_daftar=' + id,
+                    success: function(data) {
+                        iziToast.success({
+                            title: 'Berhasil!',
+                            message: 'Status daftar ulang berhasil diubah',
+                            position: 'topRight'
+                        });
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                });
+            }
+        })
+    });
                             position: 'topRight'
                         });
                         setTimeout(function() {

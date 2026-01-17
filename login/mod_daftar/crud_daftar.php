@@ -111,6 +111,18 @@ if ($pg == 'batal') {
     update($koneksi, 'daftar', $data, $where);    
     delete($koneksi, 'bayar', $where);    
 }    
+
+if ($pg == 'konfirmasi_admin') {    
+    $data = [    
+        'konfirmasi' => 1,
+        'tgl_konfirmasi' => date('Y-m-d')
+    ];    
+    $where = [    
+        'id_daftar' => $_POST['id_daftar']    
+    ];    
+    update($koneksi, 'daftar', $data, $where);    
+    echo 'ok';
+}    
     
 if ($pg == 'bataldf') {    
     $data = [    
