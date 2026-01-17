@@ -1627,8 +1627,6 @@
                 } else if (menu == "pendaftaran") {  
                     $('#btndaftar').hide();  
                     $('#isi_load').load('pendaftaran.php');  
-                } else if (menu == "daftar") {  
-                    $('#isi_load').load('datadaftar.php');  
                 } else if (menu == "siswa") {  
                     $('#isi_load').load('siswa.php');  
                 } else if (menu == "pengumuman") {  
