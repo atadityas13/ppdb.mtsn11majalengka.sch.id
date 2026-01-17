@@ -388,13 +388,13 @@
         </div>
     </div>
     
-    <div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card">
             <div class="card-header p-2">
                 <h6 class="mb-0" style="font-size: 13px;">Statistik Status</h6>
             </div>
             <div class="card-body p-2">
-                <table class="table table-bordered table-sm mb-0" style="font-size: 10px; table-layout: fixed; width: 100%;">
+                <table class="table table-bordered table-sm mb-0" style="font-size: 10px;">
                     <thead>
                         <tr>
                             <th class="p-1">Diverifikasi</th>
