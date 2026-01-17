@@ -1223,7 +1223,7 @@
                                                         </div>  
                                                         <div class="form-group col-md-6" id="input-sekolah-manual" style="display: none;">  
                                                             <label for="asal_manual">NAMA SEKOLAH ASAL <small class="text-danger">(Tulis dengan lengkap dan benar)</small></label>  
-                                                            <input type="text" class="form-control" name="asal_manual" id="asal_manual" placeholder="Contoh: SD NEGERI 1 JAKARTA" style="text-transform: uppercase;">  
+                                                            <input type="text" class="form-control" name="asal_manual" id="asal_manual" placeholder="Contoh: SD NEGERI 1 MAJALENGKA" style="text-transform: uppercase;">  
                                                         </div>  
                                                     </div>  
                                                     <div class="form-group">  

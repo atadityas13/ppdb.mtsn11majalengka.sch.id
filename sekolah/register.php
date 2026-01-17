@@ -162,7 +162,7 @@ require "../config/functions.crud.php";
 
                   <div class="form-group" id="input-sekolah-manual-operator" style="display: none;">
                     <label for="nama_sekolah_manual"><i class="fas fa-school"></i> NAMA SEKOLAH <small class="text-danger">*</small></label>
-                    <input type="text" class="form-control" name="nama_sekolah_manual" id="nama_sekolah_manual" placeholder="Contoh: SD NEGERI 1 JAKARTA" style="text-transform: uppercase;">
+                    <input type="text" class="form-control" name="nama_sekolah_manual" id="nama_sekolah_manual" placeholder="Contoh: SD NEGERI 1 MAJALENGKA" style="text-transform: uppercase;">
                     <small class="form-text text-muted">Tulis nama lengkap sekolah dengan benar</small>
                   </div>
 
@@ -205,7 +205,7 @@ require "../config/functions.crud.php";
 
                   <div class="form-group">
                     <label for="username"><i class="fas fa-user-lock"></i> Username <small class="text-danger">*</small></label>
-                    <input id="username" type="text" class="form-control" name="username" required placeholder="Contoh: sdnnamasekolah01">
+                    <input id="username" type="text" class="form-control" name="username" required placeholder="Contoh: namasaya130298">
                     <small class="form-text text-muted">Username unik untuk login, gunakan kombinasi huruf dan angka tanpa spasi</small>
                   </div>
 
