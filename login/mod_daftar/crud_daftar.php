@@ -7,6 +7,18 @@ if (!isset($_SESSION['id_user'])) {
     die('Anda tidak diijinkan mengakses langsung');    
 }    
     
+if ($pg == 'update_status') {
+    $data = [
+        'status' => $_POST['status']
+    ];
+    $where = [
+        'id_daftar' => $_POST['id_daftar']
+    ];
+    update($koneksi, 'daftar', $data, $where);
+    echo json_encode(['success' => true, 'message' => 'Status berhasil diubah']);
+    exit;
+}
+
 if ($pg == 'ubah') {    
     $status = (isset($_POST['status'])) ? 1 : 0;    
     $nama = str_replace("'", "`", $_POST['nama']);    

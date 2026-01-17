@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label>No HP</label>
-                        <input type="text" name="nohp" class="form-control nohp" required="">
+                        <input type="text" name="nohp" class="form-control nohp">
                     </div>
 
                 </div>
@@ -173,6 +173,7 @@
                                 <th>NISN</th>
 								<th>Password</th>
                                 <th>Nama Pendaftar</th>
+                                <th>Sekolah Asal</th>
                                 <th>L/P</th>
                                 <th>No Hp</th>
                                 <th>Status</th>
@@ -192,6 +193,7 @@
                                     <td><?= $daftar['nisn'] ?></td>
 									 <td><?= $daftar['password'] ?></td>
                                     <td><?= $daftar['nama'] ?></td>
+                                    <td><?= $daftar['asal_sekolah'] ?></td>
                                     <td><?= $daftar['jenkel'] ?></td>
                                     <td>
                                         <i class="fab fa-whatsapp text-success   "></i>
@@ -200,24 +202,20 @@
                                     </td>
                                    
                                     <td>
-                                        <?php if ($daftar['status'] == 1) { ?>
-                                            <span class="badge badge-success">Diterima</span>
-                                        <?php } elseif ($daftar['status'] == 2) { ?>
-                                            <span class="badge badge-danger">Dicadangkan </span>
-                                        <?php } else { ?>
-                                            <span class="badge badge-warning">Diverifikasi</span>
-                                        <?php } ?>
+                                        <select class="form-control form-control-sm status-dropdown" data-id="<?= $daftar['id_daftar'] ?>" data-nisn="<?= $daftar['nisn'] ?>" data-nama="<?= $daftar['nama'] ?>">
+                                            <option value="0" <?= $daftar['status'] == 0 ? 'selected' : '' ?>>Diverifikasi</option>
+                                            <option value="1" <?= $daftar['status'] == 1 ? 'selected' : '' ?>>Diterima</option>
+                                            <option value="2" <?= $daftar['status'] == 2 ? 'selected' : '' ?>>Dicadangkan</option>
+                                        </select>
                                     </td>
                                     <td>
-                                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="detail siswa" href="?pg=ubahdaftar&id=<?= enkripsi($daftar['id_daftar']) ?>" class="btn btn-sm btn-info"><i class="fas fa-edit    "></i></a>
+                                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="detail siswa" href="?pg=ubahdaftar&id=<?= enkripsi($daftar['id_daftar']) ?>" class="btn btn-sm btn-info"><i class="fas fa-file-alt"></i></a>
                                         <!-- Button trigger modal -->
                                         <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak" href="mod_daftar/print_daftar.php?id=<?= enkripsi($daftar['id_daftar']) ?>" class="btn btn-sm btn-success"><i class="fas fa-print    "></i></a>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit<?= $no ?>">
                                             <i class="fas fa-edit    "></i>
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-nilai<?= $no ?>">
-                                            <i class="fas fa-address-book    "></i>
                                         </button>
                                         <button data-id="<?= $daftar['id_daftar'] ?>" class="hapus btn-sm btn btn-danger"><i class="fas fa-trash    "></i></button>
                                         <!-- Modal -->
@@ -305,70 +303,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal fade" id="modal-nilai<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <form id="form-nilai<?= $no ?>" name="form-nilai">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">INPUT NILAI RAPOR</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                           
-                                                            <input type="hidden" value="<?= $daftar['id_daftar'] ?>" name="id_daftar" class="form-control" required="">
-															
-                                                            <div class="form-group">
-															<label style="color: blue;font-weight: bold;">SEMESTER 1</label>
-															<input type="text"  value="<?= $daftar['bin1'] ?>" id="bin1" name="bin1" class="form-control" ="" placeholder="BAHASA INDONESIA" >
-                                                            <input type="text"  value="<?= $daftar['mat1'] ?>" id="mat1" name="mat1" class="form-control" ="" placeholder="MATEMATIKA" >
-                                                            <input type="text"  value="<?= $daftar['ipa1'] ?>" id="ipa1" name="ipa1" class="form-control" ="" placeholder="IPA" >
-                                                            <input type="text"  value="<?= $daftar['big1'] ?>" id="big1" name="big1" class="form-control" ="" placeholder="BAHASA INGGRIS" >
-															</div>
-                                                            <div class="form-group">
-															<label style="color: blue;font-weight: bold;">SEMESTER 2</label>
-															<input type="text"  value="<?= $daftar['bin2'] ?>" id="bin2" name="bin2" class="form-control" ="" placeholder="BAHASA INDONESIA">
-                                                            <input type="text"  value="<?= $daftar['mat2'] ?>" id="mat2" name="mat2" class="form-control" ="" placeholder="MATEMATIKA">
-                                                            <input type="text"  value="<?= $daftar['ipa2'] ?>" id="ipa2" name="ipa2" class="form-control" ="" placeholder="IPA">
-                                                            <input type="text"  value="<?= $daftar['big2'] ?>" id="big2" name="big2" class="form-control" ="" placeholder="BAHASA INGGRIS">
-															</div>
-                                                            <div class="form-group">
-															<label style="color: blue;font-weight: bold;">SEMESTER 3</label>
-															<input type="text"  value="<?= $daftar['bin3'] ?>" id="bin3" name="bin3" class="form-control" ="" placeholder="BAHASA INDONESIA">
-                                                            <input type="text"  value="<?= $daftar['mat3'] ?>" id="mat3" name="mat3" class="form-control" ="" placeholder="MATEMATIKA">
-                                                            <input type="text"  value="<?= $daftar['ipa3'] ?>" id="ipa3" name="ipa3" class="form-control" ="" placeholder="IPA">
-                                                            <input type="text"  value="<?= $daftar['big3'] ?>" id="big3" name="big3" class="form-control" ="" placeholder="BAHASA INGGRIS">
-															</div>
-                                                            <div class="form-group">
-															<label style="color: blue;font-weight: bold;">SEMESTER 4</label>
-															<input type="text"  value="<?= $daftar['bin4'] ?>" id="bin4" name="bin4" class="form-control" ="" placeholder="BAHASA INDONESIA">
-                                                            <input type="text"  value="<?= $daftar['mat4'] ?>" id="mat4" name="mat4" class="form-control" ="" placeholder="MATEMATIKA">
-                                                            <input type="text"  value="<?= $daftar['ipa4'] ?>" id="ipa4" name="ipa4" class="form-control" ="" placeholder="IPA">
-                                                            <input type="text"  value="<?= $daftar['big4'] ?>" id="big4" name="big4" class="form-control" ="" placeholder="BAHASA INGGRIS">
-															</div>
-                                                            <div class="form-group">
-															<label style="color: blue;font-weight: bold;">SEMESTER 5</label>
-															<input type="text"  value="<?= $daftar['bin5'] ?>" id="bin5" name="bin5" class="form-control" ="" placeholder="BAHASA INDONESIA">
-                                                            <input type="text"  value="<?= $daftar['mat5'] ?>" id="mat5" name="mat5" class="form-control" ="" placeholder="MATEMATIKA">
-                                                            <input type="text"  value="<?= $daftar['ipa5'] ?>" id="ipa5" name="ipa5" class="form-control" ="" placeholder="IPA">
-                                                            <input type="text"  value="<?= $daftar['big5'] ?>" id="big5" name="big5" class="form-control" ="" placeholder="BAHASA INGGRIS">
-															</div>
-                                                            <!--<div class="form-group">
-															<label style="color: blue;font-weight: bold;">JUMLAH</label>
-															<input type="text" id="jumlah" name="jumlah" class="form-control" placeholder="Jumlah" readonly="">
-															</div>-->
-
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Save</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </td>
                                 </tr>
                                 
@@ -396,34 +330,82 @@
                                         return false;
                                     });
                                 </script>
-                                <script>
-                                    $('#form-nilai<?= $no ?>').submit(function(e) {
-                                        e.preventDefault();
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: 'mod_daftar/crud_daftar.php?pg=nilai',
-                                            data: $(this).serialize(),
-                                            success: function(data) {
-
-                                                iziToast.success({
-                                                    title: 'OKee!',
-                                                    message: 'Nilai Berhasil ditambah',
-                                                    position: 'topRight'
-                                                });
-                                                setTimeout(function() {
-                                                    window.location.reload();
-                                                }, 2000);
-                                                $('#modal-edit<?= $no ?>').modal('hide');
-                                                //$('#bodyreset').load(location.href + ' #bodyreset');
-                                            }
-                                        });
-                                        return false;
-                                    });
-                                </script>
                             <?php }
                             ?>
 
 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Statistik -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>Statistik Jenis Kelamin</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th>Laki-laki</th>
+                                <th>Perempuan</th>
+                                <th>Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $laki = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE jenkel='L'"));
+                            $perempuan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE jenkel='P'"));
+                            $total_gender = $laki + $perempuan;
+                            ?>
+                            <tr>
+                                <td class="text-center"><strong><?= $laki ?></strong></td>
+                                <td class="text-center"><strong><?= $perempuan ?></strong></td>
+                                <td class="text-center"><strong><?= $total_gender ?></strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4>Statistik Status</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <th>Diverifikasi</th>
+                                <th>Diterima</th>
+                                <th>Dicadangkan</th>
+                                <th>Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $diverifikasi = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE status='0'"));
+                            $diterima = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE status='1'"));
+                            $dicadangkan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE status='2'"));
+                            $total_status = $diverifikasi + $diterima + $dicadangkan;
+                            ?>
+                            <tr>
+                                <td class="text-center"><strong><?= $diverifikasi ?></strong></td>
+                                <td class="text-center"><strong><?= $diterima ?></strong></td>
+                                <td class="text-center"><strong><?= $dicadangkan ?></strong></td>
+                                <td class="text-center"><strong><?= $total_status ?></strong></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -465,6 +447,60 @@
             }
         });
     });
+    
+    // Handle perubahan status dropdown dengan konfirmasi
+    $('.status-dropdown').on('change', function() {
+        var dropdown = $(this);
+        var id_daftar = dropdown.data('id');
+        var nisn = dropdown.data('nisn');
+        var nama = dropdown.data('nama');
+        var newStatus = dropdown.val();
+        var statusText = dropdown.find('option:selected').text();
+        var oldStatus = dropdown.data('old-status') || dropdown.find('option:selected').data('original');
+        
+        // Simpan status awal jika belum ada
+        if (typeof dropdown.data('old-status') === 'undefined') {
+            dropdown.data('old-status', dropdown.find('option:not(:selected)').first().val());
+        }
+        
+        // Konfirmasi perubahan status
+        if (confirm('Apakah Anda yakin ingin mengubah status siswa ' + nama + ' (' + nisn + ') menjadi ' + statusText + '?')) {
+            $.ajax({
+                type: 'POST',
+                url: 'mod_daftar/crud_daftar.php?pg=update_status',
+                data: {
+                    id_daftar: id_daftar,
+                    status: newStatus
+                },
+                success: function(response) {
+                    iziToast.success({
+                        title: 'Berhasil!',
+                        message: 'Status berhasil diubah menjadi ' + statusText,
+                        position: 'topRight'
+                    });
+                    dropdown.data('old-status', newStatus);
+                },
+                error: function() {
+                    iziToast.error({
+                        title: 'Error!',
+                        message: 'Gagal mengubah status',
+                        position: 'topRight'
+                    });
+                    // Kembalikan ke status sebelumnya jika gagal
+                    dropdown.val(dropdown.data('old-status'));
+                }
+            });
+        } else {
+            // Kembalikan ke status sebelumnya jika dibatalkan
+            dropdown.val(dropdown.data('old-status'));
+        }
+    });
+    
+    // Simpan status awal setiap dropdown saat halaman dimuat
+    $('.status-dropdown').each(function() {
+        $(this).data('old-status', $(this).val());
+    });
+    
     var cleaveI = new Cleave('.nisn', {
 
         blocks: [10]
