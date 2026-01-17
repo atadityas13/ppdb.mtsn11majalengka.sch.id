@@ -203,21 +203,24 @@
                                    
                                     <td>
                                         <?php if ($daftar['status'] == 1) { ?>
-                                            <span class="badge badge-success mb-1 d-block">Diterima</span>
+                                            <span class="badge badge-success badge-status" style="cursor: pointer;"
+                                                  data-id="<?= $daftar['id_daftar'] ?>" 
+                                                  data-nisn="<?= $daftar['nisn'] ?>" 
+                                                  data-nama="<?= $daftar['nama'] ?>"
+                                                  data-current="1">Diterima</span>
                                         <?php } elseif ($daftar['status'] == 2) { ?>
-                                            <span class="badge badge-danger mb-1 d-block">Dicadangkan</span>
+                                            <span class="badge badge-danger badge-status" style="cursor: pointer;"
+                                                  data-id="<?= $daftar['id_daftar'] ?>" 
+                                                  data-nisn="<?= $daftar['nisn'] ?>" 
+                                                  data-nama="<?= $daftar['nama'] ?>"
+                                                  data-current="2">Dicadangkan</span>
                                         <?php } else { ?>
-                                            <span class="badge badge-warning mb-1 d-block">Diverifikasi</span>
+                                            <span class="badge badge-warning badge-status" style="cursor: pointer;"
+                                                  data-id="<?= $daftar['id_daftar'] ?>" 
+                                                  data-nisn="<?= $daftar['nisn'] ?>" 
+                                                  data-nama="<?= $daftar['nama'] ?>"
+                                                  data-current="0">Diverifikasi</span>
                                         <?php } ?>
-                                        <select class="form-control form-control-sm status-dropdown" 
-                                                data-id="<?= $daftar['id_daftar'] ?>" 
-                                                data-nisn="<?= $daftar['nisn'] ?>" 
-                                                data-nama="<?= $daftar['nama'] ?>"
-                                                data-current="<?= $daftar['status'] ?>">
-                                            <option value="0" <?= $daftar['status'] == 0 ? 'selected' : '' ?>>Diverifikasi</option>
-                                            <option value="1" <?= $daftar['status'] == 1 ? 'selected' : '' ?>>Diterima</option>
-                                            <option value="2" <?= $daftar['status'] == 2 ? 'selected' : '' ?>>Dicadangkan</option>
-                                        </select>
                                     </td>
                                     <td>
                                         <a data-toggle="tooltip" data-placement="top" title="" data-original-title="detail siswa" href="?pg=ubahdaftar&id=<?= enkripsi($daftar['id_daftar']) ?>" class="btn btn-sm btn-info"><i class="fas fa-file-alt"></i></a>
@@ -355,14 +358,14 @@
 
 <!-- Statistik -->
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="card">
-            <div class="card-header">
-                <h6 class="mb-0">Statistik Jenis Kelamin</h6>
+            <div class="card-header p-2">
+                <h6 class="mb-0" style="font-size: 13px;">Statistik Jenis Kelamin</h6>
             </div>
             <div class="card-body p-2">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-sm mb-0" style="font-size: 12px;">
+                    <table class="table table-bordered table-sm mb-0" style="font-size: 11px;">
                         <thead>
                             <tr>
                                 <th>Laki-laki</th>
@@ -388,14 +391,14 @@
         </div>
     </div>
     
-    <div class="col-md-6">
+    <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="card">
-            <div class="card-header">
-                <h6 class="mb-0">Statistik Status</h6>
+            <div class="card-header p-2">
+                <h6 class="mb-0" style="font-size: 13px;">Statistik Status</h6>
             </div>
             <div class="card-body p-2">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-sm mb-0" style="font-size: 12px;">
+                    <table class="table table-bordered table-sm mb-0" style="font-size: 11px;">
                         <thead>
                             <tr>
                                 <th>Diverifikasi</th>
@@ -459,33 +462,50 @@
         });
     });
     
-    // Handle perubahan status dropdown dengan SweetAlert
-    $('#table-1').on('change', '.status-dropdown', function() {
-        var dropdown = $(this);
-        var id_daftar = dropdown.data('id');
-        var nisn = dropdown.data('nisn');
-        var nama = dropdown.data('nama');
-        var oldStatus = dropdown.data('current');
-        var newStatus = dropdown.val();
-        var statusText = dropdown.find('option:selected').text();
+    // Handle klik pada badge status dengan SweetAlert
+    $('#table-1').on('click', '.badge-status', function() {
+        var badge = $(this);
+        var id_daftar = badge.data('id');
+        var nisn = badge.data('nisn');
+        var nama = badge.data('nama');
+        var currentStatus = badge.data('current');
         
-        // Jika tidak ada perubahan, return
-        if (oldStatus == newStatus) {
-            return;
-        }
+        // Buat pilihan status dalam bentuk HTML
+        var statusOptions = '<select id="status-select" class="swal2-input" style="width: 80%; padding: 10px;">' +
+                          '<option value="0" ' + (currentStatus == 0 ? 'selected' : '') + '>Diverifikasi</option>' +
+                          '<option value="1" ' + (currentStatus == 1 ? 'selected' : '') + '>Diterima</option>' +
+                          '<option value="2" ' + (currentStatus == 2 ? 'selected' : '') + '>Dicadangkan</option>' +
+                          '</select>';
         
-        // Konfirmasi dengan SweetAlert
+        // SweetAlert dengan dropdown
         swal({
-            title: 'Ubah Status Siswa?',
-            text: 'Mengubah status ' + nama + ' (' + nisn + ') menjadi ' + statusText,
-            icon: 'warning',
+            title: 'Ubah Status Siswa',
+            text: 'Pilih status untuk ' + nama + ' (' + nisn + ')',
+            content: {
+                element: "div",
+                attributes: {
+                    innerHTML: statusOptions
+                }
+            },
             buttons: {
                 cancel: 'Batal',
                 confirm: 'Ya, Ubah!'
             },
-            dangerMode: false,
+            icon: 'warning',
         }).then((willChange) => {
             if (willChange) {
+                var newStatus = $('#status-select').val();
+                
+                // Jika tidak ada perubahan
+                if (newStatus == currentStatus) {
+                    iziToast.info({
+                        title: 'Info',
+                        message: 'Status tidak berubah',
+                        position: 'topRight'
+                    });
+                    return;
+                }
+                
                 $.ajax({
                     type: 'POST',
                     url: 'mod_daftar/crud_daftar.php?pg=update_status',
@@ -509,13 +529,8 @@
                             message: 'Gagal mengubah status',
                             position: 'topRight'
                         });
-                        // Kembalikan ke status sebelumnya
-                        dropdown.val(oldStatus);
                     }
                 });
-            } else {
-                // Kembalikan ke status sebelumnya jika dibatalkan
-                dropdown.val(oldStatus);
             }
         });
     });
