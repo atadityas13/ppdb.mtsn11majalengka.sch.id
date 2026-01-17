@@ -27,6 +27,14 @@
                         <input type="text" name="nama" class="form-control" required="">  
                     </div>  
                     <div class="form-group">  
+                        <label>Tempat Lahir</label>  
+                        <input type="text" name="tempat_lahir" class="form-control" required="">  
+                    </div>  
+                    <div class="form-group">  
+                        <label>Tanggal Lahir</label>  
+                        <input type="date" name="tgl_lahir" class="form-control" required="">  
+                    </div>  
+                    <div class="form-group">  
                         <label>Jenis Kelamin</label>  
                         <select class="form-control" name="jenkel" id="jenkel" required>  
                             <option value="L">Laki-Laki</option>  

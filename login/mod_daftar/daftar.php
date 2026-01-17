@@ -26,6 +26,22 @@
                         <label>Nama Pendaftar</label>
                         <input type="text" name="nama" class="form-control" required="">
                     </div>
+                    <div class="form-group">
+                        <label>Tempat Lahir</label>
+                        <input type="text" name="tempat_lahir" class="form-control" required="">
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tgl_lahir" class="form-control" required="">
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <select class="form-control" name="jenkel" required>
+                            <option value="">Pilih Jenis Kelamin</option>
+                            <option value="L">Laki-Laki</option>
+                            <option value="P">Perempuan</option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <label for="asal">Asal Sekolah</label>
@@ -235,6 +251,14 @@
 															<div class="form-group">
 																<label>Tanggal Lahir</label>
 															<input type="date"  value="<?= $daftar['tgl_lahir'] ?>" name="tgl_lahir" class="form-control" ="">
+															</div>
+															
+															<div class="form-group">
+																<label>Jenis Kelamin</label>
+																<select class="form-control" name="jenkel" required>
+																	<option value="L" <?= $daftar['jenkel'] == 'L' ? 'selected' : '' ?>>Laki-Laki</option>
+																	<option value="P" <?= $daftar['jenkel'] == 'P' ? 'selected' : '' ?>>Perempuan</option>
+																</select>
 															</div>
 															
 															<div class="form-group">

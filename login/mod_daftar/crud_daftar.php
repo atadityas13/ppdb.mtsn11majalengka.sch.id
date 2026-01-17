@@ -40,7 +40,8 @@ if ($pg == 'tambah') {
         $npsn_asal = 'LAINNYA';
         $nama_sekolah = strtoupper(mysqli_escape_string($koneksi, trim($_POST['asal_manual'])));
     } else {
-        $npsn_asal = $_POST['npsn_asal'];
+        // Ambil NPSN dari field 'asal' (form admin) atau 'npsn_asal' (form operator SD)
+        $npsn_asal = isset($_POST['asal']) ? $_POST['asal'] : $_POST['npsn_asal'];
         $sekolah = fetch($koneksi, 'sekolah', ['npsn' => $npsn_asal]);    
         $nama_sekolah = $sekolah['nama_sekolah'];
     }
@@ -51,6 +52,8 @@ if ($pg == 'tambah') {
         'jenis' => $_POST['jenis'],    
         'nisn' => $_POST['nisn'],    
         'nama' => ucwords(strtolower($nama)),    
+        'tempat_lahir' => ucwords(strtolower($_POST['tempat_lahir'])),    
+        'tgl_lahir' => $_POST['tgl_lahir'],    
         'npsn_asal' => $npsn_asal,    
         'asal_sekolah' => $nama_sekolah,    
         'jurusan' => $jurusan['nama_jurusan'], // Menggunakan nama jurusan    
