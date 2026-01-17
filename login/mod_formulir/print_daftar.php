@@ -201,7 +201,7 @@ $siswa = fetch($koneksi, 'daftar', ['id_daftar' => dekripsi($_GET['id'])]);
             <tbody>
                 <!-- DATA LENGKAP WALI -->
                 <tr>
-                    <td align="center" colspan="2">Print Date : <?= date('Y-m-d H:is') ?></td>
+                    <td align="center" colspan="2">Tanggal Cetak : <?= date('Y-m-d H:is') ?></td>
                 </tr>
 
             </tbody>

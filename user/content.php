@@ -23,8 +23,6 @@ if ($pg == '') {
 
 } elseif ($pg == 'detail') {
     include "mod_formulir/detail.php";  //Modul Detail Pendaftaran
-} elseif ($pg == 'bayar') {
-    include "mod_bayar/bayar.php";
 } elseif ($pg == 'pengumuman') {
     include "mod_pengumuman/pengumuman.php";
 } elseif ($pg == 'user') {

@@ -6,7 +6,7 @@
             <div class="card-header">
                 <h4>INFO PERSYARATAN</h4>
             </div>
-            <form id="infobayar">
+            <form id="syarat">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Isi dengan info persyaratan</label>
@@ -21,7 +21,7 @@
     </div>
 </div>
 <script>
-    $('#infobayar').submit(function(e) {
+    $('#syarat').submit(function(e) {
         e.preventDefault();
         $.ajax({
             type: 'POST',

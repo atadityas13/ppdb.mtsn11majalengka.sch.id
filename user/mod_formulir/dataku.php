@@ -262,7 +262,7 @@
 
                     <div class="w-100 d-sm-none"></div>
                     <div class="float-right mt-sm-0 mt-3">
-                        <a href="#" class="btn">View Posts <i class="fas fa-chevron-left"></i></a>
+                        <a href="#" class="btn">Kembali ke Atas <i class="fas fa-chevron-left"></i></a>
                     </div>
                 </div>
             </div>

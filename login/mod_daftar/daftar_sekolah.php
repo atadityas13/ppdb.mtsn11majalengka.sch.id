@@ -168,7 +168,6 @@
                             $no = 0;  
                             while ($daftar = mysqli_fetch_array($query)) {  
                                 $no++;  
-                                $bayar = mysqli_fetch_array(mysqli_query($koneksi, "SELECT SUM(jumlah) AS total FROM bayar WHERE id_daftar='$daftar[id_daftar]'"));  
                             ?>  
                                 <tr>  
                                     <td><?= $no; ?></td>  
@@ -254,64 +253,7 @@
                                                 </div>  
                                             </div>  
                                         </div>  
-                                        <!-- Modal Nilai -->  
-                                        <div class="modal fade" id="modal-nilai<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">  
-                                            <div class="modal-dialog" role="document">  
-                                                <div class="modal-content">  
-                                                    <form id="form-nilai<?= $no ?>" name="form-nilai">  
-                                                        <div class="modal-header">  
-                                                            <h5 class="modal-title">INPUT NILAI RAPOR</h5>  
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
-                                                                <span aria-hidden="true">&times;</span>  
-                                                            </button>  
-                                                        </div>  
-                                                        <div class="modal-body">  
-                                                            <input type="hidden" value="<?= $daftar['id_daftar'] ?>" name="id_daftar" class="form-control" required="">  
-                                                            <div class="form-group">  
-                                                                <label style="color: blue;font-weight: bold;">SEMESTER 1</label>  
-                                                                <input type="text" value="<?= $daftar['bin1'] ?>" id="bin1" name="bin1" class="form-control" placeholder="BAHASA INDONESIA">  
-                                                                <input type="text" value="<?= $daftar['mat1'] ?>" id="mat1" name="mat1" class="form-control" placeholder="MATEMATIKA">  
-                                                                <input type="text" value="<?= $daftar['ipa1'] ?>" id="ipa1" name="ipa1" class="form-control" placeholder="IPA">  
-                                                                <input type="text" value="<?= $daftar['big1'] ?>" id="big1" name="big1" class="form-control" placeholder="BAHASA INGGRIS">  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label style="color: blue;font-weight: bold;">SEMESTER 2</label>  
-                                                                <input type="text" value="<?= $daftar['bin2'] ?>" id="bin2" name="bin2" class="form-control" placeholder="BAHASA INDONESIA">  
-                                                                <input type="text" value="<?= $daftar['mat2'] ?>" id="mat2" name="mat2" class="form-control" placeholder="MATEMATIKA">  
-                                                                <input type="text" value="<?= $daftar['ipa2'] ?>" id="ipa2" name="ipa2" class="form-control" placeholder="IPA">  
-                                                                <input type="text" value="<?= $daftar['big2'] ?>" id="big2" name="big2" class="form-control" placeholder="BAHASA INGGRIS">  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label style="color: blue;font-weight: bold;">SEMESTER 3</label>  
-                                                                <input type="text" value="<?= $daftar['bin3'] ?>" id="bin3" name="bin3" class="form-control" placeholder="BAHASA INDONESIA">  
-                                                                <input type="text" value="<?= $daftar['mat3'] ?>" id="mat3" name="mat3" class="form-control" placeholder="MATEMATIKA">  
-                                                                <input type="text" value="<?= $daftar['ipa3'] ?>" id="ipa3" name="ipa3" class="form-control" placeholder="IPA">  
-                                                                <input type="text" value="<?= $daftar['big3'] ?>" id="big3" name="big3" class="form-control" placeholder="BAHASA INGGRIS">  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label style="color: blue;font-weight: bold;">SEMESTER 4</label>  
-                                                                <input type="text" value="<?= $daftar['bin4'] ?>" id="bin4" name="bin4" class="form-control" placeholder="BAHASA INDONESIA">  
-                                                                <input type="text" value="<?= $daftar['mat4'] ?>" id="mat4" name="mat4" class="form-control" placeholder="MATEMATIKA">  
-                                                                <input type="text" value="<?= $daftar['ipa4'] ?>" id="ipa4" name="ipa4" class="form-control" placeholder="IPA">  
-                                                                <input type="text" value="<?= $daftar['big4'] ?>" id="big4" name="big4" class="form-control" placeholder="BAHASA INGGRIS">  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label style="color: blue;font-weight: bold;">SEMESTER 5</label>  
-                                                                <input type="text" value="<?= $daftar['bin5'] ?>" id="bin5" name="bin5" class="form-control" placeholder="BAHASA INDONESIA">  
-                                                                <input type="text" value="<?= $daftar['mat5'] ?>" id="mat5" name="mat5" class="form-control" placeholder="MATEMATIKA">  
-                                                                <input type="text" value="<?= $daftar['ipa5'] ?>" id="ipa5" name="ipa5" class="form-control" placeholder="IPA">  
-                                                                <input type="text" value="<?= $daftar['big5'] ?>" id="big5" name="big5" class="form-control" placeholder="BAHASA INGGRIS">  
-                                                            </div>  
-                                                        </div>  
-                                                        <div class="modal-footer">  
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>  
-                                                            <button type="submit" class="btn btn-primary">Simpan</button>  
-                                                        </div>  
-                                                    </form>  
-                                                </div>  
-                                            </div>  
-                                        </div>  
-                                    </td>  
+                                        </td>  
                                 </tr>  
                                 <script>  
                                     $('#form-edit<?= $no ?>').submit(function(e) {  
@@ -335,28 +277,7 @@
                                         return false;  
                                     });  
                                 </script>  
-                                <script>  
-                                    $('#form-nilai<?= $no ?>').submit(function(e) {  
-                                        e.preventDefault();  
-                                        $.ajax({  
-                                            type: 'POST',  
-                                            url: 'mod_daftar/crud_daftar.php?pg=nilai',  
-                                            data: $(this).serialize(),  
-                                            success: function(data) {  
-                                                iziToast.success({  
-                                                    title: 'OKee!',  
-                                                    message: 'Nilai Berhasil ditambah',  
-                                                    position: 'topRight'  
-                                                });  
-                                                setTimeout(function() {  
-                                                    window.location.reload();  
-                                                }, 2000);  
-                                                $('#modal-nilai<?= $no ?>').modal('hide');  
-                                            }  
-                                        });  
-                                        return false;  
-                                    });  
-                                </script>  
+                                  
                             <?php }  
                             ?>  
                         </tbody>  

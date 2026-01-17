@@ -36,7 +36,6 @@
                             $no = 0;  
                             while ($daftar = mysqli_fetch_array($query)) {  
                                 $no++;  
-                                $bayar = mysqli_fetch_array(mysqli_query($koneksi, "SELECT SUM(jumlah) AS total FROM bayar WHERE id_daftar='$daftar[id_daftar]'"));  
                             ?>  
                                 <tr>  
                                     <td><?= $no; ?></td>  

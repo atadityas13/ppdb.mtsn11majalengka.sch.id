@@ -82,7 +82,7 @@
                 </div>
                 <div class="card-footer bg-whitesmoke text-md-right">
                     <button type="submit" class="btn btn-primary" id="save-btn">Save Changes</button>
-                    <button class="btn btn-secondary" type="button">Reset</button>
+                    <button class="btn btn-secondary" type="button">Atur Ulang</button>
                 </div>
            
         </form>
@@ -158,7 +158,7 @@
                 </div>
                 <div class="card-footer bg-whitesmoke text-md-right">
                     <button type="submit" class="btn btn-primary" id="save-btn">Save Changes</button>
-                    <button class="btn btn-secondary" type="button">Reset</button>
+                    <button class="btn btn-secondary" type="button">Atur Ulang</button>
                 </div>
             
         </form>
@@ -229,7 +229,7 @@
                 </div>
                 <div class="card-footer bg-whitesmoke text-md-right">
                     <button type="submit" class="btn btn-primary" id="save-btn">Save Changes</button>
-                    <button class="btn btn-secondary" type="button">Reset</button>
+                    <button class="btn btn-secondary" type="button">Atur Ulang</button>
                 </div>
             
         </form>
@@ -292,7 +292,7 @@
                 </div>
                 <div class="card-footer bg-whitesmoke text-md-right">
                     <button type="submit" class="btn btn-primary" id="save-btn">Save Changes</button>
-                    <button class="btn btn-secondary" type="button">Reset</button>
+                    <button class="btn btn-secondary" type="button">Atur Ulang</button>
                 </div>
             
         </form>

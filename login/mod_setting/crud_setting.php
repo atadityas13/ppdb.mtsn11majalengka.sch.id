@@ -250,21 +250,6 @@ $data = [
                     echo "Terimakasih";
 
 }
-if ($pg == 'infobayar') {
-    $data = [
-        'infobayar' => $_POST['info']
-    ];
-    $where = [
-        'id_setting' => 1
-    ];
-    $exec = update($koneksi, 'setting', $data, $where);
-
-    if ($exec) {
-        echo "ok";
-    } else {
-        echo "Gagal menyimpan";
-    }
-}
 if ($pg == 'aktifppdb') {
     $data = [
         'tgl_pengumuman' => $_POST['tgl_pengumuman']

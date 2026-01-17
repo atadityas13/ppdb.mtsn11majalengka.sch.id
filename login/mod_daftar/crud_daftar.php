@@ -143,38 +143,6 @@ if ($pg == 'status') {
     update($koneksi, 'daftar', $data, $where);    
 }    
     
-if ($pg == 'nilai') {    
-    $nilai = (isset($_POST['nilai'])) ? $_POST['nilai'] : 0;    
-    $nama = str_replace("'", "`", $_POST['nama']);    
-    $data = [    
-        'bin1' => $_POST['bin1'],    
-        'mat1' => $_POST['mat1'],    
-        'ipa1' => $_POST['ipa1'],    
-        'big1' => $_POST['big1'],    
-        'bin2' => $_POST['bin2'],    
-        'mat2' => $_POST['mat2'],    
-        'ipa2' => $_POST['ipa2'],    
-        'big2' => $_POST['big2'],    
-        'bin3' => $_POST['bin3'],    
-        'mat3' => $_POST['mat3'],    
-        'ipa3' => $_POST['ipa3'],    
-        'big3' => $_POST['big3'],    
-        'bin4' => $_POST['bin4'],    
-        'mat4' => $_POST['mat4'],    
-        'ipa4' => $_POST['ipa4'],    
-        'big4' => $_POST['big4'],    
-        'bin5' => $_POST['bin5'],    
-        'mat5' => $_POST['mat5'],    
-        'ipa5' => $_POST['ipa5'],    
-        'big5' => $_POST['big5']    
-    ];    
-    $where = [    
-        'id_daftar' => $_POST['id_daftar']    
-    ];    
-    $id_daftar = $_POST['id_daftar'];    
-    update($koneksi, 'daftar', $data, $where);    
-}    
-    
 if ($pg == 'simpandatadiri') {    
     $status = (isset($_POST['status'])) ? 1 : 0;    
     $data = [    

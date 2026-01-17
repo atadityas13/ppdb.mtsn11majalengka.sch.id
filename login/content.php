@@ -70,11 +70,6 @@ if ($pg == '') {
 } elseif ($pg == 'jenis') {
     cek_login_admin();
     include "mod_jenis/jenis.php";
-} elseif ($pg == 'biaya') {
-    cek_login_admin();
-    include "mod_biaya/biaya.php";
-} elseif ($pg == 'bayar') {
-    include "mod_bayar/bayar.php";
 } elseif ($pg == 'user-profile') {
     include "mod_user/user-profile.php";
 
@@ -99,9 +94,6 @@ if ($pg == '') {
 } elseif ($pg == 'kontak') {
     cek_login_admin();
     include "mod_kontak/kontak.php";
-} elseif ($pg == 'infobayar') {
-    cek_login_admin();
-    include "mod_web/pembayaran.php";
 } elseif ($pg == 'syarat') {
     cek_login_admin();
     include "mod_web/syarat.php";

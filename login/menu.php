@@ -119,7 +119,7 @@ $is_ppdb_aktif = $akhir <= $awal;
                     <?php } ?>  
                 </div>  
                 <div class="modal-footer">  
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>  
                     <button type="submit" class="btn btn-<?php echo $is_ppdb_aktif ? 'danger' : 'primary'; ?>">  
                         <?php if ($is_ppdb_aktif) { ?>  
                             Tutup  

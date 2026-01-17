@@ -108,7 +108,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button class="btn btn-primary">Save Changes</button>
+                      <button class="btn btn-primary">Simpan Perubahan</button>
                     </div>
                   </form>
                 </div>

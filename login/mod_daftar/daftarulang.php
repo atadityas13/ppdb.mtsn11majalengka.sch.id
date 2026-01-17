@@ -21,7 +21,7 @@
                                 <th>Nama Pendaftar</th>
                                 <th>Tanggal Konfirmasi</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +45,7 @@
                                         <?php } ?>
                                     </td>
                                     <td>
-                                        <button data-id="<?= $daftar['id_daftar'] ?>" class="hapus btn-sm btn btn-danger"><i class="fas fa-times    "></i> Cancel</button>
+                                        <button data-id="<?= $daftar['id_daftar'] ?>" class="hapus btn-sm btn btn-danger"><i class="fas fa-times    "></i> Batal</button>
 
                                     </td>
                                 </tr>
