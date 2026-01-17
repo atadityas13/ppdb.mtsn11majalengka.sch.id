@@ -45,7 +45,7 @@ QRcode::png($codeContents, $tempdir . $siswa['nisn'] . '.png', QR_ECLEVEL_M, 4);
     <body>
         
         <hr>
-		<b><center>Formulir Pendaftaran Peserta Didik Baru Tahun 2021</center></b>
+		<b><center>Formulir Pendaftaran Peserta Didik Baru Tahun <?= date('Y') ?></center></b>
 		<br>
 			
 			<table width="100%" style="font-size: 13px" cellpadding="1" cellspacing="0" style="border-bottom:1px solid #a5a5a5;">
@@ -225,8 +225,11 @@ QRcode::png($codeContents, $tempdir . $siswa['nisn'] . '.png', QR_ECLEVEL_M, 4);
 				
                 <td style="text-align: left">
                     <font size="13px">
-                       
-                        <?= $setting['kec'] ?>, <?= date('d-M-Y ') ?>
+                       <?php
+                        $bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+                        $tanggal_indo = date('j') . ' ' . $bulan[date('n')] . ' ' . date('Y');
+                       ?>
+                        <?= $setting['kec'] ?>, <?= $tanggal_indo ?>
                         <p>Pendaftar</p>
 						<br></br>
 						<p><strong><?= $siswa['nama'] ?></strong><p>
@@ -264,6 +267,6 @@ $dompdf = new Dompdf();
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
-$dompdf->stream("PPDB2021_" . $siswa['nama'] . ".pdf", array("Attachment" => false));
+$dompdf->stream("PPDB" . date('Y') . "_" . $siswa['nama'] . ".pdf", array("Attachment" => false));
 exit(0);
 ?>

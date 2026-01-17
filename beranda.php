@@ -832,7 +832,7 @@
                         <div class="home-header-text d-none d-sm-block">  
                             <h5>PENERIMAAN PESERTA DIDIK BARU</h5>  
                             <h6><?= $setting['nama_sekolah'] ?></h6>  
-                            <h6>Tahun 2026</h6>  
+                            <h6>Tahun <?= date('Y') ?></h6>  
                         </div>  
                         <span class="logo-mini-unbk d-block d-sm-none">PPDB MTsN 11 Majalengka</span>  
                     </a>  
@@ -946,10 +946,10 @@
                                             </h5>  
                                             <br />  
                                             <p data-animation="animated slideInRight" data-delay="1s">  
-                                                Aplikasi Penerimaan Peserta didik baru Tahun Pelajaran 2026/2027 <?= $setting['nama_sekolah'] ?>.  
+                                                Aplikasi Penerimaan Peserta didik baru Tahun Pelajaran <?= date('Y') ?>/<?= date('Y')+1 ?> <?= $setting['nama_sekolah'] ?>.  
                                             </p>  
                                             <p data-animation="animated slideInRight" data-delay="2s">  
-                                                Pendaftaran Siswa dan Siswi Baru Tahun 2026 ini telah dibuka. Silahkan Segera Daftar dan lengkapi Formulir  
+                                                Pendaftaran Siswa dan Siswi Baru Tahun <?= date('Y') ?> ini telah dibuka. Silahkan Segera Daftar dan lengkapi Formulir  
                                             </p>  
                                             <p data-animation="animated flipInX" data-delay="3s">  
                                                 <a href="/#tentang" class="btn btn-warning nav-link">  
@@ -965,7 +965,7 @@
                                                 Syarat Pendaftaran Peserta Didik Baru  
                                             </h5>  
                                             <h5 data-animation="animated fadeInDownBig">  
-                                                Tahun Pelajaran 2026/2027  
+                                                Tahun Pelajaran <?= date('Y') ?>/<?= date('Y')+1 ?>  
                                             </h5>  
                                             <ul>  
                                                 <li data-animation="animated fadeInDownBig" data-delay="1s">  
@@ -992,7 +992,7 @@
                                                 Alur Pendaftaran Peserta Didik Baru  
                                             </h5>  
                                             <h5 data-animation="animated fadeInDownBig">  
-                                                Tahun Pelajaran 2026/2027  
+                                                Tahun Pelajaran <?= date('Y') ?>/<?= date('Y')+1 ?>  
                                             </h5>  
                                             <ul>  
                                                 <li data-animation="animated fadeInDownBig" data-delay="1s">  
@@ -1276,10 +1276,10 @@
                                                 </h5>  
                                                 <br />  
                                                 <p data-animation="animated slideInRight" data-delay="1s">  
-                                                    Aplikasi Penerimaan Peserta didik baru Tahun Pelajaran 2026/2027 <?= $setting['nama_sekolah'] ?>.  
+                                                    Aplikasi Penerimaan Peserta didik baru Tahun Pelajaran <?= date('Y') ?>/<?= date('Y')+1 ?> <?= $setting['nama_sekolah'] ?>.  
                                                 </p>  
                                                 <p data-animation="animated slideInRight" data-delay="2s">  
-                                                    Pendaftaran Siswa dan Siswi Baru Tahun 2026 Belum Dibuka.  
+                                                    Pendaftaran Siswa dan Siswi Baru Tahun <?= date('Y') ?> Belum Dibuka.  
                                                 </p>  
                                                 <p data-animation="animated flipInX" data-delay="3s">  
                                                     <a href="" class="btn btn-success nav-link">  
@@ -1441,7 +1441,7 @@
             <section class="bg-light statistik" id="statistik">  
                 <div class="container">  
                     <h5 class="text-center">Data Pendaftar </h5>  
-                    <h6 class="text-center">Peserta Didik Baru <?= $setting['nama_sekolah'] ?> Tahun 2026</h6>  
+                    <h6 class="text-center">Peserta Didik Baru <?= $setting['nama_sekolah'] ?> Tahun <?= date('Y') ?></h6>  
                     <div class="row mt-12">  
                         <div class="col-sm-6">  
                             <div class="card mt-2">  
