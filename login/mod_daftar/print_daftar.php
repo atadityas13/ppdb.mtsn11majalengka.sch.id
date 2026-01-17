@@ -268,6 +268,7 @@ QRcode::png($codeContents, $tempdir . $siswa['nisn'] . '.png', QR_ECLEVEL_M, 4);
                         <?= $setting['kec'] ?>, <?= $tanggal_indo ?>
                         <p>Pendaftar</p>
 						<br></br>
+						<br></br>
 						<p><strong><?= $siswa['nama'] ?></strong><p>
                         
                     </font>
