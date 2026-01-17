@@ -203,44 +203,42 @@ QRcode::png($codeContents, $tempdir . $siswa['nisn'] . '.png', QR_ECLEVEL_M, 4);
 			</tbody>
 		</table>
 		
-		<table width="100%" style="font-size: 13px" cellpadding="2" cellspacing="0">
+		<table width="100%" style="font-size: 13px" cellpadding="2" cellspacing="0" style="border-bottom:1px solid #a5a5a5;">
 			<tbody>
 			<tr>
 				<td colspan="1" align="left"><b>4.</b></td>
-				<td colspan="3" align="left"><b>Checklist Kelengkapan Berkas Persyaratan</b></td>
+				<td colspan="7" align="left"><b>Kelengkapan Berkas Persyaratan</b></td>
 			</tr>
 			<tr>
-				<td width="3%"></td>
-				<td width="3%" align="center" style="border: 1px solid #000; width: 12px; height: 12px;"></td>
-				<td width="3%"></td>
-				<td align="left">Ijazah SD/MI yang telah dilegalisir</td>
+				<td width="5%"></td>
+				<td width="3%" align="center" style="border: 1px solid #000; width: 15px; height: 15px;"></td>
+				<td width="2%"></td>
+				<td width="38%" align="left">Ijazah SD/MI yang telah dilegalisir</td>
+				<td width="5%"></td>
+				<td width="3%" align="center" style="border: 1px solid #000; width: 15px; height: 15px;"></td>
+				<td width="2%"></td>
+				<td width="42%" align="left">Fotocopy KIP (jika ada)</td>
 			</tr>
 			<tr>
-				<td width="3%"></td>
-				<td width="3%" align="center" style="border: 1px solid #000; width: 12px; height: 12px;"></td>
-				<td width="3%"></td>
+				<td width="5%"></td>
+				<td width="3%" align="center" style="border: 1px solid #000; width: 15px; height: 15px;"></td>
+				<td width="2%"></td>
 				<td align="left">Fotocopy Kartu Keluarga</td>
+				<td width="5%"></td>
+				<td width="3%" align="center" style="border: 1px solid #000; width: 15px; height: 15px;"></td>
+				<td width="2%"></td>
+				<td align="left">Pas Foto berwarna 3x4</td>
 			</tr>
 			<tr>
-				<td width="3%"></td>
-				<td width="3%" align="center" style="border: 1px solid #000; width: 12px; height: 12px;"></td>
-				<td width="3%"></td>
+				<td width="5%"></td>
+				<td width="3%" align="center" style="border: 1px solid #000; width: 15px; height: 15px;"></td>
+				<td width="2%"></td>
 				<td align="left">Fotocopy Akta Kelahiran</td>
-			</tr>
-			<tr>
-				<td width="3%"></td>
-				<td width="3%" align="center" style="border: 1px solid #000; width: 12px; height: 12px;"></td>
-				<td width="3%"></td>
-				<td align="left">Fotocopy Kartu Indonesia Pintar/KIP (jika ada)</td>
-			</tr>
-			<tr>
-				<td width="3%"></td>
-				<td width="3%" align="center" style="border: 1px solid #000; width: 12px; height: 12px;"></td>
-				<td width="3%"></td>
-				<td align="left">Pas Foto berwarna ukuran 3x4/td>
+				<td colspan="4"></td>
 			</tr>
 			</tbody>
 		</table>
+		<br>
 		<br>
 			<table width="100%">
             <tr>
