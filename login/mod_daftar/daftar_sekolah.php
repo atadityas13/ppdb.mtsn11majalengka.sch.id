@@ -77,8 +77,8 @@
                     <input type="hidden" name="npsn_asal" value="<?= $user['id_sekolah'] ?>">  
                 </div>  
                 <div class="modal-footer">  
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
-                    <button type="submit" class="btn btn-primary">Save</button>  
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>  
+                    <button type="submit" class="btn btn-primary">Simpan</button>  
                 </div>  
             </form>  
         </div>  
@@ -99,7 +99,7 @@
                     Terdapat <b><?= rowcount($koneksi, 'daftar WHERE npsn_asal = ' . $user['id_sekolah']) ?></b> Jumlah data Pendaftar Akan Di Hapus.  
                 </div>  
                 <div class="modal-footer">  
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>  
                     <button type="submit" class="btn btn-primary">Hapus Semua</button>  
                 </div>  
             </form>  
@@ -112,22 +112,22 @@
         <div class="modal-content">  
             <form id="form-import">  
                 <div class="modal-header">  
-                    <h5 class="modal-title">Import Data</h5>  
+                    <h5 class="modal-title">Impor Data</h5>  
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
                         <span aria-hidden="true">&times;</span>  
                     </button>  
                 </div>  
                 <div class="modal-body">  
                     <div class="form-group">  
-                        <label for="file">Import File Excel</label>  
+                        <label for="file">Impor File Excel</label>  
                         <input type="file" class="form-control-file" name="file" id="file" placeholder="" aria-describedby="helpfile" required>  
                         <small id="helpfile" class="form-text text-muted">File harus .xls</small>  
                     </div>  
-                    <p><a href="template_excel/importdaftar.xls">Download Format</a></p>  
+                    <p><a href="template_excel/importdaftar.xls">Unduh Format</a></p>  
                 </div>  
                 <div class="modal-footer">  
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
-                    <button type="submit" class="btn btn-primary">Save</button>  
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>  
+                    <button type="submit" class="btn btn-primary">Simpan</button>  
                 </div>  
             </form>  
         </div>  
@@ -158,7 +158,7 @@
                                 <th>L/P</th>  
                                 <th>No Hp</th>  
                                 <th>Status</th>  
-                                <th>Action</th>  
+                                <th>Aksi</th>  
                             </tr>  
                         </thead>  
                         <tbody>  
@@ -203,7 +203,7 @@
                                                 <div class="modal-content">  
                                                     <form id="form-edit<?= $no ?>">  
                                                         <div class="modal-header">  
-                                                            <h5 class="modal-title">Edit Data</h5>  
+                                                            <h5 class="modal-title">Ubah Data</h5>  
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
                                                                 <span aria-hidden="true">&times;</span>  
                                                             </button>  
@@ -247,8 +247,8 @@
                                                             </div>  
                                                         </div>  
                                                         <div class="modal-footer">  
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
-                                                            <button type="submit" class="btn btn-primary">Save</button>  
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>  
+                                                            <button type="submit" class="btn btn-primary">Simpan</button>  
                                                         </div>  
                                                     </form>  
                                                 </div>  
@@ -304,8 +304,8 @@
                                                             </div>  
                                                         </div>  
                                                         <div class="modal-footer">  
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
-                                                            <button type="submit" class="btn btn-primary">Save</button>  
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>  
+                                                            <button type="submit" class="btn btn-primary">Simpan</button>  
                                                         </div>  
                                                     </form>  
                                                 </div>  

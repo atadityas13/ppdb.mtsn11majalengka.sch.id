@@ -73,7 +73,7 @@
         console.log(id);
         swal({
             title: 'Apa kamu yakin ?',
-            text: 'Akan membatalkan status diterima dan menghapus pembayaran dari pendaftar ini ?',
+            text: 'Akan membatalkan status diterima dari pendaftar ini ?',
             icon: 'warning',
             buttons: true,
             dangerMode: true,

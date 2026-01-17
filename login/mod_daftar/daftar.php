@@ -80,8 +80,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>
@@ -104,7 +104,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Hapus Semua</button>
                 </div>
             </form>
@@ -132,8 +132,8 @@
 				
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -147,7 +147,7 @@
                 <h4>Data Pendaftar</h4>
                
 				<div class="card-header-action">
-                    <a class="btn btn-primary" href="mod_daftar/export_excel.php" role="button"> Download Excel</a>
+                    <a class="btn btn-primary" href="mod_daftar/export_excel.php" role="button"> Unduh Excel</a>
                     <button type="button" class="btn btn-icon icon-left btn-info" data-toggle="modal" data-target="#tambahdata">
                         <i class="far fa-edit"></i> Tambah Data
                     </button>
@@ -177,7 +177,7 @@
                                 <th>L/P</th>
                                 <th>No Hp</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -238,7 +238,7 @@
                                                 <div class="modal-content">
                                                     <form id="form-edit<?= $no ?>">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Edit Data</h5>
+                                                            <h5 class="modal-title">Ubah Data</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
@@ -310,8 +310,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Save</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                            <button type="submit" class="btn btn-primary">Simpan</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -330,8 +330,8 @@
                                             success: function(data) {
 
                                                 iziToast.success({
-                                                    title: 'OKee!',
-                                                    message: 'Status Berhasil diubah',
+                                                    title: 'Berhasil!',
+                                                    message: 'Status berhasil diubah',
                                                     position: 'topRight'
                                                 });
                                                 setTimeout(function() {
@@ -364,29 +364,27 @@
                 <h6 class="mb-0" style="font-size: 13px;">Statistik Jenis Kelamin</h6>
             </div>
             <div class="card-body p-2">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-sm mb-0" style="font-size: 11px;">
-                        <thead>
-                            <tr>
-                                <th>Laki-laki</th>
-                                <th>Perempuan</th>
-                                <th>Jumlah</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $laki = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE jenkel='L'"));
-                            $perempuan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE jenkel='P'"));
-                            $total_gender = $laki + $perempuan;
-                            ?>
-                            <tr>
-                                <td class="text-center"><strong><?= $laki ?></strong></td>
-                                <td class="text-center"><strong><?= $perempuan ?></strong></td>
-                                <td class="text-center"><strong><?= $total_gender ?></strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <table class="table table-bordered table-sm mb-0" style="font-size: 11px;">
+                    <thead>
+                        <tr>
+                            <th class="p-1">Laki-laki</th>
+                            <th class="p-1">Perempuan</th>
+                            <th class="p-1">Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $laki = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE jenkel='L'"));
+                        $perempuan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE jenkel='P'"));
+                        $total_gender = $laki + $perempuan;
+                        ?>
+                        <tr>
+                            <td class="text-center p-1"><strong><?= $laki ?></strong></td>
+                            <td class="text-center p-1"><strong><?= $perempuan ?></strong></td>
+                            <td class="text-center p-1"><strong><?= $total_gender ?></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -397,14 +395,13 @@
                 <h6 class="mb-0" style="font-size: 13px;">Statistik Status</h6>
             </div>
             <div class="card-body p-2">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-sm mb-0" style="font-size: 11px;">
-                        <thead>
-                            <tr>
-                                <th>Diverifikasi</th>
-                                <th>Diterima</th>
-                                <th>Dicadangkan</th>
-                                <th>Jumlah</th>
+                <table class="table table-bordered table-sm mb-0" style="font-size: 10px; table-layout: fixed; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th class="p-1">Diverifikasi</th>
+                            <th class="p-1">Diterima</th>
+                            <th class="p-1">Dicadangkan</th>
+                            <th class="p-1">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -415,14 +412,13 @@
                             $total_status = $diverifikasi + $diterima + $dicadangkan;
                             ?>
                             <tr>
-                                <td class="text-center"><strong><?= $diverifikasi ?></strong></td>
-                                <td class="text-center"><strong><?= $diterima ?></strong></td>
-                                <td class="text-center"><strong><?= $dicadangkan ?></strong></td>
-                                <td class="text-center"><strong><?= $total_status ?></strong></td>
+                                <td class="text-center p-1"><strong><?= $diverifikasi ?></strong></td>
+                                <td class="text-center p-1"><strong><?= $diterima ?></strong></td>
+                                <td class="text-center p-1"><strong><?= $dicadangkan ?></strong></td>
+                                <td class="text-center p-1"><strong><?= $total_status ?></strong></td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
             </div>
         </div>
     </div>
@@ -449,7 +445,7 @@
 
                 $('#importdata').modal('hide');
                 iziToast.success({
-                    title: 'Mantap!',
+                    title: 'Berhasil!',
                     message: data,
                     position: 'topRight'
                 });
@@ -557,8 +553,8 @@
             success: function(data) {
 
                 iziToast.success({
-                    title: 'Mantap!',
-                    message: 'data berhasil disimpan',
+                    title: 'Berhasil!',
+                    message: 'Data berhasil disimpan',
                     position: 'topRight'
                 });
                 setTimeout(function() {
@@ -575,7 +571,7 @@
         var id = $(this).data('id');
         console.log(id);
         swal({
-            title: 'Are you sure?',
+            title: 'Apakah Anda yakin?',
             text: 'Akan menghapus data ini!',
             icon: 'warning',
             buttons: true,
@@ -588,8 +584,8 @@
                     data: 'id_daftar=' + id,
                     success: function(data) {
                         iziToast.error({
-                            title: 'Horee!',
-                            message: 'Data Berhasil dihapus',
+                            title: 'Berhasil!',
+                            message: 'Data berhasil dihapus',
                             position: 'topRight'
                         });
                         setTimeout(function() {
@@ -606,8 +602,8 @@
 $('#form-konfirmasi').submit(function(e) {
             e.preventDefault();
         swal({
-            title: 'Apa kamu yakin ?',
-            text: 'Akan Menghapus data anda ?',
+            title: 'Apakah Anda yakin?',
+            text: 'Akan menghapus data Anda?',
             icon: 'warning',
             buttons: true,
             dangerMode: true,
@@ -619,8 +615,8 @@ $('#form-konfirmasi').submit(function(e) {
                     data: $(this).serialize(),
                     success: function(data) {
                         iziToast.success({
-                            title: 'Terimakasih!',
-                            message: 'Data Berhasil di Hapus',
+                            title: 'Berhasil!',
+                            message: 'Data berhasil dihapus',
                             position: 'topRight'
                         });
                         setTimeout(function() {
