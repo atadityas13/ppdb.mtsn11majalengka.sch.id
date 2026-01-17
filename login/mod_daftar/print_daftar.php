@@ -31,6 +31,14 @@ QRcode::png($codeContents, $tempdir . $siswa['nisn'] . '.png', QR_ECLEVEL_M, 4);
 <html>
 	<head>
 		<title>Formulir_PPDB<?= $siswa['nama'] ?></title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+			}
+			table {
+				font-family: Arial, sans-serif;
+			}
+		</style>
 	</head>
 	<body>
 		<img src="../../<?= $setting['kop'] ?>" width="100%" />
