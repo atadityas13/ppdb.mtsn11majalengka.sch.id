@@ -1065,7 +1065,7 @@
                                             </div>  
                                             <form id="form-daftar">  
                                                 <div class="card-body">  
-                                                    <input type="date" name="tgl_daftar" class="form-control datepicker" value="<?= $daftar['tgl_daftar'] ?>" hidden>  
+                                                    <input type="date" name="tgl_daftar" class="form-control datepicker" value="<?= date('Y-m-d') ?>" hidden>  
                                                     <div class="form-row">  
                                                         <label for="asal">JURUSAN / PEMINATAN</label>  
                                                         <select class="form-control select2" style="width: 100%" name="jurusan" id="jurusan">  
@@ -1149,7 +1149,7 @@
                                             </div>  
                                             <form id="form-daftar2">  
                                                 <div class="card-body">  
-                                                    <input type="date" name="tgl_daftar" class="form-control datepicker" value="<?= $daftar['tgl_daftar'] ?>" hidden>  
+                                                    <input type="date" name="tgl_daftar" class="form-control datepicker" value="<?= date('Y-m-d') ?>" hidden>  
                                                     <div class="form-row">  
                                                         <label for="asal">PROGRAM</label>  
                                                         <select class="form-control" style="width: 100%" name="jurusan" id="jurusan" oninvalid="this.setCustomValidity('Pilih Program yang akan diikuti!')" oninput="this.setCustomValidity('')" required>  
@@ -1200,11 +1200,7 @@
                                                             <select class='form-control' name='jenkel' oninvalid="this.setCustomValidity('Jenis Kelamin wajib diisi!')" oninput="this.setCustomValidity('')" required>  
                                                                 <option value=''>Pilih Jenis Kelamin</option>  
                                                                 <?php foreach ($jeniskelamin as $val => $key) { ?>  
-                                                                    <?php if ($siswa['jenkel'] == $val) { ?>  
-                                                                        <option value='<?= $val ?>' selected><?= $key ?> </option>  
-                                                                    <?php  } else { ?>  
-                                                                        <option value='<?= $val ?>'><?= $key ?> </option>  
-                                                                    <?php } ?>  
+                                                                    <option value='<?= $val ?>'><?= $key ?> </option>  
                                                                 <?php } ?>  
                                                             </select>  
                                                         </div>  
