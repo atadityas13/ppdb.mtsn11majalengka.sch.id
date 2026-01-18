@@ -432,25 +432,6 @@
         }
     });
 
-    // Inisialisasi DataTable dengan proper config  
-    $(document).ready(function() {  
-        // Hancurkan DataTable jika sudah ada (dari modules-datatables.js)  
-        if ($.fn.DataTable.isDataTable('#table-1')) {  
-            $('#table-1').DataTable().destroy();  
-        }  
-  
-        // Inisialisasi ulang DataTable  
-        $('#table-1').DataTable({  
-            "paging": true,  
-            "lengthChange": true,  
-            "searching": true,  
-            "ordering": true,  
-            "info": true,  
-            "autoWidth": false,  
-            "responsive": true  
-        });  
-    });  
-  
     // Otomatis isi asal sekolah dan npsn_asal dengan sekolah operator  
     $(document).ready(function() {  
         var id_sekolah = '<?= $user['id_sekolah'] ?>';  
