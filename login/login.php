@@ -85,7 +85,7 @@ if (!$has_superadmin) {
 
     .login-container {
       width: 100%;
-      max-width: 440px;
+      max-width: 380px;
       position: relative;
       z-index: 10;
       animation: slideIn 0.6s ease-out;
@@ -118,7 +118,7 @@ if (!$has_superadmin) {
 
     .login-header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 40px 30px;
+      padding: 30px 25px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -145,42 +145,42 @@ if (!$has_superadmin) {
     }
 
     .logo-wrapper {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       position: relative;
       z-index: 1;
     }
 
     .logo-circle {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
       animation: logoFloat 3s ease-in-out infinite;
-      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
     }
 
     @keyframes logoFloat {
       0%, 100% {
         transform: translateY(0) scale(1);
-        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
       }
       50% {
-        transform: translateY(-8px) scale(1.05);
-        filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+        transform: translateY(-6px) scale(1.05);
+        filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.4));
       }
     }
 
     .logo-circle img {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       object-fit: contain;
     }
 
     .login-title {
       color: white;
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 700;
       margin: 0;
       position: relative;
@@ -190,45 +190,45 @@ if (!$has_superadmin) {
 
     .login-subtitle {
       color: rgba(255, 255, 255, 0.95);
-      font-size: 14px;
-      margin: 6px 0 0;
+      font-size: 13px;
+      margin: 5px 0 0;
       position: relative;
       z-index: 1;
       font-weight: 400;
     }
 
     .login-body {
-      padding: 35px 30px;
+      padding: 28px 25px;
     }
 
     .welcome-text {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .welcome-text h5 {
       color: #2d3748;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .welcome-text p {
       color: #718096;
-      font-size: 13px;
+      font-size: 12px;
       margin: 0;
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .form-label {
       display: block;
       color: #2d3748;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       transition: color 0.3s;
     }
 
@@ -238,22 +238,22 @@ if (!$has_superadmin) {
 
     .input-icon {
       position: absolute;
-      left: 18px;
+      left: 15px;
       top: 50%;
       transform: translateY(-50%);
       color: #a0aec0;
-      font-size: 18px;
+      font-size: 16px;
       transition: color 0.3s;
       z-index: 1;
     }
 
     .form-control {
       width: 100%;
-      height: 48px;
-      padding: 0 18px 0 50px;
+      height: 44px;
+      padding: 0 15px 0 45px;
       border: 2px solid #e2e8f0;
-      border-radius: 10px;
-      font-size: 14px;
+      border-radius: 8px;
+      font-size: 13px;
       color: #2d3748;
       background: #f7fafc;
       transition: all 0.3s ease;
@@ -272,12 +272,12 @@ if (!$has_superadmin) {
 
     .forgot-password {
       text-align: right;
-      margin-top: 6px;
+      margin-top: 5px;
     }
 
     .forgot-password a {
       color: #667eea;
-      font-size: 12px;
+      font-size: 11px;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
@@ -292,32 +292,32 @@ if (!$has_superadmin) {
     .remember-checkbox {
       display: flex;
       align-items: center;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .remember-checkbox input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      margin-right: 8px;
+      width: 16px;
+      height: 16px;
+      margin-right: 7px;
       cursor: pointer;
       accent-color: #667eea;
     }
 
     .remember-checkbox label {
       color: #4a5568;
-      font-size: 13px;
+      font-size: 12px;
       cursor: pointer;
       user-select: none;
     }
 
     .btn-login {
       width: 100%;
-      height: 48px;
+      height: 44px;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       color: white;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -358,24 +358,24 @@ if (!$has_superadmin) {
 
     .login-footer {
       text-align: center;
-      padding: 0 30px 30px;
+      padding: 0 25px 25px;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 25px;
-      margin-bottom: 15px;
+      gap: 20px;
+      margin-bottom: 12px;
     }
 
     .footer-links a {
       color: #718096;
-      font-size: 13px;
+      font-size: 12px;
       text-decoration: none;
       transition: color 0.3s;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       cursor: pointer;
     }
 
@@ -385,7 +385,7 @@ if (!$has_superadmin) {
 
     .footer-text {
       color: #a0aec0;
-      font-size: 12px;
+      font-size: 11px;
       margin: 0;
     }
 
@@ -575,7 +575,7 @@ if (!$has_superadmin) {
 
     @media (max-width: 576px) {
       body {
-        padding: 15px;
+        padding: 10px;
       }
 
       .login-container {
@@ -583,40 +583,153 @@ if (!$has_superadmin) {
       }
 
       .login-header {
-        padding: 30px 25px;
+        padding: 25px 20px;
       }
 
       .login-body {
-        padding: 30px 25px;
+        padding: 25px 20px;
       }
 
       .login-footer {
-        padding: 0 25px 25px;
+        padding: 0 20px 20px;
+      }
+
+      .logo-circle {
+        width: 70px;
+        height: 70px;
+      }
+
+      .logo-circle img {
+        width: 70px;
+        height: 70px;
       }
 
       .login-title {
-        font-size: 24px;
+        font-size: 20px;
       }
 
       .login-subtitle {
-        font-size: 13px;
+        font-size: 12px;
+      }
+
+      .welcome-text {
+        margin-bottom: 20px;
       }
 
       .welcome-text h5 {
-        font-size: 18px;
+        font-size: 16px;
+      }
+
+      .welcome-text p {
+        font-size: 11px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-control {
+        height: 42px;
+        font-size: 12px;
+      }
+
+      .btn-login {
+        height: 42px;
+        font-size: 13px;
       }
 
       .footer-links {
         gap: 15px;
+        font-size: 11px;
+      }
+
+      .footer-text {
+        font-size: 10px;
+      }
+
+      .back-link a {
+        font-size: 12px;
+        padding: 8px 16px;
       }
 
       .modal-content {
-        margin: 20% auto;
+        margin: 15% auto;
         width: 95%;
       }
 
+      .modal-header h3 {
+        font-size: 18px;
+      }
+
       .modal-body {
-        padding: 25px 20px;
+        padding: 20px 18px;
+      }
+
+      .modal-body p {
+        font-size: 13px;
+      }
+
+      .modal-body .help-item div h4 {
+        font-size: 14px;
+      }
+
+      .modal-body .help-item div p {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .login-container {
+        max-width: 100%;
+      }
+
+      .login-header {
+        padding: 20px 15px;
+      }
+
+      .login-body {
+        padding: 20px 15px;
+      }
+
+      .login-footer {
+        padding: 0 15px 15px;
+      }
+
+      .logo-circle {
+        width: 60px;
+        height: 60px;
+      }
+
+      .logo-circle img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .login-title {
+        font-size: 18px;
+      }
+
+      .welcome-text h5 {
+        font-size: 15px;
+      }
+
+      .form-control {
+        height: 40px;
+        padding: 0 12px 0 40px;
+      }
+
+      .input-icon {
+        left: 12px;
+        font-size: 14px;
+      }
+
+      .btn-login {
+        height: 40px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
       }
     }
   </style>
@@ -642,14 +755,14 @@ if (!$has_superadmin) {
             <img src="../<?= $setting['logo'] ?>" alt="Logo">
           </div>
         </div>
-        <h1 class="login-title">Admin Portal</h1>
+        <h1 class="login-title">Login Portal PPDB</h1>
         <p class="login-subtitle"><?= $setting['nama_sekolah'] ?></p>
       </div>
 
       <div class="login-body">
         <div class="welcome-text">
           <h5>Selamat Datang Kembali!</h5>
-          <p>Silakan masuk dengan akun administrator Anda</p>
+          <p>Silakan masuk dengan akun Anda</p>
         </div>
 
         <form id="form-login" class="needs-validation" novalidate="">
@@ -722,7 +835,7 @@ if (!$has_superadmin) {
         <button class="close-modal" onclick="closeForgotPasswordModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <p>Jika Anda lupa password akun administrator, silakan hubungi Super Admin atau Administrator lain untuk mereset password Anda.</p>
+        <p>Jika Anda lupa password akun, silakan hubungi Super Admin untuk mereset password Anda.</p>
         <div class="info-box">
           <p><i class="fas fa-info-circle"></i> Untuk keamanan sistem, reset password hanya dapat dilakukan oleh Super Admin.</p>
         </div>
