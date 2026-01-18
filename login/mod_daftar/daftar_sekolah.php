@@ -198,68 +198,20 @@
                                     <td>  
                                         <a data-toggle="tooltip" data-placement="top" title="" data-original-title="detail siswa" href="?pg=ubahdaftar&id=<?= enkripsi($daftar['id_daftar']) ?>" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>  
                                         <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak" href="mod_daftar/print_daftar.php?id=<?= enkripsi($daftar['id_daftar']) ?>" class="btn btn-sm btn-success"><i class="fas fa-print"></i></a>  
-                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit<?= $no ?>">  
+                                        <button type="button" class="btn btn-sm btn-primary btn-edit-siswa" 
+                                            data-id="<?= $daftar['id_daftar'] ?>"
+                                            data-nisn="<?= htmlspecialchars($daftar['nisn']) ?>"
+                                            data-nama="<?= htmlspecialchars($daftar['nama']) ?>"
+                                            data-tempat="<?= htmlspecialchars($daftar['tempat_lahir']) ?>"
+                                            data-tgl="<?= $daftar['tgl_lahir'] ?>"
+                                            data-asal="<?= htmlspecialchars($daftar['asal_sekolah']) ?>"
+                                            data-npsn="<?= $daftar['npsn_asal'] ?>"
+                                            data-nohp="<?= $daftar['no_hp'] ?>"
+                                            data-jenkel="<?= $daftar['jenkel'] ?>">  
                                             <i class="fas fa-edit"></i>  
                                         </button>  
                                         <button data-id="<?= $daftar['id_daftar'] ?>" class="hapus btn-sm btn btn-danger"><i class="fas fa-trash"></i></button>  
-                                        <!-- Modal Edit -->  
-                                        <div class="modal fade" id="modal-edit<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">  
-                                            <div class="modal-dialog" role="document">  
-                                                <div class="modal-content">  
-                                                    <form id="form-edit<?= $no ?>">  
-                                                        <div class="modal-header">  
-                                                            <h5 class="modal-title">Ubah Data</h5>  
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
-                                                                <span aria-hidden="true">&times;</span>  
-                                                            </button>  
-                                                        </div>  
-                                                        <div class="modal-body">  
-                                                            <input type="hidden" value="<?= $daftar['id_daftar'] ?>" name="id_daftar" class="form-control" required="">  
-                                                            <div class="form-group">  
-                                                                <label>NISN</label>  
-                                                                <input type="text" value="<?= $daftar['nisn'] ?>" name="nisn" class="form-control nisn" readonly>  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label>Nama Siswa</label>  
-                                                                <input type="text" value="<?= $daftar['nama'] ?>" name="nama" class="form-control">  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label>Tempat Lahir</label>  
-                                                                <input type="text" value="<?= $daftar['tempat_lahir'] ?>" name="tempat_lahir" class="form-control">  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label>Tanggal Lahir</label>  
-                                                                <input type="date" value="<?= $daftar['tgl_lahir'] ?>" name="tgl_lahir" class="form-control">  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label>Sekolah Asal</label>  
-                                                                <input type="text" value="<?= $daftar['asal_sekolah'] ?>" name="asal" class="form-control" readonly>  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label>NPSN Sekolah</label>  
-                                                                <input type="text" value="<?= $daftar['npsn_asal'] ?>" name="npsn_asal" class="form-control" readonly>  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label>No HP</label>  
-                                                                <input type="number" value="<?= $daftar['no_hp'] ?>" name="no_hp" class="form-control">  
-                                                            </div>  
-                                                            <div class="form-group">  
-                                                                <label>Jenis Kelamin</label>  
-                                                                <select class="form-control" name="jenkel" id="jenkel" required>  
-                                                                    <option value="L" <?= $daftar['jenkel'] == 'L' ? 'selected' : '' ?>>Laki-Laki</option>  
-                                                                    <option value="P" <?= $daftar['jenkel'] == 'P' ? 'selected' : '' ?>>Perempuan</option>  
-                                                                </select>  
-                                                            </div>  
-                                                        </div>  
-                                                        <div class="modal-footer">  
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>  
-                                                            <button type="submit" class="btn btn-primary">Simpan</button>  
-                                                        </div>  
-                                                    </form>  
-                                                </div>  
-                                            </div>  
-                                        </div>  
-                                        </td>  
+                                    </td>  
                                 </tr>  
                                   
                             <?php }  
@@ -271,8 +223,127 @@
         </div>  
     </div>  
 </div>  
+
+<!-- Modal Edit Universal - Dipindahkan keluar dari tabel -->
+<div class="modal fade" id="modal-edit-universal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">  
+    <div class="modal-dialog" role="document">  
+        <div class="modal-content">  
+            <form id="form-edit-universal">  
+                <div class="modal-header">  
+                    <h5 class="modal-title">Ubah Data</h5>  
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
+                        <span aria-hidden="true">&times;</span>  
+                    </button>  
+                </div>  
+                <div class="modal-body">  
+                    <input type="hidden" id="edit-id-daftar" name="id_daftar" class="form-control" required="">  
+                    <div class="form-group">  
+                        <label>NISN</label>  
+                        <input type="text" id="edit-nisn" name="nisn" class="form-control nisn" readonly>  
+                    </div>  
+                    <div class="form-group">  
+                        <label>Nama Siswa</label>  
+                        <input type="text" id="edit-nama" name="nama" class="form-control">  
+                    </div>  
+                    <div class="form-group">  
+                        <label>Tempat Lahir</label>  
+                        <input type="text" id="edit-tempat" name="tempat_lahir" class="form-control">  
+                    </div>  
+                    <div class="form-group">  
+                        <label>Tanggal Lahir</label>  
+                        <input type="date" id="edit-tgl" name="tgl_lahir" class="form-control">  
+                    </div>  
+                    <div class="form-group">  
+                        <label>Sekolah Asal</label>  
+                        <input type="text" id="edit-asal" name="asal" class="form-control" readonly>  
+                    </div>  
+                    <div class="form-group">  
+                        <label>NPSN Sekolah</label>  
+                        <input type="text" id="edit-npsn" name="npsn_asal" class="form-control" readonly>  
+                    </div>  
+                    <div class="form-group">  
+                        <label>No HP</label>  
+                        <input type="number" id="edit-nohp" name="no_hp" class="form-control">  
+                    </div>  
+                    <div class="form-group">  
+                        <label>Jenis Kelamin</label>  
+                        <select class="form-control" id="edit-jenkel" name="jenkel" required>  
+                            <option value="L">Laki-Laki</option>  
+                            <option value="P">Perempuan</option>  
+                        </select>  
+                    </div>  
+                </div>  
+                <div class="modal-footer">  
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>  
+                    <button type="submit" class="btn btn-primary">Simpan</button>  
+                </div>  
+            </form>  
+        </div>  
+    </div>  
+</div>
   
 <script>
+    // Handle klik tombol edit - isi modal dengan data dari button
+    $(document).on('click', '.btn-edit-siswa', function() {
+        var id = $(this).data('id');
+        var nisn = $(this).data('nisn');
+        var nama = $(this).data('nama');
+        var tempat = $(this).data('tempat');
+        var tgl = $(this).data('tgl');
+        var asal = $(this).data('asal');
+        var npsn = $(this).data('npsn');
+        var nohp = $(this).data('nohp');
+        var jenkel = $(this).data('jenkel');
+        
+        $('#edit-id-daftar').val(id);
+        $('#edit-nisn').val(nisn);
+        $('#edit-nama').val(nama);
+        $('#edit-tempat').val(tempat);
+        $('#edit-tgl').val(tgl);
+        $('#edit-asal').val(asal);
+        $('#edit-npsn').val(npsn);
+        $('#edit-nohp').val(nohp);
+        $('#edit-jenkel').val(jenkel);
+        
+        $('#modal-edit-universal').modal('show');
+    });
+    
+    // Handle submit form edit universal
+    $('#form-edit-universal').on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'post',
+            url: 'mod_daftar/crud_daftar.php?pg=ubah',
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            cache: false,
+            beforeSend: function() {
+                $('form button').attr('disabled', 'disabled');
+            },
+            success: function(data) {
+                $('form button').removeAttr('disabled');
+                $('#modal-edit-universal').modal('hide');
+                iziToast.success({
+                    title: 'Berhasil!',
+                    message: 'Data berhasil diubah',
+                    position: 'topRight'
+                });
+                setTimeout(function() {
+                    window.location.reload();
+                }, 1500);
+            },
+            error: function(data) {
+                $('form button').removeAttr('disabled');
+                iziToast.error({
+                    title: 'Gagal!',
+                    message: 'Terjadi kesalahan',
+                    position: 'topRight'
+                });
+            }
+        });
+    });
+
  //IMPORT FILE PENDUKUNG 
     $('#form-import').on('submit', function(e) {
         e.preventDefault();
