@@ -261,28 +261,6 @@
                                         </div>  
                                         </td>  
                                 </tr>  
-                                <script>  
-                                    $('#form-edit<?= $no ?>').submit(function(e) {  
-                                        e.preventDefault();  
-                                        $.ajax({  
-                                            type: 'POST',  
-                                            url: 'mod_daftar/crud_daftar.php?pg=status',  
-                                            data: $(this).serialize(),  
-                                            success: function(data) {  
-                                                iziToast.success({  
-                                                    title: 'OKee!',  
-                                                    message: 'Status Berhasil diubah',  
-                                                    position: 'topRight'  
-                                                });  
-                                                setTimeout(function() {  
-                                                    window.location.reload();  
-                                                }, 2000);  
-                                                $('#modal-edit<?= $no ?>').modal('hide');  
-                                            }  
-                                        });  
-                                        return false;  
-                                    });  
-                                </script>  
                                   
                             <?php }  
                             ?>  
@@ -430,6 +408,31 @@
             passwordSpan.text('******');
             icon.removeClass('fa-eye-slash').addClass('fa-eye');
         }
+    });
+
+    // Handle all edit forms with event delegation
+    $(document).on('submit', '[id^="form-edit"]', function(e) {
+        e.preventDefault();
+        var form = $(this);
+        var modalId = form.closest('.modal').attr('id');
+        
+        $.ajax({
+            type: 'POST',
+            url: 'mod_daftar/crud_daftar.php?pg=status',
+            data: form.serialize(),
+            success: function(data) {
+                iziToast.success({
+                    title: 'OKee!',
+                    message: 'Status Berhasil diubah',
+                    position: 'topRight'
+                });
+                setTimeout(function() {
+                    window.location.reload();
+                }, 2000);
+                $('#' + modalId).modal('hide');
+            }
+        });
+        return false;
     });
 
     // Otomatis isi asal sekolah dan npsn_asal dengan sekolah operator  

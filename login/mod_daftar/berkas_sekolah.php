@@ -78,23 +78,3 @@
         </div>  
     </div>  
 </div>  
-  
-<script>  
-    $(document).ready(function() {  
-        // Hancurkan DataTable jika sudah ada  
-        if ($.fn.DataTable.isDataTable('#table-1')) {  
-            $('#table-1').DataTable().destroy();  
-        }  
-  
-        // Inisialisasi DataTable  
-        $('#table-1').DataTable({  
-            "paging": true,  
-            "lengthChange": true,  
-            "searching": true,  
-            "ordering": true,  
-            "info": true,  
-            "autoWidth": false,  
-            "responsive": true  
-        });  
-    });  
-</script>  
