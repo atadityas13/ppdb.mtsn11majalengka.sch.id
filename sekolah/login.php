@@ -198,33 +198,28 @@ require "../config/functions.crud.php";
     }
 
     .form-label {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-size: 13px;
       font-weight: 600;
       color: #2d3748;
       margin-bottom: 8px;
     }
 
-    .input-wrapper {
-      position: relative;
+    .form-label i {
+      color: #667eea;
+      font-size: 14px;
     }
 
-    .input-icon {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #a0aec0;
-      font-size: 16px;
-      transition: color 0.3s;
-      pointer-events: none;
-      z-index: 5;
+    .input-wrapper {
+      position: relative;
     }
 
     .form-control {
       width: 100%;
       height: 44px;
-      padding: 0 15px 0 45px;
+      padding: 0 15px;
       border: 2px solid #e2e8f0;
       border-radius: 8px;
       font-size: 13px;
@@ -238,10 +233,6 @@ require "../config/functions.crud.php";
       border-color: #667eea;
       background: white;
       box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-    }
-
-    .form-control:focus + .input-icon {
-      color: #667eea;
     }
 
     .remember-checkbox {
@@ -640,7 +631,9 @@ require "../config/functions.crud.php";
         <div class="login-body">
           <form method="POST" id="form-login" class="needs-validation" novalidate="">
             <div class="form-group">
-              <label for="username" class="form-label">Username</label>
+              <label for="username" class="form-label">
+                <i class="fas fa-user"></i> Username
+              </label>
               <div class="input-wrapper">
                 <input id="username" 
                        type="text" 
@@ -649,13 +642,14 @@ require "../config/functions.crud.php";
                        tabindex="1" 
                        required 
                        autofocus 
-                       placeholder="     Masukkan username Anda">
-                <i class="fas fa-user input-icon"></i>
+                       placeholder="Masukkan username Anda">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="password" class="form-label">Password</label>
+              <label for="password" class="form-label">
+                <i class="fas fa-lock"></i> Password
+              </label>
               <div class="input-wrapper">
                 <input id="password" 
                        type="password" 
@@ -663,8 +657,7 @@ require "../config/functions.crud.php";
                        name="password" 
                        tabindex="2" 
                        required 
-                       placeholder="     Masukkan password Anda">
-                <i class="fas fa-lock input-icon"></i>
+                       placeholder="Masukkan password Anda">
               </div>
             </div>
 
