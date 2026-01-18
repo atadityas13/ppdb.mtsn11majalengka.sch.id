@@ -438,7 +438,8 @@ require "../config/functions.crud.php";
     <div class="register-left">
       <div class="brand-content">
         <img src="../<?= $setting['logo'] ?>" alt="Logo" class="brand-logo">
-        <h1 class="brand-title">Registrasi Operator</h1>
+        <h1 class="brand-title">Registrasi Operator Sekolah</h1>
+        <h1 class="brand-title">Portal PPDB Online</h1>
         <h2 class="brand-subtitle"><?= $setting['nama_sekolah'] ?></h2>
         <p class="brand-description">
           Daftarkan sekolah Anda untuk memantau data siswa pendaftar yang berasal dari sekolah Anda secara real-time. Akses fitur lengkap untuk mengelola data pendaftar.
@@ -503,7 +504,7 @@ require "../config/functions.crud.php";
 
             <div class="form-group">
               <label for="nuptk" class="form-label"><i class="fas fa-id-card"></i> NIP (Opsional)</label>
-              <input id="nuptk" type="text" class="form-control" name="nuptk" placeholder="Nomor NUPTK">
+              <input id="nuptk" type="text" class="form-control" name="nuptk" placeholder="NIP Operator Sekolah">
             </div>
 
             <div class="form-group">

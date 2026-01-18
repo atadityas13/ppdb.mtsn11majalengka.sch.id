@@ -458,6 +458,7 @@ require "../config/functions.crud.php";
       <div class="brand-content">
         <img src="../<?= $setting['logo'] ?>" alt="Logo" class="brand-logo">
         <h1 class="brand-title">Operator Sekolah</h1>
+        <h1 class="brand-title">Portal PPDB Online</h1>
         <h2 class="brand-subtitle"><?= $setting['nama_sekolah'] ?></h2>
         <p class="brand-description">
           Portal khusus untuk Admin/Operator Sekolah Dasar (SD) dalam pendaftaran siswa secara kolektif. Pantau dan kelola data pendaftar dari sekolah Anda secara real-time.
@@ -486,6 +487,7 @@ require "../config/functions.crud.php";
             <div class="form-group">
               <label for="username" class="form-label">Username</label>
               <div class="input-wrapper">
+                <i class="fas fa-user input-icon"></i>
                 <input id="username" 
                        type="text" 
                        class="form-control" 
@@ -494,13 +496,13 @@ require "../config/functions.crud.php";
                        required 
                        autofocus 
                        placeholder="Masukkan username Anda">
-                <i class="fas fa-user input-icon"></i>
               </div>
             </div>
 
             <div class="form-group">
               <label for="password" class="form-label">Password</label>
               <div class="input-wrapper">
+                <i class="fas fa-lock input-icon"></i>
                 <input id="password" 
                        type="password" 
                        class="form-control" 
@@ -508,7 +510,6 @@ require "../config/functions.crud.php";
                        tabindex="2" 
                        required 
                        placeholder="Masukkan password Anda">
-                <i class="fas fa-lock input-icon"></i>
               </div>
             </div>
 

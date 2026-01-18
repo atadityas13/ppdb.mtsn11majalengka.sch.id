@@ -660,10 +660,10 @@ if (!$has_superadmin) {
     <div class="login-left">
       <div class="brand-content">
         <img src="../<?php echo $setting['logo']; ?>" alt="Logo" class="brand-logo">
-        <h1 class="brand-title">Admin Portal</h1>
+        <h1 class="brand-title">Admin Portal PPDB</h1>
         <h2 class="brand-subtitle"><?php echo $setting['nama_sekolah']; ?></h2>
         <p class="brand-description">
-          Selamat datang di Portal Administrasi PPDB Online. Silakan masuk dengan kredensial yang telah diberikan untuk mengakses sistem manajemen penerimaan peserta didik baru.
+          Selamat datang di Portal Administrasi PPDB Online. Silakan masuk dengan kredensial anda untuk mengakses sistem manajemen penerimaan peserta didik baru.
         </p>
       </div>
       
