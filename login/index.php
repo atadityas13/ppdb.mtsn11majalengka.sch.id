@@ -50,6 +50,9 @@ if (isset($_SESSION['id_user'])) {
     <!-- Modern Dashboard Enhancements (Subtle) -->
     <link rel="stylesheet" href="../assets/css/modern-dashboard.css">
     
+    <!-- Mobile Optimization CSS -->
+    <link rel="stylesheet" href="../assets/css/mobile-optimize.css">
+    
     <!-- Start GA -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script> -->
 
@@ -286,6 +289,9 @@ crossorigin="anonymous"></script>
 			return this.href == url;
 		}).closest('.treeview').addClass('active');
 	</script>
+	
+	<!-- Mobile Optimization Scripts -->
+	<script src="../assets/js/mobile-optimize.js"></script>
 	
     <!-- <script type='text/javascript' data-cfasync='false'>
       window.purechatApi = {

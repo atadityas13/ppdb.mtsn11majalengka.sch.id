@@ -1,0 +1,529 @@
+/* ===================================
+   MOBILE OPTIMIZATION FOR PPDB SYSTEM
+   =================================== */
+
+/* Mobile Breakpoints */
+@media (max-width: 768px) {
+    
+    /* ========== SIDEBAR OPTIMIZATION ========== */
+    
+    /* Auto-hide sidebar di mobile */
+    body.sidebar-mini .main-sidebar {
+        margin-left: -250px;
+    }
+    
+    /* Sidebar overlay untuk mobile */
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        display: none;
+    }
+    
+    body.sidebar-show .sidebar-overlay {
+        display: block;
+    }
+    
+    body.sidebar-show .main-sidebar {
+        margin-left: 0;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    }
+    
+    /* Sidebar width di mobile */
+    .main-sidebar {
+        width: 260px;
+        transition: margin-left 0.3s ease;
+    }
+    
+    /* Menu spacing di mobile */
+    .main-sidebar .sidebar-menu li a {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .main-sidebar .sidebar-menu .dropdown-menu li a {
+        padding: 10px 20px 10px 40px;
+        font-size: 13px;
+    }
+    
+    /* ========== NAVBAR OPTIMIZATION ========== */
+    
+    /* Navbar spacing */
+    .navbar {
+        padding: 0 15px;
+    }
+    
+    .navbar-brand {
+        font-size: 16px;
+    }
+    
+    .navbar .nav-link {
+        padding: 10px 8px;
+    }
+    
+    /* Hamburger menu lebih besar untuk touch */
+    .navbar-toggler {
+        padding: 10px;
+        font-size: 24px;
+        border: none;
+    }
+    
+    /* ========== MAIN CONTENT OPTIMIZATION ========== */
+    
+    .main-content {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    .section {
+        padding: 15px 10px;
+    }
+    
+    .section-header {
+        margin-bottom: 20px;
+    }
+    
+    .section-header h1 {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+    }
+    
+    /* ========== CARD OPTIMIZATION ========== */
+    
+    .card {
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+    
+    .card-header {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    
+    .card-header h4 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .card-header-action {
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .card-header-action .btn {
+        font-size: 12px;
+        padding: 8px 12px;
+        flex: 1 1 auto;
+        min-width: fit-content;
+    }
+    
+    .card-body {
+        padding: 15px;
+    }
+    
+    /* ========== TABLE OPTIMIZATION ========== */
+    
+    /* Wrapper untuk horizontal scroll */
+    .table-responsive {
+        border-radius: 6px;
+        margin-bottom: 15px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .table {
+        font-size: 12px;
+        min-width: 600px; /* Minimum width untuk scroll */
+    }
+    
+    .table thead th {
+        font-size: 11px;
+        padding: 10px 8px;
+        white-space: nowrap;
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 10;
+    }
+    
+    .table tbody td {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+    
+    /* Action buttons di tabel */
+    .table .btn-sm {
+        padding: 4px 8px;
+        font-size: 11px;
+        margin: 2px;
+    }
+    
+    .table .btn-sm i {
+        font-size: 12px;
+    }
+    
+    /* DataTable controls */
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter {
+        margin-bottom: 10px;
+    }
+    
+    .dataTables_wrapper .dataTables_length select {
+        font-size: 13px;
+        padding: 5px;
+    }
+    
+    .dataTables_wrapper .dataTables_filter input {
+        font-size: 13px;
+        padding: 5px 10px;
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    
+    /* ========== MOBILE TABLE CARD VIEW (Alternative) ========== */
+    
+    /* Tambahkan class .table-mobile-cards pada table untuk aktivasi */
+    .table-mobile-cards {
+        display: block;
+        min-width: auto !important;
+    }
+    
+    .table-mobile-cards thead {
+        display: none;
+    }
+    
+    .table-mobile-cards tbody {
+        display: block;
+    }
+    
+    .table-mobile-cards tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .table-mobile-cards td {
+        display: block;
+        text-align: right;
+        padding: 10px 15px;
+        border-bottom: 1px solid #f0f0f0;
+        position: relative;
+        padding-left: 50%;
+    }
+    
+    .table-mobile-cards td:last-child {
+        border-bottom: none;
+    }
+    
+    .table-mobile-cards td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: 600;
+        text-align: left;
+        color: #555;
+    }
+    
+    .table-mobile-cards td[data-label="Aksi"] {
+        text-align: center;
+        padding-left: 15px;
+    }
+    
+    .table-mobile-cards td[data-label="Aksi"]::before {
+        position: static;
+        display: block;
+        margin-bottom: 8px;
+    }
+    
+    /* ========== STATISTICS BOX (Dashboard) ========== */
+    
+    .small-box {
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+    
+    .small-box .inner {
+        padding: 15px;
+    }
+    
+    .small-box .inner h3 {
+        font-size: 28px;
+    }
+    
+    .small-box .inner p {
+        font-size: 13px;
+    }
+    
+    .small-box .icon {
+        font-size: 50px;
+        right: 10px;
+        top: 10px;
+    }
+    
+    .small-box-footer {
+        font-size: 12px;
+        padding: 8px;
+    }
+    
+    /* ========== FORM OPTIMIZATION ========== */
+    
+    .form-group label {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+    
+    .form-control {
+        font-size: 14px;
+        padding: 10px 12px;
+        border-radius: 6px;
+    }
+    
+    .form-control:focus {
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+    
+    select.form-control {
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 16px 12px;
+        padding-right: 36px;
+    }
+    
+    /* ========== BUTTON OPTIMIZATION ========== */
+    
+    .btn {
+        font-size: 13px;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-weight: 500;
+        min-height: 44px; /* Touch-friendly */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+    
+    .btn-sm {
+        font-size: 12px;
+        padding: 6px 12px;
+        min-height: 36px;
+    }
+    
+    .btn-lg {
+        font-size: 15px;
+        padding: 12px 24px;
+        min-height: 48px;
+    }
+    
+    .btn-icon {
+        min-width: 44px;
+    }
+    
+    /* ========== MODAL OPTIMIZATION ========== */
+    
+    .modal-dialog {
+        margin: 10px;
+        max-width: calc(100% - 20px);
+    }
+    
+    .modal-header {
+        padding: 15px;
+    }
+    
+    .modal-title {
+        font-size: 16px;
+    }
+    
+    .modal-body {
+        padding: 15px;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+    }
+    
+    .modal-footer {
+        padding: 15px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .modal-footer .btn {
+        flex: 1 1 auto;
+        min-width: 100px;
+    }
+    
+    /* ========== ALERT & NOTIFICATION ========== */
+    
+    .alert {
+        font-size: 13px;
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+    }
+    
+    /* ========== BREADCRUMB ========== */
+    
+    .breadcrumb {
+        font-size: 12px;
+        padding: 8px 0;
+        background: transparent;
+        flex-wrap: wrap;
+    }
+    
+    .breadcrumb-item {
+        margin-bottom: 4px;
+    }
+    
+    /* ========== BADGE & STATUS ========== */
+    
+    .badge {
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+    }
+    
+    /* ========== DROPDOWN MENU ========== */
+    
+    .dropdown-menu {
+        font-size: 13px;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    
+    .dropdown-item {
+        padding: 10px 15px;
+    }
+    
+    /* ========== PAGINATION ========== */
+    
+    .pagination {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    
+    .page-link {
+        font-size: 13px;
+        padding: 6px 12px;
+        min-width: 40px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* ========== TOOLTIP & POPOVER ========== */
+    
+    .tooltip-inner {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+    
+    /* ========== UTILITY CLASSES ========== */
+    
+    .mobile-hide {
+        display: none !important;
+    }
+    
+    .mobile-show {
+        display: block !important;
+    }
+    
+    .mobile-text-center {
+        text-align: center !important;
+    }
+    
+    .mobile-full-width {
+        width: 100% !important;
+    }
+    
+    /* ========== SCROLL INDICATORS ========== */
+    
+    /* Indicator untuk table yang bisa di-scroll */
+    .table-responsive::after {
+        content: '← Geser untuk melihat lebih →';
+        display: block;
+        text-align: center;
+        font-size: 11px;
+        color: #999;
+        padding: 8px;
+        background: #f8f9fa;
+        border-radius: 0 0 6px 6px;
+        margin-top: -15px;
+    }
+    
+    .table-responsive.scrolled::after {
+        content: '';
+        display: none;
+    }
+}
+
+/* ========== TABLET OPTIMIZATION (768px - 991px) ========== */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .col-lg-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+    .table {
+        font-size: 13px;
+    }
+    
+    .card-header-action .btn {
+        font-size: 13px;
+    }
+}
+
+/* ========== LANDSCAPE PHONE OPTIMIZATION ========== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .modal-dialog {
+        max-width: 90%;
+    }
+    
+    .modal-body {
+        max-height: calc(100vh - 150px);
+    }
+}
+
+/* ========== EXTRA SMALL DEVICES (<576px) ========== */
+
+@media (max-width: 576px) {
+    .col-lg-3, .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .card-header h4 {
+        font-size: 15px;
+    }
+    
+    .btn {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+}
