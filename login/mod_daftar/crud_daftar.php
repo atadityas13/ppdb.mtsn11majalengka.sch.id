@@ -134,6 +134,33 @@ if ($pg == 'bataldf') {
     update($koneksi, 'daftar', $data, $where);    
 }    
     
+if ($pg == 'update_full') {    
+    $status = (isset($_POST['status'])) ? $_POST['status'] : 0;    
+    $nama = str_replace("'", "`", $_POST['nama']);    
+    $data = [    
+        'nisn' => $_POST['nisn'],    
+        'nama' => ucwords(strtoupper($nama)),    
+        'tempat_lahir' => $_POST['tempat_lahir'],    
+        'tgl_lahir' => $_POST['tgl_lahir'],    
+        'asal_sekolah' => $_POST['asal'],    
+        'npsn_asal' => $_POST['npsn_asal'],    
+        'no_hp' => str_replace(" ", "", $_POST['no_hp']),    
+        'status' => $status,    
+        'jenkel' => $_POST['jenkel']
+    ];
+    
+    // Update password hanya jika diisi
+    if (!empty($_POST['password'])) {
+        $data['password'] = $_POST['password'];
+    }
+    
+    $where = [    
+        'id_daftar' => $_POST['id_daftar']    
+    ];    
+    update($koneksi, 'daftar', $data, $where);
+    echo 'ok';
+}    
+    
 if ($pg == 'status') {    
     $status = (isset($_POST['status'])) ? $_POST['status'] : 0;    
     $nama = str_replace("'", "`", $_POST['nama']);    

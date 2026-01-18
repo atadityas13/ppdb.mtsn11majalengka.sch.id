@@ -1,7 +1,9 @@
 <?php defined('BASEPATH') or die("ip anda sudah tercatat oleh sistem kami") ?>  
 <?php    
 // Definisikan peran pengguna    
-$is_admin = $user['level'] == 'admin';    
+$is_superadmin = $user['level'] == 'superadmin';
+$is_admin = $user['level'] == 'admin';
+$is_panitia = $user['level'] == 'panitia';
 $is_operator_sd = $user['level'] == 'operator_sd';    
     
 // Ambil ID sekolah jika ada    

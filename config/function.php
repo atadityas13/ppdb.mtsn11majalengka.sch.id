@@ -65,7 +65,7 @@ function cek_login_admin()
 {
 
 	$level = $_SESSION['level'];
-	if ($level != 'admin') {
+	if ($level != 'admin' && $level != 'panitia' && $level != 'superadmin') {
 		echo "<script>document.location='.';</script>";
 		die();
 	}

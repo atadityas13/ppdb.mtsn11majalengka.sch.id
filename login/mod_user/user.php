@@ -25,8 +25,17 @@
                             </tr>  
                         </thead>  
                         <tbody>  
-                            <?php  
-                            $query = mysqli_query($koneksi, "select * from user");  
+                            <?php
+                            // Get current logged in user info
+                            $current_user = mysqli_fetch_array(mysqli_query($koneksi, "SELECT level FROM user WHERE id_user='$_SESSION[id_user]'"));
+                            $is_superadmin = ($current_user['level'] == 'superadmin');
+                            
+                            // Super admin sees all, admin only sees admin and panitia
+                            if ($is_superadmin) {
+                                $query = mysqli_query($koneksi, "select * from user WHERE level IN ('superadmin', 'admin', 'panitia')");  
+                            } else {
+                                $query = mysqli_query($koneksi, "select * from user WHERE level IN ('admin', 'panitia')");  
+                            }
                             $no = 0;  
                             while ($user = mysqli_fetch_array($query)) {  
                                 $no++;  
@@ -37,14 +46,12 @@
                                     <td><?= $user['username'] ?></td>  
                                     <td>  
                                         <?php  
-                                        if ($user['level'] == 'admin') {  
+                                        if ($user['level'] == 'superadmin') {  
+                                            echo '<span class="badge badge-danger">Super Admin</span>';  
+                                        } elseif ($user['level'] == 'admin') {  
                                             echo '<span class="badge badge-primary">Administrator</span>';  
-                                        } elseif ($user['level'] == 'operator_sd') {  
-                                            echo '<span class="badge badge-info">Operator SD</span><br>';  
-                                            if (!empty($user['id_sekolah'])) {  
-                                                $sekolah_info = mysqli_fetch_array(mysqli_query($koneksi, "SELECT nama_sekolah FROM sekolah WHERE npsn = '{$user['id_sekolah']}'"));  
-                                                echo '<small class="text-muted">' . ($sekolah_info['nama_sekolah'] ?? '-') . '</small>';  
-                                            }  
+                                        } elseif ($user['level'] == 'panitia') {  
+                                            echo '<span class="badge badge-success">Panitia</span>';  
                                         }  
                                         ?>  
                                     </td>  
@@ -56,17 +63,21 @@
                                         <?php } ?>  
                                     </td>  
                                     <td>  
-                                        <?php if ($user['status'] == 1) { ?>  
-                                            <button data-id="<?= $user['id_user'] ?>" class="toggle-status btn btn-warning btn-sm" title="Non-aktifkan">  
-                                                <i class="fas fa-toggle-on"></i> Non-aktifkan  
-                                            </button>  
+                                        <?php if ($user['level'] != 'superadmin') { ?>  
+                                            <?php if ($user['status'] == 1) { ?>  
+                                                <button data-id="<?= $user['id_user'] ?>" class="toggle-status btn btn-warning btn-sm" title="Non-aktifkan">  
+                                                    <i class="fas fa-toggle-on"></i> Non-aktifkan  
+                                                </button>  
+                                            <?php } else { ?>  
+                                                <button data-id="<?= $user['id_user'] ?>" class="toggle-status btn btn-success btn-sm" title="Aktifkan">  
+                                                    <i class="fas fa-toggle-off"></i> Aktifkan  
+                                                </button>  
+                                            <?php } ?>  
+                                            <br><br>  
+                                            <button data-id="<?= $user['id_user'] ?>" class="hapus btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</button>  
                                         <?php } else { ?>  
-                                            <button data-id="<?= $user['id_user'] ?>" class="toggle-status btn btn-success btn-sm" title="Aktifkan">  
-                                                <i class="fas fa-toggle-off"></i> Aktifkan  
-                                            </button>  
+                                            <span class="badge badge-info"><i class="fas fa-lock"></i> Protected</span>  
                                         <?php } ?>  
-                                        <br><br>  
-                                        <button data-id="<?= $user['id_user'] ?>" class="hapus btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</button>  
                                         <!-- Button trigger modal -->  
                                         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit<?= $no ?>">  
                                             <i class="fas fa-edit"></i> Edit  
@@ -95,23 +106,17 @@
                                                             </div>  
                                                             <div class="form-group">  
                                                                 <label for="level">Level</label>  
-                                                                <select class="form-control" name="level" id="level<?= $no ?>" required>  
+                                                                <select class="form-control" name="level" id="level<?= $no ?>" required <?php if ($user['level'] == 'superadmin') echo 'disabled'; ?>>  
                                                                     <option value="">Pilih Level</option>  
-                                                                    <option value="admin" <?php if ($user['level'] == 'admin') echo 'selected'; ?>>Administrator</option>  
-                                                                    <option value="operator_sd" <?php if ($user['level'] == 'operator_sd') echo 'selected'; ?>>Operator SD</option>  
-                                                                </select>  
-                                                            </div>  
-                                                            <div class="form-group" id="sekolah-group<?= $no ?>" style="display: <?php echo $user['level'] == 'operator_sd' ? 'block' : 'none'; ?>">  
-                                                                <label for="sekolah">Sekolah SD</label>  
-                                                                <select class="form-control" name="sekolah" id="sekolah<?= $no ?>">  
-                                                                    <option value="">Pilih Sekolah</option>  
-                                                                    <?php  
-                                                                    $sekolah_query = mysqli_query($koneksi, "select * from sekolah");  
-                                                                    while ($sekolah = mysqli_fetch_array($sekolah_query)) {  
-                                                                    ?>  
-                                                                        <option value="<?= $sekolah['npsn'] ?>" <?php if ($user['id_sekolah'] == $sekolah['npsn']) echo 'selected'; ?>><?= $sekolah['nama_sekolah'] ?></option>  
+                                                                    <?php if ($is_superadmin) { ?>  
+                                                                        <option value="superadmin" <?php if ($user['level'] == 'superadmin') echo 'selected'; ?>>Super Admin</option>  
                                                                     <?php } ?>  
+                                                                    <option value="admin" <?php if ($user['level'] == 'admin') echo 'selected'; ?>>Administrator</option>  
+                                                                    <option value="panitia" <?php if ($user['level'] == 'panitia') echo 'selected'; ?>>Panitia</option>  
                                                                 </select>  
+                                                                <?php if ($user['level'] == 'superadmin') { ?>  
+                                                                    <input type="hidden" name="level" value="superadmin">  
+                                                                <?php } ?>  
                                                             </div>  
                                                             <div class="form-group">  
                                                                 <label>Ganti Password</label>  
@@ -137,14 +142,6 @@
                                     </td>  
                                 </tr>  
                                 <script>  
-                                    $('#level<?= $no ?>').change(function() {  
-                                        if ($(this).val() == 'operator_sd') {  
-                                            $('#sekolah-group<?= $no ?>').show();  
-                                        } else {  
-                                            $('#sekolah-group<?= $no ?>').hide();  
-                                        }  
-                                    });  
-  
                                     $('#form-edit<?= $no ?>').submit(function(e) {  
                                         e.preventDefault();  
                                         $.ajax({  
@@ -204,27 +201,18 @@
                         <label>Username</label>  
                         <input type="text" name="username" class="form-control" required="">  
                     </div>  
-                    <div class="form-group">  
-                        <label for="level">Level</label>  
-                        <select class="form-control" name="level" id="level" required>  
-                            <option value="">Pilih Level</option>  
-                            <option value="admin">Administrator</option>  
-                            <option value="operator_sd">Operator SD</option>  
-                        </select>  
-                    </div>  
-                    <div class="form-group" id="sekolah-group" style="display: none;">  
-                        <label for="sekolah">Sekolah SD</label>  
-                        <select class="form-control" name="sekolah" id="sekolah">  
-                            <option value="">Pilih Sekolah</option>  
-                            <?php  
-                            $sekolah_query = mysqli_query($koneksi, "select * from sekolah");  
-                            while ($sekolah = mysqli_fetch_array($sekolah_query)) {  
-                            ?>  
-                                <option value="<?= $sekolah['npsn'] ?>"><?= $sekolah['nama_sekolah'] ?></option>  
+                    <div class="form-group">
+                        <label for="level">Level</label>
+                        <select class="form-control" name="level" id="level" required>
+                            <option value="">Pilih Level</option>
+                            <?php if ($is_superadmin) { ?>  
+                                <option value="superadmin">Super Admin</option>  
                             <?php } ?>  
-                        </select>  
-                    </div>  
-                    <div class='form-group'>  
+                            <option value="admin">Administrator</option>
+                            <option value="panitia">Panitia</option>
+                        </select>
+                    </div>
+                    <div class='form-group'>
                         <label>Password</label>  
                         <input type="password" name="password" class="form-control" required="">  
                     </div>  
@@ -245,20 +233,12 @@
   
 <script>  
     $(function() {  
-        $("#txtConfirmPassword").keyup(function() {  
-            var password = $("#txtNewPassword").val();  
-            $("#divCheckPasswordMatch").html(password == $(this).val() ? "Passwords match." : "Passwords do not match!");  
-        });  
-  
-        $('#level').change(function() {  
-            if ($(this).val() == 'operator_sd') {  
-                $('#sekolah-group').show();  
-            } else {  
-                $('#sekolah-group').hide();  
-            }  
-        });  
-  
-        $('#form-tambah').submit(function(e) {  
+        $("#txtConfirmPassword").keyup(function() {
+            var password = $("#txtNewPassword").val();
+            $("#divCheckPasswordMatch").html(password == $(this).val() ? "Passwords match." : "Passwords do not match!");
+        });
+
+        $('#form-tambah').submit(function(e) {
             e.preventDefault();  
             $.ajax({  
                 type: 'POST',  

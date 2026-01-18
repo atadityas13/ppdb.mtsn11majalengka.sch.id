@@ -6,8 +6,10 @@ $diff = $awal->diff($akhir);
 // Hitung selisih hari  
 $hariSelisih = $diff->days;  
   
-// Cek apakah pengguna adalah admin atau operator SD  
+// Cek apakah pengguna adalah super admin, admin, panitia, atau operator SD  
+$is_superadmin = $user['level'] == 'superadmin';  
 $is_admin = $user['level'] == 'admin';  
+$is_panitia = $user['level'] == 'panitia';  
 $is_operator_sd = $user['level'] == 'operator_sd';  
   
 // Tentukan apakah PPDB aktif atau tidak  
@@ -17,7 +19,7 @@ $is_ppdb_aktif = $akhir <= $awal;
 <ul class="sidebar-menu">  
     <li class="menu-header bg-warning"></li>  
   
-    <?php if ($is_admin) { ?>  
+    <?php if ($is_superadmin || $is_admin) { ?>  
         <li class="dropdown">  
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-home fa-fw"></i> <span>Kelembagaan</span></a>  
             <ul class="dropdown-menu">  
@@ -35,7 +37,7 @@ $is_ppdb_aktif = $akhir <= $awal;
         </li>  
     <?php } ?>  
   
-    <?php if ($is_admin) { ?>  
+    <?php if ($is_superadmin || $is_admin || $is_panitia) { ?>  
         <li class="dropdown">  
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-friends"></i> <span>Data PPDB</span></a>  
             <ul class="dropdown-menu">  
@@ -46,6 +48,9 @@ $is_ppdb_aktif = $akhir <= $awal;
                 <li><a class="nav-link text-danger" href="?pg=ditolak">Ditolak / Cadangan</a></li>  
             </ul>  
         </li>  
+    <?php } ?>  
+  
+    <?php if ($is_superadmin || $is_admin || $is_panitia) { ?>  
         <li class="dropdown">  
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire fa-fw"></i> <span>Data Master</span></a>  
             <ul class="dropdown-menu">  
@@ -54,19 +59,42 @@ $is_ppdb_aktif = $akhir <= $awal;
                 <li><a class="nav-link" href="?pg=jenis">Master Jenis Daftar</a></li>  
             </ul>  
         </li>  
+    <?php } ?>  
+  
+    <?php if ($is_superadmin || $is_admin || $is_panitia) { ?>  
         <li class="dropdown">  
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-book"></i> <span>Cetak</span></a>  
             <ul class="dropdown-menu">  
                 <li><a class="nav-link" href="?pg=l_ppdbyes">Data Penerimaan PPDB</a></li>  
             </ul>  
         </li>  
+    <?php } ?>
+
+    <?php if ($is_superadmin || $is_admin) { ?>
         <li class="dropdown">  
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i> <span>Akun</span></a>  
             <ul class="dropdown-menu">  
-                <li><a class="nav-link" href="?pg=user">Akun Admin</a></li>  
+                <li><a class="nav-link" href="?pg=user">Akun Admin & Panitia</a></li>
+                <li><a class="nav-link" href="?pg=operator_sd">Akun Operator SD</a></li>  
+            </ul>  
+        </li>
+        <li class="dropdown">  
+            <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i> <span>Setting</span></a>  
+            <ul class="dropdown-menu">  
+                <li><a class="nav-link" href="?pg=setting">Profile</a></li>
+                <li><a class="nav-link" href="?pg=kontak">Kontak</a></li>  
             </ul>  
         </li>  
-    <?php } ?>  
+    <?php } ?>
+
+    <?php if ($is_panitia || $is_operator_sd) { ?>
+        <li class="dropdown">  
+            <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-circle"></i> <span>Profile</span></a>  
+            <ul class="dropdown-menu">  
+                <li><a class="nav-link" href="?pg=profile">Profil Saya</a></li>  
+            </ul>  
+        </li>  
+    <?php } ?>
   
     <?php if ($is_operator_sd) { ?>  
         <li class="dropdown">  
@@ -77,20 +105,20 @@ $is_ppdb_aktif = $akhir <= $awal;
             </ul>  
         </li>  
     <?php } ?>  
-  
-    <?php if ($is_admin) { ?>  
-        <div class="mt-4 mb-4 p-3 hide-sidebar-mini">  
-            <button type="button" class="btn btn-<?php echo $is_ppdb_aktif ? 'danger' : 'primary'; ?> btn-lg btn-block btn-icon-split" data-toggle="modal" data-target="#ppdb">  
-                <i class="fas fa-web"></i>   
-                <?php if ($is_ppdb_aktif) { ?>  
-                    Tutup Pendaftaran  
-                <?php } else { ?>  
-                    Buka Pendaftaran  
-                <?php } ?>  
-            </button>  
-        </div>  
-    <?php } ?>  
-</ul>  
+</ul>
+
+<?php if ($is_superadmin || $is_admin || $is_panitia) { ?>  
+    <div class="mt-4 mb-4 p-3 hide-sidebar-mini">  
+        <button type="button" class="btn btn-<?php echo $is_ppdb_aktif ? 'danger' : 'primary'; ?> btn-lg btn-block btn-icon-split" data-toggle="modal" data-target="#ppdb">  
+            <i class="fas fa-web"></i>   
+            <?php if ($is_ppdb_aktif) { ?>  
+                Tutup Pendaftaran  
+            <?php } else { ?>  
+                Buka Pendaftaran  
+            <?php } ?>  
+        </button>  
+    </div>  
+<?php } ?>  
   
 <div class="modal fade" id="ppdb" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">  
     <div class="modal-dialog" role="document">  

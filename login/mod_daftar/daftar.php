@@ -1,4 +1,17 @@
 <?php defined('BASEPATH') or die("ip anda sudah tercatat oleh sistem kami") ?>
+<style>
+    /* Fix z-index untuk modal agar tidak tertutup statistik */
+    .modal {
+        z-index: 1055 !important;
+    }
+    .modal-backdrop {
+        z-index: 1050 !important;
+    }
+    .card {
+        position: relative;
+        z-index: 1;
+    }
+</style>
 <!-- Modal -->
 <div class="modal fade" id="tambahdata" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -284,8 +297,12 @@
 															<label>No HP</label>
 															<input type="number"  value="<?= $daftar['no_hp'] ?>" name="no_hp" class="form-control" ="">
 															</div>
-															
-                                                            <div class="form-group">
+																														<div class="form-group">
+																<label>Password <small class="text-muted">(Kosongkan jika tidak ingin mengubah)</small></label>
+																<input type="password" name="password" class="form-control" placeholder="Masukkan password baru">
+																<small class="form-text text-muted">Password akan diubah hanya jika field ini diisi</small>
+															</div>
+															                                                            <div class="form-group">
                                                                 <div class="control-label">Pilih Status</div>
                                                                 <div class="custom-switches-stacked mt-2">
                                                                     <label class="custom-switch">
@@ -324,13 +341,13 @@
                                         e.preventDefault();
                                         $.ajax({
                                             type: 'POST',
-                                            url: 'mod_daftar/crud_daftar.php?pg=status',
+                                            url: 'mod_daftar/crud_daftar.php?pg=update_full',
                                             data: $(this).serialize(),
                                             success: function(data) {
 
                                                 iziToast.success({
                                                     title: 'Berhasil!',
-                                                    message: 'Status berhasil diubah',
+                                                    message: 'Data siswa berhasil diubah',
                                                     position: 'topRight'
                                                 });
                                                 setTimeout(function() {
@@ -389,7 +406,7 @@
     </div>
     
     <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card">
+        <div class="card" style="position: relative; z-index: 1;">
             <div class="card-header p-2">
                 <h6 class="mb-0" style="font-size: 13px;">Statistik Status</h6>
             </div>

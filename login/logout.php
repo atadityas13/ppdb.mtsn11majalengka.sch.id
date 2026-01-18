@@ -11,6 +11,7 @@ session_destroy();
 if ($user_level == 'operator_sd') {
     header("Location: ../sekolah/login.php");
 } else {
+    // Admin dan Panitia ke halaman login utama
     header("Location: ../login");
 }
 exit();

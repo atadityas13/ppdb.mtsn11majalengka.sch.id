@@ -76,6 +76,9 @@ if ($pg == '') {
 } elseif ($pg == 'user') {
     cek_login_admin();
     include "mod_user/user.php";
+} elseif ($pg == 'operator_sd') {
+    cek_login_admin();
+    include "mod_user/operator_sd.php";
 } elseif ($pg == 'profile') {
     include "mod_user/profile.php";
 } elseif ($pg == 'setting') {

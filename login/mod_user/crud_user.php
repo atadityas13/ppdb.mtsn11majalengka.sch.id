@@ -48,11 +48,23 @@ if ($pg == 'tambah') {
   
 if ($pg == 'hapus') {  
     $id_user = $_POST['id_user'];  
+    // Check if user is super admin
+    $check_user = mysqli_fetch_array(mysqli_query($koneksi, "SELECT level FROM user WHERE id_user='$id_user'"));
+    if ($check_user['level'] == 'superadmin') {
+        echo 'PROTECTED'; // Super admin cannot be deleted
+        exit;
+    }
     delete($koneksi, 'user', ['id_user' => $id_user]);  
 }  
   
 if ($pg == 'toggle_status') {  
     $id_user = $_POST['id_user'];  
+    // Check if user is super admin
+    $check_user = mysqli_fetch_array(mysqli_query($koneksi, "SELECT level FROM user WHERE id_user='$id_user'"));
+    if ($check_user['level'] == 'superadmin') {
+        echo 'PROTECTED'; // Super admin cannot be deactivated
+        exit;
+    }
     // Get current status  
     $current = mysqli_fetch_array(mysqli_query($koneksi, "SELECT status FROM user WHERE id_user = '$id_user'"));  
     // Toggle status  
