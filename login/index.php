@@ -53,6 +53,25 @@ if (isset($_SESSION['id_user'])) {
     <!-- Mobile Optimization CSS -->
     <link rel="stylesheet" href="../assets/css/mobile-optimize.css">
     
+    <style>
+    /* Force modal to be on top of everything */
+    .modal-backdrop {
+        z-index: 1050 !important;
+    }
+    .modal {
+        z-index: 1055 !important;
+    }
+    .modal-dialog {
+        z-index: 1056 !important;
+    }
+    /* Ensure no DataTables elements interfere */
+    .dataTables_wrapper,
+    .dataTables_processing,
+    div.dataTables_wrapper {
+        z-index: 1 !important;
+    }
+    </style>
+    
     <!-- Start GA -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script> -->
 
