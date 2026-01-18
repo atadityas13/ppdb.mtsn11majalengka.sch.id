@@ -1029,3 +1029,46 @@
     }
 }
 
+/* ========== MODAL Z-INDEX FIX ========== */
+
+/* Ensure modals always appear on top of all other elements */
+.modal-backdrop {
+    z-index: 10050 !important;
+}
+
+.modal {
+    z-index: 10060 !important;
+}
+
+.modal-dialog {
+    z-index: 10065 !important;
+}
+
+/* Fix for DataTables and other tables that might overlap */
+.dataTables_wrapper,
+.table-responsive,
+.card {
+    position: relative;
+    z-index: auto;
+}
+
+/* Statistik tables should never overlap modals */
+.card .table,
+.card-body .table,
+[class*="statistik"] {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure dropdown menus don't interfere with modals */
+.dropdown-menu {
+    z-index: 1000;
+}
+
+/* When modal is open, lower the z-index of main content */
+body.modal-open .main-wrapper,
+body.modal-open .main-content,
+body.modal-open .card {
+    z-index: auto !important;
+}
+
