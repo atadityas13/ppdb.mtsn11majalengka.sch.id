@@ -2828,11 +2828,31 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     opacity: 0.0; } }
 
 /* Fix modal z-index for desktop - ensure modals appear above tables and cards */
+.dataTables_wrapper,
+.table-responsive,
+table,
+tbody,
+thead,
+tr,
+td,
+th {
+  position: relative;
+  z-index: 1 !important;
+  transform: none !important; }
+
 body.modal-open .dataTables_wrapper,
 body.modal-open .table-responsive,
 body.modal-open .card,
-body.modal-open table {
-  z-index: 1 !important; }
+body.modal-open .card-body,
+body.modal-open table,
+body.modal-open tbody,
+body.modal-open thead,
+body.modal-open tr,
+body.modal-open td,
+body.modal-open th,
+body.modal-open .small-box {
+  z-index: 1 !important;
+  transform: none !important; }
 
 body.modal-open .search-backdrop {
   z-index: 1 !important;
