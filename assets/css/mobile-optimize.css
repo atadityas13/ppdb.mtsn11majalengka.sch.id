@@ -272,20 +272,21 @@
     
     /* Override navbar-bg untuk sticky behavior */
     .navbar-bg {
-        position: absolute !important;
+        position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         width: 100% !important;
         height: 70px !important;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-        z-index: -1 !important;
+        z-index: 999 !important;
     }
     
     /* Navbar fixed & shadow */
     .main-navbar {
-        position: -webkit-sticky !important;
-        position: sticky !important;
+        position: fixed !important;
         top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
         z-index: 1000 !important;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
         padding: 8px 15px !important;
@@ -293,16 +294,21 @@
     }
     
     .main-navbar.sticky-top {
-        position: -webkit-sticky !important;
-        position: sticky !important;
+        position: fixed !important;
         top: 0 !important;
         z-index: 1000 !important;
     }
     
-    /* Main wrapper untuk support sticky */
+    /* Main wrapper untuk support fixed navbar */
     .main-wrapper {
         position: relative;
-        overflow-x: hidden;
+        padding-top: 70px !important;
+    }
+    
+    /* Main content dengan padding top untuk fixed navbar */
+    .main-content {
+        margin-top: 0 !important;
+        padding-top: 20px !important;
     }
     
     /* Navbar brand */

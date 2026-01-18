@@ -129,7 +129,7 @@ echo "<!-- Pengumuman Text: " . htmlspecialchars($pengumuman_text) . " -->";
   
 <div style='float:right; margin-top:-220px'>    
     <button class='btn btn-flat bg-purple'><i class='fa fa-calendar'></i> <?= buat_tanggal('D, d M Y') ?></button>    
-    <button class='btn btn-flat bg-red'><i class='fa fa-clock'></i> <span id='timestamp' style="font-family:'OCR A Extended'"><?= date('h:i:s') ?></span></button>    
+    <button class='btn btn-flat bg-red' style='margin: 10px 0; display: block; width: auto; z-index: 1;'><i class='fa fa-clock'></i> <span id='timestamp' style="font-family:'OCR A Extended'"><?= date('h:i:s') ?></span></button>    
 </div>    
   
 <?php if ($setting['ppdb'] == "0") { ?>    
