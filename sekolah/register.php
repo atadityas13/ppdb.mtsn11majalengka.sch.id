@@ -26,296 +26,591 @@ require "../config/functions.crud.php";
   <link rel="stylesheet" href="../assets/css/components.css">
   
   <style>
-    body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .register-brand {
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Split Screen Layout */
+    .register-wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .register-left {
+      flex: 1;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 60px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .register-right {
+      flex: 1;
+      background: white;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    /* Branding Section */
+    .brand-content {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand-logo {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .brand-title {
       color: white;
+      font-size: 36px;
       font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .brand-subtitle {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .brand-description {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Floating Animations */
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Form Card */
+    .register-card {
+      background: white;
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .register-header {
+      text-align: center;
       margin-bottom: 30px;
     }
-    .card {
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    .logo-circle {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: float 3s ease-in-out infinite;
     }
-    .btn-primary {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
-      border-radius: 25px;
-      padding: 12px;
+
+    .logo-circle img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    }
+
+    .register-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 8px;
+    }
+
+    .register-subtitle {
+      font-size: 14px;
+      color: #718096;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
       font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 8px;
     }
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #5568d3 0%, #6b3fa0 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    }
-    .form-control {
-      border-radius: 10px;
-      padding: 12px 15px;
-      border: 2px solid #e3e6f0;
-    }
-    .form-control:focus {
-      border-color: #667eea;
-      box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-    }
-    .card-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border-radius: 15px 15px 0 0 !important;
-      padding: 20px;
-    }
-    .simple-footer {
-      color: white;
-      margin-top: 20px;
-    }
-    .info-box {
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 15px;
-      color: white;
-      margin-bottom: 20px;
-      backdrop-filter: blur(10px);
-    }
-    .select2-container--default .select2-selection--single {
-      border-radius: 10px;
-      padding: 8px;
-      border: 2px solid #e3e6f0;
-      height: 48px;
-    }
-    .step-indicator {
-      background: white;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
-    /* Password Strength Indicator */
-    .password-strength {
-      height: 5px;
-      border-radius: 3px;
-      margin-top: 5px;
-      transition: all 0.3s;
-      background: #e3e6f0;
-    }
-    .strength-bar {
-      height: 100%;
-      border-radius: 3px;
-      transition: all 0.3s;
-    }
-    .strength-weak .strength-bar {
-      width: 33%;
-      background: linear-gradient(90deg, #dc3545, #e74c3c);
-    }
-    .strength-medium .strength-bar {
-      width: 66%;
-      background: linear-gradient(90deg, #ffc107, #f39c12);
-    }
-    .strength-strong .strength-bar {
+
+    .form-control, .select2-container--default .select2-selection--single {
       width: 100%;
-      background: linear-gradient(90deg, #28a745, #27ae60);
+      height: 44px;
+      padding: 0 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 13px;
+      transition: all 0.3s;
+      background: white;
     }
+
+    .form-control:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .select2-container--default .select2-selection--single {
+      line-height: 40px;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+      line-height: 40px;
+      padding-left: 10px;
+    }
+
+    textarea.form-control {
+      height: auto;
+      min-height: 80px;
+      padding: 12px 15px;
+      resize: vertical;
+    }
+
     .password-toggle {
       position: relative;
     }
-    .password-toggle .toggle-icon {
+
+    .password-toggle .form-control {
+      padding-right: 45px;
+    }
+
+    .toggle-icon {
       position: absolute;
       right: 15px;
-      top: 13px;
+      top: 50%;
+      transform: translateY(-50%);
       cursor: pointer;
-      color: #6c757d;
+      color: #a0aec0;
       transition: color 0.3s;
-      z-index: 10;
     }
-    .password-toggle .toggle-icon:hover {
+
+    .toggle-icon:hover {
       color: #667eea;
+    }
+
+    /* Password Strength */
+    .password-strength {
+      height: 4px;
+      background: #e2e8f0;
+      border-radius: 2px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .strength-bar {
+      height: 100%;
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+
+    .strength-weak .strength-bar {
+      width: 33%;
+      background: #dc3545;
+    }
+
+    .strength-medium .strength-bar {
+      width: 66%;
+      background: #ffc107;
+    }
+
+    .strength-strong .strength-bar {
+      width: 100%;
+      background: #28a745;
+    }
+
+    .password-match {
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .password-match.match {
+      color: #28a745;
+    }
+
+    .password-match.no-match {
+      color: #dc3545;
+    }
+
+    /* Alert Boxes */
+    .alert {
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      border: none;
+    }
+
+    .alert-info {
+      background: #e6f2ff;
+      color: #0066cc;
+    }
+
+    .alert-warning {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    /* Submit Button */
+    .register-btn {
+      width: 100%;
+      height: 48px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 10px;
+    }
+
+    .register-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .register-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Footer */
+    .register-footer {
+      text-align: left;
+      padding: 25px 0 0;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 25px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #718096;
+      font-size: 12px;
+      text-decoration: none;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .footer-links a:hover {
+      color: #667eea;
+    }
+
+    .footer-text {
+      color: #a0aec0;
+      font-size: 11px;
+      margin: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .register-wrapper {
+        flex-direction: column;
+      }
+
+      .register-left {
+        min-height: 280px;
+        padding: 40px 30px;
+      }
+
+      .register-right {
+        width: 100%;
+        padding: 30px 20px;
+      }
+
+      .brand-logo {
+        width: 80px;
+        height: 80px;
+      }
+
+      .brand-title {
+        font-size: 28px;
+      }
+
+      .brand-subtitle {
+        font-size: 16px;
+      }
+
+      .brand-description {
+        font-size: 14px;
+      }
+
+      .logo-circle {
+        width: 50px;
+        height: 50px;
+      }
+
+      .logo-circle img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .register-title {
+        font-size: 24px;
+      }
+
+      .form-control {
+        height: 42px;
+        font-size: 13px;
+      }
+
+      .register-btn {
+        height: 46px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .register-left {
+        padding: 30px 20px;
+      }
+
+      .register-right {
+        padding: 25px 15px;
+      }
+
+      .brand-logo {
+        width: 70px;
+        height: 70px;
+      }
+
+      .brand-title {
+        font-size: 24px;
+      }
+
+      .logo-circle {
+        width: 45px;
+        height: 45px;
+      }
+
+      .logo-circle img {
+        width: 45px;
+        height: 45px;
+      }
+
+      .register-title {
+        font-size: 22px;
+      }
+
+      .form-control {
+        height: 40px;
+        font-size: 12px;
+      }
+
+      .register-btn {
+        height: 44px;
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div id="app">
-    <section class="section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2">
-            
-            <div class="register-brand text-center">
-              <img src="../<?= $setting['logo'] ?>" alt="logo" width="140" class="mb-3" style="filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.3)); border-radius: 10px;">
-              <h3 class="mt-3">PENDAFTARAN OPERATOR SEKOLAH</h3>
-              <h5>PPDB Online <?= $setting['nama_sekolah'] ?></h5>
-            </div>
-
-            <div class="info-box text-center">
-              <i class="fas fa-user-shield fa-2x mb-2"></i>
-              <p class="mb-0"><small>Daftarkan sekolah Anda untuk memantau data siswa pendaftar<br>yang berasal dari sekolah Anda secara real-time</small></p>
-            </div>
-
-            <div class="card">
-              <div class="card-header text-center">
-                <h4><i class="fas fa-user-plus"></i> Form Pendaftaran Operator</h4>
-              </div>
-
-              <div class="card-body p-4">
-                <div class="step-indicator">
-                  <div class="row text-center">
-                    <div class="col-md-4">
-                      <div class="step active">
-                        <div class="step-icon"><i class="fas fa-school"></i></div>
-                        <div class="step-text">Data Sekolah</div>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="step">
-                        <div class="step-icon"><i class="fas fa-user"></i></div>
-                        <div class="step-text">Data Operator</div>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="step">
-                        <div class="step-icon"><i class="fas fa-key"></i></div>
-                        <div class="step-text">Keamanan</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <form method="POST" id="form-register">
-                  
-                  <div class="alert alert-info">
-                    <i class="fas fa-info-circle"></i> <strong>Informasi:</strong> Pilih sekolah Anda dari daftar. Buat username unik untuk login.
-                  </div>
-
-                  <div class="form-group">
-                    <label for="npsn"><i class="fas fa-school"></i> Sekolah <small class="text-danger">*</small></label>
-                    <select class="form-control select2" name="npsn" id="npsn" required style="width: 100%">
-                      <option value="">-- Pilih Sekolah Anda --</option>
-                      <?php
-                      $sekolah_list = select($koneksi, 'sekolah', ['status' => 1], 'nama_sekolah ASC');
-                      foreach ($sekolah_list as $skl) {
-                        echo "<option value='{$skl['npsn']}'>[{$skl['npsn']}] {$skl['nama_sekolah']}</option>";
-                      }
-                      ?>
-                      <option value="LAINNYA" style="background-color: #fff3cd; font-weight: bold;">🔽 Sekolah Lainnya (Tidak Ada Dalam Daftar)</option>
-                    </select>
-                    <small class="form-text text-muted">Pilih sekolah tempat Anda bertugas</small>
-                  </div>
-
-                  <div class="form-group" id="input-sekolah-manual-operator" style="display: none;">
-                    <label for="nama_sekolah_manual"><i class="fas fa-school"></i> NAMA SEKOLAH <small class="text-danger">*</small></label>
-                    <input type="text" class="form-control" name="nama_sekolah_manual" id="nama_sekolah_manual" placeholder="Contoh: SD NEGERI 1 MAJALENGKA" style="text-transform: uppercase;">
-                    <small class="form-text text-muted">Tulis nama lengkap sekolah dengan benar</small>
-                  </div>
-
-                  <div class="form-group" id="input-npsn-manual-operator" style="display: none;">
-                    <label for="npsn_manual"><i class="fas fa-barcode"></i> NPSN SEKOLAH <small class="text-danger">*</small></label>
-                    <input type="text" class="form-control" name="npsn_manual" id="npsn_manual" placeholder="Contoh: 20200000" maxlength="8">
-                    <small class="form-text text-muted">Nomor Pokok Sekolah Nasional (8 digit angka)</small>
-                  </div>
-
-                  <hr class="my-4">
-
-                  <div class="row">
-                    <div class="form-group col-md-6">
-                      <label for="nama_user"><i class="fas fa-user"></i> Nama Lengkap Operator <small class="text-danger">*</small></label>
-                      <input id="nama_user" type="text" class="form-control" name="nama_user" required placeholder="Nama lengkap operator">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="nuptk"><i class="fas fa-id-card"></i> NIP (Opsional)</label>
-                      <input id="nuptk" type="text" class="form-control" name="nuptk" placeholder="Nomor NUPTK">
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="form-group col-md-6">
-                      <label for="no_hp"><i class="fas fa-phone"></i> No. HP/WhatsApp <small class="text-danger">*</small></label>
-                      <input id="no_hp" type="text" class="form-control" name="no_hp" required placeholder="08xxxxxxxxxx">
-                      <small class="form-text text-muted">Untuk keperluan komunikasi dan notifikasi</small>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="jenkel"><i class="fas fa-venus-mars"></i> Jenis Kelamin <small class="text-danger">*</small></label>
-                      <select class="form-control" name="jenkel" id="jenkel" required>
-                        <option value="">-- Pilih --</option>
-                        <option value="L">Laki-laki</option>
-                        <option value="P">Perempuan</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <hr class="my-4">
-
-                  <div class="form-group">
-                    <label for="username"><i class="fas fa-user-lock"></i> Username <small class="text-danger">*</small></label>
-                    <input id="username" type="text" class="form-control" name="username" required placeholder="Contoh: namasaya130298">
-                    <small class="form-text text-muted">Username unik untuk login, gunakan kombinasi huruf dan angka tanpa spasi</small>
-                  </div>
-
-                  <div class="row">
-                    <div class="form-group col-md-6">
-                      <label for="password"><i class="fas fa-key"></i> Password <small class="text-danger">*</small></label>
-                      <div class="password-toggle">
-                        <input id="password" type="password" class="form-control" name="password" required placeholder="Minimal 8 karakter" style="padding-right: 45px;">
-                        <span class="toggle-icon" id="toggle-password">
-                          <i class="fas fa-eye"></i>
-                        </span>
-                      </div>
-                      <div class="password-strength">
-                        <div class="strength-bar"></div>
-                      </div>
-                      <small class="form-text text-muted" id="strength-text">Gunakan kombinasi huruf besar, kecil, angka, dan simbol</small>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="password2"><i class="fas fa-lock"></i> Konfirmasi Password <small class="text-danger">*</small></label>
-                      <div class="password-toggle">
-                        <input id="password2" type="password" class="form-control" name="password_confirm" required placeholder="Ketik ulang password" style="padding-right: 45px;">
-                        <span class="toggle-icon" id="toggle-password2">
-                          <i class="fas fa-eye"></i>
-                        </span>
-                      </div>
-                      <small class="form-text" id="match-info"></small>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="agree" class="custom-control-input" id="agree" required>
-                      <label class="custom-control-label" for="agree">
-                        Saya menyetujui <a href="#" data-toggle="modal" data-target="#termsModal" class="font-weight-bold">Syarat dan Ketentuan</a> yang berlaku
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="form-group mt-4">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                      <i class="fas fa-check-circle"></i> Daftar Sekarang
-                    </button>
-                  </div>
-
-                  <hr class="my-4">
-
-                  <div class="text-center">
-                    <p class="mb-2">Sudah punya akun operator?</p>
-                    <a href="login.php" class="btn btn-outline-primary btn-block">
-                      <i class="fas fa-sign-in-alt"></i> Login di Sini
-                    </a>
-                  </div>
-
-                  <div class="text-center mt-3">
-                    <a href="../" class="btn btn-light btn-sm">
-                      <i class="fas fa-arrow-left"></i> Kembali ke Halaman Utama
-                    </a>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-            <div class="simple-footer text-center">
-              Copyright &copy; <?= date('Y') ?> <strong>PPDB Online MTsN 11 Majalengka</strong><br>
-              <small>Developed by A.T. Aditya</small>
-            </div>
-          </div>
-        </div>
+  
+  <!-- Split Screen Layout -->
+  <div class="register-wrapper">
+    
+    <!-- Left Side - Branding -->
+    <div class="register-left">
+      <div class="brand-content">
+        <img src="../<?= $setting['logo'] ?>" alt="Logo" class="brand-logo">
+        <h1 class="brand-title">Registrasi Operator</h1>
+        <h2 class="brand-subtitle"><?= $setting['nama_sekolah'] ?></h2>
+        <p class="brand-description">
+          Daftarkan sekolah Anda untuk memantau data siswa pendaftar yang berasal dari sekolah Anda secara real-time. Akses fitur lengkap untuk mengelola data pendaftar.
+        </p>
       </div>
-    </section>
+      
+      <!-- Floating Animations -->
+      <div class="floating-circle" style="top: 10%; left: 10%; width: 60px; height: 60px; animation-delay: 0s;"></div>
+      <div class="floating-circle" style="top: 60%; right: 15%; width: 80px; height: 80px; animation-delay: 1s;"></div>
+      <div class="floating-circle" style="bottom: 15%; left: 20%; width: 40px; height: 40px; animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Right Side - Registration Form -->
+    <div class="register-right">
+      <div class="register-card">
+        
+        <!-- Form Header -->
+        <div class="register-header">
+          <div class="logo-circle">
+            <img src="../<?= $setting['logo'] ?>" alt="Logo">
+          </div>
+          <h2 class="register-title">Buat Akun Operator</h2>
+          <p class="register-subtitle">Lengkapi formulir untuk mendaftar</p>
+        </div>
+
+        <!-- Form Body -->
+        <div class="register-body">
+          <form method="POST" id="form-register">
+            
+            <div class="alert alert-info">
+              <i class="fas fa-info-circle"></i> <strong>Info:</strong> Pilih sekolah Anda dari daftar atau pilih "Sekolah Lainnya" jika tidak terdaftar.
+            </div>
+
+            <div class="form-group">
+              <label for="npsn" class="form-label"><i class="fas fa-school"></i> Sekolah <span class="text-danger">*</span></label>
+              <select class="form-control select2" name="npsn" id="npsn" required style="width: 100%">
+                <option value="">-- Pilih Sekolah Anda --</option>
+                <?php
+                $sekolah_list = select($koneksi, 'sekolah', ['status' => 1], 'nama_sekolah ASC');
+                foreach ($sekolah_list as $skl) {
+                  echo "<option value='{$skl['npsn']}'>[{$skl['npsn']}] {$skl['nama_sekolah']}</option>";
+                }
+                ?>
+                <option value="LAINNYA" style="background-color: #fff3cd; font-weight: bold;">🔽 Sekolah Lainnya (Tidak Ada Dalam Daftar)</option>
+              </select>
+              <small class="form-text text-muted" style="font-size: 11px; color: #a0aec0;">Pilih sekolah tempat Anda bertugas</small>
+            </div>
+
+            <div class="form-group" id="input-sekolah-manual-operator" style="display: none;">
+              <label for="nama_sekolah_manual" class="form-label"><i class="fas fa-school"></i> Nama Sekolah <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="nama_sekolah_manual" id="nama_sekolah_manual" placeholder="Contoh: SD NEGERI 1 MAJALENGKA" style="text-transform: uppercase;">
+              <small class="form-text text-muted" style="font-size: 11px; color: #a0aec0;">Tulis nama lengkap sekolah dengan benar</small>
+            </div>
+
+            <div class="form-group" id="input-npsn-manual-operator" style="display: none;">
+              <label for="npsn_manual" class="form-label"><i class="fas fa-barcode"></i> NPSN Sekolah <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="npsn_manual" id="npsn_manual" placeholder="Contoh: 20200000" maxlength="8">
+              <small class="form-text text-muted" style="font-size: 11px; color: #a0aec0;">Nomor Pokok Sekolah Nasional (8 digit angka)</small>
+            </div>
+
+            <div class="form-group">
+              <label for="nama_user" class="form-label"><i class="fas fa-user"></i> Nama Lengkap Operator <span class="text-danger">*</span></label>
+              <input id="nama_user" type="text" class="form-control" name="nama_user" required placeholder="Nama lengkap operator">
+            </div>
+
+            <div class="form-group">
+              <label for="nuptk" class="form-label"><i class="fas fa-id-card"></i> NIP (Opsional)</label>
+              <input id="nuptk" type="text" class="form-control" name="nuptk" placeholder="Nomor NUPTK">
+            </div>
+
+            <div class="form-group">
+              <label for="no_hp" class="form-label"><i class="fas fa-phone"></i> No. HP/WhatsApp <span class="text-danger">*</span></label>
+              <input id="no_hp" type="text" class="form-control" name="no_hp" required placeholder="08xxxxxxxxxx">
+              <small class="form-text text-muted" style="font-size: 11px; color: #a0aec0;">Untuk keperluan komunikasi dan notifikasi</small>
+            </div>
+
+            <div class="form-group">
+              <label for="jenkel" class="form-label"><i class="fas fa-venus-mars"></i> Jenis Kelamin <span class="text-danger">*</span></label>
+              <select class="form-control" name="jenkel" id="jenkel" required>
+                <option value="">-- Pilih --</option>
+                <option value="L">Laki-laki</option>
+                <option value="P">Perempuan</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="username" class="form-label"><i class="fas fa-user-lock"></i> Username <span class="text-danger">*</span></label>
+              <input id="username" type="text" class="form-control" name="username" required placeholder="Contoh: namasaya130298">
+              <small class="form-text text-muted" style="font-size: 11px; color: #a0aec0;">Username unik untuk login, gunakan kombinasi huruf dan angka tanpa spasi</small>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="form-label"><i class="fas fa-key"></i> Password <span class="text-danger">*</span></label>
+              <div class="password-toggle">
+                <input id="password" type="password" class="form-control" name="password" required placeholder="Minimal 8 karakter">
+                <span class="toggle-icon" id="toggle-password">
+                  <i class="fas fa-eye"></i>
+                </span>
+              </div>
+              <div class="password-strength">
+                <div class="strength-bar"></div>
+              </div>
+              <small class="form-text text-muted" id="strength-text" style="font-size: 11px; color: #a0aec0;">Gunakan kombinasi huruf besar, kecil, angka, dan simbol</small>
+            </div>
+
+            <div class="form-group">
+              <label for="password2" class="form-label"><i class="fas fa-lock"></i> Konfirmasi Password <span class="text-danger">*</span></label>
+              <div class="password-toggle">
+                <input id="password2" type="password" class="form-control" name="password_confirm" required placeholder="Ketik ulang password">
+                <span class="toggle-icon" id="toggle-password2">
+                  <i class="fas fa-eye"></i>
+                </span>
+              </div>
+              <small class="form-text password-match" id="match-info"></small>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 25px;">
+              <label style="display: flex; align-items: start; gap: 8px; font-size: 13px; cursor: pointer;">
+                <input type="checkbox" name="agree" id="agree" required style="margin-top: 2px;">
+                <span>Saya menyetujui <a href="#" data-toggle="modal" data-target="#termsModal" style="color: #667eea; font-weight: 600;">Syarat dan Ketentuan</a> yang berlaku</span>
+              </label>
+            </div>
+
+            <button type="submit" class="register-btn">
+              <i class="fas fa-check-circle"></i> Daftar Sekarang
+            </button>
+          </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="register-footer">
+          <div class="footer-links">
+            <a href="login.php">
+              <i class="fas fa-sign-in-alt"></i> Sudah Punya Akun?
+            </a>
+            <a href="../index.php">
+              <i class="fas fa-home"></i> Beranda
+            </a>
+          </div>
+          <p class="footer-text">&copy; <?= date('Y') ?> <?= $setting['nama_sekolah'] ?>. All rights reserved.</p>
+        </div>
+
+      </div>
+    </div>
+    
   </div>
 
   <!-- Modal Syarat & Ketentuan -->

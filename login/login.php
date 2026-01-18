@@ -40,17 +40,36 @@ if (!$has_superadmin) {
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #f5f7fa;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .login-wrapper {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: row;
+    }
+
+    /* Left Side - Branding */
+    .login-left {
+      flex: 1;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
       position: relative;
       overflow: hidden;
     }
 
-    body::before {
+    .login-left::before {
       content: '';
       position: absolute;
       width: 400px;
@@ -62,7 +81,7 @@ if (!$has_superadmin) {
       animation: float 20s infinite ease-in-out;
     }
 
-    body::after {
+    .login-left::after {
       content: '';
       position: absolute;
       width: 300px;
@@ -83,11 +102,25 @@ if (!$has_superadmin) {
       }
     }
 
+    .brand-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    /* Right Side - Form */
+    .login-right {
+      flex: 1;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
     .login-container {
       width: 100%;
-      max-width: 380px;
-      position: relative;
-      z-index: 10;
+      max-width: 420px;
       animation: slideIn 0.6s ease-out;
     }
 
@@ -103,124 +136,129 @@ if (!$has_superadmin) {
     }
 
     .login-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .login-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+      background: white;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
     }
 
     .login-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 30px 25px;
-      text-align: center;
+      background: transparent;
+      padding: 0;
+      margin-bottom: 30px;
+      text-align: left;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
+    }
+
+    .login-header {
+      background: transparent;
+      padding: 0;
+      margin-bottom: 30px;
+      text-align: left;
+      position: relative;
+      overflow: visible;
     }
 
     .login-header::before {
-      content: '';
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      top: -50%;
-      left: -50%;
-      animation: rotate 20s linear infinite;
-    }
-
-    @keyframes rotate {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+      display: none;
     }
 
     .logo-wrapper {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       position: relative;
       z-index: 1;
+      text-align: center;
     }
 
-    .logo-circle {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* Logo for Left Side */
+    .brand-logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 30px;
       animation: logoFloat 3s ease-in-out infinite;
-      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     @keyframes logoFloat {
       0%, 100% {
-        transform: translateY(0) scale(1);
-        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+        transform: translateY(0);
       }
       50% {
-        transform: translateY(-6px) scale(1.05);
-        filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.4));
+        transform: translateY(-10px);
       }
     }
 
+    .brand-title {
+      color: white;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .brand-subtitle {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 18px;
+      margin-bottom: 40px;
+      font-weight: 400;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .brand-description {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Form Logo - Small */
+    .logo-circle {
+      width: 60px;
+      height: 60px;
+      margin: 0 0 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .logo-circle img {
-      width: 80px;
-      height: 80px;
+      width: 60px;
+      height: 60px;
       object-fit: contain;
     }
 
     .login-title {
-      color: white;
-      font-size: 24px;
+      color: #2d3748;
+      font-size: 28px;
       font-weight: 700;
-      margin: 0;
-      position: relative;
-      z-index: 1;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      margin: 0 0 8px 0;
     }
 
     .login-subtitle {
-      color: rgba(255, 255, 255, 0.95);
-      font-size: 13px;
-      margin: 5px 0 0;
-      position: relative;
-      z-index: 1;
+      color: #718096;
+      font-size: 14px;
+      margin: 0 0 30px 0;
       font-weight: 400;
     }
 
     .login-body {
-      padding: 28px 25px;
+      padding: 0;
     }
 
     .welcome-text {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .welcome-text h5 {
-      color: #2d3748;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    .welcome-text p {
-      color: #718096;
-      font-size: 12px;
-      margin: 0;
+      display: none;
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .form-label {
@@ -357,15 +395,17 @@ if (!$has_superadmin) {
     }
 
     .login-footer {
-      text-align: center;
-      padding: 0 25px 25px;
+      text-align: left;
+      padding: 30px 0 0;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 30px;
     }
 
     .footer-links {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 20px;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .footer-links a {
@@ -390,28 +430,7 @@ if (!$has_superadmin) {
     }
 
     .back-link {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .back-link a {
-      color: white;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-
-    .back-link a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateX(-5px);
+      display: none;
     }
 
     /* Modal Styles */
@@ -574,98 +593,162 @@ if (!$has_superadmin) {
     }
 
     @media (max-width: 576px) {
-      body {
-        padding: 10px;
+      .login-wrapper {
+        flex-direction: column;
       }
 
-      .login-container {
-        max-width: 100%;
+      .login-left {
+        min-height: 300px;
+        padding: 40px 25px;
       }
 
-      .login-header {
-        padding: 25px 20px;
+      .login-right {
+        width: 100%;
+        padding: 30px 20px;
       }
 
-      .login-body {
-        padding: 25px 20px;
-      }
-
-      .login-footer {
-        padding: 0 20px 20px;
-      }
-
-      .logo-circle {
+      .brand-logo {
         width: 70px;
         height: 70px;
       }
 
-      .logo-circle img {
-        width: 70px;
-        height: 70px;
+      .brand-title {
+        font-size: 28px;
       }
 
-      .login-title {
-        font-size: 20px;
-      }
-
-      .login-subtitle {
-        font-size: 12px;
-      }
-
-      .welcome-text {
-        margin-bottom: 20px;
-      }
-
-      .welcome-text h5 {
+      .brand-subtitle {
         font-size: 16px;
       }
 
-      .welcome-text p {
-        font-size: 11px;
+      .brand-description {
+        font-size: 13px;
       }
 
-      .form-group {
-        margin-bottom: 15px;
+      .login-card {
+        max-width: 100%;
       }
 
-      .form-control {
-        height: 42px;
-        font-size: 12px;
+      .logo-circle {
+        width: 60px;
+        height: 60px;
       }
 
-      .btn-login {
+      .logo-circle img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .login-title {
+        font-size: 24px;
+      }
+
+      .login-subtitle {
+        font-size: 13px;
+      }
+
+      .form-group input {
         height: 42px;
         font-size: 13px;
       }
 
-      .footer-links {
-        gap: 15px;
-        font-size: 11px;
-      }
-
-      .footer-text {
-        font-size: 10px;
-      }
-
-      .back-link a {
+      .form-group label {
         font-size: 12px;
-        padding: 8px 16px;
+      }
+
+      .login-btn {
+        height: 46px;
+        font-size: 14px;
       }
 
       .modal-content {
-        margin: 15% auto;
         width: 95%;
+        margin: 20px auto;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .login-left {
+        padding: 30px 20px;
       }
 
-      .modal-header h3 {
-        font-size: 18px;
+      .login-right {
+        padding: 25px 15px;
       }
 
-      .modal-body {
-        padding: 20px 18px;
+      .brand-logo {
+        width: 60px;
+        height: 60px;
       }
 
-      .modal-body p {
+      .brand-title {
+        font-size: 24px;
+      }
+
+      .brand-subtitle {
+        font-size: 14px;
+      }
+
+      .logo-circle {
+        width: 50px;
+        height: 50px;
+      }
+
+      .logo-circle img {
+        width: 35px;
+        height: 35px;
+      }
+
+      .login-title {
+        font-size: 22px;
+      }
+
+      .form-group input {
+        height: 40px;
+        font-size: 12px;
+      }
+
+      .login-btn {
+        height: 44px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Split Screen Layout -->
+  <div class="login-wrapper">
+    
+    <!-- Left Side - Branding -->
+    <div class="login-left">
+      <div class="brand-content">
+        <img src="../assets/img/logo/<?php echo $setting['logo']; ?>" alt="Logo" class="brand-logo">
+        <h1 class="brand-title">Admin Portal</h1>
+        <h2 class="brand-subtitle"><?php echo $setting['nama_sekolah']; ?></h2>
+        <p class="brand-description">
+          Selamat datang di Portal Administrasi PPDB Online. Silakan masuk dengan kredensial yang telah diberikan untuk mengakses sistem manajemen penerimaan peserta didik baru.
+        </p>
+      </div>
+      
+      <!-- Floating Animations -->
+      <div class="floating-circle" style="top: 10%; left: 10%; width: 60px; height: 60px; animation-delay: 0s;"></div>
+      <div class="floating-circle" style="top: 60%; right: 15%; width: 80px; height: 80px; animation-delay: 1s;"></div>
+      <div class="floating-circle" style="bottom: 15%; left: 20%; width: 40px; height: 40px; animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Right Side - Login Form -->
+    <div class="login-right">
+      <div class="login-card">
+        
+        <!-- Form Header -->
+        <div class="login-header">
+          <div class="logo-circle">
+            <img src="../assets/img/logo/<?php echo $setting['logo']; ?>" alt="Logo">
+          </div>
+          <h2 class="login-title">Masuk ke Akun</h2>
+          <p class="login-subtitle">Masukkan username dan password Anda</p>
+        </div>      .modal-body p {
         font-size: 13px;
       }
 
@@ -734,6 +817,134 @@ if (!$has_superadmin) {
     }
   </style>
 
+        <!-- Form Body -->
+        <div class="login-body">
+          <form id="form-login" class="needs-validation" novalidate="">
+            <div class="form-group">
+              <label for="username" class="form-label">Username</label>
+              <div class="input-wrapper">
+                <input id="username" 
+                       type="text" 
+                       class="form-control" 
+                       name="username" 
+                       placeholder="Masukkan username Anda" 
+                       required 
+                       autofocus>
+                <i class="fas fa-user input-icon"></i>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-wrapper">
+                <input id="password" 
+                       type="password" 
+                       class="form-control" 
+                       name="password" 
+                       placeholder="Masukkan password Anda" 
+                       required>
+                <i class="fas fa-lock input-icon"></i>
+              </div>
+              <div class="forgot-password">
+                <a onclick="openForgotPasswordModal()">Lupa password?</a>
+              </div>
+            </div>
+
+            <div class="remember-checkbox">
+              <input type="checkbox" id="remember-me" name="remember">
+              <label for="remember-me">Ingat saya</label>
+            </div>
+
+            <button type="submit" class="login-btn">
+              <i class="fas fa-sign-in-alt"></i> Masuk
+            </button>
+          </form>
+        </div>
+
+        <!-- Form Footer -->
+        <div class="login-footer">
+          <div class="footer-links">
+            <a href="../index.php">
+              <i class="fas fa-home"></i> Beranda
+            </a>
+            <a onclick="openHelpModal()">
+              <i class="fas fa-question-circle"></i> Bantuan
+            </a>
+          </div>
+          <p class="footer-text">&copy; <?php echo date('Y'); ?> <?php echo $setting['nama_sekolah']; ?>. All rights reserved.</p>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div id="forgotPasswordModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-key"></i> Lupa Password</h3>
+        <button class="close-modal" onclick="closeForgotPasswordModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Jika Anda lupa password, silakan hubungi admin untuk mereset password Anda.</p>
+        <div class="info-box">
+          <p><i class="fas fa-phone"></i> Hubungi Admin: <?php echo $setting['telp']; ?></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal" onclick="closeForgotPasswordModal()">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Help Modal -->
+  <div id="helpModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-question-circle"></i> Bantuan</h3>
+        <button class="close-modal" onclick="closeHelpModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="help-item">
+          <i class="fas fa-user-check"></i>
+          <div>
+            <h4>Login Gagal</h4>
+            <p>Pastikan username dan password yang Anda masukkan benar</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <i class="fas fa-shield-alt"></i>
+          <div>
+            <h4>Keamanan Akun</h4>
+            <p>Jangan berbagi password Anda dengan orang lain</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h4>Jam Operasional</h4>
+            <p>Sistem dapat diakses 24/7 selama periode PPDB berlangsung</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <i class="fas fa-phone-alt"></i>
+          <div>
+            <h4>Kontak Support</h4>
+            <p>Hubungi <?php echo $setting['telp']; ?> untuk bantuan lebih lanjut</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal" onclick="closeHelpModal()">Mengerti</button>
+      </div>
+    </div>
+  </div>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -743,132 +954,6 @@ if (!$has_superadmin) {
     gtag('js', new Date());
     gtag('config', 'UA-94034622-3');
   </script>
-</head>
-
-<body>
-  <div class="login-container">
-  <div class="login-container">
-    <div class="login-card">
-      <div class="login-header">
-        <div class="logo-wrapper">
-          <div class="logo-circle">
-            <img src="../<?= $setting['logo'] ?>" alt="Logo">
-          </div>
-        </div>
-        <h1 class="login-title">Login Portal PPDB</h1>
-        <p class="login-subtitle"><?= $setting['nama_sekolah'] ?></p>
-      </div>
-
-      <div class="login-body">
-        <div class="welcome-text">
-          <h5>Selamat Datang Kembali!</h5>
-          <p>Silakan masuk dengan akun Anda</p>
-        </div>
-
-        <form id="form-login" class="needs-validation" novalidate="">
-          <div class="form-group">
-            <label for="username" class="form-label">Username</label>
-            <div class="input-wrapper">
-              <input id="username" 
-                     type="text" 
-                     class="form-control" 
-                     name="username" 
-                     placeholder="Masukkan username Anda" 
-                     required 
-                     autofocus>
-              <i class="fas fa-user input-icon"></i>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="password" class="form-label">Password</label>
-            <div class="input-wrapper">
-              <input id="password" 
-                     type="password" 
-                     class="form-control" 
-                     name="password" 
-                     placeholder="Masukkan password Anda" 
-                     required>
-              <i class="fas fa-lock input-icon"></i>
-            </div>
-            <div class="forgot-password">
-              <a onclick="openForgotPasswordModal()">Lupa password?</a>
-            </div>
-          </div>
-
-          <div class="remember-checkbox">
-            <input type="checkbox" id="remember-me" name="remember">
-            <label for="remember-me">Ingat saya</label>
-          </div>
-
-          <button type="submit" class="btn-login">
-            <i class="fas fa-sign-in-alt"></i> Login
-          </button>
-        </form>
-      </div>
-
-      <div class="login-footer">
-        <div class="footer-links">
-          <a href="../index.php">
-            <i class="fas fa-home"></i> Beranda
-          </a>
-          <a onclick="openHelpModal()">
-            <i class="fas fa-question-circle"></i> Bantuan
-          </a>
-        </div>
-        <p class="footer-text">© <?= date('Y') ?> <?= $setting['nama_sekolah'] ?>. All rights reserved.</p>
-      </div>
-    </div>
-
-    <div class="back-link">
-      <a href="../index.php">
-        <i class="fas fa-arrow-left"></i> Kembali ke Halaman Utama
-      </a>
-    </div>
-  </div>
-
-  <!-- Modal Lupa Password -->
-  <div id="forgotPasswordModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3><i class="fas fa-key"></i> Lupa Password?</h3>
-        <button class="close-modal" onclick="closeForgotPasswordModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>Jika Anda lupa password akun, silakan hubungi Super Admin untuk mereset password Anda.</p>
-        <div class="info-box">
-          <p><i class="fas fa-info-circle"></i> Untuk keamanan sistem, reset password hanya dapat dilakukan oleh Super Admin.</p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-modal" onclick="closeForgotPasswordModal()">Mengerti</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Bantuan -->
-  <div id="helpModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3><i class="fas fa-question-circle"></i> Pusat Bantuan</h3>
-        <button class="close-modal" onclick="closeHelpModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="help-item">
-          <i class="fas fa-user-lock"></i>
-          <div>
-            <h4>Login Bermasalah?</h4>
-            <p>Pastikan username dan password yang Anda masukkan benar. Perhatikan huruf besar/kecil.</p>
-          </div>
-        </div>
-        <div class="help-item">
-          <i class="fas fa-shield-alt"></i>
-          <div>
-            <h4>Keamanan Akun</h4>
-            <p>Jangan bagikan password Anda kepada siapapun. Gunakan password yang kuat dan unik.</p>
-          </div>
-        </div>
-        <div class="help-item">
           <i class="fas fa-users-cog"></i>
           <div>
             <h4>Hubungi Administrator</h4>
