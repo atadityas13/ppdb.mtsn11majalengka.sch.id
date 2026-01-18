@@ -6,6 +6,13 @@
 ?>
 
 <!-- Direct Menu Links untuk Siswa (Visible on Mobile) -->
+<!-- Home Button -->
+<li class="d-lg-none">
+    <a href="." class="nav-link topbar-menu-link" title="Home">
+        <i class="fas fa-home"></i>
+        <span class="menu-text">Home</span>
+    </a>
+</li>
 <li class="d-lg-none">
     <a href="?pg=formulir" class="nav-link topbar-menu-link" title="Formulir">
         <i class="fas fa-indent"></i>

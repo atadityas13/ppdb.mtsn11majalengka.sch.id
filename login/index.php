@@ -164,10 +164,22 @@ if (isset($_SESSION['id_user'])) {
                 <div class="d-sm-none d-lg-inline-block">Hi, <?= ucfirst($user['nama']) ?></div>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-title">Logged in as <?= $user['level'] ?></div>
+                <?php 
+                if ($user['level'] == 'operator_sd') {
+                    // Ambil nama sekolah operator
+                    $sekolah_data = mysqli_fetch_array(mysqli_query($koneksi, "SELECT nama_sekolah FROM sekolah WHERE id_sekolah = '{$user['id_sekolah']}'"));
+                    $display_role = 'Operator ' . ($sekolah_data['nama_sekolah'] ?? 'Sekolah');
+                } else {
+                    $display_role = ucwords(str_replace('_', ' ', $user['level']));
+                }
+                ?>
+                <div class="dropdown-title">Logged in as <?= $display_role ?></div>
                 <?php if ($user['level'] == 'operator_sd') { ?>
                   <a href="?pg=profile" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
+                  </a>
+                  <a href="?pg=data_sekolah" class="dropdown-item has-icon">
+                    <i class="fas fa-school"></i> Data Sekolah
                   </a>
                 <?php } else { ?>
                   <a href="?pg=setting" class="dropdown-item has-icon">
