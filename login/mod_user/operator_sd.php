@@ -160,29 +160,32 @@
                         </tbody>
                     </table>
                 </div>
-           Toggle password visibility
-        $('.toggle-password').click(function() {
-            var target = $(this).data('target');
-            var pwdText = $('#pwd-' + target);
-            var pwdReal = $('#pwd-real-' + target);
-            var icon = $(this).find('i');
-            
-            if (pwdText.is(':visible')) {
-                pwdText.hide();
-                pwdReal.show();
-                icon.removeClass('fa-eye').addClass('fa-eye-slash');
-                $(this).attr('title', 'Sembunyikan Password');
-            } else {
-                pwdText.show();
-                pwdReal.hide();
-                icon.removeClass('fa-eye-slash').addClass('fa-eye');
-                $(this).attr('title', 'Lihat Password');
-            }
-        });
-        
-        //  </div>
+            </div>
         </div>
     </div>
+</div>
+
+<script>
+    // Toggle password visibility
+    $('.toggle-password').click(function() {
+        var target = $(this).data('target');
+        var pwdText = $('#pwd-' + target);
+        var pwdReal = $('#pwd-real-' + target);
+        var icon = $(this).find('i');
+        
+        if (pwdText.is(':visible')) {
+            pwdText.hide();
+            pwdReal.show();
+            icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            $(this).attr('title', 'Sembunyikan Password');
+        } else {
+            pwdText.show();
+            pwdReal.hide();
+            icon.removeClass('fa-eye-slash').addClass('fa-eye');
+            $(this).attr('title', 'Lihat Password');
+        }
+    });
+</script>
 </div>
 
 <script>

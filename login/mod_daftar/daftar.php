@@ -203,7 +203,13 @@
                                 <tr>
                                     <td><?= $no; ?></td>
                                     <td><?= $daftar['nisn'] ?></td>
-									 <td><?= $daftar['password'] ?></td>
+									 <td>
+                                        <span class="password-display" style="font-family: monospace;">******</span>
+                                        <i class="fas fa-eye toggle-password" 
+                                           style="cursor: pointer; margin-left: 5px; color: #6777ef;" 
+                                           data-password="<?= htmlspecialchars($daftar['remember_token_uuid'] ?? $daftar['password']) ?>"
+                                           title="Tampilkan/Sembunyikan password"></i>
+                                    </td>
                                     <td><?= $daftar['nama'] ?></td>
                                     <td><?= $daftar['asal_sekolah'] ?></td>
                                     <td><?= $daftar['jenkel'] ?></td>
@@ -613,6 +619,22 @@
         })
 
     });
+</script>
+<script>
+// Toggle password visibility untuk tabel Data Pendaftar
+$('.toggle-password').click(function() {
+    var icon = $(this);
+    var passwordSpan = icon.siblings('.password-display');
+    var actualPassword = icon.data('password');
+    
+    if (passwordSpan.text() === '******') {
+        passwordSpan.text(actualPassword);
+        icon.removeClass('fa-eye').addClass('fa-eye-slash');
+    } else {
+        passwordSpan.text('******');
+        icon.removeClass('fa-eye-slash').addClass('fa-eye');
+    }
+});
 </script>
 <script>
 $('#form-konfirmasi').submit(function(e) {
