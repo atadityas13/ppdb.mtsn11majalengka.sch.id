@@ -17,7 +17,7 @@ if (!isset($is_superadmin)) {
 <!-- Hanya untuk Operator SD, bukan untuk Admin/Panitia (mereka pakai desktop) -->
 
 <?php if ($is_operator_sd) { ?>
-    <!-- Home Button -->\n    <li class="d-lg-none">
+    <!-- Home Button -->    <li class="d-lg-none">
         <a href="." class="nav-link topbar-menu-link" title="Home">
             <i class="fas fa-home"></i>
             <span class="menu-text">Home</span>
@@ -35,12 +35,6 @@ if (!isset($is_superadmin)) {
         <a href="?pg=berkas_sekolah" class="nav-link topbar-menu-link" title="Daftar Berkas">
             <i class="fas fa-folder-open"></i>
             <span class="menu-text">Berkas</span>
-        </a>
-    </li>
-    <li class="d-lg-none">
-        <a href="?pg=data_sekolah" class="nav-link topbar-menu-link" title="Data Sekolah">
-            <i class="fas fa-school"></i>
-            <span class="menu-text">Sekolah</span>
         </a>
     </li>
 <?php } ?>

@@ -145,9 +145,8 @@ if (isset($_SESSION['id_user'])) {
             <ul class="navbar-nav mr-3">
               <!-- Sidebar Toggle Button -->
 				<li>
-					<a href="#" data-toggle="sidebar" class="nav-link nav-link-lg sidebar-toggle-btn" title="Menu">
+					<a href="#" data-toggle="sidebar" class="nav-link nav-link-lg" title="Menu">
 						<i class="fas fa-bars"></i>
-						<span class="d-none d-sm-inline-block">Menu</span>
 					</a>
 				</li>
             </ul>
@@ -168,12 +167,12 @@ if (isset($_SESSION['id_user'])) {
                 if ($user['level'] == 'operator_sd') {
                     // Ambil nama sekolah operator
                     $sekolah_data = mysqli_fetch_array(mysqli_query($koneksi, "SELECT nama_sekolah FROM sekolah WHERE id_sekolah = '{$user['id_sekolah']}'"));
-                    $display_role = 'Operator ' . ($sekolah_data['nama_sekolah'] ?? 'Sekolah');
+                    $display_role = 'OPERATOR ' . strtoupper($sekolah_data['nama_sekolah'] ?? 'SEKOLAH');
                 } else {
                     $display_role = ucwords(str_replace('_', ' ', $user['level']));
                 }
                 ?>
-                <div class="dropdown-title">Logged in as <?= $display_role ?></div>
+                <div class="dropdown-title"><?= $display_role ?></div>
                 <?php if ($user['level'] == 'operator_sd') { ?>
                   <a href="?pg=profile" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile

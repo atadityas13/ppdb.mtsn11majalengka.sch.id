@@ -161,9 +161,8 @@ crossorigin="anonymous"></script>
         <nav class="navbar navbar-expand-lg main-navbar">
           <form class="form-inline mr-auto">
             <ul class="navbar-nav mr-3">
-              <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg sidebar-toggle-btn" title="Menu">
+              <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg" title="Menu">
                 <i class="fas fa-bars"></i>
-                <span class="d-none d-sm-inline-block">Menu</span>
               </a></li>
             </ul>
           </form>

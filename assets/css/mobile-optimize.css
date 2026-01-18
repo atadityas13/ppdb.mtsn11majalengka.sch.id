@@ -301,6 +301,28 @@
         margin-right: 5px;
     }
     
+    /* Tombol sidebar agar terlihat di semua background */
+    .navbar .nav-link-lg {
+        background: rgba(255,255,255,0.9) !important;
+        color: #667eea !important;
+        border-radius: 8px;
+        padding: 10px 15px !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        transition: all 0.3s ease;
+    }
+    
+    .navbar .nav-link-lg:hover {
+        background: rgba(255,255,255,1) !important;
+        color: #764ba2 !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transform: translateY(-2px);
+    }
+    
+    .navbar .nav-link-lg i {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
     /* Quick menu badge */
     .quick-menu-dropdown .badge {
         display: inline-block;
