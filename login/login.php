@@ -811,6 +811,11 @@ if (!$has_superadmin) {
     </div>
   </div>
 
+  <!-- General JS Scripts -->
+  <script src="../assets/modules/jquery.min.js"></script>
+  <script src="../assets/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/modules/izitoast/js/iziToast.min.js"></script>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -820,30 +825,6 @@ if (!$has_superadmin) {
     gtag('js', new Date());
     gtag('config', 'UA-94034622-3');
   </script>
-          <i class="fas fa-users-cog"></i>
-          <div>
-            <h4>Hubungi Administrator</h4>
-            <p>Jika mengalami kendala teknis, silakan hubungi Super Admin atau IT Support sekolah.</p>
-          </div>
-        </div>
-        <div class="help-item">
-          <i class="fas fa-book"></i>
-          <div>
-            <h4>Panduan Penggunaan</h4>
-            <p>Akses menu Bantuan di dashboard untuk panduan lengkap penggunaan sistem PPDB.</p>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-modal" onclick="closeHelpModal()">Tutup</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- General JS Scripts -->
-  <script src="../assets/modules/jquery.min.js"></script>
-  <script src="../assets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../assets/modules/izitoast/js/iziToast.min.js"></script>
 
   <script>
     // Modal Functions
