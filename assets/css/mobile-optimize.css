@@ -1055,9 +1055,15 @@
 /* Statistik tables should never overlap modals */
 .card .table,
 .card-body .table,
-[class*="statistik"] {
+[class*="statistik"],
+.table,
+tbody,
+thead,
+tr,
+td,
+th {
     position: relative;
-    z-index: 1;
+    z-index: 1 !important;
 }
 
 /* Ensure dropdown menus don't interfere with modals */
@@ -1065,10 +1071,25 @@
     z-index: 1000;
 }
 
-/* When modal is open, lower the z-index of main content */
+/* Override navbar search elements when modal is open */
+body.modal-open .search-backdrop {
+    z-index: 1 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+body.modal-open .search-result {
+    z-index: 1 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* When modal is open, lower the z-index of main content and other competing elements */
 body.modal-open .main-wrapper,
 body.modal-open .main-content,
-body.modal-open .card {
+body.modal-open .card,
+body.modal-open .dataTables_wrapper,
+body.modal-open .table-responsive {
     z-index: auto !important;
 }
 
