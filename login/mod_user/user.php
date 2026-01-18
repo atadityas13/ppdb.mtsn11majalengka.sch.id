@@ -19,6 +19,7 @@
                                 <th class="text-center">#</th>  
                                 <th>Nama User</th>  
                                 <th>Username</th>  
+                                <th>Password</th>  
                                 <th>Level & Sekolah</th>  
                                 <th>Status</th>  
                                 <th>Aksi</th>  
@@ -45,6 +46,26 @@
                                     <td><?= $user['nama_user'] ?></td>  
                                     <td><?= $user['username'] ?></td>  
                                     <td>  
+                                        <?php 
+                                        // Super admin can see all passwords
+                                        // Admin can only see own password and panitia passwords (not other admins)
+                                        $can_view_password = $is_superadmin || 
+                                                           ($current_user['level'] == 'admin' && $user['level'] == 'panitia') || 
+                                                           ($current_user['level'] == 'admin' && $user['level'] == 'admin' && $user['id_user'] == $_SESSION['id_user']);
+                                        
+                                        if ($can_view_password) { 
+                                            $display_password = !empty($user['remember_token_uuid']) ? $user['remember_token_uuid'] : '(belum diset)';
+                                        ?>
+                                            <span class="password-text" id="pwd-<?= $no ?>">******</span>  
+                                            <span class="password-hidden" id="pwd-real-<?= $no ?>" style="display:none;"><?= $display_password ?></span>  
+                                            <button type="button" class="btn btn-sm btn-outline-secondary toggle-password" data-target="<?= $no ?>" title="Lihat Password">  
+                                                <i class="fas fa-eye"></i>  
+                                            </button>  
+                                        <?php } else { ?>
+                                            <span class="badge badge-secondary"><i class="fas fa-lock"></i> Hidden</span>
+                                        <?php } ?>
+                                    </td>  
+                                    <td>  
                                         <?php  
                                         if ($user['level'] == 'superadmin') {  
                                             echo '<span class="badge badge-danger">Super Admin</span>';  
@@ -63,7 +84,23 @@
                                         <?php } ?>  
                                     </td>  
                                     <td>  
-                                        <?php if ($user['level'] != 'superadmin') { ?>  
+                                        <?php 
+                                        // Super admin: always protected
+                                        // Admin login: cannot manage other admins (only panitia), can only edit self
+                                        $is_protected = ($user['level'] == 'superadmin');
+                                        $is_admin_viewing_admin = (!$is_superadmin && $current_user['level'] == 'admin' && $user['level'] == 'admin' && $user['id_user'] != $_SESSION['id_user']);
+                                        $can_only_edit_self = (!$is_superadmin && $current_user['level'] == 'admin' && $user['level'] == 'admin' && $user['id_user'] == $_SESSION['id_user']);
+                                        
+                                        if ($is_protected) { ?>  
+                                            <span class="badge badge-info"><i class="fas fa-lock"></i> Protected</span>  
+                                        <?php } elseif ($is_admin_viewing_admin) { ?>  
+                                            <span class="badge badge-secondary"><i class="fas fa-shield-alt"></i> Admin Protected</span>  
+                                        <?php } elseif ($can_only_edit_self) { ?>  
+                                            <!-- Admin can only edit self, no delete/toggle -->  
+                                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit<?= $no ?>">  
+                                                <i class="fas fa-edit"></i> Edit  
+                                            </button>  
+                                        <?php } else { ?>  
                                             <?php if ($user['status'] == 1) { ?>  
                                                 <button data-id="<?= $user['id_user'] ?>" class="toggle-status btn btn-warning btn-sm" title="Non-aktifkan">  
                                                     <i class="fas fa-toggle-on"></i> Non-aktifkan  
@@ -75,13 +112,14 @@
                                             <?php } ?>  
                                             <br><br>  
                                             <button data-id="<?= $user['id_user'] ?>" class="hapus btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</button>  
-                                        <?php } else { ?>  
-                                            <span class="badge badge-info"><i class="fas fa-lock"></i> Protected</span>  
                                         <?php } ?>  
-                                        <!-- Button trigger modal -->  
-                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit<?= $no ?>">  
-                                            <i class="fas fa-edit"></i> Edit  
-                                        </button>  
+                                        
+                                        <?php if (!$is_protected && !$is_admin_viewing_admin && !$can_only_edit_self) { ?>  
+                                            <!-- Button trigger modal -->  
+                                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit<?= $no ?>">  
+                                                <i class="fas fa-edit"></i> Edit  
+                                            </button>  
+                                        <?php } ?>  
   
                                         <!-- Modal -->  
                                         <div class="modal fade" id="modal-edit<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">  
@@ -106,7 +144,11 @@
                                                             </div>  
                                                             <div class="form-group">  
                                                                 <label for="level">Level</label>  
-                                                                <select class="form-control" name="level" id="level<?= $no ?>" required <?php if ($user['level'] == 'superadmin') echo 'disabled'; ?>>  
+                                                                <?php 
+                                                                $disable_level = ($user['level'] == 'superadmin') || 
+                                                                                (!$is_superadmin && $current_user['level'] == 'admin' && $user['level'] == 'admin');
+                                                                ?>  
+                                                                <select class="form-control" name="level" id="level<?= $no ?>" required <?php if ($disable_level) echo 'disabled'; ?>>  
                                                                     <option value="">Pilih Level</option>  
                                                                     <?php if ($is_superadmin) { ?>  
                                                                         <option value="superadmin" <?php if ($user['level'] == 'superadmin') echo 'selected'; ?>>Super Admin</option>  
@@ -114,8 +156,8 @@
                                                                     <option value="admin" <?php if ($user['level'] == 'admin') echo 'selected'; ?>>Administrator</option>  
                                                                     <option value="panitia" <?php if ($user['level'] == 'panitia') echo 'selected'; ?>>Panitia</option>  
                                                                 </select>  
-                                                                <?php if ($user['level'] == 'superadmin') { ?>  
-                                                                    <input type="hidden" name="level" value="superadmin">  
+                                                                <?php if ($disable_level) { ?>  
+                                                                    <input type="hidden" name="level" value="<?= $user['level'] ?>">  
                                                                 <?php } ?>  
                                                             </div>  
                                                             <div class="form-group">  
@@ -233,6 +275,26 @@
   
 <script>  
     $(function() {  
+        // Toggle password visibility
+        $('.toggle-password').click(function() {
+            var target = $(this).data('target');
+            var pwdText = $('#pwd-' + target);
+            var pwdReal = $('#pwd-real-' + target);
+            var icon = $(this).find('i');
+            
+            if (pwdText.is(':visible')) {
+                pwdText.hide();
+                pwdReal.show();
+                icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                $(this).attr('title', 'Sembunyikan Password');
+            } else {
+                pwdText.show();
+                pwdReal.hide();
+                icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                $(this).attr('title', 'Lihat Password');
+            }
+        });
+        
         $("#txtConfirmPassword").keyup(function() {
             var password = $("#txtNewPassword").val();
             $("#divCheckPasswordMatch").html(password == $(this).val() ? "Passwords match." : "Passwords do not match!");

@@ -20,6 +20,7 @@ if ($pg == 'ubah') {
     // Update password hanya jika diisi
     if (!empty($_POST['password'])) {
         $data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $data['remember_token_uuid'] = $_POST['password']; // Save plain text as remember token
     }
 
     $where = [

@@ -72,6 +72,7 @@ if ($pg == 'tambah') {
         'asal_sekolah' => $nama_sekolah,    
         'jurusan' => $jurusan['nama_jurusan'], // Menggunakan nama jurusan    
         'password' => $_POST['password'],    
+        'remember_token_uuid' => $_POST['password'],    
         'no_hp' => str_replace(" ", "", $_POST['nohp']),    
         'foto' => 'default.png',    
         'jenkel' => $_POST['jenkel'] // Menambahkan jenis kelamin    
@@ -152,6 +153,7 @@ if ($pg == 'update_full') {
     // Update password hanya jika diisi
     if (!empty($_POST['password'])) {
         $data['password'] = $_POST['password'];
+        $data['remember_token_uuid'] = $_POST['password'];
     }
     
     $where = [    

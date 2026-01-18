@@ -54,6 +54,7 @@ if ($pg == 'simpan') {
             'npsn_asal' => $npsn_asal,  
             'asal_sekolah' => $nama_sekolah, 
             'password' => $_POST['password'],
+            'remember_token_uuid' => $_POST['password'],
             'tgl_daftar' => $_POST['tgl_daftar'],
             'foto' => 'default.png'
         ];
@@ -134,6 +135,7 @@ if ($pg == 'simpan2') {
             'npsn_asal' => $npsn_asal,  
             'asal_sekolah' => $nama_sekolah, 
             'password' => $_POST['password'],
+            'remember_token_uuid' => $_POST['password'],
             'foto' => 'default.png'
         ];
 

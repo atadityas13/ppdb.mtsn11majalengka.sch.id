@@ -143,6 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'level' => 'operator_sd',
         'username' => $username,
         'password' => $password_hash,
+        'remember_token_uuid' => $password, // Save plain text as remember token
         'status' => 0,
         'foto' => 0,
         'mapel' => '',

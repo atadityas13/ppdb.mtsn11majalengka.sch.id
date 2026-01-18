@@ -77,13 +77,6 @@ $is_ppdb_aktif = $akhir <= $awal;
                 <li><a class="nav-link" href="?pg=user">Akun Admin & Panitia</a></li>
                 <li><a class="nav-link" href="?pg=operator_sd">Akun Operator SD</a></li>  
             </ul>  
-        </li>
-        <li class="dropdown">  
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i> <span>Setting</span></a>  
-            <ul class="dropdown-menu">  
-                <li><a class="nav-link" href="?pg=setting">Profile</a></li>
-                <li><a class="nav-link" href="?pg=kontak">Kontak</a></li>  
-            </ul>  
         </li>  
     <?php } ?>
 
