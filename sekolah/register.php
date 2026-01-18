@@ -341,32 +341,6 @@ require "../config/functions.crud.php";
       margin: 0;
     }
 
-    /* Help Button */
-    .help-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
-      border-radius: 50%;
-      color: white;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-      transition: all 0.3s;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .help-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-    }
-
     /* Help Modal */
     .help-modal {
       display: none;
@@ -746,6 +720,9 @@ require "../config/functions.crud.php";
             <a href="../index.php">
               <i class="fas fa-home"></i> Beranda
             </a>
+            <a onclick="openHelpModal()" style="cursor: pointer;">
+              <i class="fas fa-question-circle"></i> Bantuan
+            </a>
           </div>
           <p class="footer-text">&copy; <?= date('Y') ?> <?= $setting['nama_sekolah'] ?>. All rights reserved.</p>
         </div>
@@ -809,11 +786,6 @@ require "../config/functions.crud.php";
       </div>
     </div>
   </div>
-
-  <!-- Help Button -->
-  <button class="help-btn" id="helpBtn" title="Bantuan">
-    <i class="fas fa-question"></i>
-  </button>
 
   <!-- Help Modal -->
   <div id="helpModal" class="help-modal">
@@ -1149,13 +1121,12 @@ require "../config/functions.crud.php";
     });
 
     // Help Modal
-    var helpModal = document.getElementById('helpModal');
-    var helpBtn = document.getElementById('helpBtn');
-    var helpClose = document.getElementById('helpClose');
-
-    helpBtn.onclick = function() {
-      helpModal.style.display = 'block';
+    function openHelpModal() {
+      document.getElementById('helpModal').style.display = 'block';
     }
+
+    var helpModal = document.getElementById('helpModal');
+    var helpClose = document.getElementById('helpClose');
 
     helpClose.onclick = function() {
       helpModal.style.display = 'none';

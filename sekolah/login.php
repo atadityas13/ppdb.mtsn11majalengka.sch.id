@@ -216,18 +216,20 @@ require "../config/functions.crud.php";
       border: 2px solid #e2e8f0;
       border-radius: 8px;
       font-size: 13px;
-      transition: all 0.3s;
-    }
-
-    .form-control::placeholder {
-      color: #cbd5e0;
-      opacity: 1;
+      color: #2d3748;
+      background: #f7fafc;
+      transition: all 0.3s ease;
     }
 
     .form-control:focus {
       outline: none;
       border-color: #667eea;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-control:focus + .input-icon {
+      color: #667eea;
     }
 
     .input-icon {
@@ -236,8 +238,8 @@ require "../config/functions.crud.php";
       top: 50%;
       transform: translateY(-50%);
       color: #a0aec0;
-      font-size: 14px;
-      pointer-events: none;
+      font-size: 16px;
+      transition: color 0.3s;
       z-index: 1;
     }
 
@@ -317,32 +319,6 @@ require "../config/functions.crud.php";
       color: #a0aec0;
       font-size: 11px;
       margin: 0;
-    }
-
-    /* Help Button */
-    .help-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
-      border-radius: 50%;
-      color: white;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-      transition: all 0.3s;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .help-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
     }
 
     /* Help Modal */
@@ -665,7 +641,6 @@ require "../config/functions.crud.php";
             <div class="form-group">
               <label for="username" class="form-label">Username</label>
               <div class="input-wrapper">
-                <i class="fas fa-user input-icon"></i>
                 <input id="username" 
                        type="text" 
                        class="form-control" 
@@ -674,13 +649,13 @@ require "../config/functions.crud.php";
                        required 
                        autofocus 
                        placeholder="Masukkan username Anda">
+                <i class="fas fa-user input-icon"></i>
               </div>
             </div>
 
             <div class="form-group">
               <label for="password" class="form-label">Password</label>
               <div class="input-wrapper">
-                <i class="fas fa-lock input-icon"></i>
                 <input id="password" 
                        type="password" 
                        class="form-control" 
@@ -688,6 +663,7 @@ require "../config/functions.crud.php";
                        tabindex="2" 
                        required 
                        placeholder="Masukkan password Anda">
+                <i class="fas fa-lock input-icon"></i>
               </div>
             </div>
 
@@ -716,6 +692,9 @@ require "../config/functions.crud.php";
             <a href="../index.php">
               <i class="fas fa-home"></i> Beranda
             </a>
+            <a onclick="openHelpModal()" style="cursor: pointer;">
+              <i class="fas fa-question-circle"></i> Bantuan
+            </a>
           </div>
           <p class="footer-text">&copy; <?= date('Y') ?> <?= $setting['nama_sekolah'] ?>. All rights reserved.</p>
         </div>
@@ -724,11 +703,6 @@ require "../config/functions.crud.php";
     </div>
     
   </div>
-
-  <!-- Help Button -->
-  <button class="help-btn" id="helpBtn" title="Bantuan">
-    <i class="fas fa-question"></i>
-  </button>
 
   <!-- Help Modal -->
   <div id="helpModal" class="help-modal">
@@ -857,13 +831,12 @@ require "../config/functions.crud.php";
     });
 
     // Help Modal
-    var helpModal = document.getElementById('helpModal');
-    var helpBtn = document.getElementById('helpBtn');
-    var helpClose = document.getElementById('helpClose');
-
-    helpBtn.onclick = function() {
-      helpModal.style.display = 'block';
+    function openHelpModal() {
+      document.getElementById('helpModal').style.display = 'block';
     }
+
+    var helpModal = document.getElementById('helpModal');
+    var helpClose = document.getElementById('helpClose');
 
     helpClose.onclick = function() {
       helpModal.style.display = 'none';

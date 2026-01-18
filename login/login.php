@@ -543,6 +543,146 @@ if (!$has_superadmin) {
       box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
     }
 
+    /* Help Modal Specific Styles */
+    .help-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s;
+    }
+
+    .help-modal-content {
+      position: relative;
+      background-color: white;
+      margin: 5% auto;
+      padding: 0;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      animation: slideDown 0.3s;
+    }
+
+    .help-modal-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 25px 30px;
+      border-radius: 12px 12px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .help-modal-header h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .help-close {
+      color: white;
+      font-size: 28px;
+      font-weight: 300;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .help-close:hover {
+      transform: rotate(90deg);
+    }
+
+    .help-modal-body {
+      padding: 30px;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .help-section {
+      margin-bottom: 25px;
+    }
+
+    .help-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .help-section h3 {
+      color: #667eea;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .help-section p {
+      color: #4a5568;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .help-section ul {
+      color: #4a5568;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-left: 20px;
+    }
+
+    .help-section ul li {
+      margin-bottom: 6px;
+    }
+
+    .help-contact {
+      background: #f7fafc;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .help-contact strong {
+      color: #2d3748;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .help-contact a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .help-contact a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 576px) {
       .login-wrapper {
         flex-direction: column;
@@ -767,46 +907,76 @@ if (!$has_superadmin) {
   </div>
 
   <!-- Help Modal -->
-  <div id="helpModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3><i class="fas fa-question-circle"></i> Bantuan</h3>
-        <button class="close-modal" onclick="closeHelpModal()">
-          <i class="fas fa-times"></i>
-        </button>
+  <div id="helpModal" class="help-modal">
+    <div class="help-modal-content">
+      <div class="help-modal-header">
+        <h2><i class="fas fa-info-circle"></i> Bantuan Login User Admin</h2>
+        <button class="help-close" onclick="closeHelpModal()">&times;</button>
       </div>
-      <div class="modal-body">
-        <div class="help-item">
-          <i class="fas fa-user-check"></i>
-          <div>
-            <h4>Login Gagal</h4>
-            <p>Pastikan username dan password yang Anda masukkan benar</p>
+      <div class="help-modal-body">
+        <div class="help-section">
+          <h3><i class="fas fa-user-check"></i> Cara Login</h3>
+          <p>Untuk login sebagai admin atau superadmin, silakan ikuti langkah berikut:</p>
+          <ul>
+            <li>Masukkan <strong>username</strong> yang telah diberikan</li>
+            <li>Masukkan <strong>password</strong> akun Anda</li>
+            <li>Centang <strong>"Ingat saya"</strong> jika menggunakan perangkat pribadi</li>
+            <li>Klik tombol <strong>"Masuk"</strong></li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-shield-alt"></i> Keamanan Akun</h3>
+          <p>Tips menjaga keamanan akun administrator:</p>
+          <ul>
+            <li>Jangan membagikan username dan password kepada siapapun</li>
+            <li>Gunakan password yang kuat dan unik</li>
+            <li>Logout setelah selesai menggunakan sistem</li>
+            <li>Jangan centang "Ingat saya" di komputer umum/publik</li>
+            <li>Ganti password secara berkala</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-lock"></i> Lupa Password?</h3>
+          <p>Jika Anda lupa password:</p>
+          <ul>
+            <li>Klik link <strong>"Lupa password?"</strong> di bawah form password</li>
+            <li>Hubungi administrator sistem atau superadmin</li>
+            <li>Siapkan informasi akun Anda untuk verifikasi</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-clock"></i> Jam Operasional</h3>
+          <p>Sistem dapat diakses 24/7 selama periode PPDB berlangsung. Pastikan Anda:</p>
+          <ul>
+            <li>Memiliki koneksi internet yang stabil</li>
+            <li>Menggunakan browser modern (Chrome, Firefox, Edge)</li>
+            <li>Mengaktifkan JavaScript di browser</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-exclamation-triangle"></i> Login Gagal?</h3>
+          <p>Jika mengalami kegagalan login:</p>
+          <ul>
+            <li>Pastikan username dan password benar (perhatikan huruf besar/kecil)</li>
+            <li>Periksa koneksi internet Anda</li>
+            <li>Clear cache dan cookies browser</li>
+            <li>Coba refresh halaman (F5)</li>
+            <li>Hubungi support jika masalah berlanjut</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-phone-alt"></i> Butuh Bantuan Lebih Lanjut?</h3>
+          <div class="help-contact">
+            <strong>Hubungi Support Teknis:</strong>
+            <p style="margin: 5px 0;"><i class="fas fa-phone"></i> Telp: <?php echo $setting['telp']; ?></p>
+            <p style="margin: 5px 0;"><i class="fas fa-envelope"></i> Email: support@ppdb.sch.id</p>
           </div>
         </div>
-        <div class="help-item">
-          <i class="fas fa-shield-alt"></i>
-          <div>
-            <h4>Keamanan Akun</h4>
-            <p>Jangan berbagi password Anda dengan orang lain</p>
-          </div>
-        </div>
-        <div class="help-item">
-          <i class="fas fa-clock"></i>
-          <div>
-            <h4>Jam Operasional</h4>
-            <p>Sistem dapat diakses 24/7 selama periode PPDB berlangsung</p>
-          </div>
-        </div>
-        <div class="help-item">
-          <i class="fas fa-phone-alt"></i>
-          <div>
-            <h4>Kontak Support</h4>
-            <p>Hubungi <?php echo $setting['telp']; ?> untuk bantuan lebih lanjut</p>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-modal" onclick="closeHelpModal()">Mengerti</button>
       </div>
     </div>
   </div>
