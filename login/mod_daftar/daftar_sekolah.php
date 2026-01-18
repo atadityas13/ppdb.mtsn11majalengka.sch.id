@@ -273,6 +273,7 @@
 </div>  
   
 <script>  
+$(document).ready(function() {
     // IMPORT FILE PENDUKUNG       
     $('#form-import').on('submit', function(e) {  
         e.preventDefault();
@@ -442,17 +443,25 @@
     });
 
     // Otomatis isi asal sekolah dan npsn_asal dengan sekolah operator  
-    $(document).ready(function() {  
-        var id_sekolah = '<?= $user['id_sekolah'] ?>';  
+    var id_sekolah = '<?= $user['id_sekolah'] ?>';  
   
-        // Set asal sekolah  
-        $('#asal').val(id_sekolah);  
+    // Set asal sekolah  
+    $('#asal').val(id_sekolah);  
   
-        // Disable asal sekolah agar tidak bisa diubah  
-        $('#asal').prop('disabled', true);  
+    // Disable asal sekolah agar tidak bisa diubah  
+    $('#asal').prop('disabled', true);  
   
-        // Tambahkan input npsn_asal dengan nilai id_sekolah  
-        $('#form-tambah').append('<input type="hidden" name="npsn_asal" value="' + id_sekolah + '">');  
-        $('#form-tambah').append('<input type="hidden" name="asal_sekolah" value="' + nama_sekolah + '">');  
-    });  
+    // Tambahkan input npsn_asal dengan nilai id_sekolah  
+    $('#form-tambah').append('<input type="hidden" name="npsn_asal" value="' + id_sekolah + '">');  
+    $('#form-tambah').append('<input type="hidden" name="asal_sekolah" value="' + nama_sekolah + '">');
+    
+    // Re-bind sidebar dropdown to ensure it works after page load
+    setTimeout(function() {
+        if (typeof sidebar_dropdown === 'function') {
+            sidebar_dropdown();
+        }
+        // Also ensure sidebar links are clickable
+        $('.sidebar-menu a:not(.has-dropdown)').off('click.customHandler');
+    }, 100);
+});
 </script>  
