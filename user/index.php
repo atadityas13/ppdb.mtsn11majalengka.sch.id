@@ -112,15 +112,6 @@ if (isset($_SESSION['id_daftar'])) {
 
             <img src="../assets/img/wa.png" width="150"> </a>
     </div>
-      <div class="main-wrapper main-wrapper-1">
-        <div class="navbar-bg"></div>
-        <nav class="navbar navbar-expand-lg main-navbar sticky-top">
-          <form class="form-inline mr-auto">
-            <ul class="navbar-nav mr-3">
-              <!-- Tombol sidebar sudah ada di bawah -->
-            </ul>
-          </form>
-        </nav>
 
  <script>
 // Function ini dijalankan ketika Halaman ini dibuka pada browser

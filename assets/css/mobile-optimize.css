@@ -272,11 +272,20 @@
     
     /* Navbar fixed & shadow */
     .main-navbar {
+        position: -webkit-sticky;
         position: sticky;
         top: 0;
-        z-index: 997;
+        z-index: 1000 !important;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         padding: 8px 15px;
+        background: inherit;
+    }
+    
+    .main-navbar.sticky-top {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0 !important;
+        z-index: 1000 !important;
     }
     
     .navbar-bg {
