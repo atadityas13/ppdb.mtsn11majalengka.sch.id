@@ -46,6 +46,10 @@ if (isset($_SESSION['id_daftar'])) {
     <!-- Template CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/components.css">
+    
+    <!-- Mobile Optimization CSS -->
+    <link rel="stylesheet" href="../assets/css/mobile-optimize.css">
+    
     <!-- Start GA -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script> -->
 
@@ -157,20 +161,21 @@ crossorigin="anonymous"></script>
         <nav class="navbar navbar-expand-lg main-navbar">
           <form class="form-inline mr-auto">
             <ul class="navbar-nav mr-3">
-              <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+              <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg sidebar-toggle-btn" title="Menu">
+                <i class="fas fa-bars"></i>
+                <span class="d-none d-sm-inline-block">Menu</span>
+              </a></li>
             </ul>
-
           </form>
+          
           <ul class="navbar-nav navbar-right">
-
+            <?php include "topbar_menu.php"; ?>
 
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block"><?= $siswa['nama'] ?></div>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-
-                
                 <div class="dropdown-divider"></div>
                 <a href="logout.php" class="dropdown-item has-icon text-danger">
                   <i class="fas fa-sign-out-alt"></i> Logout
@@ -291,6 +296,9 @@ crossorigin="anonymous"></script>
         };
       })();
     </script> -->
+    
+    <!-- Mobile Optimization Scripts -->
+\t<script src="../assets/js/mobile-optimize.js"></script>
   </body>
 
   </html>

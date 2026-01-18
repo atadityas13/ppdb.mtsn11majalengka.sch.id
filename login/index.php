@@ -145,15 +145,15 @@ if (isset($_SESSION['id_user'])) {
             <ul class="navbar-nav mr-3">
               <!-- Sidebar Toggle Button -->
 				<li>
-					<a href="#" data-toggle="sidebar" class="nav-link nav-link-lg sidebar-toggle-btn" title="Toggle Menu">
+					<a href="#" data-toggle="sidebar" class="nav-link nav-link-lg sidebar-toggle-btn" title="Menu">
 						<i class="fas fa-bars"></i>
-						<span class="badge badge-primary mobile-menu-badge">Menu</span>
+						<span class="d-none d-sm-inline-block">Menu</span>
 					</a>
 				</li>
             </ul>
           </form>
           
-          <!-- Quick Menu Dropdown for Mobile -->
+          <!-- Quick Menu Links & User Info -->
           <ul class="navbar-nav navbar-right">
             <?php include "topbar_menu.php"; ?>
             
