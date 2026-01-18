@@ -270,26 +270,39 @@
     
     /* ========== NAVBAR OPTIMIZATION (ENHANCED) ========== */
     
+    /* Override navbar-bg untuk sticky behavior */
+    .navbar-bg {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 70px !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        z-index: -1 !important;
+    }
+    
     /* Navbar fixed & shadow */
     .main-navbar {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 0;
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: 0 !important;
         z-index: 1000 !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        padding: 8px 15px;
-        background: inherit;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+        padding: 8px 15px !important;
+        background: transparent !important;
     }
     
     .main-navbar.sticky-top {
-        position: -webkit-sticky;
-        position: sticky;
+        position: -webkit-sticky !important;
+        position: sticky !important;
         top: 0 !important;
         z-index: 1000 !important;
     }
     
-    .navbar-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    /* Main wrapper untuk support sticky */
+    .main-wrapper {
+        position: relative;
+        overflow-x: hidden;
     }
     
     /* Navbar brand */
