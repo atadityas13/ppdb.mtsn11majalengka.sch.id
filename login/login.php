@@ -85,7 +85,7 @@ if (!$has_superadmin) {
 
     .login-container {
       width: 100%;
-      max-width: 480px;
+      max-width: 440px;
       position: relative;
       z-index: 10;
       animation: slideIn 0.6s ease-out;
@@ -105,7 +105,7 @@ if (!$has_superadmin) {
     .login-card {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
-      border-radius: 24px;
+      border-radius: 20px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -118,7 +118,7 @@ if (!$has_superadmin) {
 
     .login-header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 50px 40px;
+      padding: 40px 30px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -145,46 +145,42 @@ if (!$has_superadmin) {
     }
 
     .logo-wrapper {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       position: relative;
       z-index: 1;
     }
 
     .logo-circle {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      animation: pulse 3s ease-in-out infinite;
+      animation: logoFloat 3s ease-in-out infinite;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
     }
 
-    @keyframes pulse {
+    @keyframes logoFloat {
       0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
       }
       50% {
-        transform: scale(1.05);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        transform: translateY(-8px) scale(1.05);
+        filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
       }
     }
 
     .logo-circle img {
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
       object-fit: contain;
-      border-radius: 50%;
     }
 
     .login-title {
       color: white;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
       margin: 0;
       position: relative;
@@ -194,45 +190,45 @@ if (!$has_superadmin) {
 
     .login-subtitle {
       color: rgba(255, 255, 255, 0.95);
-      font-size: 15px;
-      margin: 8px 0 0;
+      font-size: 14px;
+      margin: 6px 0 0;
       position: relative;
       z-index: 1;
       font-weight: 400;
     }
 
     .login-body {
-      padding: 45px 40px;
+      padding: 35px 30px;
     }
 
     .welcome-text {
       text-align: center;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
     .welcome-text h5 {
       color: #2d3748;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .welcome-text p {
       color: #718096;
-      font-size: 14px;
+      font-size: 13px;
       margin: 0;
     }
 
     .form-group {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .form-label {
       display: block;
       color: #2d3748;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       transition: color 0.3s;
     }
 
@@ -253,11 +249,11 @@ if (!$has_superadmin) {
 
     .form-control {
       width: 100%;
-      height: 54px;
-      padding: 0 20px 0 55px;
+      height: 48px;
+      padding: 0 18px 0 50px;
       border: 2px solid #e2e8f0;
-      border-radius: 12px;
-      font-size: 15px;
+      border-radius: 10px;
+      font-size: 14px;
       color: #2d3748;
       background: #f7fafc;
       transition: all 0.3s ease;
@@ -276,15 +272,16 @@ if (!$has_superadmin) {
 
     .forgot-password {
       text-align: right;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     .forgot-password a {
       color: #667eea;
-      font-size: 13px;
+      font-size: 12px;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
+      cursor: pointer;
     }
 
     .forgot-password a:hover {
@@ -295,32 +292,32 @@ if (!$has_superadmin) {
     .remember-checkbox {
       display: flex;
       align-items: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .remember-checkbox input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
       cursor: pointer;
       accent-color: #667eea;
     }
 
     .remember-checkbox label {
       color: #4a5568;
-      font-size: 14px;
+      font-size: 13px;
       cursor: pointer;
       user-select: none;
     }
 
     .btn-login {
       width: 100%;
-      height: 54px;
+      height: 48px;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       border: none;
-      border-radius: 12px;
+      border-radius: 10px;
       color: white;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -361,24 +358,25 @@ if (!$has_superadmin) {
 
     .login-footer {
       text-align: center;
-      padding: 0 40px 40px;
+      padding: 0 30px 30px;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
+      gap: 25px;
+      margin-bottom: 15px;
     }
 
     .footer-links a {
       color: #718096;
-      font-size: 14px;
+      font-size: 13px;
       text-decoration: none;
       transition: color 0.3s;
       display: flex;
       align-items: center;
       gap: 6px;
+      cursor: pointer;
     }
 
     .footer-links a:hover {
@@ -387,19 +385,19 @@ if (!$has_superadmin) {
 
     .footer-text {
       color: #a0aec0;
-      font-size: 13px;
+      font-size: 12px;
       margin: 0;
     }
 
     .back-link {
       text-align: center;
-      margin-top: 25px;
+      margin-top: 20px;
     }
 
     .back-link a {
       color: white;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       display: inline-flex;
       align-items: center;
@@ -416,30 +414,209 @@ if (!$has_superadmin) {
       transform: translateX(-5px);
     }
 
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 0;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: slideUp 0.3s ease;
+      overflow: hidden;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .close-modal {
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .close-modal:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-body {
+      padding: 30px 25px;
+    }
+
+    .modal-body p {
+      color: #4a5568;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .modal-body .info-box {
+      background: #f7fafc;
+      border-left: 4px solid #667eea;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .modal-body .info-box p {
+      margin: 0;
+      font-weight: 500;
+      color: #2d3748;
+    }
+
+    .modal-body .help-item {
+      display: flex;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 15px;
+      padding: 12px;
+      background: #f7fafc;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .modal-body .help-item:hover {
+      background: #edf2f7;
+    }
+
+    .modal-body .help-item i {
+      color: #667eea;
+      font-size: 20px;
+      margin-top: 2px;
+    }
+
+    .modal-body .help-item div h4 {
+      margin: 0 0 5px 0;
+      font-size: 15px;
+      color: #2d3748;
+    }
+
+    .modal-body .help-item div p {
+      margin: 0;
+      font-size: 13px;
+      color: #718096;
+    }
+
+    .modal-footer {
+      padding: 15px 25px;
+      background: #f7fafc;
+      text-align: right;
+    }
+
+    .btn-modal {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .btn-modal:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
     @media (max-width: 576px) {
+      body {
+        padding: 15px;
+      }
+
+      .login-container {
+        max-width: 100%;
+      }
+
       .login-header {
-        padding: 40px 30px;
+        padding: 30px 25px;
       }
 
       .login-body {
-        padding: 35px 30px;
+        padding: 30px 25px;
       }
 
       .login-footer {
-        padding: 0 30px 35px;
+        padding: 0 25px 25px;
       }
 
       .login-title {
-        font-size: 26px;
+        font-size: 24px;
+      }
+
+      .login-subtitle {
+        font-size: 13px;
       }
 
       .welcome-text h5 {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       .footer-links {
-        flex-direction: column;
-        gap: 12px;
+        gap: 15px;
+      }
+
+      .modal-content {
+        margin: 20% auto;
+        width: 95%;
+      }
+
+      .modal-body {
+        padding: 25px 20px;
       }
     }
   </style>
@@ -502,7 +679,7 @@ if (!$has_superadmin) {
               <i class="fas fa-lock input-icon"></i>
             </div>
             <div class="forgot-password">
-              <a href="#">Lupa password?</a>
+              <a onclick="openForgotPasswordModal()">Lupa password?</a>
             </div>
           </div>
 
@@ -522,10 +699,7 @@ if (!$has_superadmin) {
           <a href="../index.php">
             <i class="fas fa-home"></i> Beranda
           </a>
-          <a href="../register.php">
-            <i class="fas fa-user-plus"></i> Daftar
-          </a>
-          <a href="#">
+          <a onclick="openHelpModal()">
             <i class="fas fa-question-circle"></i> Bantuan
           </a>
         </div>
@@ -540,12 +714,111 @@ if (!$has_superadmin) {
     </div>
   </div>
 
+  <!-- Modal Lupa Password -->
+  <div id="forgotPasswordModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-key"></i> Lupa Password?</h3>
+        <button class="close-modal" onclick="closeForgotPasswordModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Jika Anda lupa password akun administrator, silakan hubungi Super Admin atau Administrator lain untuk mereset password Anda.</p>
+        <div class="info-box">
+          <p><i class="fas fa-info-circle"></i> Untuk keamanan sistem, reset password hanya dapat dilakukan oleh Super Admin.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal" onclick="closeForgotPasswordModal()">Mengerti</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Bantuan -->
+  <div id="helpModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-question-circle"></i> Pusat Bantuan</h3>
+        <button class="close-modal" onclick="closeHelpModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="help-item">
+          <i class="fas fa-user-lock"></i>
+          <div>
+            <h4>Login Bermasalah?</h4>
+            <p>Pastikan username dan password yang Anda masukkan benar. Perhatikan huruf besar/kecil.</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <i class="fas fa-shield-alt"></i>
+          <div>
+            <h4>Keamanan Akun</h4>
+            <p>Jangan bagikan password Anda kepada siapapun. Gunakan password yang kuat dan unik.</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <i class="fas fa-users-cog"></i>
+          <div>
+            <h4>Hubungi Administrator</h4>
+            <p>Jika mengalami kendala teknis, silakan hubungi Super Admin atau IT Support sekolah.</p>
+          </div>
+        </div>
+        <div class="help-item">
+          <i class="fas fa-book"></i>
+          <div>
+            <h4>Panduan Penggunaan</h4>
+            <p>Akses menu Bantuan di dashboard untuk panduan lengkap penggunaan sistem PPDB.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal" onclick="closeHelpModal()">Tutup</button>
+      </div>
+    </div>
+  </div>
+
   <!-- General JS Scripts -->
   <script src="../assets/modules/jquery.min.js"></script>
   <script src="../assets/modules/bootstrap/js/bootstrap.min.js"></script>
   <script src="../assets/modules/izitoast/js/iziToast.min.js"></script>
 
   <script>
+    // Modal Functions
+    function openForgotPasswordModal() {
+      document.getElementById('forgotPasswordModal').style.display = 'block';
+    }
+
+    function closeForgotPasswordModal() {
+      document.getElementById('forgotPasswordModal').style.display = 'none';
+    }
+
+    function openHelpModal() {
+      document.getElementById('helpModal').style.display = 'block';
+    }
+
+    function closeHelpModal() {
+      document.getElementById('helpModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const forgotModal = document.getElementById('forgotPasswordModal');
+      const helpModal = document.getElementById('helpModal');
+      if (event.target == forgotModal) {
+        closeForgotPasswordModal();
+      }
+      if (event.target == helpModal) {
+        closeHelpModal();
+      }
+    }
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeForgotPasswordModal();
+        closeHelpModal();
+      }
+    });
+
     // Form validation and submission
     $('#form-login').submit(function(e) {
       e.preventDefault();
