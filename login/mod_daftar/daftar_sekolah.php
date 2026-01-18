@@ -294,21 +294,6 @@
     </div>  
 </div>  
   
-<style>
-/* Fix sidebar clickability issue specific to this page */
-.main-sidebar {
-    position: fixed !important;
-    z-index: 999 !important;
-}
-
-.main-sidebar .menu-header,
-.main-sidebar .sidebar-menu,
-.main-sidebar .menu-header a,
-.main-sidebar .sidebar-menu a {
-    pointer-events: auto !important;
-}
-</style>
-
 <script>  
     // IMPORT FILE PENDUKUNG       
     $('#form-import').on('submit', function(e) {  
