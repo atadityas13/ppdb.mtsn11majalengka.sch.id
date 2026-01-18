@@ -55,14 +55,17 @@ if (!$has_superadmin) {
 
     /* Left Side - Branding */
     .login-left {
-      flex: 1;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100vh;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 40px;
-      position: relative;
       overflow: hidden;
     }
 
@@ -107,12 +110,15 @@ if (!$has_superadmin) {
 
     /* Right Side - Form */
     .login-right {
-      flex: 1;
+      margin-left: 50%;
+      width: 50%;
+      min-height: 100vh;
       background: white;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px;
+      overflow-y: auto;
     }
 
     .login-card {
@@ -554,12 +560,17 @@ if (!$has_superadmin) {
       }
 
       .login-left {
+        position: relative;
+        width: 100%;
+        height: auto;
         min-height: 300px;
         padding: 40px 25px;
       }
 
       .login-right {
+        margin-left: 0;
         width: 100%;
+        min-height: auto;
         padding: 30px 20px;
       }
 

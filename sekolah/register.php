@@ -45,22 +45,27 @@ require "../config/functions.crud.php";
     }
 
     .register-left {
-      flex: 1;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100vh;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       padding: 60px 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
       overflow: hidden;
     }
 
     .register-right {
-      flex: 1;
+      margin-left: 50%;
+      width: 50%;
+      min-height: 100vh;
       background: white;
       padding: 40px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       overflow-y: auto;
     }
@@ -360,12 +365,17 @@ require "../config/functions.crud.php";
       }
 
       .register-left {
+        position: relative;
+        width: 100%;
+        height: auto;
         min-height: 280px;
         padding: 40px 30px;
       }
 
       .register-right {
+        margin-left: 0;
         width: 100%;
+        min-height: auto;
         padding: 30px 20px;
       }
 
