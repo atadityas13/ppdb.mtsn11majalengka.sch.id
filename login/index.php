@@ -156,8 +156,8 @@ if (isset($_SESSION['id_user'])) {
           <ul class="navbar-nav navbar-right">
             <?php include "topbar_menu.php"; ?>
             
-            <!-- User Info -->
-            <li class="dropdown">
+            <!-- User Info - Hidden on Desktop, Visible on Mobile -->
+            <li class="dropdown d-lg-none">
               <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <i class="fas fa-user-circle fa-lg"></i>
                 <div class="d-sm-none d-lg-inline-block">Hi, <?= ucfirst($user['nama']) ?></div>
