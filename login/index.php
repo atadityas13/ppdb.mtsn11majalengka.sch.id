@@ -133,7 +133,7 @@ if (isset($_SESSION['id_user'])) {
   </head>
 
   
-    <body class="fixed-navbar fixed-layout">
+    <body>
         
   
     <div id="app">
