@@ -275,7 +275,9 @@
 <script>  
     // IMPORT FILE PENDUKUNG       
     $('#form-import').on('submit', function(e) {  
-        e.preventDefault();  
+        e.preventDefault();
+        var submitBtn = $(this).find('button[type="submit"]');
+        
         $.ajax({  
             type: 'post',  
             url: 'mod_siswa/crud_siswa.php?pg=import2',  
@@ -283,10 +285,8 @@
             processData: false,  
             contentType: false,  
             cache: false,  
-            beforeSend: function() {  
-                $('form button').on("click", function(e) {  
-                    e.preventDefault();  
-                });  
+            beforeSend: function() {
+                submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Mengimpor...');
             },  
             success: function(data) {  
                 $('#importdata').modal('hide');  
@@ -298,7 +298,10 @@
                 setTimeout(function() {  
                     window.location.reload();  
                 }, 2000);  
-            }  
+            },
+            error: function() {
+                submitBtn.prop('disabled', false).html('Simpan');
+            }
         });  
     });  
   
@@ -311,15 +314,15 @@
     });  
   
     $('#form-tambah').submit(function(e) {  
-        e.preventDefault();  
+        e.preventDefault();
+        var submitBtn = $(this).find('button[type="submit"]');
+        
         $.ajax({  
             type: 'POST',  
             url: 'mod_daftar/crud_daftar.php?pg=tambah',  
             data: $(this).serialize(),  
-            beforeSend: function() {  
-                $('form button').on("click", function(e) {  
-                    e.preventDefault();  
-                });  
+            beforeSend: function() {
+                submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Menyimpan...');
             },  
             success: function(data) {  
                 iziToast.success({  
@@ -331,7 +334,10 @@
                     window.location.reload();  
                 }, 2000);  
                 $('#tambahdata').modal('hide');  
-            }  
+            },
+            error: function() {
+                submitBtn.prop('disabled', false).html('Simpan');
+            }
         });  
         return false;  
     });  
