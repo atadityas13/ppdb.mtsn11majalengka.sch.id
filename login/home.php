@@ -23,6 +23,19 @@ $tatacara_text = '
 echo "<!-- Pengumuman Text: " . htmlspecialchars($pengumuman_text) . " -->";  
   
 ?>  
+
+<!-- Mobile Menu Helper Alert (Only show on mobile) -->
+<div class="alert alert-info alert-has-icon alert-dismissible fade show d-lg-none mobile-menu-helper" role="alert" style="margin: 15px 10px; border-radius: 8px; border-left: 4px solid #3498db;">
+    <div class="alert-icon"><i class="fas fa-info-circle"></i></div>
+    <div class="alert-body">
+        <div class="alert-title">💡 Tips Navigasi</div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        Klik tombol <strong style="color: #6777ef;"><i class="fas fa-bars"></i> Menu</strong> di kiri atas untuk membuka menu lengkap, 
+        atau gunakan <strong style="color: #28a745;"><i class="fas fa-th-large"></i> Menu Cepat</strong> di kanan atas untuk akses cepat!
+    </div>
+</div>
   
 <div class='row'>    
     <?php if ($is_superadmin || $is_admin) { ?>    

@@ -143,16 +143,44 @@ if (isset($_SESSION['id_user'])) {
         <nav class="navbar navbar-expand-lg main-navbar">
           <form class="form-inline mr-auto">
             <ul class="navbar-nav mr-3">
-              
-				<a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i>
-				   </a>
+              <!-- Sidebar Toggle Button -->
+				<li>
+					<a href="#" data-toggle="sidebar" class="nav-link nav-link-lg sidebar-toggle-btn" title="Toggle Menu">
+						<i class="fas fa-bars"></i>
+						<span class="badge badge-primary mobile-menu-badge">Menu</span>
+					</a>
+				</li>
             </ul>
-
           </form>
-         
-   
-
-		  
+          
+          <!-- Quick Menu Dropdown for Mobile -->
+          <ul class="navbar-nav navbar-right">
+            <?php include "topbar_menu.php"; ?>
+            
+            <!-- User Info -->
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                <i class="fas fa-user-circle fa-lg"></i>
+                <div class="d-sm-none d-lg-inline-block">Hi, <?= ucfirst($user['nama']) ?></div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-title">Logged in as <?= $user['level'] ?></div>
+                <?php if ($user['level'] == 'operator_sd') { ?>
+                  <a href="?pg=profile" class="dropdown-item has-icon">
+                    <i class="far fa-user"></i> Profile
+                  </a>
+                <?php } else { ?>
+                  <a href="?pg=setting" class="dropdown-item has-icon">
+                    <i class="fas fa-cog"></i> Settings
+                  </a>
+                <?php } ?>
+                <div class="dropdown-divider"></div>
+                <a href="logout.php" class="dropdown-item has-icon text-danger">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+              </div>
+            </li>
+          </ul>
         </nav>
 
  <script>

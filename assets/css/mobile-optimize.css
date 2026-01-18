@@ -2,14 +2,86 @@
    MOBILE OPTIMIZATION FOR PPDB SYSTEM
    =================================== */
 
+/* ========== TOPBAR QUICK MENU (Desktop & Mobile) ========== */
+
+/* Quick Menu Dropdown Styling */
+.quick-menu-dropdown .dropdown-menu {
+    min-width: 280px;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.quick-menu-list .dropdown-title {
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #6c757d;
+    padding: 10px 20px 5px;
+    letter-spacing: 0.5px;
+}
+
+.quick-menu-list .dropdown-item {
+    padding: 10px 20px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.quick-menu-list .dropdown-item:hover {
+    background: #f8f9fa;
+    padding-left: 25px;
+}
+
+.quick-menu-list .dropdown-item i {
+    width: 24px;
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+/* Badge styling */
+.mobile-menu-badge {
+    font-size: 9px;
+    padding: 2px 6px;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+/* Sidebar toggle button enhancement */
+.sidebar-toggle-btn {
+    position: relative;
+    background: #6777ef !important;
+    color: white !important;
+    border-radius: 8px;
+    padding: 10px 15px !important;
+    transition: all 0.3s;
+}
+
+.sidebar-toggle-btn:hover {
+    background: #3949ab !important;
+    transform: scale(1.05);
+}
+
+.sidebar-toggle-btn i {
+    font-size: 20px;
+}
+
 /* Mobile Breakpoints */
 @media (max-width: 768px) {
     
-    /* ========== SIDEBAR OPTIMIZATION ========== */
+    /* ========== SIDEBAR OPTIMIZATION (ENHANCED) ========== */
     
-    /* Auto-hide sidebar di mobile */
+    /* Force hide sidebar di mobile saat load */
+    body .main-sidebar,
     body.sidebar-mini .main-sidebar {
-        margin-left: -250px;
+        margin-left: -280px !important;
+        transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Show sidebar saat toggle */
+    body.sidebar-show .main-sidebar {
+        margin-left: 0 !important;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.3);
     }
     
     /* Sidebar overlay untuk mobile */
@@ -19,57 +91,224 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.6);
         z-index: 998;
         display: none;
+        backdrop-filter: blur(2px);
+        animation: fadeIn 0.3s;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
     
     body.sidebar-show .sidebar-overlay {
         display: block;
     }
     
-    body.sidebar-show .main-sidebar {
-        margin-left: 0;
-        box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-    }
-    
-    /* Sidebar width di mobile */
+    /* Sidebar width di mobile - lebih lebar */
     .main-sidebar {
-        width: 260px;
-        transition: margin-left 0.3s ease;
+        width: 280px !important;
+        max-width: 85vw;
+        position: fixed !important;
+        height: 100vh;
+        overflow-y: auto;
+        z-index: 999;
     }
     
-    /* Menu spacing di mobile */
+    /* Sidebar brand optimization */
+    .sidebar-brand {
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 10;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    /* Menu header (Home, Profile, Logout) */
+    .menu-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 15px 10px;
+        margin-bottom: 10px;
+    }
+    
+    .menu-header ul {
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .menu-header ul li {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .menu-header ul li a {
+        display: block;
+        padding: 10px 5px;
+        color: white !important;
+        font-size: 11px;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+    
+    .menu-header ul li a:hover {
+        background: rgba(255,255,255,0.2);
+    }
+    
+    .menu-header ul li a span {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    
+    /* Sidebar menu optimization */
+    .main-sidebar .sidebar-menu {
+        padding: 10px 0;
+    }
+    
+    .main-sidebar .sidebar-menu li {
+        margin-bottom: 2px;
+    }
+    
     .main-sidebar .sidebar-menu li a {
-        padding: 12px 20px;
+        padding: 14px 20px;
         font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s;
+        border-left: 3px solid transparent;
     }
     
-    .main-sidebar .sidebar-menu .dropdown-menu li a {
-        padding: 10px 20px 10px 40px;
-        font-size: 13px;
+    .main-sidebar .sidebar-menu li a:hover,
+    .main-sidebar .sidebar-menu li.active > a {
+        background: #f8f9fa;
+        border-left-color: #6777ef;
+        padding-left: 23px;
     }
     
-    /* ========== NAVBAR OPTIMIZATION ========== */
-    
-    /* Navbar spacing */
-    .navbar {
-        padding: 0 15px;
-    }
-    
-    .navbar-brand {
+    .main-sidebar .sidebar-menu li a i {
+        width: 24px;
+        margin-right: 10px;
         font-size: 16px;
     }
     
-    .navbar .nav-link {
-        padding: 10px 8px;
+    .main-sidebar .sidebar-menu .dropdown-menu {
+        background: #f8f9fa;
+        margin: 0;
+        padding: 5px 0;
     }
     
-    /* Hamburger menu lebih besar untuk touch */
-    .navbar-toggler {
-        padding: 10px;
-        font-size: 24px;
+    .main-sidebar .sidebar-menu .dropdown-menu li a {
+        padding: 12px 20px 12px 50px;
+        font-size: 13px;
+        border-left: none;
+    }
+    
+    .main-sidebar .sidebar-menu .dropdown-menu li a:hover {
+        background: white;
+        padding-left: 53px;
+    }
+    
+    /* ========== NAVBAR OPTIMIZATION (ENHANCED) ========== */
+    
+    /* Navbar fixed & shadow */
+    .main-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 997;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 8px 15px;
+    }
+    
+    .navbar-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    }
+    
+    /* Navbar brand */
+    .navbar-brand {
+        font-size: 16px;
+        font-weight: 700;
+    }
+    
+    /* Nav links spacing */
+    .navbar .nav-link {
+        padding: 8px 10px;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+    
+    .navbar .nav-link:hover {
+        background: rgba(255,255,255,0.1);
+    }
+    
+    /* Sidebar toggle button di navbar */
+    .sidebar-toggle-btn {
+        font-size: 18px;
+        padding: 8px 16px !important;
+        margin-right: 5px;
+    }
+    
+    /* Quick menu badge */
+    .quick-menu-dropdown .badge {
+        display: inline-block;
+        margin-left: 5px;
+        font-size: 9px;
+        padding: 3px 7px;
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+    
+    /* Dropdown menu mobile enhancement */
+    .quick-menu-dropdown .dropdown-menu {
+        max-height: 60vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         border: none;
+        margin-top: 10px;
+    }
+    
+    /* User dropdown */
+    .nav-link-user {
+        padding: 5px 10px !important;
+    }
+    
+    .nav-link-user i {
+        font-size: 24px;
+    }
+    
+    /* Hamburger animation */
+    .navbar-toggler,
+    .sidebar-toggle-btn {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .navbar-toggler::after,
+    .sidebar-toggle-btn::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+    
+    .navbar-toggler:active::after,
+    .sidebar-toggle-btn:active::after {
+        width: 200px;
+        height: 200px;
     }
     
     /* ========== MAIN CONTENT OPTIMIZATION ========== */
@@ -94,6 +333,38 @@
     
     .section-title {
         font-size: 18px;
+    }
+    
+    /* Mobile Menu Helper Alert */
+    .mobile-menu-helper {
+        animation: slideDown 0.5s ease-out;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .mobile-menu-helper .alert-title {
+        font-weight: 700;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    
+    .mobile-menu-helper .alert-body {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+    
+    .mobile-menu-helper .alert-icon {
+        font-size: 24px;
     }
     
     /* ========== CARD OPTIMIZATION ========== */
@@ -510,6 +781,25 @@
     }
 }
 
+/* ========== RIPPLE EFFECT ========== */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    width: 20px;
+    height: 20px;
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+}
+
 /* ========== EXTRA SMALL DEVICES (<576px) ========== */
 
 @media (max-width: 576px) {
@@ -526,4 +816,105 @@
         font-size: 12px;
         padding: 8px 14px;
     }
+    
+    /* Sidebar even narrower on very small screens */
+    .main-sidebar {
+        max-width: 90vw;
+    }
+    
+    /* Quick menu full width */
+    .quick-menu-dropdown .dropdown-menu {
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 10px;
+        width: calc(100% - 20px);
+    }
+    
+    /* Navbar adjustments */
+    .main-navbar {
+        padding: 5px 10px;
+    }
+    
+    .sidebar-toggle-btn {
+        padding: 6px 12px !important;
+    }
 }
+
+/* ========== LANDSCAPE MODE OPTIMIZATION ========== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+    /* Sidebar narrower in landscape */
+    .main-sidebar {
+        width: 240px !important;
+        max-width: 70vw;
+    }
+    
+    body.sidebar-mini .main-sidebar,
+    body .main-sidebar {
+        margin-left: -240px !important;
+    }
+    
+    body.sidebar-show .main-sidebar {
+        margin-left: 0 !important;
+    }
+    
+    /* Reduce padding in landscape */
+    .main-sidebar .sidebar-menu li a {
+        padding: 10px 15px;
+    }
+    
+    .menu-header {
+        padding: 10px 5px;
+    }
+}
+
+/* ========== ACCESSIBILITY IMPROVEMENTS ========== */
+
+/* Focus states for keyboard navigation */
+@media (max-width: 768px) {
+    .sidebar-toggle-btn:focus,
+    .nav-link:focus,
+    .dropdown-item:focus {
+        outline: 2px solid #6777ef;
+        outline-offset: 2px;
+    }
+    
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .sidebar-overlay {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .main-sidebar {
+            border-right: 2px solid #000;
+        }
+    }
+    
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        .main-sidebar,
+        .sidebar-overlay,
+        .dropdown-menu {
+            transition: none !important;
+            animation: none !important;
+        }
+    }
+}
+
+/* ========== PRINT STYLES ========== */
+
+@media print {
+    .main-sidebar,
+    .sidebar-overlay,
+    .main-navbar,
+    .quick-menu-dropdown,
+    .menu-header {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+}
+

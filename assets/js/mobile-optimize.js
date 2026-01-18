@@ -6,7 +6,7 @@
 (function($) {
     'use strict';
 
-    // ========== SIDEBAR MOBILE TOGGLE ==========
+    // ========== SIDEBAR MOBILE TOGGLE (ENHANCED) ==========
     
     function initMobileSidebar() {
         // Buat overlay jika belum ada
@@ -14,16 +14,34 @@
             $('body').append('<div class="sidebar-overlay"></div>');
         }
         
-        // Toggle sidebar saat klik hamburger
-        $(document).on('click', '.navbar-toggler, [data-toggle="sidebar"]', function(e) {
+        // Force hide sidebar on mobile on page load
+        if ($(window).width() <= 768) {
+            $('body').removeClass('sidebar-show');
+            $('.main-sidebar').css('margin-left', '-280px');
+        }
+        
+        // Toggle sidebar saat klik hamburger atau toggle button
+        $(document).on('click', '.navbar-toggler, [data-toggle="sidebar"], .sidebar-toggle-btn', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            $('body').toggleClass('sidebar-show');
+            
+            var $body = $('body');
+            
+            if ($body.hasClass('sidebar-show')) {
+                // Hide sidebar
+                $body.removeClass('sidebar-show');
+                $('.main-sidebar').css('margin-left', '-280px');
+            } else {
+                // Show sidebar
+                $body.addClass('sidebar-show');
+                $('.main-sidebar').css('margin-left', '0');
+            }
         });
         
         // Tutup sidebar saat klik overlay
         $(document).on('click', '.sidebar-overlay', function() {
             $('body').removeClass('sidebar-show');
+            $('.main-sidebar').css('margin-left', '-280px');
         });
         
         // Tutup sidebar saat klik link (kecuali dropdown)
@@ -31,6 +49,7 @@
             if ($(window).width() <= 768) {
                 setTimeout(function() {
                     $('body').removeClass('sidebar-show');
+                    $('.main-sidebar').css('margin-left', '-280px');
                 }, 300);
             }
         });
@@ -39,8 +58,45 @@
         $(window).on('resize', function() {
             if ($(window).width() > 768) {
                 $('body').removeClass('sidebar-show');
+                $('.main-sidebar').css('margin-left', '');
+            } else {
+                // Force hide on mobile
+                if (!$('body').hasClass('sidebar-show')) {
+                    $('.main-sidebar').css('margin-left', '-280px');
+                }
             }
         });
+        
+        // Handle dropdown toggle di sidebar
+        $(document).on('click', '.sidebar-menu .has-dropdown', function(e) {
+            if ($(window).width() <= 768) {
+                e.preventDefault();
+                var $parent = $(this).parent();
+                var $dropdown = $parent.find('.dropdown-menu');
+                
+                // Toggle dropdown
+                $dropdown.slideToggle(300);
+                $parent.toggleClass('active');
+                
+                // Close other dropdowns
+                $('.sidebar-menu li').not($parent).find('.dropdown-menu').slideUp(300);
+                $('.sidebar-menu li').not($parent).removeClass('active');
+            }
+        });
+        
+        // Add ripple effect to buttons
+        $('.sidebar-toggle-btn, .navbar-toggler').on('click', function(e) {
+            var $btn = $(this);
+            var $ripple = $('<span class="ripple"></span>');
+            
+            $btn.append($ripple);
+            
+            setTimeout(function() {
+                $ripple.remove();
+            }, 600);
+        });
+        
+        console.log('Mobile sidebar initialized');
     }
     
     // ========== TABLE SCROLL DETECTION ==========
