@@ -358,6 +358,65 @@ crossorigin="anonymous"></script>
         };
       })();
     </script> -->
+    
+    <!-- Modal Edit Universal - Dipindahkan ke level body untuk z-index tertinggi -->
+    <div class="modal fade" id="modal-edit-universal" tabindex="-1" role="dialog" aria-hidden="true">  
+        <div class="modal-dialog" role="document">  
+            <div class="modal-content">  
+                <form id="form-edit-universal">  
+                    <div class="modal-header">  
+                        <h5 class="modal-title">Ubah Data</h5>  
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
+                            <span aria-hidden="true">&times;</span>  
+                        </button>  
+                    </div>  
+                    <div class="modal-body">  
+                        <input type="hidden" id="edit-id-daftar" name="id_daftar" class="form-control" required="">  
+                        <div class="form-group">  
+                            <label>NISN</label>  
+                            <input type="text" id="edit-nisn" name="nisn" class="form-control nisn" readonly>  
+                        </div>  
+                        <div class="form-group">  
+                            <label>Nama Siswa</label>  
+                            <input type="text" id="edit-nama" name="nama" class="form-control">  
+                        </div>  
+                        <div class="form-group">  
+                            <label>Tempat Lahir</label>  
+                            <input type="text" id="edit-tempat" name="tempat_lahir" class="form-control">  
+                        </div>  
+                        <div class="form-group">  
+                            <label>Tanggal Lahir</label>  
+                            <input type="date" id="edit-tgl" name="tgl_lahir" class="form-control">  
+                        </div>  
+                        <div class="form-group">  
+                            <label>Sekolah Asal</label>  
+                            <input type="text" id="edit-asal" name="asal" class="form-control" readonly>  
+                        </div>  
+                        <div class="form-group">  
+                            <label>NPSN Sekolah</label>  
+                            <input type="text" id="edit-npsn" name="npsn_asal" class="form-control" readonly>  
+                        </div>  
+                        <div class="form-group">  
+                            <label>No HP</label>  
+                            <input type="number" id="edit-nohp" name="no_hp" class="form-control">  
+                        </div>  
+                        <div class="form-group">  
+                            <label>Jenis Kelamin</label>  
+                            <select class="form-control" id="edit-jenkel" name="jenkel" required>  
+                                <option value="L">Laki-Laki</option>  
+                                <option value="P">Perempuan</option>  
+                            </select>  
+                        </div>  
+                    </div>  
+                    <div class="modal-footer">  
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>  
+                        <button type="submit" class="btn btn-primary">Simpan</button>  
+                    </div>  
+                </form>  
+            </div>  
+        </div>  
+    </div>
+    
   </body>
 
   </html>
