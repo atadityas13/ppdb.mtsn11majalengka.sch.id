@@ -71,7 +71,7 @@ if ($pg == 'tambah') {
         'npsn_asal' => $npsn_asal,    
         'asal_sekolah' => $nama_sekolah,    
         'jurusan' => $jurusan['nama_jurusan'], // Menggunakan nama jurusan    
-        'password' => $_POST['password'],    
+        'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),    
         'remember_token_uuid' => $_POST['password'],    
         'no_hp' => str_replace(" ", "", $_POST['nohp']),    
         'foto' => 'default.png',    
@@ -152,7 +152,7 @@ if ($pg == 'update_full') {
     
     // Update password hanya jika diisi
     if (!empty($_POST['password'])) {
-        $data['password'] = $_POST['password'];
+        $data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $data['remember_token_uuid'] = $_POST['password'];
     }
     

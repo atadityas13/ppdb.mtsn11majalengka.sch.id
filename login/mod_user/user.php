@@ -248,11 +248,15 @@
                         <select class="form-control" name="level" id="level" required>
                             <option value="">Pilih Level</option>
                             <?php if ($is_superadmin) { ?>  
-                                <option value="superadmin">Super Admin</option>  
+                                <option value="admin">Administrator</option>
                             <?php } ?>  
-                            <option value="admin">Administrator</option>
                             <option value="panitia">Panitia</option>
                         </select>
+                        <?php if ($is_superadmin) { ?>
+                            <small class="form-text text-info">
+                                <i class="fas fa-info-circle"></i> Super Admin hanya bisa dibuat saat first-time setup.
+                            </small>
+                        <?php } ?>
                     </div>
                     <div class='form-group'>
                         <label>Password</label>  
@@ -317,6 +321,18 @@
                             window.location.reload();  
                         }, 2000);  
                         $('#tambahdata').modal('hide');  
+                    } else if (data == 'error_admin') {
+                        iziToast.error({  
+                            title: 'Akses Ditolak!',  
+                            message: 'Anda tidak memiliki akses untuk menambah Administrator',  
+                            position: 'topRight'  
+                        });
+                    } else if (data == 'error_superadmin_not_allowed') {
+                        iziToast.error({  
+                            title: 'Tidak Diizinkan!',  
+                            message: 'Super Admin hanya bisa dibuat saat first-time setup sistem',  
+                            position: 'topRight'  
+                        });
                     } else {  
                         iziToast.error({  
                             title: 'Maaf!',  

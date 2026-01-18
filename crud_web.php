@@ -53,7 +53,7 @@ if ($pg == 'simpan') {
             'jenkel' => $_POST['jenkel'],
             'npsn_asal' => $npsn_asal,  
             'asal_sekolah' => $nama_sekolah, 
-            'password' => $_POST['password'],
+            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
             'remember_token_uuid' => $_POST['password'],
             'tgl_daftar' => $_POST['tgl_daftar'],
             'foto' => 'default.png'
@@ -134,7 +134,7 @@ if ($pg == 'simpan2') {
             'jenkel' => $_POST['jenkel'],
             'npsn_asal' => $npsn_asal,  
             'asal_sekolah' => $nama_sekolah, 
-            'password' => $_POST['password'],
+            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
             'remember_token_uuid' => $_POST['password'],
             'foto' => 'default.png'
         ];
@@ -172,7 +172,7 @@ if ($pg == 'login') {
             echo json_encode($data);
         } else {
             $siswa = mysqli_fetch_array($siswaQ);
-            if ($password <> $siswa['password']) {
+            if (!password_verify($password, $siswa['password'])) {
                 $data = [
                     'pesan' => 'Password Salah !'
                 ];

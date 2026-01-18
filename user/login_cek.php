@@ -16,7 +16,7 @@ if ($pg == 'login') {
         } else {
             $siswa = mysqli_fetch_array($siswaQ);
 
-            if ($password <> $siswa['password']) {
+            if (!password_verify($password, $siswa['password'])) {
                 $data = [
                     'pesan' => 'Password Salah !'
                 ];

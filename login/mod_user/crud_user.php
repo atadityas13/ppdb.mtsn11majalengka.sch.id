@@ -43,6 +43,22 @@ if ($pg == 'ubah') {
 }  
   
 if ($pg == 'tambah') {  
+    // Get current user level
+    $current_user = fetch($koneksi, 'user', ['id_user' => $_SESSION['id_user']]);
+    $is_superadmin = ($current_user['level'] === 'superadmin');
+    
+    // Super admin hanya bisa dibuat via setup wizard
+    if ($_POST['level'] === 'superadmin') {
+        echo 'error_superadmin_not_allowed';
+        exit;
+    }
+    
+    // Admin tidak boleh menambah admin lain (se-level)
+    if (!$is_superadmin && $_POST['level'] === 'admin') {
+        echo 'error_admin';
+        exit;
+    }
+    
     $data = [  
         'username'     => $_POST['username'],  
         'nama_user'    => $_POST['nama'],  

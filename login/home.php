@@ -25,7 +25,7 @@ echo "<!-- Pengumuman Text: " . htmlspecialchars($pengumuman_text) . " -->";
 ?>  
   
 <div class='row'>    
-    <?php if ($is_admin) { ?>    
+    <?php if ($is_superadmin || $is_admin) { ?>    
         <div class="col-lg-3">    
             <div class="small-box bg-blue">    
                 <div class="inner">    

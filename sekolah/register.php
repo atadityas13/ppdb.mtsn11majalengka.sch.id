@@ -89,6 +89,46 @@ require "../config/functions.crud.php";
       padding: 15px;
       margin-bottom: 20px;
     }
+    /* Password Strength Indicator */
+    .password-strength {
+      height: 5px;
+      border-radius: 3px;
+      margin-top: 5px;
+      transition: all 0.3s;
+      background: #e3e6f0;
+    }
+    .strength-bar {
+      height: 100%;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+    .strength-weak .strength-bar {
+      width: 33%;
+      background: linear-gradient(90deg, #dc3545, #e74c3c);
+    }
+    .strength-medium .strength-bar {
+      width: 66%;
+      background: linear-gradient(90deg, #ffc107, #f39c12);
+    }
+    .strength-strong .strength-bar {
+      width: 100%;
+      background: linear-gradient(90deg, #28a745, #27ae60);
+    }
+    .password-toggle {
+      position: relative;
+    }
+    .password-toggle .toggle-icon {
+      position: absolute;
+      right: 15px;
+      top: 13px;
+      cursor: pointer;
+      color: #6c757d;
+      transition: color 0.3s;
+      z-index: 10;
+    }
+    .password-toggle .toggle-icon:hover {
+      color: #667eea;
+    }
   </style>
 </head>
 
@@ -212,12 +252,26 @@ require "../config/functions.crud.php";
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="password"><i class="fas fa-key"></i> Password <small class="text-danger">*</small></label>
-                      <input id="password" type="password" class="form-control" name="password" required placeholder="Minimal 6 karakter">
-                      <small class="form-text text-muted">Gunakan password yang kuat</small>
+                      <div class="password-toggle">
+                        <input id="password" type="password" class="form-control" name="password" required placeholder="Minimal 8 karakter" style="padding-right: 45px;">
+                        <span class="toggle-icon" id="toggle-password">
+                          <i class="fas fa-eye"></i>
+                        </span>
+                      </div>
+                      <div class="password-strength">
+                        <div class="strength-bar"></div>
+                      </div>
+                      <small class="form-text text-muted" id="strength-text">Gunakan kombinasi huruf besar, kecil, angka, dan simbol</small>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="password2"><i class="fas fa-lock"></i> Konfirmasi Password <small class="text-danger">*</small></label>
-                      <input id="password2" type="password" class="form-control" name="password_confirm" required placeholder="Ketik ulang password">
+                      <div class="password-toggle">
+                        <input id="password2" type="password" class="form-control" name="password_confirm" required placeholder="Ketik ulang password" style="padding-right: 45px;">
+                        <span class="toggle-icon" id="toggle-password2">
+                          <i class="fas fa-eye"></i>
+                        </span>
+                      </div>
+                      <small class="form-text" id="match-info"></small>
                     </div>
                   </div>
 
@@ -344,6 +398,101 @@ require "../config/functions.crud.php";
       allowClear: true
     });
 
+    // Toggle password visibility - Password 1
+    $('#toggle-password').click(function() {
+      var passwordField = $('#password');
+      var icon = $(this).find('i');
+      
+      if (passwordField.attr('type') === 'password') {
+        passwordField.attr('type', 'text');
+        icon.removeClass('fa-eye').addClass('fa-eye-slash');
+      } else {
+        passwordField.attr('type', 'password');
+        icon.removeClass('fa-eye-slash').addClass('fa-eye');
+      }
+    });
+
+    // Toggle password visibility - Password 2
+    $('#toggle-password2').click(function() {
+      var passwordField = $('#password2');
+      var icon = $(this).find('i');
+      
+      if (passwordField.attr('type') === 'password') {
+        passwordField.attr('type', 'text');
+        icon.removeClass('fa-eye').addClass('fa-eye-slash');
+      } else {
+        passwordField.attr('type', 'password');
+        icon.removeClass('fa-eye-slash').addClass('fa-eye');
+      }
+    });
+
+    // Password strength checker
+    $('#password').on('keyup', function() {
+      var password = $(this).val();
+      var strength = 0;
+      var strengthText = '';
+      var strengthClass = '';
+      
+      // Calculate strength
+      if (password.length >= 8) strength++;
+      if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
+      if (password.match(/[0-9]/)) strength++;
+      if (password.match(/[^a-zA-Z0-9]/)) strength++;
+
+      // Update strength bar
+      var strengthContainer = $('.password-strength');
+      strengthContainer.removeClass('strength-weak strength-medium strength-strong');
+      
+      if (password.length === 0) {
+        strengthText = 'Gunakan kombinasi huruf besar, kecil, angka, dan simbol';
+        strengthClass = 'text-muted';
+      } else if (strength <= 1) {
+        strengthContainer.addClass('strength-weak');
+        strengthText = '💪 Lemah - Tambahkan huruf besar, angka, atau simbol';
+        strengthClass = 'text-danger';
+      } else if (strength <= 3) {
+        strengthContainer.addClass('strength-medium');
+        strengthText = '💪💪 Sedang - Tambahkan simbol untuk lebih kuat';
+        strengthClass = 'text-warning';
+      } else {
+        strengthContainer.addClass('strength-strong');
+        strengthText = '💪💪💪 Kuat - Password aman!';
+        strengthClass = 'text-success';
+      }
+      
+      $('#strength-text').text(strengthText).removeClass('text-muted text-danger text-warning text-success').addClass(strengthClass);
+    });
+
+    // Password match checker
+    $('#password2').on('keyup', function() {
+      var password = $('#password').val();
+      var confirm = $(this).val();
+      var matchInfo = $('#match-info');
+
+      if (confirm.length === 0) {
+        matchInfo.text('').removeClass('text-danger text-success');
+      } else if (password === confirm) {
+        matchInfo.html('<i class="fas fa-check-circle"></i> Password cocok').removeClass('text-danger').addClass('text-success');
+      } else {
+        matchInfo.html('<i class="fas fa-times-circle"></i> Password tidak cocok').removeClass('text-success').addClass('text-danger');
+      }
+    });
+
+    // Also check match when password field changes
+    $('#password').on('keyup', function() {
+      var password = $(this).val();
+      var confirm = $('#password2').val();
+      var matchInfo = $('#match-info');
+
+      if (confirm.length > 0) {
+        if (password === confirm) {
+          matchInfo.html('<i class="fas fa-check-circle"></i> Password cocok').removeClass('text-danger').addClass('text-success');
+        } else {
+          matchInfo.html('<i class="fas fa-times-circle"></i> Password tidak cocok').removeClass('text-success').addClass('text-danger');
+        }
+      }
+    });
+
     // Toggle input manual untuk sekolah lainnya - Operator
     $('#npsn').change(function() {
       if ($(this).val() === 'LAINNYA') {
@@ -410,10 +559,10 @@ require "../config/functions.crud.php";
         return false;
       }
       
-      if (password.length < 6) {
+      if (password.length < 8) {
         iziToast.error({
           title: 'Error!',
-          message: 'Password minimal 6 karakter',
+          message: 'Password minimal 8 karakter untuk keamanan',
           position: 'topRight'
         });
         return false;

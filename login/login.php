@@ -33,6 +33,17 @@
 </head>
 
 <body>
+  <?php
+  // Cek apakah sudah ada super admin di database
+  $cek_superadmin = mysqli_query($koneksi, "SELECT * FROM user WHERE level='superadmin'");
+  $has_superadmin = mysqli_num_rows($cek_superadmin) > 0;
+  
+  // Jika belum ada super admin, redirect ke halaman setup
+  if (!$has_superadmin) {
+    header("Location: setup_superadmin.php");
+    exit;
+  }
+  ?>
   <div id="app">
     <section class="section">
       <div class="container mt-5">
