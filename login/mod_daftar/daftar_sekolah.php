@@ -225,9 +225,9 @@
 </div>  
 
 <!-- Modal Edit Universal - Dipindahkan keluar dari tabel -->
-<div class="modal fade" id="modal-edit-universal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">  
-    <div class="modal-dialog" role="document">  
-        <div class="modal-content">  
+<div class="modal fade" id="modal-edit-universal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" style="z-index: 10060 !important;">  
+    <div class="modal-dialog" role="document" style="z-index: 10065 !important;">  
+        <div class="modal-content" style="z-index: 10070 !important;">  
             <form id="form-edit-universal">  
                 <div class="modal-header">  
                     <h5 class="modal-title">Ubah Data</h5>  
@@ -305,7 +305,12 @@
         $('#edit-nohp').val(nohp);
         $('#edit-jenkel').val(jenkel);
         
+        // Paksa z-index backdrop juga
         $('#modal-edit-universal').modal('show');
+        setTimeout(function() {
+            $('.modal-backdrop').css('z-index', '10050');
+            $('#modal-edit-universal').css('z-index', '10060');
+        }, 100);
     });
     
     // Handle submit form edit universal
