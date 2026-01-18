@@ -175,23 +175,6 @@ require "../config/functions.crud.php";
       text-align: center;
     }
 
-    .logo-circle {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .logo-circle img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-    }
-
     .login-title {
       color: #2d3748;
       font-size: 28px;
@@ -403,16 +386,6 @@ require "../config/functions.crud.php";
         max-width: 100%;
       }
 
-      .logo-circle {
-        width: 60px;
-        height: 60px;
-      }
-
-      .logo-circle img {
-        width: 40px;
-        height: 40px;
-      }
-
       .login-title {
         font-size: 24px;
       }
@@ -456,16 +429,6 @@ require "../config/functions.crud.php";
 
       .brand-subtitle {
         font-size: 14px;
-      }
-
-      .logo-circle {
-        width: 50px;
-        height: 50px;
-      }
-
-      .logo-circle img {
-        width: 35px;
-        height: 35px;
       }
 
       .login-title {
@@ -513,9 +476,6 @@ require "../config/functions.crud.php";
         
         <!-- Form Header -->
         <div class="login-header">
-          <div class="logo-circle">
-            <img src="../<?= $setting['logo'] ?>" alt="Logo">
-          </div>
           <h2 class="login-title">Login Operator Sekolah</h2>
           <p class="login-subtitle">Masukkan username dan password Anda</p>
         </div>

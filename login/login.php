@@ -143,10 +143,6 @@ if (!$has_superadmin) {
       filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
       object-fit: contain;
     }
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
 
     @keyframes logoFloat {
       0%, 100% {
@@ -181,20 +177,13 @@ if (!$has_superadmin) {
       margin: 0 auto;
     }
 
-    /* Form Logo - Small */
-    .logo-circle {
-      width: 60px;
-      height: 60px;
-      margin: 0 0 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-circle img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
+    /* Floating Circles */
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 6s ease-in-out infinite;
+      z-index: 1;
     }
 
     .login-title {
@@ -310,7 +299,7 @@ if (!$has_superadmin) {
       user-select: none;
     }
 
-    .btn-login {
+    .login-btn {
       width: 100%;
       height: 44px;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -326,7 +315,7 @@ if (!$has_superadmin) {
       overflow: hidden;
     }
 
-    .btn-login::before {
+    .login-btn::before {
       content: '';
       position: absolute;
       top: 0;
@@ -337,20 +326,20 @@ if (!$has_superadmin) {
       transition: left 0.5s;
     }
 
-    .btn-login:hover::before {
+    .login-btn:hover::before {
       left: 100%;
     }
 
-    .btn-login:hover {
+    .login-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
     }
 
-    .btn-login:active {
+    .login-btn:active {
       transform: translateY(0);
     }
 
-    .btn-login:disabled {
+    .login-btn:disabled {
       background: #cbd5e0;
       cursor: not-allowed;
       box-shadow: none;
@@ -595,16 +584,6 @@ if (!$has_superadmin) {
         max-width: 100%;
       }
 
-      .logo-circle {
-        width: 60px;
-        height: 60px;
-      }
-
-      .logo-circle img {
-        width: 40px;
-        height: 40px;
-      }
-
       .login-title {
         font-size: 24px;
       }
@@ -655,16 +634,6 @@ if (!$has_superadmin) {
         font-size: 14px;
       }
 
-      .logo-circle {
-        width: 50px;
-        height: 50px;
-      }
-
-      .logo-circle img {
-        width: 35px;
-        height: 35px;
-      }
-
       .login-title {
         font-size: 22px;
       }
@@ -710,9 +679,6 @@ if (!$has_superadmin) {
         
         <!-- Form Header -->
         <div class="login-header">
-          <div class="logo-circle">
-            <img src="../<?php echo $setting['logo']; ?>" alt="Logo">
-          </div>
           <h2 class="login-title">Masuk ke Akun</h2>
           <p class="login-subtitle">Masukkan username dan password Anda</p>
         </div>
@@ -926,10 +892,10 @@ if (!$has_superadmin) {
         url: 'login_cek.php?id=5448dfhcr27467576c78a50vi98j0ruv0w',
         data: $(this).serialize(),
         beforeSend: function() {
-          $('.btn-login').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Memproses...');
+          $('.login-btn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Memproses...');
         },
         success: function(data) {
-          $('.btn-login').prop('disabled', false).html('<i class="fas fa-sign-in-alt"></i> Login');
+          $('.login-btn').prop('disabled', false).html('<i class="fas fa-sign-in-alt"></i> Masuk');
           
           if (data == "ok") {
             iziToast.success({
@@ -951,7 +917,7 @@ if (!$has_superadmin) {
           }
         },
         error: function() {
-          $('.btn-login').prop('disabled', false).html('<i class="fas fa-sign-in-alt"></i> Login');
+          $('.login-btn').prop('disabled', false).html('<i class="fas fa-sign-in-alt"></i> Masuk');
           iziToast.error({
             title: 'Error!',
             message: 'Terjadi kesalahan. Silakan coba lagi.',

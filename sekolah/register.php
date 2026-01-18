@@ -138,23 +138,6 @@ require "../config/functions.crud.php";
       margin-bottom: 30px;
     }
 
-    .logo-circle {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .logo-circle img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-    }
-
     .register-title {
       font-size: 28px;
       font-weight: 700;
@@ -396,16 +379,6 @@ require "../config/functions.crud.php";
         font-size: 14px;
       }
 
-      .logo-circle {
-        width: 50px;
-        height: 50px;
-      }
-
-      .logo-circle img {
-        width: 50px;
-        height: 50px;
-      }
-
       .register-title {
         font-size: 24px;
       }
@@ -437,16 +410,6 @@ require "../config/functions.crud.php";
 
       .brand-title {
         font-size: 24px;
-      }
-
-      .logo-circle {
-        width: 45px;
-        height: 45px;
-      }
-
-      .logo-circle img {
-        width: 45px;
-        height: 45px;
       }
 
       .register-title {
@@ -494,9 +457,6 @@ require "../config/functions.crud.php";
         
         <!-- Form Header -->
         <div class="register-header">
-          <div class="logo-circle">
-            <img src="../<?= $setting['logo'] ?>" alt="Logo">
-          </div>
           <h2 class="register-title">Buat Akun Operator</h2>
           <p class="register-subtitle">Lengkapi formulir untuk mendaftar</p>
         </div>
