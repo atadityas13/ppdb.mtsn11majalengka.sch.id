@@ -649,7 +649,7 @@ require "../config/functions.crud.php";
                        tabindex="1" 
                        required 
                        autofocus 
-                       placeholder="Masukkan username Anda">
+                       placeholder="     Masukkan username Anda">
                 <i class="fas fa-user input-icon"></i>
               </div>
             </div>
@@ -663,7 +663,7 @@ require "../config/functions.crud.php";
                        name="password" 
                        tabindex="2" 
                        required 
-                       placeholder="Masukkan password Anda">
+                       placeholder="     Masukkan password Anda">
                 <i class="fas fa-lock input-icon"></i>
               </div>
             </div>
