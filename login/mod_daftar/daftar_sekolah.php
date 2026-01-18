@@ -272,149 +272,141 @@
     </div>  
 </div>  
   
-<script>  
-$(document).ready(function() {
-    // IMPORT FILE PENDUKUNG       
-    $('#form-import').on('submit', function(e) {  
+<script>
+ //IMPORT FILE PENDUKUNG 
+    $('#form-import').on('submit', function(e) {
         e.preventDefault();
-        var submitBtn = $(this).find('button[type="submit"]');
-        
-        $.ajax({  
-            type: 'post',  
-            url: 'mod_siswa/crud_siswa.php?pg=import2',  
-            data: new FormData(this),  
-            processData: false,  
-            contentType: false,  
-            cache: false,  
-            beforeSend: function() {
-                submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Mengimpor...');
-            },  
-            success: function(data) {  
-                $('#importdata').modal('hide');  
-                iziToast.success({  
-                    title: 'Mantap!',  
-                    message: data,  
-                    position: 'topRight'  
-                });  
-                setTimeout(function() {  
-                    window.location.reload();  
-                }, 2000);  
-            },
-            error: function() {
-                submitBtn.prop('disabled', false).html('Simpan');
+        $.ajax({
+            type: 'post',
+            url: 'mod_siswa/crud_siswa.php?pg=import2',
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(data) {
+
+                $('#importdata').modal('hide');
+                iziToast.success({
+                    title: 'Mantap!',
+                    message: data,
+                    position: 'topRight'
+                });
+                setTimeout(function() {
+                    window.location.reload();
+                }, 2000);
+
+
             }
-        });  
-    });  
-  
-    var cleaveI = new Cleave('.nisn', {  
-        blocks: [10]  
-    });  
-  
-    var cleaveI = new Cleave('.nohp', {  
-        blocks: [4, 4, 4, 5]  
-    });  
-  
-    $('#form-tambah').submit(function(e) {  
+        });
+    });
+    
+    var cleaveI = new Cleave('.nisn', {
+
+        blocks: [10]
+
+    });
+    var cleaveI = new Cleave('.nohp', {
+        blocks: [4, 4, 4, 5]
+    });
+    $('#form-tambah').submit(function(e) {
         e.preventDefault();
-        var submitBtn = $(this).find('button[type="submit"]');
-        
-        $.ajax({  
-            type: 'POST',  
-            url: 'mod_daftar/crud_daftar.php?pg=tambah',  
-            data: $(this).serialize(),  
-            beforeSend: function() {
-                submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Menyimpan...');
-            },  
-            success: function(data) {  
-                iziToast.success({  
-                    title: 'Mantap!',  
-                    message: 'data berhasil disimpan',  
-                    position: 'topRight'  
-                });  
-                setTimeout(function() {  
-                    window.location.reload();  
-                }, 2000);  
-                $('#tambahdata').modal('hide');  
-            },
-            error: function() {
-                submitBtn.prop('disabled', false).html('Simpan');
+        $.ajax({
+            type: 'POST',
+            url: 'mod_daftar/crud_daftar.php?pg=tambah',
+            data: $(this).serialize(),
+            success: function(data) {
+
+                iziToast.success({
+                    title: 'Mantap!',
+                    message: 'data berhasil disimpan',
+                    position: 'topRight'
+                });
+                setTimeout(function() {
+                    window.location.reload();
+                }, 2000);
+                $('#tambahdata').modal('hide');
+                //$('#bodyreset').load(location.href + ' #bodyreset');
             }
-        });  
-        return false;  
-    });  
-  
-    $('#table-1').on('click', '.hapus', function() {  
-        var id = $(this).data('id');  
-        console.log(id);  
-        swal({  
-            title: 'Are you sure?',  
-            text: 'Akan menghapus data ini!',  
-            icon: 'warning',  
-            buttons: true,  
-            dangerMode: true,  
-        }).then((result) => {  
-            if (result) {  
-                $.ajax({  
-                    url: 'mod_daftar/crud_daftar.php?pg=hapus',  
-                    method: "POST",  
-                    data: 'id_daftar=' + id,  
-                    success: function(data) {  
-                        iziToast.error({  
-                            title: 'Horee!',  
-                            message: 'Data Berhasil dihapus',  
-                            position: 'topRight'  
-                        });  
-                        setTimeout(function() {  
-                            window.location.reload();  
-                        }, 2000);  
-                    }  
-                });  
-            }  
-        });  
-    });  
-  
-    $('#form-konfirmasi').submit(function(e) {  
-        e.preventDefault();  
-        swal({  
-            title: 'Apa kamu yakin ?',  
-            text: 'Akan Menghapus data anda ?',  
-            icon: 'warning',  
-            buttons: true,  
-            dangerMode: true,  
-        }).then((result) => {  
-            if (result) {  
-                $.ajax({  
-                    url: 'mod_daftar/crud_daftar.php?pg=konfirmasi',  
-                    method: "POST",  
-                    data: $(this).serialize(),  
-                    success: function(data) {  
-                        iziToast.success({  
-                            title: 'Terimakasih!',  
-                            message: 'Data Berhasil di Hapus',  
-                            position: 'topRight'  
-                        });  
-                        setTimeout(function() {  
-                            window.location.reload();  
-                        }, 1000);  
-                    }  
-                });  
-            }  
-        });  
-    });  
-  
-    // Toggle password visibility untuk tabel Data Pendaftar
-    $('.toggle-password').click(function() {
-        var icon = $(this);
-        var passwordSpan = icon.siblings('.password-display');
-        var actualPassword = icon.data('password');
-        
-        if (passwordSpan.text() === '******') {
-            passwordSpan.text(actualPassword);
-            icon.removeClass('fa-eye').addClass('fa-eye-slash');
-        } else {
-            passwordSpan.text('******');
-            icon.removeClass('fa-eye-slash').addClass('fa-eye');
-        }
+        });
+        return false;
+    });
+
+    $('#table-1').on('click', '.hapus', function() {
+        var id = $(this).data('id');
+        console.log(id);
+        swal({
+            title: 'Are you sure?',
+            text: 'Akan menghapus data ini!',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if (result) {
+                $.ajax({
+                    url: 'mod_daftar/crud_daftar.php?pg=hapus',
+                    method: "POST",
+                    data: 'id_daftar=' + id,
+                    success: function(data) {
+                        iziToast.error({
+                            title: 'Horee!',
+                            message: 'Data Berhasil dihapus',
+                            position: 'topRight'
+                        });
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                });
+            }
+        })
+
+    });
+</script>
+<script>
+// Toggle password visibility untuk tabel Data Pendaftar
+$('.toggle-password').click(function() {
+    var icon = $(this);
+    var passwordSpan = icon.siblings('.password-display');
+    var actualPassword = icon.data('password');
+    
+    if (passwordSpan.text() === '******') {
+        passwordSpan.text(actualPassword);
+        icon.removeClass('fa-eye').addClass('fa-eye-slash');
+    } else {
+        passwordSpan.text('******');
+        icon.removeClass('fa-eye-slash').addClass('fa-eye');
+    }
+});
+</script>
+<script>
+$('#form-konfirmasi').submit(function(e) {
+            e.preventDefault();
+        swal({
+            title: 'Apa kamu yakin ?',
+            text: 'Akan Menghapus data anda ?',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if (result) {
+                $.ajax({
+                    url: 'mod_daftar/crud_daftar.php?pg=konfirmasi',
+                    method: "POST",
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        iziToast.success({
+                            title: 'Terimakasih!',
+                            message: 'Data Berhasil di Hapus',
+                            position: 'topRight'
+                        });
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 1000);
+                    }
+                });
+            }
+        })
+
     });
 
     // Handle all edit forms with event delegation
@@ -454,14 +446,4 @@ $(document).ready(function() {
     // Tambahkan input npsn_asal dengan nilai id_sekolah  
     $('#form-tambah').append('<input type="hidden" name="npsn_asal" value="' + id_sekolah + '">');  
     $('#form-tambah').append('<input type="hidden" name="asal_sekolah" value="' + nama_sekolah + '">');
-    
-    // Re-bind sidebar dropdown to ensure it works after page load
-    setTimeout(function() {
-        if (typeof sidebar_dropdown === 'function') {
-            sidebar_dropdown();
-        }
-        // Also ensure sidebar links are clickable
-        $('.sidebar-menu a:not(.has-dropdown)').off('click.customHandler');
-    }, 100);
-});
 </script>  
