@@ -341,6 +341,177 @@ require "../config/functions.crud.php";
       margin: 0;
     }
 
+    /* Help Button */
+    .help-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 55px;
+      height: 55px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .help-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    /* Help Modal */
+    .help-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s;
+    }
+
+    .help-modal-content {
+      position: relative;
+      background-color: white;
+      margin: 5% auto;
+      padding: 0;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      animation: slideDown 0.3s;
+    }
+
+    .help-modal-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 25px 30px;
+      border-radius: 12px 12px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .help-modal-header h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .help-close {
+      color: white;
+      font-size: 28px;
+      font-weight: 300;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .help-close:hover {
+      transform: rotate(90deg);
+    }
+
+    .help-modal-body {
+      padding: 30px;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .help-section {
+      margin-bottom: 25px;
+    }
+
+    .help-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .help-section h3 {
+      color: #667eea;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .help-section p {
+      color: #4a5568;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .help-section ul {
+      color: #4a5568;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-left: 20px;
+    }
+
+    .help-section ul li {
+      margin-bottom: 6px;
+    }
+
+    .help-contact {
+      background: #f7fafc;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .help-contact strong {
+      color: #2d3748;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .help-contact a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .help-contact a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .register-wrapper {
@@ -639,6 +810,96 @@ require "../config/functions.crud.php";
     </div>
   </div>
 
+  <!-- Help Button -->
+  <button class="help-btn" id="helpBtn" title="Bantuan">
+    <i class="fas fa-question"></i>
+  </button>
+
+  <!-- Help Modal -->
+  <div id="helpModal" class="help-modal">
+    <div class="help-modal-content">
+      <div class="help-modal-header">
+        <h2><i class="fas fa-info-circle"></i> Bantuan Pendaftaran Operator Sekolah</h2>
+        <button class="help-close" id="helpClose">&times;</button>
+      </div>
+      <div class="help-modal-body">
+        <div class="help-section">
+          <h3><i class="fas fa-clipboard-list"></i> Cara Mendaftar</h3>
+          <p>Untuk mendaftar sebagai operator sekolah, ikuti langkah berikut:</p>
+          <ul>
+            <li>Isi semua kolom yang bertanda <span style="color: red;">*</span> (wajib diisi)</li>
+            <li>Pastikan data yang dimasukkan benar dan valid</li>
+            <li>Gunakan <strong>NPSN</strong> sekolah yang resmi dan terdaftar</li>
+            <li>Username harus unik (belum digunakan operator lain)</li>
+            <li>Password minimal 8 karakter dengan kombinasi huruf dan angka</li>
+            <li>Klik tombol <strong>"Daftar Sekarang"</strong> setelah selesai mengisi</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-school"></i> Tentang NPSN</h3>
+          <p><strong>NPSN (Nomor Pokok Sekolah Nasional)</strong> adalah kode identitas unik sekolah yang diterbitkan oleh Kemdikbudristek.</p>
+          <ul>
+            <li>NPSN terdiri dari 8 digit angka</li>
+            <li>Gunakan NPSN sekolah tempat Anda bertugas</li>
+            <li>Jika tidak tahu NPSN, hubungi kepala sekolah atau cek di website <a href="https://referensi.data.kemdikbud.go.id" target="_blank">Referensi Kemdikbud</a></li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-key"></i> Tips Username & Password</h3>
+          <p><strong>Username:</strong></p>
+          <ul>
+            <li>Gunakan kombinasi huruf dan angka</li>
+            <li>Hindari spasi dan karakter khusus</li>
+            <li>Mudah diingat tapi tidak mudah ditebak</li>
+          </ul>
+          <p style="margin-top: 12px;"><strong>Password:</strong></p>
+          <ul>
+            <li>Minimal 8 karakter</li>
+            <li>Kombinasi huruf besar, kecil, dan angka</li>
+            <li>Jangan gunakan data pribadi yang mudah ditebak</li>
+            <li>Pastikan kedua password yang dimasukkan sama</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-clock"></i> Setelah Mendaftar</h3>
+          <p>Setelah berhasil mendaftar:</p>
+          <ul>
+            <li>Akun Anda akan diverifikasi oleh administrator</li>
+            <li>Proses verifikasi biasanya memakan waktu 1-2 hari kerja</li>
+            <li>Anda akan menerima notifikasi jika akun sudah aktif</li>
+            <li>Gunakan username dan password untuk login</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-exclamation-triangle"></i> Kendala Pendaftaran?</h3>
+          <p>Jika mengalami kendala saat pendaftaran:</p>
+          <ul>
+            <li>Pastikan koneksi internet stabil</li>
+            <li>Periksa kembali data yang dimasukkan</li>
+            <li>Pastikan NPSN valid dan belum terdaftar</li>
+            <li>Pastikan username belum digunakan</li>
+            <li>Hubungi administrator jika masalah berlanjut</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-phone-alt"></i> Butuh Bantuan Lebih Lanjut?</h3>
+          <div class="help-contact">
+            <strong>Hubungi Administrator PPDB:</strong>
+            <p style="margin: 5px 0;"><i class="fas fa-envelope"></i> Email: admin@ppdb.sch.id</p>
+            <p style="margin: 5px 0;"><i class="fas fa-phone"></i> Telp: (0233) 123456</p>
+            <p style="margin: 5px 0;"><i class="fab fa-whatsapp"></i> WhatsApp: 0812-3456-7890</p>
+            <p style="margin-top: 12px; font-size: 13px;"><i class="fas fa-info-circle"></i> <em>Layanan bantuan tersedia pada hari kerja pukul 08.00 - 16.00 WIB</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- General JS Scripts -->
   <script src="../assets/modules/jquery.min.js"></script>
   <script src="../assets/modules/popper.js"></script>
@@ -886,6 +1147,25 @@ require "../config/functions.crud.php";
         }
       });
     });
+
+    // Help Modal
+    var helpModal = document.getElementById('helpModal');
+    var helpBtn = document.getElementById('helpBtn');
+    var helpClose = document.getElementById('helpClose');
+
+    helpBtn.onclick = function() {
+      helpModal.style.display = 'block';
+    }
+
+    helpClose.onclick = function() {
+      helpModal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target == helpModal) {
+        helpModal.style.display = 'none';
+      }
+    }
   </script>
 </body>
 

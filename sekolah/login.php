@@ -219,6 +219,11 @@ require "../config/functions.crud.php";
       transition: all 0.3s;
     }
 
+    .form-control::placeholder {
+      color: #cbd5e0;
+      opacity: 1;
+    }
+
     .form-control:focus {
       outline: none;
       border-color: #667eea;
@@ -231,7 +236,9 @@ require "../config/functions.crud.php";
       top: 50%;
       transform: translateY(-50%);
       color: #a0aec0;
-      font-size: 16px;
+      font-size: 14px;
+      pointer-events: none;
+      z-index: 1;
     }
 
     .remember-checkbox {
@@ -310,6 +317,177 @@ require "../config/functions.crud.php";
       color: #a0aec0;
       font-size: 11px;
       margin: 0;
+    }
+
+    /* Help Button */
+    .help-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 55px;
+      height: 55px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .help-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    /* Help Modal */
+    .help-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s;
+    }
+
+    .help-modal-content {
+      position: relative;
+      background-color: white;
+      margin: 5% auto;
+      padding: 0;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      animation: slideDown 0.3s;
+    }
+
+    .help-modal-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 25px 30px;
+      border-radius: 12px 12px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .help-modal-header h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .help-close {
+      color: white;
+      font-size: 28px;
+      font-weight: 300;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .help-close:hover {
+      transform: rotate(90deg);
+    }
+
+    .help-modal-body {
+      padding: 30px;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .help-section {
+      margin-bottom: 25px;
+    }
+
+    .help-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .help-section h3 {
+      color: #667eea;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .help-section p {
+      color: #4a5568;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .help-section ul {
+      color: #4a5568;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-left: 20px;
+    }
+
+    .help-section ul li {
+      margin-bottom: 6px;
+    }
+
+    .help-contact {
+      background: #f7fafc;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .help-contact strong {
+      color: #2d3748;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .help-contact a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .help-contact a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .register-link {
@@ -547,6 +725,74 @@ require "../config/functions.crud.php";
     
   </div>
 
+  <!-- Help Button -->
+  <button class="help-btn" id="helpBtn" title="Bantuan">
+    <i class="fas fa-question"></i>
+  </button>
+
+  <!-- Help Modal -->
+  <div id="helpModal" class="help-modal">
+    <div class="help-modal-content">
+      <div class="help-modal-header">
+        <h2><i class="fas fa-info-circle"></i> Bantuan Login Operator Sekolah</h2>
+        <button class="help-close" id="helpClose">&times;</button>
+      </div>
+      <div class="help-modal-body">
+        <div class="help-section">
+          <h3><i class="fas fa-user-check"></i> Cara Login</h3>
+          <p>Untuk login sebagai operator sekolah, silakan ikuti langkah berikut:</p>
+          <ul>
+            <li>Masukkan <strong>username</strong> yang telah Anda daftarkan</li>
+            <li>Masukkan <strong>password</strong> akun Anda</li>
+            <li>Klik tombol <strong>"Login Sekarang"</strong></li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-user-plus"></i> Belum Punya Akun?</h3>
+          <p>Jika Anda belum memiliki akun operator sekolah:</p>
+          <ul>
+            <li>Klik link <strong>"Daftar Sebagai Operator Sekolah"</strong> di bawah form login</li>
+            <li>Isi formulir pendaftaran dengan lengkap dan benar</li>
+            <li>Gunakan NPSN sekolah yang valid</li>
+            <li>Tunggu konfirmasi dari administrator</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-lock"></i> Lupa Password?</h3>
+          <p>Jika Anda lupa password:</p>
+          <ul>
+            <li>Hubungi administrator sistem PPDB</li>
+            <li>Siapkan informasi akun Anda (username dan email terdaftar)</li>
+            <li>Administrator akan membantu reset password Anda</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-shield-alt"></i> Keamanan Akun</h3>
+          <p>Tips menjaga keamanan akun operator:</p>
+          <ul>
+            <li>Gunakan password yang kuat (minimal 8 karakter)</li>
+            <li>Jangan membagikan username dan password kepada orang lain</li>
+            <li>Logout setelah selesai menggunakan sistem</li>
+            <li>Ganti password secara berkala</li>
+          </ul>
+        </div>
+
+        <div class="help-section">
+          <h3><i class="fas fa-phone-alt"></i> Butuh Bantuan Lebih Lanjut?</h3>
+          <div class="help-contact">
+            <strong>Hubungi Administrator:</strong>
+            <p style="margin: 5px 0;"><i class="fas fa-envelope"></i> Email: admin@ppdb.sch.id</p>
+            <p style="margin: 5px 0;"><i class="fas fa-phone"></i> Telp: (0233) 123456</p>
+            <p style="margin: 5px 0;"><i class="fab fa-whatsapp"></i> WhatsApp: 0812-3456-7890</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- General JS Scripts -->
   <script src="../assets/modules/jquery.min.js"></script>
   <script src="../assets/modules/popper.js"></script>
@@ -609,6 +855,25 @@ require "../config/functions.crud.php";
         }
       });
     });
+
+    // Help Modal
+    var helpModal = document.getElementById('helpModal');
+    var helpBtn = document.getElementById('helpBtn');
+    var helpClose = document.getElementById('helpClose');
+
+    helpBtn.onclick = function() {
+      helpModal.style.display = 'block';
+    }
+
+    helpClose.onclick = function() {
+      helpModal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target == helpModal) {
+        helpModal.style.display = 'none';
+      }
+    }
   </script>
 </body>
 
