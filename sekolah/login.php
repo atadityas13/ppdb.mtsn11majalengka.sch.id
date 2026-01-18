@@ -26,148 +26,553 @@ require "../config/functions.crud.php";
   <link rel="stylesheet" href="../assets/css/components.css">
   
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
     }
-    .login-brand {
+
+    /* Split Screen Layout */
+    .login-wrapper {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: row;
+    }
+
+    /* Left Side - Branding */
+    .login-left {
+      flex: 1;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-left::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      top: -200px;
+      left: -200px;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .login-left::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      bottom: -150px;
+      right: -150px;
+      animation: float 15s infinite ease-in-out reverse;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(50px, 50px) scale(1.1);
+      }
+    }
+
+    .brand-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .brand-logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 30px;
+      animation: logoFloat 3s ease-in-out infinite;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+      object-fit: contain;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .brand-title {
       color: white;
+      font-size: 36px;
       font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .brand-subtitle {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 18px;
+      margin-bottom: 40px;
+      font-weight: 400;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .brand-description {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Floating Circles */
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Right Side - Form */
+    .login-right {
+      flex: 1;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .login-card {
+      background: white;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .login-header {
+      background: transparent;
+      padding: 0;
       margin-bottom: 30px;
+      text-align: center;
     }
-    .card {
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    .logo-circle {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: float 3s ease-in-out infinite;
     }
-    .btn-primary {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
-      border-radius: 25px;
-      padding: 12px;
+
+    .logo-circle img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    }
+
+    .login-title {
+      color: #2d3748;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+    }
+
+    .login-subtitle {
+      color: #718096;
+      font-size: 14px;
+      margin: 0 0 30px 0;
+      font-weight: 400;
+    }
+
+    .login-body {
+      padding: 0;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
       font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 8px;
     }
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #5568d3 0%, #6b3fa0 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+
+    .input-wrapper {
+      position: relative;
     }
+
     .form-control {
-      border-radius: 10px;
-      padding: 12px 15px;
-      border: 2px solid #e3e6f0;
+      width: 100%;
+      height: 44px;
+      padding: 0 15px 0 45px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 13px;
+      transition: all 0.3s;
     }
+
     .form-control:focus {
+      outline: none;
       border-color: #667eea;
-      box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
-    .card-header {
+
+    .input-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #a0aec0;
+      font-size: 16px;
+    }
+
+    .remember-checkbox {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .remember-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    .remember-checkbox label {
+      font-size: 13px;
+      color: #4a5568;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .login-btn {
+      width: 100%;
+      height: 48px;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      border-radius: 15px 15px 0 0 !important;
-      padding: 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
     }
-    .simple-footer {
-      color: white;
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .login-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .login-footer {
+      text-align: left;
+      padding: 30px 0 0;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 30px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      color: #718096;
+      font-size: 12px;
+      text-decoration: none;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .footer-links a:hover {
+      color: #667eea;
+    }
+
+    .footer-text {
+      color: #a0aec0;
+      font-size: 11px;
+      margin: 0;
+    }
+
+    .register-link {
+      background: #f7fafc;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
       margin-top: 20px;
     }
-    .info-box {
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 15px;
-      color: white;
-      margin-bottom: 20px;
-      backdrop-filter: blur(10px);
+
+    .register-link p {
+      margin: 0 0 10px 0;
+      font-size: 13px;
+      color: #4a5568;
     }
-    .text-link {
-      color: white;
-      text-decoration: underline;
+
+    .register-link a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: white;
+      border: 2px solid #667eea;
+      color: #667eea;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.3s;
     }
-    .text-link:hover {
-      color: #f0f0f0;
+
+    .register-link a:hover {
+      background: #667eea;
+      color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 576px) {
+      .login-wrapper {
+        flex-direction: column;
+      }
+
+      .login-left {
+        min-height: 300px;
+        padding: 40px 25px;
+      }
+
+      .login-right {
+        width: 100%;
+        padding: 30px 20px;
+      }
+
+      .brand-logo {
+        width: 70px;
+        height: 70px;
+      }
+
+      .brand-title {
+        font-size: 28px;
+      }
+
+      .brand-subtitle {
+        font-size: 16px;
+      }
+
+      .brand-description {
+        font-size: 13px;
+      }
+
+      .login-card {
+        max-width: 100%;
+      }
+
+      .logo-circle {
+        width: 60px;
+        height: 60px;
+      }
+
+      .logo-circle img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .login-title {
+        font-size: 24px;
+      }
+
+      .login-subtitle {
+        font-size: 13px;
+      }
+
+      .form-group input {
+        height: 42px;
+        font-size: 13px;
+      }
+
+      .form-group label {
+        font-size: 12px;
+      }
+
+      .login-btn {
+        height: 46px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .login-left {
+        padding: 30px 20px;
+      }
+
+      .login-right {
+        padding: 25px 15px;
+      }
+
+      .brand-logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .brand-title {
+        font-size: 24px;
+      }
+
+      .brand-subtitle {
+        font-size: 14px;
+      }
+
+      .logo-circle {
+        width: 50px;
+        height: 50px;
+      }
+
+      .logo-circle img {
+        width: 35px;
+        height: 35px;
+      }
+
+      .login-title {
+        font-size: 22px;
+      }
+
+      .form-group input {
+        height: 40px;
+        font-size: 12px;
+      }
+
+      .login-btn {
+        height: 44px;
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div id="app">
-    <section class="section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-5 offset-xl-4">
-            
-            <div class="login-brand text-center">
-              <img src="../<?= $setting['logo'] ?>" alt="logo" width="140" class="mb-3" style="filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.3)); border-radius: 10px;">
-              <h3 class="mt-3">OPERATOR SEKOLAH</h3>
-              <h5>PPDB Online <?= $setting['nama_sekolah'] ?></h5>
-            </div>
 
-            <div class="info-box text-center">
-              <i class="fas fa-info-circle fa-2x mb-2"></i>
-              <p class="mb-0"><small>Khusus untuk Admin/Operator Sekolah Dasar (SD)<br>untuk pendaftaran siswa secara kolektif.</small></p>
-            </div>
+  <!-- Split Screen Layout -->
+  <div class="login-wrapper">
+    
+    <!-- Left Side - Branding -->
+    <div class="login-left">
+      <div class="brand-content">
+        <img src="../<?= $setting['logo'] ?>" alt="Logo" class="brand-logo">
+        <h1 class="brand-title">Operator Sekolah</h1>
+        <h2 class="brand-subtitle"><?= $setting['nama_sekolah'] ?></h2>
+        <p class="brand-description">
+          Portal khusus untuk Admin/Operator Sekolah Dasar (SD) dalam pendaftaran siswa secara kolektif. Pantau dan kelola data pendaftar dari sekolah Anda secara real-time.
+        </p>
+      </div>
+      
+      <!-- Floating Animations -->
+      <div class="floating-circle" style="top: 10%; left: 10%; width: 60px; height: 60px; animation-delay: 0s;"></div>
+      <div class="floating-circle" style="top: 60%; right: 15%; width: 80px; height: 80px; animation-delay: 1s;"></div>
+      <div class="floating-circle" style="bottom: 15%; left: 20%; width: 40px; height: 40px; animation-delay: 2s;"></div>
+    </div>
 
-            <div class="card">
-              <div class="card-header text-center">
-                <h4><i class="fas fa-sign-in-alt"></i> Login Operator Sekolah</h4>
-              </div>
+    <!-- Right Side - Login Form -->
+    <div class="login-right">
+      <div class="login-card">
+        
+        <!-- Form Header -->
+        <div class="login-header">
+          <div class="logo-circle">
+            <img src="../<?= $setting['logo'] ?>" alt="Logo">
+          </div>
+          <h2 class="login-title">Login Operator Sekolah</h2>
+          <p class="login-subtitle">Masukkan username dan password Anda</p>
+        </div>
 
-              <div class="card-body p-4">
-                <form method="POST" id="form-login" class="needs-validation" novalidate="">
-                  <div class="form-group">
-                    <label for="username"><i class="fas fa-user"></i> Username</label>
-                    <input id="username" type="text" class="form-control" name="username" tabindex="1" required autofocus placeholder="Masukkan Username">
-                    <div class="invalid-feedback">
-                      Silakan masukkan username Anda
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="password"><i class="fas fa-key"></i> Password</label>
-                    <input id="password" type="password" class="form-control" name="password" tabindex="2" required placeholder="Masukkan Password">
-                    <div class="invalid-feedback">
-                      Silakan masukkan password Anda
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                      <label class="custom-control-label" for="remember-me">Ingat Saya</label>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                      <i class="fas fa-sign-in-alt"></i> Login Sekarang
-                    </button>
-                  </div>
-                  
-                  <div class="text-center mt-4">
-                    <p class="mb-2">Belum punya akun operator?</p>
-                    <a href="register.php" class="btn btn-outline-primary btn-block">
-                      <i class="fas fa-user-plus"></i> Daftar Sebagai Operator Sekolah
-                    </a>
-                  </div>
-
-                  <hr class="my-4">
-                  
-                  <div class="text-center">
-                    <a href="../" class="btn btn-light btn-sm">
-                      <i class="fas fa-arrow-left"></i> Kembali ke Halaman Utama
-                    </a>
-                  </div>
-                </form>
-
+        <!-- Form Body -->
+        <div class="login-body">
+          <form method="POST" id="form-login" class="needs-validation" novalidate="">
+            <div class="form-group">
+              <label for="username" class="form-label">Username</label>
+              <div class="input-wrapper">
+                <input id="username" 
+                       type="text" 
+                       class="form-control" 
+                       name="username" 
+                       tabindex="1" 
+                       required 
+                       autofocus 
+                       placeholder="Masukkan username Anda">
+                <i class="fas fa-user input-icon"></i>
               </div>
             </div>
-            
-            <div class="simple-footer text-center">
-              Copyright &copy; <?= date('Y') ?> <strong>PPDB Online MTsN 11 Majalengka</strong><br>
-              <small>Developed by A.T. Aditya</small>
+
+            <div class="form-group">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-wrapper">
+                <input id="password" 
+                       type="password" 
+                       class="form-control" 
+                       name="password" 
+                       tabindex="2" 
+                       required 
+                       placeholder="Masukkan password Anda">
+                <i class="fas fa-lock input-icon"></i>
+              </div>
             </div>
+
+            <div class="remember-checkbox">
+              <input type="checkbox" id="remember-me" name="remember" tabindex="3">
+              <label for="remember-me">Ingat saya</label>
+            </div>
+
+            <button type="submit" class="login-btn" tabindex="4">
+              <i class="fas fa-sign-in-alt"></i> Login Sekarang
+            </button>
+          </form>
+
+          <!-- Register Link -->
+          <div class="register-link">
+            <p>Belum punya akun operator?</p>
+            <a href="register.php">
+              <i class="fas fa-user-plus"></i> Daftar Sebagai Operator Sekolah
+            </a>
           </div>
         </div>
+
+        <!-- Form Footer -->
+        <div class="login-footer">
+          <div class="footer-links">
+            <a href="../index.php">
+              <i class="fas fa-home"></i> Beranda
+            </a>
+          </div>
+          <p class="footer-text">&copy; <?= date('Y') ?> <?= $setting['nama_sekolah'] ?>. All rights reserved.</p>
+        </div>
+        
       </div>
-    </section>
+    </div>
+    
   </div>
 
   <!-- General JS Scripts -->

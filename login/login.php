@@ -42,9 +42,6 @@ if (!$has_superadmin) {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f5f7fa;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 0;
       margin: 0;
     }
@@ -118,56 +115,16 @@ if (!$has_superadmin) {
       padding: 40px;
     }
 
-    .login-container {
-      width: 100%;
-      max-width: 420px;
-      animation: slideIn 0.6s ease-out;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     .login-card {
       background: white;
-      border-radius: 0;
-      box-shadow: none;
-      overflow: visible;
+      width: 100%;
+      max-width: 480px;
     }
 
     .login-header {
       background: transparent;
       padding: 0;
       margin-bottom: 30px;
-      text-align: left;
-      position: relative;
-      overflow: visible;
-    }
-
-    .login-header {
-      background: transparent;
-      padding: 0;
-      margin-bottom: 30px;
-      text-align: left;
-      position: relative;
-      overflow: visible;
-    }
-
-    .login-header::before {
-      display: none;
-    }
-
-    .logo-wrapper {
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 1;
       text-align: center;
     }
 
@@ -178,9 +135,8 @@ if (!$has_superadmin) {
       margin: 0 auto 30px;
       animation: logoFloat 3s ease-in-out infinite;
       filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+      object-fit: contain;
     }
-
-    .brand-logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -723,7 +679,7 @@ if (!$has_superadmin) {
     <!-- Left Side - Branding -->
     <div class="login-left">
       <div class="brand-content">
-        <img src="../assets/img/logo/<?php echo $setting['logo']; ?>" alt="Logo" class="brand-logo">
+        <img src="../<?php echo $setting['logo']; ?>" alt="Logo" class="brand-logo">
         <h1 class="brand-title">Admin Portal</h1>
         <h2 class="brand-subtitle"><?php echo $setting['nama_sekolah']; ?></h2>
         <p class="brand-description">
@@ -744,78 +700,11 @@ if (!$has_superadmin) {
         <!-- Form Header -->
         <div class="login-header">
           <div class="logo-circle">
-            <img src="../assets/img/logo/<?php echo $setting['logo']; ?>" alt="Logo">
+            <img src="../<?php echo $setting['logo']; ?>" alt="Logo">
           </div>
           <h2 class="login-title">Masuk ke Akun</h2>
           <p class="login-subtitle">Masukkan username dan password Anda</p>
-        </div>      .modal-body p {
-        font-size: 13px;
-      }
-
-      .modal-body .help-item div h4 {
-        font-size: 14px;
-      }
-
-      .modal-body .help-item div p {
-        font-size: 12px;
-      }
-    }
-
-    @media (max-width: 360px) {
-      .login-container {
-        max-width: 100%;
-      }
-
-      .login-header {
-        padding: 20px 15px;
-      }
-
-      .login-body {
-        padding: 20px 15px;
-      }
-
-      .login-footer {
-        padding: 0 15px 15px;
-      }
-
-      .logo-circle {
-        width: 60px;
-        height: 60px;
-      }
-
-      .logo-circle img {
-        width: 60px;
-        height: 60px;
-      }
-
-      .login-title {
-        font-size: 18px;
-      }
-
-      .welcome-text h5 {
-        font-size: 15px;
-      }
-
-      .form-control {
-        height: 40px;
-        padding: 0 12px 0 40px;
-      }
-
-      .input-icon {
-        left: 12px;
-        font-size: 14px;
-      }
-
-      .btn-login {
-        height: 40px;
-      }
-
-      .footer-links {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-  </style>
+        </div>
 
         <!-- Form Body -->
         <div class="login-body">
