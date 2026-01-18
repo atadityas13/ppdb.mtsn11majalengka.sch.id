@@ -85,6 +85,7 @@ echo "<!-- Pengumuman Text: " . htmlspecialchars($pengumuman_text) . " -->";
                 <div class="icon">    
                     <i class="fa fa-users"></i>    
                 </div>    
+                <a href="?pg=daftar" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>    
             </div>    
         </div>    
         <div class="col-lg-3">    
@@ -96,6 +97,7 @@ echo "<!-- Pengumuman Text: " . htmlspecialchars($pengumuman_text) . " -->";
                 <div class="icon">    
                     <i class="fa fa-edit"></i>    
                 </div>    
+                <a href="?pg=daftar" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>    
             </div>    
         </div>    
         <div class="col-lg-3">    
@@ -107,6 +109,7 @@ echo "<!-- Pengumuman Text: " . htmlspecialchars($pengumuman_text) . " -->";
                 <div class="icon">    
                     <i class="fa fa-check"></i>    
                 </div>    
+                <a href="?pg=daftar" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>    
             </div>    
         </div>
                 <div class="col-lg-3">    
@@ -118,6 +121,7 @@ echo "<!-- Pengumuman Text: " . htmlspecialchars($pengumuman_text) . " -->";
                 <div class="icon">    
                     <i class="fa fa-times"></i>    
                 </div>    
+                <a href="?pg=daftar" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>    
             </div>    
         </div> 
     <?php } ?>    
