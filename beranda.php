@@ -371,101 +371,54 @@
             opacity: 0.6;
             cursor: not-allowed;
         }
-    </style>
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            background: white;
-        }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .card-header {
-            background: var(--primary-gradient) !important;
-            color: white !important;
-            padding: 1.2rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: none !important;
-        }
-
-        /* Carousel Modern */
+        /* Legacy CSS Compatibility */
         .carousel-frame {
             border: none;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--shadow-xl);
-            position: relative;
-        }
-
-        .carousel-frame::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .carousel-frame:hover::before {
-            opacity: 0.1;
-        }
-
-        .carousel-inner {
-            border-radius: 20px;
-        }
-
-        .carousel-item img {
-            border-radius: 20px;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .carousel-caption {
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 30px 20px 20px !important;
-            border-radius: 0 0 20px 20px;
+            box-shadow: var(--shadow-lg);
         }
 
         .carousel-caption h5 {
             font-weight: 600;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
+        /* Table Styling */
+        .table {
+            font-size: 0.9rem;
+        }
+
+        .table thead th {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 998;
+        }
+
+        /* Carousel Additional Styles */
         .carousel-control-prev,
         .carousel-control-next {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-gradient);
             border-radius: 50%;
             top: 50%;
             transform: translateY(-50%);
-            opacity: 0;
-            transition: all 0.3s ease;
+            opacity: 0.7;
+            transition: var(--transition);
         }
 
-        .carousel-frame:hover .carousel-control-prev,
-        .carousel-frame:hover .carousel-control-next {
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
             opacity: 1;
-        }
-
-        .carousel-control-prev {
-            left: 20px;
-        }
-
-        .carousel-control-next {
-            right: 20px;
         }
 
         .carousel-indicators li {
@@ -474,12 +427,12 @@
             border-radius: 50%;
             background: white;
             opacity: 0.5;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .carousel-indicators li.active {
             opacity: 1;
-            transform: scale(1.3);
+            transform: scale(1.2);
         }
 
         /* Video Frame */
@@ -492,341 +445,94 @@
         /* Floating Animation */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
 
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        /* Pulse Animation */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .pulse-animation {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
+        /* Floating Music Button */
+        #play-pause-btn {
+            position: fixed;
             bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            z-index: 9999;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
+        #play-pause-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .home-header-text {
-                display: none !important;
-            }
-            
-            .navbar-brand img {
-                height: 50px !important;
-            }
-
-            .nav-link {
-                padding: 0.5rem 1rem !important;
-                margin: 0.2rem 0;
-            }
-
-            .card {
-                margin-top: 20px;
-            }
-
-            /* Fix untuk banner dan form di mobile */
-            .home-banner {
-                padding: 40px 0;
-            }
-
-            .home-banner .container {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .home-banner .row {
-                margin-bottom: 0;
-            }
-
-            .home-banner .col-sm-8,
-            .home-banner .col-sm-7 {
-                margin-bottom: 30px;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .home-banner .col-sm-4,
-            .home-banner .col-sm-5 {
-                margin-bottom: 20px;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            /* Carousel di mobile */
-            #carousel2 {
-                margin-bottom: 30px;
-            }
-
-            #carousel2 .carousel-inner {
-                padding: 20px;
-            }
-
-            #carousel2 h5 {
-                font-size: 1.1rem !important;
-            }
-
-            #carousel2 p {
-                font-size: 0.9rem;
-            }
-
-            #carousel2 ul {
-                padding-left: 20px;
-                font-size: 0.9rem;
-            }
-
-            #carousel2 ul li {
-                margin-bottom: 10px;
-            }
-
-            /* Card login di mobile */
-            .card-login {
-                margin-top: 0 !important;
-            }
-
-            .card-login .card-body {
-                padding: 1.5rem;
-            }
-
-            /* Carousel frame di mobile */
-            .carousel-frame {
-                margin-bottom: 20px;
-            }
-
-            .carousel-caption {
-                padding: 15px 10px 10px !important;
-            }
-
-            .carousel-caption h5 {
-                font-size: 1rem !important;
-            }
-
-            .carousel-caption p {
-                font-size: 0.85rem !important;
-                display: none;
-            }
+        @keyframes pulse-music {
+            0%, 100% { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(102, 126, 234, 0.8); }
         }
 
-        @media (max-width: 576px) {
-            /* Extra small devices */
-            .home-banner {
-                padding: 30px 0;
-            }
-
-            .home-banner .container {
-                margin-top: 20px !important;
-            }
-
-            #carousel2 .carousel-inner {
-                padding: 15px;
-            }
-
-            #carousel2 h5 {
-                font-size: 1rem !important;
-            }
-
-            #carousel2 ul {
-                font-size: 0.85rem;
-            }
-
-            .card-header {
-                font-size: 0.9rem !important;
-                padding: 0.8rem !important;
-            }
-
-            /* Form controls di mobile */
-            .form-control {
-                font-size: 0.9rem;
-            }
-
-            .btn {
-                font-size: 0.9rem;
-            }
-
-            /* Section spacing */
-            section {
-                padding-top: 20px;
-                padding-bottom: 20px;
-            }
+        #play-pause-btn.playing {
+            animation: pulse-music 2s ease-in-out infinite;
         }
 
-        /* Style untuk card-login */
-        .card-login {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-        }
-
-        .card-login .card-body {
-            padding: 2rem;
-        }
-
-        .card-login img {
-            display: block;
-            margin: 0 auto 1.5rem;
-        }
-
-        /* Ensure proper spacing for sections */
-        .home-content {
+        .music-tooltip {
+            position: fixed;
+            bottom: 90px;
+            left: 30px;
             background: white;
-            position: relative;
-            z-index: 10;
+            color: var(--dark);
+            padding: 12px 18px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+            pointer-events: none;
         }
 
-        #tentang {
-            padding: 60px 0;
+        .music-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 20px;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid white;
         }
 
-        @media (max-width: 768px) {
-            #tentang {
-                padding: 40px 0;
-            }
-
-            #tentang .col-sm-6 {
-                margin-bottom: 30px;
-            }
-
-            #tentang .card {
-                margin-bottom: 20px;
-            }
-
-            /* Form pendaftaran di mobile */
-            .form-row {
-                margin-bottom: 0;
-            }
-
-            .form-group {
-                margin-bottom: 1rem;
-            }
-
-            label {
-                font-size: 0.9rem;
-                margin-bottom: 0.3rem;
-            }
+        .music-tooltip.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @media (max-width: 576px) {
-            #tentang {
-                padding: 30px 0;
-            }
-
-            #tentang .container {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
+        /* WhatsApp Button */
+        .chating {
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
+            width: auto !important;
+            padding: 0 !important;
+            z-index: 9998 !important;
+            transition: var(--transition);
         }
 
-        /* Statistik Section */
-        .statistik {
-            padding: 60px 0;
+        .chating:hover {
+            transform: scale(1.05);
         }
 
-        .statistik h5 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .statistik h6 {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-bottom: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .statistik {
-                padding: 40px 0;
-            }
-
-            .statistik h5 {
-                font-size: 1.4rem;
-            }
-
-            .statistik h6 {
-                font-size: 1rem;
-            }
-
-            .statistik .col-sm-6 {
-                margin-bottom: 15px;
-            }
-
-            .statistik .col-sm-12 {
-                margin-bottom: 20px;
-            }
-
-            /* Table responsive di mobile */
-            .table-responsive {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .table {
-                font-size: 0.85rem;
-            }
-
-            .table th,
-            .table td {
-                padding: 0.5rem;
-                white-space: nowrap;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .statistik {
-                padding: 30px 0;
-            }
-
-            .statistik .container {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .statistik h5 {
-                font-size: 1.2rem;
-            }
-
-            .statistik h6 {
-                font-size: 0.9rem;
-            }
-
-            .card h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* Ensure proper spacing between sections */
-        section {
-            position: relative;
-            z-index: 5;
-        }
-
-        section + section {
-            margin-top: 0;
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
+        .chating img {
+            width: 100px !important;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
 
         /* Custom Scrollbar */
@@ -839,146 +545,8 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--primary-gradient);
+            background: var(--gradient);
             border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #5568d3;
-        }
-
-        /* Floating Music Button (Left) */
-        #play-pause-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            z-index: 9999;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #play-pause-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-
-        #play-pause-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Animation for music button */
-        @keyframes pulse-music {
-            0%, 100% {
-                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 25px rgba(102, 126, 234, 0.8);
-            }
-        }
-
-        #play-pause-btn.playing {
-            animation: pulse-music 2s ease-in-out infinite;
-        }
-
-        /* Tooltip untuk tombol musik */
-        .music-tooltip {
-            position: fixed;
-            bottom: 90px;
-            left: 30px;
-            background: white;
-            color: var(--text-dark);
-            padding: 12px 18px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            z-index: 10000;
-            font-size: 0.9rem;
-            font-weight: 500;
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .music-tooltip::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 20px;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 8px solid white;
-        }
-
-        .music-tooltip.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* WhatsApp Button (Right) */
-        .chating {
-            position: fixed !important;
-            bottom: 30px !important;
-            right: 30px !important;
-            left: auto !important;
-            width: auto !important;
-            padding: 0 !important;
-            z-index: 9998 !important;
-            transition: all 0.3s ease;
-        }
-
-        .chating:hover {
-            transform: scale(1.05);
-        }
-
-        .chating img {
-            width: 100px !important;
-            height: auto !important;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .chating:hover img {
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
-
-        @media (max-width: 768px) {
-            #play-pause-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 16px;
-                bottom: 20px;
-                left: 20px;
-            }
-
-            .music-tooltip {
-                bottom: 75px;
-                left: 20px;
-                font-size: 0.8rem;
-                padding: 10px 14px;
-            }
-
-            .chating {
-                bottom: 20px !important;
-                right: 20px !important;
-            }
-
-            .chating img {
-                width: 80px !important;
-            }
         }
     </style>  
     <!-- Start GA -->  
