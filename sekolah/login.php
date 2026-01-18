@@ -209,6 +209,17 @@ require "../config/functions.crud.php";
       position: relative;
     }
 
+    .input-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #a0aec0;
+      font-size: 16px;
+      transition: color 0.3s;
+      pointer-events: none;
+    }
+
     .form-control {
       width: 100%;
       height: 44px;
@@ -219,6 +230,8 @@ require "../config/functions.crud.php";
       color: #2d3748;
       background: #f7fafc;
       transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
     }
 
     .form-control:focus {
@@ -230,17 +243,6 @@ require "../config/functions.crud.php";
 
     .form-control:focus + .input-icon {
       color: #667eea;
-    }
-
-    .input-icon {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #a0aec0;
-      font-size: 16px;
-      transition: color 0.3s;
-      z-index: 1;
     }
 
     .remember-checkbox {
