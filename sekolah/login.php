@@ -218,6 +218,7 @@ require "../config/functions.crud.php";
       font-size: 16px;
       transition: color 0.3s;
       pointer-events: none;
+      z-index: 5;
     }
 
     .form-control {
@@ -230,8 +231,6 @@ require "../config/functions.crud.php";
       color: #2d3748;
       background: #f7fafc;
       transition: all 0.3s ease;
-      position: relative;
-      z-index: 2;
     }
 
     .form-control:focus {
