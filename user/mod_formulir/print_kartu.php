@@ -159,7 +159,7 @@ $siswa = fetch($koneksi, 'daftar', ['id_daftar' => $_SESSION['id_daftar']]);
             <tr>
                 <td><strong>Password</strong></td>
                 <td>:</td>
-                <td><strong><?= $siswa['nisn'] ?></strong></td>
+                <td><strong><?= $siswa['remember_token_uuid'] ?></strong></td>
             </tr>
         </table>
         
