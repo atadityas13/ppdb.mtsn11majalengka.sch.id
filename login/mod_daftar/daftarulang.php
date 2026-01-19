@@ -6,6 +6,9 @@
                 <h4>Data Pendaftar</h4>
                 <div class="card-header-action">
                     <a class="btn btn-primary" href="mod_daftar/export_dfulang.php" role="button"> Download Excel</a>
+                    <a href="mod_laporan/print_daftar.php" target="_blank" class="btn btn-icon icon-left btn-success">
+                        <i class="fas fa-print"></i> Cetak Laporan PPDB
+                    </a>
 
                 </div>
             </div>

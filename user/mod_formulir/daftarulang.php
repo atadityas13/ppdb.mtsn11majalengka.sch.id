@@ -85,6 +85,21 @@
 				</div>
 				<div class="col-lg-4">
 			
+                <div class="activities">
+                    <div class="activity">
+                        <div class="activity-icon bg-success text-white shadow-success">
+                            2
+                        </div>
+                        <div class="activity-detail">
+                            <h5>Surat Pernyataan</h5>
+                           <a target="_blank" href="mod_formulir/pernyataan.php" type="button" class="badge badge-success"><i class="fas fa-download    "></i> Download</a>
+                        </div>
+                    </div>
+
+                </div>
+				</div>
+				<div class="col-lg-4">
+			
                 <!--<div class="activities">
                     <div class="activity">
                         <div class="activity-icon bg-primary text-white shadow-primary">

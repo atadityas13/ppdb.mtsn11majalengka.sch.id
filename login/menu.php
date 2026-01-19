@@ -59,15 +59,6 @@ $is_ppdb_aktif = $akhir <= $awal;
                 <li><a class="nav-link" href="?pg=jenis">Master Jenis Daftar</a></li>  
             </ul>  
         </li>  
-    <?php } ?>  
-  
-    <?php if ($is_superadmin || $is_admin || $is_panitia) { ?>  
-        <li class="dropdown">  
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-book"></i> <span>Cetak</span></a>  
-            <ul class="dropdown-menu">  
-                <li><a class="nav-link" href="?pg=l_ppdbyes">Data Penerimaan PPDB</a></li>  
-            </ul>  
-        </li>  
     <?php } ?>
 
     <?php if ($is_superadmin || $is_admin) { ?>

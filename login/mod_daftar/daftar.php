@@ -160,6 +160,9 @@
                     <button type="button" class="btn btn-icon icon-left btn-success" data-toggle="modal" data-target="#modalStatistik">
                         <i class="fas fa-chart-bar"></i> Statistik
                     </button>
+                    <a href="mod_laporan/print_daftar.php" target="_blank" class="btn btn-icon icon-left btn-primary">
+                        <i class="fas fa-print"></i> Cetak Laporan PPDB
+                    </a>
 					 
 	</div>
 	
@@ -232,8 +235,16 @@
                                     </td>
                                     <td>
                                         <a data-toggle="tooltip" data-placement="top" title="" data-original-title="detail siswa" href="?pg=ubahdaftar&id=<?= enkripsi($daftar['id_daftar']) ?>" class="btn btn-sm btn-info"><i class="fas fa-file-alt"></i></a>
-                                        <!-- Button trigger modal -->
-                                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Cetak" href="mod_daftar/print_daftar.php?id=<?= enkripsi($daftar['id_daftar']) ?>" class="btn btn-sm btn-success"><i class="fas fa-print    "></i></a>
+                                        <!-- Dropdown Cetak -->
+                                        <div class="btn-group" role="group">
+                                            <button id="btnCetak<?= $no ?>" type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-print"></i>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="btnCetak<?= $no ?>">
+                                                <a class="dropdown-item" href="mod_daftar/print_daftar.php?id=<?= enkripsi($daftar['id_daftar']) ?>" target="_blank"><i class="fas fa-file-alt"></i> Formulir</a>
+                                                <a class="dropdown-item" href="mod_daftar/pernyataan.php?id=<?= enkripsi($daftar['id_daftar']) ?>" target="_blank"><i class="fas fa-file-signature"></i> Pernyataan</a>
+                                            </div>
+                                        </div>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit<?= $no ?>">
                                             <i class="fas fa-edit    "></i>
