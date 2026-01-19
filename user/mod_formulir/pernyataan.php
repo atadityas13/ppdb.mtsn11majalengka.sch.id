@@ -113,7 +113,7 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
             <tr>
                 <td>Nama Lengkap</td>
                 <td>:</td>
-                <td><strong><?= strtoupper($siswa['nama']) ?></strong></td>
+                <td><?= $siswa['nama'] ?></td>
             </tr>
             <tr>
                 <td>Tempat, Tanggal Lahir</td>
@@ -147,11 +147,11 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
         <p>Dengan ini menyatakan dengan sesungguhnya bahwa:</p>
         
         <ol>
-            <li>Saya telah mendaftar sebagai calon peserta didik baru di <?= $setting['nama_sekolah'] ?> untuk Tahun Pelajaran <?= date('Y') ?>/<?= (date('Y')+1) ?>.</li>
+            <li>Saya telah mendaftar sebagai calon peserta didik baru di MTsN 11 Majalengka untuk Tahun Pelajaran <?= date('Y') ?>/<?= (date('Y')+1) ?>.</li>
             
             <li>Seluruh data dan informasi yang saya sampaikan dalam formulir pendaftaran adalah benar dan sesuai dengan dokumen yang saya miliki.</li>
             
-            <li>Apabila saya diterima sebagai peserta didik di <?= $setting['nama_sekolah'] ?>, saya bersedia dan sanggup untuk:
+            <li>Apabila saya diterima sebagai peserta didik di MTsN 11 Majalengka, saya bersedia dan sanggup untuk:
                 <ol style="list-style-type: lower-alpha; margin-top: 3px;">
                     <li>Mematuhi seluruh peraturan dan tata tertib yang berlaku di madrasah;</li>
                     <li>Mengikuti seluruh kegiatan pembelajaran dan kegiatan madrasah lainnya dengan penuh tanggung jawab;</li>
@@ -160,7 +160,7 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
                 </ol>
             </li>
             
-            <li>Apabila di kemudian hari saya melanggar peraturan dan tata tertib yang berlaku di <?= $setting['nama_sekolah'] ?>, saya bersedia menerima sanksi sesuai dengan ketentuan yang berlaku, termasuk sanksi pemberhentian sebagai peserta didik.</li>
+            <li>Apabila di kemudian hari saya melanggar peraturan dan tata tertib yang berlaku di MTsN 11 Majalengka, saya bersedia menerima sanksi sesuai dengan ketentuan yang berlaku, termasuk sanksi pemberhentian sebagai peserta didik.</li>
         </ol>
         
         <p style="margin-top: 10px;">Demikian surat pernyataan ini saya buat dengan sebenar-benarnya dalam keadaan sadar dan tanpa paksaan dari pihak manapun untuk dapat dipergunakan sebagaimana mestinya.</p>
@@ -176,9 +176,9 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
                     </div>
                 </td>
                 <td class="ttd-kanan">
-                    <p><?= $siswa['kecamatan'] ?>, <?= $tgl_sekarang ?><br>Yang Membuat Pernyataan</p>
+                    <p>Cingambul, <?= $tgl_sekarang ?><br>Yang Membuat Pernyataan</p>
                     <div class="nama-ttd">
-                        ( <?= strtoupper($siswa['nama']) ?> )
+                        ( <?= $siswa['nama'] ?> )
                     </div>
                 </td>
             </tr>

@@ -32,29 +32,25 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
         }
         body {
             font-family: "Times New Roman", Times, serif;
-            font-size: 12pt;
-            line-height: 1.8;
+            font-size: 11pt;
+            line-height: 1.5;
         }
         .judul {
             text-align: center;
             font-weight: bold;
-            font-size: 14pt;
-            margin: 30px 0 10px 0;
+            font-size: 13pt;
+            margin: 15px 0 20px 0;
             text-decoration: underline;
         }
-        .nomor {
-            text-align: center;
-            margin-bottom: 30px;
-        }
         .identitas {
-            margin: 20px 0;
+            margin: 15px 0;
         }
         .identitas table {
             width: 100%;
             border-collapse: collapse;
         }
         .identitas td {
-            padding: 3px 0;
+            padding: 2px 0;
             vertical-align: top;
         }
         .identitas td:first-child {
@@ -65,10 +61,28 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
         }
         .isi {
             text-align: justify;
-            margin: 15px 0;
+            margin: 10px 0;
+        }
+        .isi p {
+            margin: 8px 0;
+        }
+        .isi ol {
+            margin: 8px 0;
+            padding-left: 25px;
+        }
+        .isi ol li {
+            margin: 5px 0;
+            padding-left: 5px;
+        }
+        .isi ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        .isi ul li {
+            margin: 3px 0;
         }
         .ttd {
-            margin-top: 40px;
+            margin-top: 30px;
         }
         .ttd-table {
             width: 100%;
@@ -82,7 +96,7 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
             text-align: center;
         }
         .nama-ttd {
-            margin-top: 80px;
+            margin-top: 60px;
             font-weight: bold;
         }
     </style>
@@ -90,7 +104,6 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
 <body>
     
     <div class="judul">SURAT PERNYATAAN</div>
-    <div class="nomor">Nomor: <?= $siswa['no_daftar'] ?>/PPDB/<?= date('Y') ?></div>
     
     <div class="isi">
         <p>Yang bertanda tangan di bawah ini:</p>
@@ -101,7 +114,7 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
             <tr>
                 <td>Nama Lengkap</td>
                 <td>:</td>
-                <td><strong><?= strtoupper($siswa['nama']) ?></strong></td>
+                <td><?= $siswa['nama'] ?></td>
             </tr>
             <tr>
                 <td>Tempat, Tanggal Lahir</td>
@@ -135,25 +148,23 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
         <p>Dengan ini menyatakan dengan sesungguhnya bahwa:</p>
         
         <ol>
-            <li>Saya telah mendaftar sebagai calon peserta didik baru di <strong><?= $setting['nama_sekolah'] ?></strong> untuk Tahun Pelajaran <?= date('Y') ?>/<?= (date('Y')+1) ?>.</li>
+            <li>Saya telah mendaftar sebagai calon peserta didik baru di MTsN 11 Majalengka untuk Tahun Pelajaran <?= date('Y') ?>/<?= (date('Y')+1) ?>.</li>
             
             <li>Seluruh data dan informasi yang saya sampaikan dalam formulir pendaftaran adalah benar dan sesuai dengan dokumen yang saya miliki.</li>
             
-            <li>Apabila saya diterima sebagai peserta didik di <strong><?= $setting['nama_sekolah'] ?></strong>, saya bersedia dan sanggup untuk:
-                <ul style="list-style-type: lower-alpha; margin-left: 20px;">
+            <li>Apabila saya diterima sebagai peserta didik di MTsN 11 Majalengka, saya bersedia dan sanggup untuk:
+                <ol style="list-style-type: lower-alpha; margin-top: 3px;">
                     <li>Mematuhi seluruh peraturan dan tata tertib yang berlaku di madrasah;</li>
                     <li>Mengikuti seluruh kegiatan pembelajaran dan kegiatan madrasah lainnya dengan penuh tanggung jawab;</li>
                     <li>Menjaga nama baik madrasah dan tidak melakukan perbuatan yang dapat merugikan diri sendiri maupun madrasah;</li>
                     <li>Menyelesaikan pendidikan hingga lulus tepat waktu.</li>
-                </ul>
+                </ol>
             </li>
             
-            <li>Apabila di kemudian hari saya melanggar peraturan dan tata tertib yang berlaku di <strong><?= $setting['nama_sekolah'] ?></strong>, saya bersedia menerima sanksi sesuai dengan ketentuan yang berlaku, termasuk sanksi pemberhentian sebagai peserta didik.</li>
-            
-            <li>Apabila dikemudian hari diketahui bahwa data yang saya berikan tidak benar atau palsu, saya bersedia menerima sanksi pembatalan status sebagai peserta didik tanpa ada tuntutan apapun kepada pihak madrasah.</li>
+            <li>Apabila di kemudian hari saya melanggar peraturan dan tata tertib yang berlaku di MTsN 11 Majalengka, saya bersedia menerima sanksi sesuai dengan ketentuan yang berlaku, termasuk sanksi pemberhentian sebagai peserta didik.</li>
         </ol>
         
-        <p>Demikian surat pernyataan ini saya buat dengan sebenar-benarnya dalam keadaan sadar dan tanpa paksaan dari pihak manapun untuk dapat dipergunakan sebagaimana mestinya.</p>
+        <p style="margin-top: 10px;">Demikian surat pernyataan ini saya buat dengan sebenar-benarnya dalam keadaan sadar dan tanpa paksaan dari pihak manapun untuk dapat dipergunakan sebagaimanya mestinya.</p>
     </div>
     
     <div class="ttd">
@@ -166,9 +177,9 @@ $tgl_sekarang = strtr($tgl_sekarang, $bulan_indo);
                     </div>
                 </td>
                 <td class="ttd-kanan">
-                    <p><?= $siswa['kecamatan'] ?>, <?= $tgl_sekarang ?><br>Yang Membuat Pernyataan</p>
+                    <p>Cingambul, <?= $tgl_sekarang ?><br>Yang Membuat Pernyataan</p>
                     <div class="nama-ttd">
-                        ( <?= strtoupper($siswa['nama']) ?> )
+                        ( <?= $siswa['nama'] ?> )
                     </div>
                 </td>
             </tr>
