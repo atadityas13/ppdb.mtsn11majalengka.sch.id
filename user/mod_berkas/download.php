@@ -47,7 +47,7 @@
                         </div>
                         <div class="activity-detail">
                             <h5>Kartu Pendaftar</h5>
-                            <a target="_blank" href="mod_formulir/print_kartu.php?id=<?= enkripsi($siswa['id_daftar']) ?>" type="button" class="badge badge-success"><i class="fas fa-id-card    "></i> Download</a>
+                            <a target="_blank" href="mod_formulir/print_kartu.php" type="button" class="badge badge-success"><i class="fas fa-id-card    "></i> Download</a>
                         </div>
                     </div>
 
