@@ -1,4 +1,7 @@
 <?php
+// DEBUG: File buktidaftar.php loaded
+echo '<div style="color:red;font-weight:bold">[DEBUG] buktidaftar.php loaded</div>';
+
 require_once "../../config/database.php";
 require_once "../../config/function.php";
 require_once "../../config/functions.crud.php";
@@ -10,9 +13,11 @@ if (!isset($_SESSION['id_daftar'])) {
 // Ambil data siswa, tampilkan pesan jika tidak ditemukan
 $siswa = fetch($koneksi, 'daftar', ['id_daftar' => $_SESSION['id_daftar']]);
 if (!$siswa) {
-  echo '<div class="alert alert-danger">Data pendaftar tidak ditemukan. Silakan login ulang.</div>';
+  echo '<div class="alert alert-danger">[DEBUG] Data pendaftar tidak ditemukan. Silakan login ulang.</div>';
+  var_dump($_SESSION);
   return;
 }
+echo '<!-- [DEBUG] Data siswa: ' . htmlspecialchars(json_encode($siswa)) . ' -->';
 setlocale(LC_ALL, 'id-ID', 'id_ID');
 ?>
 <section class="section">
