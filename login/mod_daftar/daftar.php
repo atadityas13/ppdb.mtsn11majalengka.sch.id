@@ -381,7 +381,7 @@
 <!-- Statistik -->
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="card">
+        <div class="card" style="position: static; z-index: auto;">
             <div class="card-header p-2">
                 <h6 class="mb-0" style="font-size: 13px;">Statistik Jenis Kelamin</h6>
             </div>
@@ -412,7 +412,7 @@
     </div>
     
     <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card" style="position: relative; z-index: 1;">
+        <div class="card" style="position: static; z-index: auto;">
             <div class="card-header p-2">
                 <h6 class="mb-0" style="font-size: 13px;">Statistik Status</h6>
             </div>
