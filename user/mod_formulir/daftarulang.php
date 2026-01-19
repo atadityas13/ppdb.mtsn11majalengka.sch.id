@@ -1,4 +1,12 @@
 <?php require "fungsi.php"; ?>
+<?php if ($siswa['konfirmasi'] == 1) { ?>
+			 <div class="alert alert-success alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>Terimakasih !!!</strong><br />
+				Data Anda Telah Berhasil <strong>Dikonfirmasi Pada Tanggal <?= tanggal_indonesia($siswa['tgl_konfirmasi']) ?></strong><br><br>
+				<i class="fas fa-info-circle"></i> Untuk mencetak bukti daftar Anda, silakan gunakan menu <strong>"Cetak Bukti"</strong> di sidebar.
+			</div>
+			<?php } else { ?>
 <div class="row">
     <div class="col-12 col-sm-8 col-lg-12">
         <div class="card author-box card-primary">
@@ -99,36 +107,6 @@
                 </div>
 				</div>
 				<div class="col-lg-4">
-			
-                <!--<div class="activities">
-                    <div class="activity">
-                        <div class="activity-icon bg-primary text-white shadow-primary">
-                            2
-                        </div>
-                        <div class="activity-detail">
-                            <h5>Kartu Pendaftar</h5>
-                            <a href="?pg=kartu" type="button" class="badge badge-success"><i class="fas fa-eye    "></i> Lihat Kartu </a>
-                        </div>
-                    </div>
-
-                </div>
-				</div>
-				<div class="col-lg-4">
-			
-                <div class="activities">
-                    <div class="activity">
-                        <div class="activity-icon bg-primary text-white shadow-primary">
-                            3
-                        </div>
-                        <div class="activity-detail">
-                            <h5>Berkas Lainnya</h5>
-                            <p><span class="badge badge-warning"><i class="fas fa-download    "></i>
-                                    Download</span></p>
-                        </div>
-                    </div>
-
-                </div>
-				</div>-->
 				</div>
 				</div>
 			
@@ -326,7 +304,7 @@
 		<a class="popup-close" href="#popup">X</a>
 	</div>
 </div>
-<?php } ?>
+<?php }} ?>
 
 
 <script>
