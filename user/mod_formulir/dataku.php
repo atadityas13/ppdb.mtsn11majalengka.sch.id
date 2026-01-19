@@ -52,7 +52,7 @@
                                         </tr>
                                         <tr>
                                             <td align="left"><b>Tempat Tgl Lahir</b></td>
-                                            <td align="left"><?= $siswa['tempat_lahir'] ?>, <?= $siswa['tgl_lahir'] ?></td>
+                                            <td align="left"><?= $siswa['tempat_lahir'] ?>, <?= tanggal_indonesia($siswa['tgl_lahir']) ?></td>
                                         </tr>
                                         <tr>
                                             <td align="left"><b>Jenis Kelamin</b></td>

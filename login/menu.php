@@ -61,6 +61,12 @@ $is_ppdb_aktif = $akhir <= $awal;
         </li>  
     <?php } ?>
 
+    <?php if ($is_superadmin || $is_admin || $is_panitia) { ?>
+        <li>
+            <a class="nav-link" href="?pg=l_ppdbyes"><i class="fas fa-file-alt"></i> <span>Laporan PPDB</span></a>
+        </li>
+    <?php } ?>
+
     <?php if ($is_superadmin || $is_admin) { ?>
         <li class="dropdown">  
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i> <span>Akun</span></a>  

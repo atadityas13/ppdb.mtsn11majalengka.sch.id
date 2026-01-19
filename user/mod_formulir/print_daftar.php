@@ -133,11 +133,7 @@ QRcode::png($codeContents, $tempdir . $siswa['nisn'] . '.png', QR_ECLEVEL_M, 4);
 				<td width="5%"></td>
 				<td align="">Tanggal Lahir</td>
 				<td align="center">:</td>
-				<td align="left"><?= $siswa['tgl_lahir'] ?></td>
-			</tr>
-			
-			
-			
+			<td align="left"><?= tanggal_indonesia($siswa['tgl_lahir']) ?></td>
 			</tbody>
 		</table>
 		<table width="100%" style="font-size: 13px" cellpadding="1" cellspacing="0" style="border-bottom:1px solid #a5a5a5;">
@@ -218,7 +214,7 @@ QRcode::png($codeContents, $tempdir . $siswa['nisn'] . '.png', QR_ECLEVEL_M, 4);
                 <td style="text-align: left">
                     <font size="13px">
                        
-                        <?= $setting['kec'] ?>, <?= date('d-M-Y ') ?>
+                        <?= $setting['kec'] ?>, <?= strtr(date('d F Y'), $bulan_indonesia) ?>
                         <p>Pendaftar</p>
 						<br></br>
 						<p><strong><?= $siswa['nama'] ?></strong><p>

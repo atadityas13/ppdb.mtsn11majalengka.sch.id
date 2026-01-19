@@ -38,7 +38,7 @@
                                     <td><?= $no; ?></td>
                                     <td><?= $daftar['nisn'] ?></td>
                                     <td><?= $daftar['nama'] ?></td>
-                                    <td><?= $daftar['tgl_konfirmasi'] ?></td>
+                                    <td><?= tanggal_indonesia($daftar['tgl_konfirmasi']) ?></td>
                                     
                                     <td>
                                         <?php if ($daftar['konfirmasi'] == 1) { ?>

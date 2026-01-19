@@ -117,7 +117,7 @@ if (!isset($_SESSION['id_user'])) {
 	
 	   
 		<td width="30%">
-			<?= $setting['kec'] ?>, <?= date('d-M-Y ') ?>
+			<?= $setting['kec'] ?>, <?= strtr(date('d F Y'), $bulan_indonesia) ?>
 			<p>Kepala <?= $setting['nama_sekolah'] ?></p>
 			<br><br><br>
 			<?= $setting['kepala'] ?>

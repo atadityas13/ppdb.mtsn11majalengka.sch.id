@@ -77,7 +77,7 @@ if (!isset($_SESSION['id_user'])) {
             <tr>
                 <td><?= $no; ?></td>
 				<td class="str"><?= $daftar['nis'] ?></td>
-				<td class="date"><?= $daftar['tgl_konfirmasi'] ?></td>
+				<td class="date"><?= tanggal_indonesia($daftar['tgl_konfirmasi']) ?></td>
 				<td class="str"><?= $daftar['nisn'] ?></td>
 				<td class="str"><?= $daftar['nik'] ?></td>
                 <td><?= $daftar['nama'] ?></td>

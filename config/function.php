@@ -1,6 +1,33 @@
 <?php
 $setting = mysqli_fetch_array(mysqli_query($koneksi, "select * from setting where id_setting='1'"));
 
+// Array bulan Indonesia untuk konversi tanggal
+$bulan_indonesia = array(
+    'January' => 'Januari',
+    'February' => 'Februari',
+    'March' => 'Maret',
+    'April' => 'April',
+    'May' => 'Mei',
+    'June' => 'Juni',
+    'July' => 'Juli',
+    'August' => 'Agustus',
+    'September' => 'September',
+    'October' => 'Oktober',
+    'November' => 'November',
+    'December' => 'Desember'
+);
+
+// Fungsi untuk konversi tanggal ke format Indonesia
+if (!function_exists('tanggal_indonesia')) {
+	function tanggal_indonesia($tanggal) {
+		global $bulan_indonesia;
+		if (empty($tanggal) || $tanggal == '0000-00-00') {
+			return '-';
+		}
+		return strtr(date('d F Y', strtotime($tanggal)), $bulan_indonesia);
+	}
+}
+
 if (!function_exists('base_url')) {
 	function base_url($atRoot = FALSE, $atCore = FALSE, $parse = FALSE)
 	{

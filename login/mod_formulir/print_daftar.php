@@ -47,7 +47,7 @@ $siswa = fetch($koneksi, 'daftar', ['id_daftar' => dekripsi($_GET['id'])]);
                 </tr>
                 <tr>
                     <td><b>Tempat Tgl Lahir</b></td>
-                    <td align="left"><?= $siswa['tempat_lahir'] ?>, <?= $siswa['tgl_lahir'] ?></td>
+                    <td align="left"><?= $siswa['tempat_lahir'] ?>, <?= tanggal_indonesia($siswa['tgl_lahir']) ?></td>
                 </tr>
                 <tr>
                     <td><b>Jenis Kelamin</b></td>
@@ -189,7 +189,7 @@ $siswa = fetch($koneksi, 'daftar', ['id_daftar' => dekripsi($_GET['id'])]);
             <tbody>
                 <!-- DATA LENGKAP WALI -->
                 <tr>
-                    <td align="center" colspan="2">Tanggal Cetak : <?= date('Y-m-d H:is') ?></td>
+                    <td align="center" colspan="2">Tanggal Cetak : <?= strtr(date('d F Y'), $bulan_indonesia) ?></td>
                 </tr>
 
             </tbody>

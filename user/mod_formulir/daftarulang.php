@@ -47,7 +47,7 @@
                                 <div class="form-group row mb-2">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tempat dan Tanggal Lahir</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="tempat" class="form-control" value="<?= $siswa['tempat_lahir'] ?>,<?= $siswa['tgl_lahir'] ?>" disabled>
+                                        <input type="text" name="tempat" class="form-control" value="<?= $siswa['tempat_lahir'] ?>, <?= tanggal_indonesia($siswa['tgl_lahir']) ?>" disabled>
                                     </div>
                                 </div>
 								
