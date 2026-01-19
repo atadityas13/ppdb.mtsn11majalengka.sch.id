@@ -10,14 +10,12 @@ if ($pg == '') {
     include "mod_formulir/dataku.php";
 } elseif ($pg == 'df_ulang') {
     include "mod_formulir/daftarulang.php";
-} elseif ($pg == 'cetakkartu') {
-    include "mod_formulir/cetakkartu.php";
+} elseif ($pg == 'buktidaftar') {
+    include "mod_formulir/buktidaftar.php";
 } elseif ($pg == 'berkas') {
     include "mod_berkas/upload.php";
 } elseif ($pg == 'blank') {
     include "blank.php";
-} elseif ($pg == 'download') {
-    include "mod_berkas/download.php";
 } elseif ($pg == 'alumni') {
     include "../login/mod_siswa/alumni.php";
 
