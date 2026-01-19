@@ -1113,3 +1113,27 @@ body.modal-open .table-responsive {
     z-index: auto !important;
 }
 
+/* --- CUSTOM: Topbar menu scroll horizontal fix --- */
+.topbar-scroll-x {
+  width: 100vw;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 0;
+}
+.topbar-scroll-x ul {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  width: max-content;
+  min-width: 100vw;
+  padding-bottom: 2px;
+  margin-bottom: 0;
+}
+.topbar-scroll-x ul li {
+  min-width: 90px;
+  flex: 0 0 auto;
+  margin-right: 4px;
+}
+.topbar-scroll-x ul li:last-child {
+  margin-right: 0;
+}
+
