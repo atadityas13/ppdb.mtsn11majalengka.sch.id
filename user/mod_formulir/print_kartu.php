@@ -7,6 +7,11 @@ if (!isset($_SESSION['id_daftar'])) {
     die('Anda tidak diijinkan mengakses langsung');
 }
 $siswa = fetch($koneksi, 'daftar', ['id_daftar' => $_SESSION['id_daftar']]);
+
+// Prevent caching
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
 ?>
 <!DOCTYPE html>
 <html>

@@ -2,65 +2,10 @@
 			 <?php if ($siswa['konfirmasi'] == 1) { ?>
 			 <div class="alert alert-success alert-dismissable">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				Terimakasih !!!<br />
-				Data Anda Telah Berhasil <button class="badge badge-danger"> Dikonfirmasi Pada Tanggal  <?= $siswa['tgl_konfirmasi'] ?></button>
+				<strong>Terimakasih !!!</strong><br />
+				Data Anda Telah Berhasil <strong>Dikonfirmasi Pada Tanggal <?= tanggal_indonesia($siswa['tgl_konfirmasi']) ?></strong><br><br>
+				<i class="fas fa-info-circle"></i> Untuk mengunduh berkas-berkas Anda, silakan gunakan menu <strong>"Download Berkas"</strong> di sidebar.
 			</div>
-			<div class="card-body">
-		<div class="row">
-		<div class="col-lg-4">
-			
-                <div class="activities">
-                    <div class="activity">
-                        <div class="activity-icon bg-primary text-white shadow-primary">
-                            1
-                        </div>
-                        <div class="activity-detail">
-                            <h5>Formulir</h5>
-                           <a target="_blank" href="mod_formulir/print_daftar.php?id=<?= enkripsi($siswa['id_daftar']) ?>" type="button" class="badge badge-primary"><i class="fas fa-download    "></i> Download</a>
-                        </div>
-                    </div>
-
-                </div>
-				</div>
-				<div class="col-lg-4">
-			
-                <div class="activities">
-                    <div class="activity">
-                        <div class="activity-icon bg-primary text-white shadow-primary">
-                            2
-                        </div>
-                        <div class="activity-detail">
-                            <h5>Kartu Pendaftar</h5>
-                            <a href="?pg=cetakkartu" type="button" class="badge badge-success"><i class="fas fa-eye    "></i> Lihat Kartu </a>
-                        </div>
-                    </div>
-
-                </div>
-				</div>
-				<div class="col-lg-4">
-			
-                <div class="activities">
-                    <div class="activity">
-                        <div class="activity-icon bg-primary text-white shadow-primary">
-                            3
-                        </div>
-                        <div class="activity-detail">
-                            <h5>Berkas Lainnya</h5>
-                            <p><span class="badge badge-warning"><i class="fas fa-download    "></i>
-                                    Download</span></p>
-                        </div>
-                    </div>
-
-                </div>
-				</div>
-				</div>
-				</div>
-			
-			
-			
-			
-			
-			
 			<?php } else { ?>
 			
 			<div class="row">
