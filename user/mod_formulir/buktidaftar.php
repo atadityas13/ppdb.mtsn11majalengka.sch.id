@@ -1,5 +1,15 @@
-<?php require "../mod_formulir/fungsi.php"; ?>
-<?php setlocale(LC_ALL, 'id-ID', 'id_ID'); ?>
+<?php
+session_start();
+require_once "../../config/database.php";
+require_once "../../config/function.php";
+require_once "../../config/functions.crud.php";
+require_once "../mod_formulir/fungsi.php";
+setlocale(LC_ALL, 'id-ID', 'id_ID');
+if (!isset($_SESSION['id_daftar'])) {
+  die('Akses tidak diizinkan. Silakan login ulang.');
+}
+$siswa = fetch($koneksi, 'daftar', ['id_daftar' => $_SESSION['id_daftar']]);
+?>
 <section class="section">
   <div class="section-header">
     <div class="section-header-back">
