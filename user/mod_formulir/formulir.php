@@ -4,7 +4,7 @@
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				<strong>Terimakasih !!!</strong><br />
 				Data Anda Telah Berhasil <strong>Dikonfirmasi Pada Tanggal <?= tanggal_indonesia($siswa['tgl_konfirmasi']) ?></strong><br><br>
-				<i class="fas fa-info-circle"></i> Untuk mencetak bukti daftar Anda, silakan gunakan menu <strong>"Cetak Bukti"</strong> di sidebar.
+				<i class="fas fa-info-circle"></i> Untuk mencetak bukti daftar Anda, silakan gunakan menu <strong>"Cetak Bukti"</strong>.
 			</div>
 			<?php } else { ?>
 			
