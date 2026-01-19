@@ -370,7 +370,7 @@
 
 <!-- Modal Statistik -->
 <div class="modal fade" id="modalStatistik" tabindex="-1" role="dialog" aria-labelledby="modalStatistikLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalStatistikLabel">Statistik Data Pendaftar</h5>
@@ -379,71 +379,57 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h6 class="mb-0">Statistik Jenis Kelamin</h6>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-bordered table-sm mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Laki-laki</th>
-                                            <th>Perempuan</th>
-                                            <th>Jumlah</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $laki = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE jenkel='L'"));
-                                        $perempuan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE jenkel='P'"));
-                                        $total_gender = $laki + $perempuan;
-                                        ?>
-                                        <tr>
-                                            <td class="text-center"><strong><?= $laki ?></strong></td>
-                                            <td class="text-center"><strong><?= $perempuan ?></strong></td>
-                                            <td class="text-center"><strong><?= $total_gender ?></strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h6 class="mb-0">Statistik Status</h6>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-bordered table-sm mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Diverifikasi</th>
-                                            <th>Diterima</th>
-                                            <th>Dicadangkan</th>
-                                            <th>Jumlah</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $diverifikasi = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE status='0'"));
-                                        $diterima = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE status='1'"));
-                                        $dicadangkan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE status='2'"));
-                                        $total_status = $diverifikasi + $diterima + $dicadangkan;
-                                        ?>
-                                        <tr>
-                                            <td class="text-center"><strong><?= $diverifikasi ?></strong></td>
-                                            <td class="text-center"><strong><?= $diterima ?></strong></td>
-                                            <td class="text-center"><strong><?= $dicadangkan ?></strong></td>
-                                            <td class="text-center"><strong><?= $total_status ?></strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mb-3">
+                    <h6 class="text-primary mb-2">Statistik Jenis Kelamin</h6>
+                    <table class="table table-bordered table-sm mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="text-center">Laki-laki</th>
+                                <th class="text-center">Perempuan</th>
+                                <th class="text-center">Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $laki = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE jenkel='L'"));
+                            $perempuan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE jenkel='P'"));
+                            $total_gender = $laki + $perempuan;
+                            ?>
+                            <tr>
+                                <td class="text-center"><strong><?= $laki ?></strong></td>
+                                <td class="text-center"><strong><?= $perempuan ?></strong></td>
+                                <td class="text-center"><strong><?= $total_gender ?></strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div>
+                    <h6 class="text-primary mb-2">Statistik Status</h6>
+                    <table class="table table-bordered table-sm mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="text-center">Diverifikasi</th>
+                                <th class="text-center">Diterima</th>
+                                <th class="text-center">Dicadangkan</th>
+                                <th class="text-center">Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $diverifikasi = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE status='0'"));
+                            $diterima = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE status='1'"));
+                            $dicadangkan = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM daftar WHERE status='2'"));
+                            $total_status = $diverifikasi + $diterima + $dicadangkan;
+                            ?>
+                            <tr>
+                                <td class="text-center"><strong><?= $diverifikasi ?></strong></td>
+                                <td class="text-center"><strong><?= $diterima ?></strong></td>
+                                <td class="text-center"><strong><?= $dicadangkan ?></strong></td>
+                                <td class="text-center"><strong><?= $total_status ?></strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="modal-footer">
