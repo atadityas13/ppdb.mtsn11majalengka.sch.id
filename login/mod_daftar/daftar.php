@@ -2,14 +2,21 @@
 <style>
     /* Fix z-index untuk modal agar tidak tertutup statistik */
     .modal {
-        z-index: 1055 !important;
+        z-index: 99999 !important;
     }
     .modal-backdrop {
-        z-index: 1050 !important;
+        z-index: 99998 !important;
     }
-    .card {
-        position: relative;
-        z-index: 1;
+    #modal-edit-universal-daftar {
+        z-index: 99999 !important;
+    }
+    #modal-edit-universal-daftar .modal-backdrop {
+        z-index: 99998 !important;
+    }
+    body.modal-open .card,
+    body.modal-open .dataTables_wrapper {
+        position: static !important;
+        z-index: auto !important;
     }
 </style>
 <!-- Modal -->
@@ -677,4 +684,135 @@ $('#form-konfirmasi').submit(function(e) {
             $('#asal_manual_admin').prop('required', false).val('');
         }
     });
+
+    // Script untuk modal edit universal
+    $('.btn-edit-daftar').on('click', function() {
+        var id = $(this).data('id');
+        var nisn = $(this).data('nisn');
+        var nama = $(this).data('nama');
+        var tempat = $(this).data('tempat');
+        var tgl = $(this).data('tgl');
+        var jenkel = $(this).data('jenkel');
+        var asal = $(this).data('asal');
+        var npsn = $(this).data('npsn');
+        var hp = $(this).data('hp');
+        var status = $(this).data('status');
+
+        $('#modal-edit-universal-daftar input[name="id_daftar"]').val(id);
+        $('#modal-edit-universal-daftar input[name="nisn"]').val(nisn);
+        $('#modal-edit-universal-daftar input[name="nama"]').val(nama);
+        $('#modal-edit-universal-daftar input[name="tempat_lahir"]').val(tempat);
+        $('#modal-edit-universal-daftar input[name="tgl_lahir"]').val(tgl);
+        $('#modal-edit-universal-daftar select[name="jenkel"]').val(jenkel);
+        $('#modal-edit-universal-daftar input[name="asal"]').val(asal);
+        $('#modal-edit-universal-daftar input[name="npsn_asal"]').val(npsn);
+        $('#modal-edit-universal-daftar input[name="no_hp"]').val(hp);
+        $('#modal-edit-universal-daftar input[name="password"]').val('');
+        $('#modal-edit-universal-daftar input[name="status"][value="' + status + '"]').prop('checked', true);
+    });
+
+    $('#form-edit-universal-daftar').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'mod_daftar/crud_daftar.php?pg=update_full',
+            data: $(this).serialize(),
+            success: function(data) {
+                iziToast.success({
+                    title: 'Berhasil!',
+                    message: 'Data siswa berhasil diubah',
+                    position: 'topRight'
+                });
+                setTimeout(function() {
+                    window.location.reload();
+                }, 2000);
+                $('#modal-edit-universal-daftar').modal('hide');
+            }
+        });
+        return false;
+    });
 </script>
+
+<!-- Modal Edit Universal -->
+<div class="modal fade" id="modal-edit-universal-daftar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" style="z-index: 99999 !important;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="form-edit-universal-daftar">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ubah Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id_daftar" class="form-control" required="">
+                    
+                    <div class="form-group">
+                        <label>NISN</label>
+                        <input type="text" name="nisn" class="form-control nisn">
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Siswa</label>
+                        <input type="text" name="nama" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Tempat Lahir</label>
+                        <input type="text" name="tempat_lahir" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tgl_lahir" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <select class="form-control" name="jenkel" required>
+                            <option value="L">Laki-Laki</option>
+                            <option value="P">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Sekolah Asal</label>
+                        <input type="text" name="asal" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>NPSN Sekolah</label>
+                        <input type="text" name="npsn_asal" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>No HP</label>
+                        <input type="number" name="no_hp" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Password <small class="text-muted">(Kosongkan jika tidak ingin mengubah)</small></label>
+                        <input type="password" name="password" class="form-control" placeholder="Masukkan password baru">
+                        <small class="form-text text-muted">Password akan diubah hanya jika field ini diisi</small>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label">Pilih Status</div>
+                        <div class="custom-switches-stacked mt-2">
+                            <label class="custom-switch">
+                                <input type="radio" name="status" value="0" class="custom-switch-input" checked>
+                                <span class="custom-switch-indicator"></span>
+                                <span class="custom-switch-description">Diverifikasi</span>
+                            </label>
+                            <label class="custom-switch">
+                                <input type="radio" name="status" value="1" class="custom-switch-input">
+                                <span class="custom-switch-indicator"></span>
+                                <span class="custom-switch-description">Diterima</span>
+                            </label>
+                            <label class="custom-switch">
+                                <input type="radio" name="status" value="2" class="custom-switch-input">
+                                <span class="custom-switch-indicator"></span>
+                                <span class="custom-switch-description">Dicadangkan</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
