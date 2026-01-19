@@ -1,5 +1,4 @@
 <?php
-ob_start();
 require_once "../../config/database.php";
 require_once "../../config/function.php";
 require_once "../../config/functions.crud.php";
@@ -7,7 +6,13 @@ session_start();
 if (!isset($_SESSION['id_daftar'])) {
   die('Anda tidak diijinkan mengakses langsung');
 }
+// $setting sudah otomatis diambil dari function.php
+// Ambil data siswa, tampilkan pesan jika tidak ditemukan
 $siswa = fetch($koneksi, 'daftar', ['id_daftar' => $_SESSION['id_daftar']]);
+if (!$siswa) {
+  echo '<div class="alert alert-danger">Data pendaftar tidak ditemukan. Silakan login ulang.</div>';
+  return;
+}
 setlocale(LC_ALL, 'id-ID', 'id_ID');
 ?>
 <section class="section">
