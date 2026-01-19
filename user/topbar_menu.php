@@ -4,8 +4,8 @@
  * Menu shortcut di navbar untuk siswa
  */
 ?>
+
 <!-- Direct Menu Links untuk Siswa (Visible on Mobile) -->
-<div class="topbar-scroll-x"><ul style="padding-left:0; margin-bottom:0;">
 <!-- Home Button -->
 <li class="d-lg-none">
     <a href="." class="nav-link topbar-menu-link" title="Home">
@@ -40,4 +40,3 @@
     </a>
 </li>
 <?php } ?>
-</ul></div>

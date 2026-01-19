@@ -2,61 +2,9 @@
    MOBILE OPTIMIZATION FOR PPDB SYSTEM
    =================================== */
 
-/* ========== TOPBAR DIRECT MENU LINKS ========== */
+/* ========== TOPBAR QUICK MENU (Desktop & Mobile) ========== */
 
-/* Topbar menu links styling */
-.topbar-menu-link {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px 10px !important;
-    border-radius: 8px;
-    transition: all 0.3s;
-    background: rgba(255,255,255,0.95) !important;
-    color: #667eea !important;
-    margin: 0 3px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-.topbar-menu-link:hover {
-    background: rgba(255,255,255,1) !important;
-    color: #764ba2 !important;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.topbar-menu-link i {
-    font-size: 18px;
-    margin-bottom: 3px;
-    color: inherit;
-}
-
-.topbar-menu-link .menu-text {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1.2;
-    color: inherit;
-}
-
-/* Extra small screens */
-@media (max-width: 576px) {
-    .topbar-menu-link {
-        padding: 6px 7px !important;
-        margin: 0 2px;
-    }
-    
-    .topbar-menu-link i {
-        font-size: 16px;
-    }
-    
-    .topbar-menu-link .menu-text {
-        font-size: 9px;
-    }
-}
-
-/* Quick Menu Dropdown Styling - DEPRECATED */
+/* Quick Menu Dropdown Styling */
 .quick-menu-dropdown .dropdown-menu {
     min-width: 280px;
     max-height: 70vh;
@@ -190,26 +138,6 @@
     
     .menu-header ul {
         display: flex;
-        flex-wrap: nowrap !important;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 4px;
-        margin-bottom: 0;
-        scrollbar-width: thin;
-    }
-    
-    .menu-header ul li {
-        min-width: 90px;
-        flex: 0 0 auto;
-        margin-right: 4px;
-    }
-    
-    .menu-header ul li:last-child {
-        margin-right: 0;
-    }
-    
-    .menu-header ul {
-        display: flex;
         justify-content: space-around;
         list-style: none;
         padding: 0;
@@ -290,50 +218,17 @@
     
     /* ========== NAVBAR OPTIMIZATION (ENHANCED) ========== */
     
-    .navbar-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-    }
-    
-    /* Navbar styling default (desktop) */
+    /* Navbar fixed & shadow */
     .main-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 997;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         padding: 8px 15px;
     }
     
-    /* Sticky navbar hanya untuk mobile */
-    @media (max-width: 991px) {
-        .navbar-bg {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 70px !important;
-            z-index: 999 !important;
-        }
-        
-        .main-navbar {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            z-index: 1000 !important;
-            background: transparent !important;
-        }
-        
-        .main-navbar.sticky-top {
-            position: fixed !important;
-            top: 0 !important;
-        }
-        
-        /* Main wrapper dengan padding top untuk fixed navbar di mobile */
-        .main-wrapper {
-            padding-top: 70px !important;
-        }
-        
-        .main-content {
-            margin-top: 0 !important;
-            padding-top: 20px !important;
-        }
+    .navbar-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
     }
     
     /* Navbar brand */
@@ -358,29 +253,6 @@
         font-size: 18px;
         padding: 8px 16px !important;
         margin-right: 5px;
-    }
-    
-    /* Tombol sidebar agar terlihat di semua background */
-    .navbar a[data-toggle="sidebar"] {
-        background: rgba(255,255,255,0.95) !important;
-        color: #667eea !important;
-        border-radius: 8px;
-        padding: 10px 15px !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        transition: all 0.3s ease;
-        margin-right: 10px;
-    }
-    
-    .navbar a[data-toggle="sidebar"]:hover {
-        background: rgba(255,255,255,1) !important;
-        color: #764ba2 !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-        transform: translateY(-2px);
-    }
-    
-    .navbar a[data-toggle="sidebar"] i {
-        font-size: 20px;
-        font-weight: bold;
     }
     
     /* Quick menu badge */
@@ -1047,96 +919,5 @@
         margin-left: 0 !important;
         padding: 0 !important;
     }
-}
-
-/* ========== MODAL Z-INDEX FIX ========== */
-
-/* Ensure modals always appear on top of all other elements */
-.modal-backdrop {
-    z-index: 10050 !important;
-}
-
-.modal {
-    z-index: 10060 !important;
-}
-
-.modal-dialog {
-    z-index: 10065 !important;
-}
-
-/* Fix for DataTables and other tables that might overlap */
-.dataTables_wrapper,
-.table-responsive,
-.card {
-    position: relative;
-    z-index: auto;
-}
-
-/* Statistik tables should never overlap modals */
-.card .table,
-.card-body .table,
-[class*="statistik"],
-.table,
-tbody,
-thead,
-tr,
-td,
-th {
-    position: relative;
-    z-index: 1 !important;
-}
-
-/* Ensure dropdown menus don't interfere with modals */
-.dropdown-menu {
-    z-index: 1000;
-}
-
-/* Override navbar search elements when modal is open */
-body.modal-open .search-backdrop {
-    z-index: 1 !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-}
-
-body.modal-open .search-result {
-    z-index: 1 !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-}
-
-/* When modal is open, lower the z-index of main content and other competing elements */
-body.modal-open .main-wrapper,
-body.modal-open .main-content,
-body.modal-open .card,
-body.modal-open .dataTables_wrapper,
-body.modal-open .table-responsive {
-    z-index: auto !important;
-}
-
-/* --- CUSTOM: Topbar menu scroll horizontal fix --- */
-.topbar-scroll-x {
-  width: 100vw;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin-bottom: 0;
-}
-.topbar-scroll-x ul {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  overflow-x: auto;
-  width: 100%;
-  min-width: 0;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-.topbar-scroll-x ul li {
-  min-width: 90px;
-  flex: 0 0 auto;
-  margin-right: 4px;
-}
-.topbar-scroll-x ul li:last-child {
-  margin-right: 0;
 }
 
