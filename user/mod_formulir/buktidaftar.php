@@ -1,24 +1,30 @@
 <?php
-session_start();
+// 1. Load database terlebih dahulu karena di dalamnya ada pengaturan timezone & variabel $pg
 require_once "../../config/database.php";
 require_once "../../config/function.php";
 require_once "../../config/functions.crud.php";
 require_once "../mod_formulir/fungsi.php";
 
-// Set locale untuk tanggal Indonesia
-setlocale(LC_ALL, 'id-ID', 'id_ID');
-
-if (!isset($_SESSION['id_daftar'])) {
-    die('Akses tidak diizinkan. Silakan login ulang.');
+// 2. Gunakan pengecekan session agar tidak error jika sudah dipanggil di file lain
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-// Pastikan koneksi $koneksi tersedia dari file database.php
+// 3. Set locale untuk tanggal Indonesia
+setlocale(LC_ALL, 'id-ID', 'id_ID');
+
+// 4. Proteksi login
+if (!isset($_SESSION['id_daftar'])) {
+    echo "<script>alert('Silahkan login ulang'); window.location='../login.php';</script>";
+    exit;
+}
+
 $id_daftar = $_SESSION['id_daftar'];
+// Menggunakan variabel $koneksi yang sudah ada dari database.php
 $siswa = fetch($koneksi, 'daftar', ['id_daftar' => $id_daftar]);
 
-// Proteksi jika data siswa tidak ditemukan
 if (!$siswa) {
-    die('Data pendaftar tidak ditemukan.');
+    die('Data pendaftar tidak ditemukan di database.');
 }
 ?>
 
@@ -89,12 +95,13 @@ if (!$siswa) {
             <div class="card-body">
                 <div class="author-box-left">
                     <?php 
-                        $foto_path = "../" . $siswa['foto'];
-                        if (!file_exists($foto_path) || empty($siswa['foto'])) {
-                            $foto_path = "../assets/img/avatar/avatar-1.png"; // Ganti ke path default avatar Anda
+                        // Perbaikan logika Path Foto berdasarkan file proses Anda
+                        $foto_path = "../../" . $siswa['foto']; 
+                        if (empty($siswa['foto']) || !file_exists($foto_path)) {
+                            $foto_path = "../../assets/img/avatar/avatar-1.png"; 
                         }
                     ?>
-                    <img alt="image" src="<?= $foto_path ?>" class="rounded-circle author-box-picture" style="width: 100px; height: 100px; object-fit: cover;">
+                    <img alt="image" src="<?= $foto_path ?>" class="rounded-circle author-box-picture" style="width: 100px; height: 100px; object-fit: cover; border: 2px solid #6777ef;">
                     
                     <div class="clearfix"></div>
                     <br>
