@@ -26,17 +26,17 @@
 }
 
 .topbar-menu-link i {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 3px;
     color: inherit;
 }
 
 .topbar-menu-link .menu-text {
-    font-size: 10px;
-    font-weight: 700;
+    font-size: 9px;
+    font-weight: 650;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    line-height: 1.2;
+    line-height: 1;
     color: inherit;
 }
 
