@@ -1,14 +1,14 @@
 <?php
-session_start();
+ob_start();
 require_once "../../config/database.php";
 require_once "../../config/function.php";
 require_once "../../config/functions.crud.php";
-require_once "../mod_formulir/fungsi.php";
-setlocale(LC_ALL, 'id-ID', 'id_ID');
+session_start();
 if (!isset($_SESSION['id_daftar'])) {
-  die('Akses tidak diizinkan. Silakan login ulang.');
+  die('Anda tidak diijinkan mengakses langsung');
 }
 $siswa = fetch($koneksi, 'daftar', ['id_daftar' => $_SESSION['id_daftar']]);
+setlocale(LC_ALL, 'id-ID', 'id_ID');
 ?>
 <section class="section">
   <div class="section-header">
