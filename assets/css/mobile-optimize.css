@@ -190,6 +190,26 @@
     
     .menu-header ul {
         display: flex;
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+        margin-bottom: 0;
+        scrollbar-width: thin;
+    }
+    
+    .menu-header ul li {
+        min-width: 90px;
+        flex: 0 0 auto;
+        margin-right: 4px;
+    }
+    
+    .menu-header ul li:last-child {
+        margin-right: 0;
+    }
+    
+    .menu-header ul {
+        display: flex;
         justify-content: space-around;
         list-style: none;
         padding: 0;
